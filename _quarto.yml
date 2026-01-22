@@ -9,6 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - projects.qmd
+      - test.qmd
     tools:
       - icon: envelope
         icon_pack: fas
@@ -25,6 +26,8 @@ format:
   html:
     theme: cerulean
     toc: true
+    code-fold: true
+    code-summary: "Show code"
 
 editor: source
 
