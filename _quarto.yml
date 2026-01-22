@@ -11,7 +11,7 @@ website:
       - NMRanalytics.qmd
       - composition.qmd
       - demographics.qmd
-      #- test.qmd
+      - test.qmd
     tools:
       - icon: envelope
         icon_pack: fas
