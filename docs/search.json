@@ -7,6 +7,41 @@
     "text": "Thanks for checking out my web site!"
   },
   {
+    "objectID": "NMRanalytics.html",
+    "href": "NMRanalytics.html",
+    "title": "NMR analytics",
+    "section": "",
+    "text": "Show code\nknitr::include_graphics(\"img/interval_1.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_1scatter.png\")"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine",
+    "href": "NMRanalytics.html#valine",
+    "title": "NMR analytics",
+    "section": "",
+    "text": "Show code\nknitr::include_graphics(\"img/interval_1.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_1scatter.png\")"
+  },
+  {
+    "objectID": "NMRanalytics.html#isoleucine",
+    "href": "NMRanalytics.html#isoleucine",
+    "title": "NMR analytics",
+    "section": "Isoleucine",
+    "text": "Isoleucine\n\n\nShow code\nknitr::include_graphics(\"img/interval_2.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_2scatter.png\")"
+  },
+  {
+    "objectID": "NMRanalytics.html#lactate",
+    "href": "NMRanalytics.html#lactate",
+    "title": "NMR analytics",
+    "section": "Lactate",
+    "text": "Lactate\n\n\nShow code\nknitr::include_graphics(\"img/interval_3.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_3scatter.png\")"
+  },
+  {
+    "objectID": "NMRanalytics.html#alanine",
+    "href": "NMRanalytics.html#alanine",
+    "title": "NMR analytics",
+    "section": "Alanine",
+    "text": "Alanine\n\n\nShow code\nknitr::include_graphics(\"img/interval_4.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_4scatter.png\")"
+  },
+  {
     "objectID": "test.html",
     "href": "test.html",
     "title": "TEST",
@@ -14,18 +49,11 @@
     "text": "Show code\nlibrary(tidyr)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(broom)\nlibrary(tidyverse)\nlibrary(broom.mixed)\nlibrary(lmerTest)\nlibrary(lme4)\nlibrary(ggtern)\nlibrary(magrittr)\n# library(colorspace)\nlibrary(pals)\nlibrary(phyloseq)\nlibrary(patchwork)\n\n### COLORS for omics types\ncolorcodes &lt;- c('darkolivegreen','dodgerblue4','gold2','red3')\ncolorcodesnames &lt;- c('ME-16s','ME-ITS','ME-NMR','PB-NMR')\n\n#Creating a function which takes a numeric vector, rounds each non-missing value to a specified number of digits and returns a vector with these: \nmyround2 &lt;- function(x, digits = 3){\n  idna &lt;- !is.na(x)\n  y &lt;-as.character(x)\n  \n  intRound &lt;- function(xx){\n    c &lt;- 0\n    for (dgts in 3:5){\n      c &lt;- c+1\n      if (c==1){\n        if (xx &lt; 10^-dgts) {yy &lt;- paste('p &lt;', 10^-dgts)} \n        else {yy &lt;- paste('p =',as.character(ceiling(as.numeric(xx)*10^2)/10^2))}\n      } else {\n        if (xx &lt; 10^-dgts) {yy &lt;- paste('p &lt;', 10^-dgts)} \n      }\n    }\n    return(yy)\n  }\n  \n  y[idna] &lt;- unlist(lapply(as.list(x[idna]),\n                           function(x){intRound(x)}))\n  y[!idna] &lt;- ' '\n  return(y)\n}\n\n\nhist(rnorm(1000))"
   },
   {
-    "objectID": "projects.html#project-2",
-    "href": "projects.html#project-2",
-    "title": "Projects",
-    "section": "Project 2",
-    "text": "Project 2"
-  },
-  {
-    "objectID": "projects.html#project-3",
-    "href": "projects.html#project-3",
-    "title": "Projects",
-    "section": "Project 3",
-    "text": "Project 3"
+    "objectID": "demographics.html#r2-barplot-and-all-pcoas-pc1-vs-pc2-pc3-vs-pc4-per-demo",
+    "href": "demographics.html#r2-barplot-and-all-pcoas-pc1-vs-pc2-pc3-vs-pc4-per-demo",
+    "title": "Demographics",
+    "section": "R2 Barplot and all PCoAs (PC1 vs PC2, PC3 vs PC4) per demo",
+    "text": "R2 Barplot and all PCoAs (PC1 vs PC2, PC3 vs PC4) per demo"
   },
   {
     "objectID": "index.html",
@@ -40,6 +68,27 @@
     "title": "Longitudinal multi-omics profiling of menstrual effluent reveals personalized metabolic and microbial signatures",
     "section": "",
     "text": "Women’s diseases are highly prevalent and impose substantial individual and societal burdens, yet research in women’s health remains comparatively underprioritized, resulting in slow progress and persistent diagnostic challenges. Menstrual effluent (ME) originates directly from the uterine environment where many gynecological conditions arise, and therefore represents an easily accessible, non-invasive biospecimen with considerable diagnostic potential. However, its chemical and microbial composition has not been comprehensively characterized, limiting translational progress. In this study, we performed 1H NMR–based metabolomics, 16S rRNA sequencing, and ITS-fungal profiling on longitudinal ME samples collected from 19 healthy women over three consecutive menstrual cycles, alongside matched plasma metabolomics acquired on cycle day 3. We found that the metabolite profile of ME was surprisingly different from peripheral blood (PB) samples. Further, ME samples exhibited pronounced intra-individual stability, with consistent metabolic and microbial signatures across cycles. The cycle day variation was primarily cycle day 1 distinguishing from cycle day 2 and cycle day 3. Analysis of the meta-data showed that nicotine usage and dietary habits had significant influence on both ME metabolome and bacteria but did not significantly influence PB. Machine learning models based on microbial data could predict the concentration of few metabolites, primarily organic acids, indicating that both the microbiomes and the host processes are projected in the ME composition. Our findings demonstrate that ME is a chemically and microbially stable biospecimen within individual, which supports the feasibility of ME as a reliable and biologically informative specimen for much needed diagnostic and prognostic applications in multiple women’s diseases.\nIsabella France Jarsmer(1,2), Iva Sunic(3), Yongxin Ye(2), Nilo Vahman(4), Kenneth Klingenberg Barfod(2), Ole Mogensen(5), Bekzod Khakimov(2), Morten Arendt Rasmussen(2,5)\n\nDepartment of Biomedicine, Aarhus University, Aarhus, Denmark\nDepartment of Food Science, University of Copenhagen, Frederiksberg, Denmark\nCentre for Applied Bioanthropology, Institute for Anthropological Research, 10000 Zagreb, Croatia\nCopenhagen Studies on Asthma in Childhood (COPSAC), Herlev- Gentofte Hospitals, University of Copenhagen, Gentofte, Denmark\nDepartment of Gynecology and Obstetrics, Aarhus University Hospital, Aarhus, Denmark"
+  },
+  {
+    "objectID": "composition.html#trajectories-over-time-one-plot-per-feature",
+    "href": "composition.html#trajectories-over-time-one-plot-per-feature",
+    "title": "Composition",
+    "section": "Trajectories over time (one plot per feature)",
+    "text": "Trajectories over time (one plot per feature)"
+  },
+  {
+    "objectID": "composition.html#simplex",
+    "href": "composition.html#simplex",
+    "title": "Composition",
+    "section": "SIMPLEX",
+    "text": "SIMPLEX"
+  },
+  {
+    "objectID": "composition.html#vulcano-and-the-table-behind",
+    "href": "composition.html#vulcano-and-the-table-behind",
+    "title": "Composition",
+    "section": "Vulcano and the table behind",
+    "text": "Vulcano and the table behind"
   },
   {
     "objectID": "multiomics_menstrual_effluent/projects.html#project-2",

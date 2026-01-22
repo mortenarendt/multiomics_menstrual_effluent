@@ -8,8 +8,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - projects.qmd
-      - test.qmd
+      - NMRanalytics.qmd
+      - composition.qmd
+      - demographics.qmd
+      #- test.qmd
     tools:
       - icon: envelope
         icon_pack: fas

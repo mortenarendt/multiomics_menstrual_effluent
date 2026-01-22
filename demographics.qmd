@@ -1,0 +1,7 @@
+---
+title: "Demographics"
+---
+
+## Betadiversity plots
+
+## R2 Barplot and all PCoAs (PC1 vs PC2, PC3 vs PC4) per demo

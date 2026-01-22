@@ -1,0 +1,39 @@
+---
+title: "NMR analytics"
+---
+
+
+
+
+## Valine
+
+
+```{r} 
+knitr::include_graphics("img/interval_1.png") 
+knitr::include_graphics("img/interval_1scatter.png") 
+``` 
+
+## Isoleucine
+
+
+```{r} 
+knitr::include_graphics("img/interval_2.png") 
+knitr::include_graphics("img/interval_2scatter.png") 
+``` 
+
+## Lactate
+
+
+```{r} 
+knitr::include_graphics("img/interval_3.png") 
+knitr::include_graphics("img/interval_3scatter.png") 
+``` 
+
+
+## Alanine
+
+
+```{r} 
+knitr::include_graphics("img/interval_4.png") 
+knitr::include_graphics("img/interval_4scatter.png") 
+``` 

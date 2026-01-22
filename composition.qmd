@@ -1,0 +1,12 @@
+---
+title: "Composition"
+---
+
+## Tax level break down (tables)
+
+## Trajectories over time (one plot per feature)
+
+## SIMPLEX
+
+## Vulcano and the table behind
+
