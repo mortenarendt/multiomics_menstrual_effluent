@@ -2,11 +2,549 @@
 title: "Composition"
 ---
 
-## Tax level break down (tables)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( message = F, warning = F)
+options(digits=2)
+```
 
-## Trajectories over time (one plot per feature)
+```{r,include=FALSE}
+source('libs_init.R')
+```
 
-## SIMPLEX
+## NMR Metabolomics
 
-## Vulcano and the table behind
+```{r}
+df <- bind_rows(
+  MEconc_newlong %>% 
+    filter(! (str_detect(met,'glycerol') | met == 'ERECTIC' | met=='TSP' | str_detect(met,'PC'))),
+  PBconc_newlong %>% filter(! (str_detect(met,'glycerol') | str_detect(met,'EDTA') | met == 'ERECTIC' | met=='TSP' | category=='internal signal' | str_detect(met,'PC') ))
+) %>% 
+  filter(!is.na(Participant)) %>% 
+  group_by(Participant,Cycle,`Cycle day`,`Samples #`) %>% 
+  # mutate(y = y / sum(y)) %>% 
+  group_by(type,met, SigMa_class,category) %>% 
+  dplyr::summarise(mny = sum(y)) %>% 
+  group_by(type) %>% 
+  dplyr::mutate(mny = mny / sum(mny)) %>% 
+  dplyr::mutate(ypos = cumsum(mny) - 0.5*mny, 
+                xpos = runif(n(),0.5,1.5)) %>% 
+  ungroup() 
+
+df <- df %>% left_join(dflb, by = 'category')
+df$lb <- factor(df$lb, levels = dflb$lb[1:9])
+
+```
+
+
+```{r}
+g_composition <- df %>% 
+  ggplot(data= ., aes(x = '', y = mny,fill = lb)) + 
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar(theta ="y") +
+  theme_void() +
+  scale_fill_manual(values=dflb$color)   + 
+  facet_wrap(~type) + 
+  guides(fill = guide_legend(nrow = 3)) + 
+  labs(fill = NULL) + 
+  theme(legend.position = 'bottom' )
+g_composition
+
+
+df %>% 
+  dplyr::select(type:mny,lb) %>% 
+  spread(type,mny) %>% 
+  reactable()
+```
+
+
+Sampling time, storage time and batch effect correction of ME-NMR data
+
+```{r}
+MEconc_newlong <- MEconc_newlong %>% 
+  mutate(Batch = ifelse(is.na(Batch),3,Batch), 
+         `Sampling time` = ifelse(is.na(`Sampling time`),'XX',`Sampling time`), 
+         `Storage time` = ifelse(is.na(`Storage time`),'XX',`Storage time`)) %>% 
+  group_by(met) %>% 
+  mutate(logy = residuals(lm(logy~factor(Batch) + factor(`Sampling time`) + factor(`Storage time`)))) %>% 
+  ungroup
+
+
+phyITSold <- phyITS
+phyXold <- phyX
+
+MEdf <- MEconc_newlong %>% 
+  dplyr::select(`Sample ID`,`Samples #`,`Samples Names`, met, logy) %>% 
+  spread(met,logy) %>% filter(!is.na(`Sample ID`))
+
+MEdfsm <- phyX@sam_data %>% 
+  data.frame() %>% 
+  dplyr::select(Barcode:Batch,cycle:cycle_part) %>% 
+  left_join(MEdf, by = c('Sample.ID' = 'Sample ID'))  
+
+rownames(MEdfsm) <- sample_names(phyXold)
+
+sample_data(phyITS) <- sample_data(phyX) <- sample_data(MEdfsm)
+
+# save.image(file = '~/Dropbox/Bekzod&Isabella/Yongxin/data/QCcorrected_jan2026.Rdata')
+
+```
+
+
+## 16s 
+
+Sequencing depth
+
+```{r}
+df_ME <- MEconc_newlong %>% filter(!duplicated(`Samples #`))
+
+df_descrip <- phyX@sam_data %>% data.frame()
+
+phyX %>% subset_samples(!is.na(cycle)) %>% sample_sums() %>% summary
+```
+
+
+### Table 
+
+```{r}
+
+TAXlv <- c()
+group_vars_list <- list()
+for (i in 1:7){
+  txlv <- paste('ta',i,sep = '')  
+  TAXlv <- c(TAXlv,txlv)
+  group_vars_list[[i]] <- TAXlv
+}
+i <- 0
+phyXsummaries <- list()
+for (group_vars in group_vars_list) {
+  i <- i+1
+  txlv <- paste('ta',i,sep = '')  
+  phyXtaX <- phyX %>% 
+    subset_samples(!str_detect(Sample.name,'poz')) %>% 
+    subset_samples(!str_detect(Sample.name,'neg')) %>% 
+    transform_sample_counts(function(x) x / sum(x)) %>% 
+    taxglom(txlv) %>% 
+    psmelt() %>% 
+    group_by_at(vars(one_of(group_vars))) %>%
+    dplyr::summarise(abu = sum(Abundance), 
+                     prevalence = sum(Abundance>0) / n()) %>% 
+    ungroup() %>% 
+    mutate(abu = abu/ sum(abu), 
+           taxlevel = txlv) %>% 
+    arrange(-abu)
+  phyXsummaries[[i]] <- phyXtaX
+}
+
+phyXtaX <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  transform_sample_counts(function(x) x / sum(x)) %>% 
+  psmelt() %>% 
+  group_by(ta5,ta6,ta7,OTU) %>%
+  dplyr::summarise(abu = sum(Abundance), 
+                   prevalence = sum(Abundance>0) / n()) %>% 
+  ungroup() %>% 
+  mutate(abu = abu/ sum(abu), 
+         taxlevel = 'ASV') %>% 
+  arrange(-abu)
+
+phyXsummaries[[8]] <- phyXtaX
+
+fmrt <- list(
+  abu = colDef(format = colFormat(percent = TRUE, digits = 1)),
+  prevalence = colDef(format = colFormat(percent = TRUE, digits = 1))
+)
+
+
+phyXsummaries[[1]] %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[2]] %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[3]] %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[4]] %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[5]] %>% dplyr::select(-ta1,-ta2) %>%  head %>% reactable(columns = fmrt)
+phyXsummaries[[6]] %>% dplyr::select(-ta1,-ta2,-ta3) %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[7]] %>% dplyr::select(-ta1,-ta2,-ta3,-ta4) %>% head %>% reactable(columns = fmrt)
+phyXsummaries[[8]] %>%  head %>% reactable(columns = fmrt)
+
+```
+
+### Figure
+
+#### Overall distribution
+
+```{r}
+b <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  tax_glom('ta5') %>% 
+  transform_sample_counts(function(x) x/ sum(x)) %>% 
+  psmelt()
+
+bsum <- b %>% 
+  group_by(ta2,ta3,ta4,ta5) %>% 
+  summarise(mn = mean(Abundance)) %>% 
+  ungroup %>% 
+  arrange(-mn) %>% 
+  mutate(rnk = 1:n(), 
+         lb = ifelse(rnk<9,substr(ta5,4,30),'Other'),
+         lb = factor(lb)) %>% 
+  mutate(mny = mn / sum(mn)) %>% 
+  mutate(ypos = cumsum(mn) - 0.5*mn, 
+         xpos = runif(n(),0.5,1.5))
+
+bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
+
+bsum %>% 
+  mutate(omics = 'ME-16s') %>% 
+  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + 
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  scale_fill_manual(values=bsum16s$color)   + 
+  theme_void() + 
+  guides(fill = guide_legend(nrow = 3)) + 
+  labs(fill = NULL) + 
+  # geom_text(data = bsum[1:8,], aes(x = xpos,y = ypos, label = lb), color = "black", size=3) +
+  theme(legend.position = 'bottom' ) + 
+  facet_wrap(~omics)
+```
+
+#### Individual distribution
+
+```{r}
+otutb16s <- b %>% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) 
+otutb16s %>% 
+  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + 
+  geom_bar(stat = 'identity') 
+```
+
+
+## ITS
+
+Sequencing depth
+
+```{r}
+v <- phyITS %>% subset_samples(!is.na(cycle)) %>% sample_sums()
+```
+
+For all samples
+
+```{r}
+summary(v)
+```
+
+For sample with at least one read
+
+```{r}
+table(v>0)
+summary(v[v>0])
+```
+
+### Table 
+
+```{r}
+
+TAXlv <- c()
+group_vars_list <- list()
+for (i in 1:7){
+  txlv <- paste('ta',i,sep = '')  
+  TAXlv <- c(TAXlv,txlv)
+  group_vars_list[[i]] <- TAXlv
+}
+i <- 0
+phyITSsummaries <- list()
+phyITSsummaries_df <- data.frame()
+for (group_vars in group_vars_list) {
+  i <- i+1
+  txlv <- paste('ta',i,sep = '')  
+  phyITStaX <- phyITS %>% 
+    subset_samples(!str_detect(Sample.name,'poz')) %>% 
+    subset_samples(!str_detect(Sample.name,'neg')) %>% 
+    transform_sample_counts(function(x) x / sum(x + 1)) %>% 
+    taxglom(txlv) %>% 
+    psmelt() %>% 
+    group_by_at(vars(one_of(group_vars))) %>%
+    summarise(abu = sum(Abundance), 
+              prevalence = sum(Abundance>0) / n()) %>% 
+    ungroup() %>% 
+    mutate(abu = abu/ sum(abu), 
+           taxlevel = txlv) %>% 
+    arrange(-abu)
+  phyITSsummaries[[i]] <- phyITStaX
+  phyITSsummaries_df %>% bind_rows(phyITSsummaries_df, phyITStaX)
+}
+
+phyITStaX <- phyITS %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  transform_sample_counts(function(x) x / sum(x + 1)) %>% 
+  psmelt() %>% 
+  group_by(ta4,ta5,ta6,ta7,OTU) %>%
+  summarise(abu = sum(Abundance), 
+            prevalence = sum(Abundance>0) / n()) %>% 
+  ungroup() %>% 
+  mutate(abu = abu/ sum(abu), 
+         taxlevel = txlv) %>% 
+  arrange(-abu)
+phyITSsummaries[[8]] <- phyITStaX
+
+phyITSsummaries[[1]] %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[2]] %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[3]] %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[4]] %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[5]] %>% dplyr::select(-ta1,-ta2) %>%  head %>% reactable(columns = fmrt)
+phyITSsummaries[[6]] %>% dplyr::select(-ta1,-ta2,-ta3) %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[7]] %>% dplyr::select(-ta1,-ta2,-ta3,-ta4) %>% head %>% reactable(columns = fmrt)
+phyITSsummaries[[8]] %>% head %>% reactable(columns = fmrt)
+
+```
+
+
+### Figure 
+
+#### Overall distribution 
+
+```{r}
+b <- phyITS %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  tax_glom('ta5') %>% 
+  transform_sample_counts(function(x) x/ (sum(x) + 1)) %>% 
+  psmelt()
+
+bsum <- b %>% 
+  # group_by(ta6) %>% 
+  group_by(ta3,ta4,ta5) %>% 
+  summarise(mn = sum(Abundance)) %>% 
+  ungroup %>% 
+  arrange(-mn) %>% 
+  mutate(rnk = 1:n(), 
+         lb = ifelse(rnk<9,substr(ta5,4,30),'Other'),
+         lb = ifelse(is.na(lb),'Other',lb),
+         lb = ifelse(ta5 %in% c('F__','__'),paste('Class', substr(ta3,4,30),sep = ': '),lb)) %>% 
+  ungroup() %>% 
+  mutate(mn = mn / sum(mn))
+bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
+
+bsum %>% 
+  filter(!is.na(lb)) %>% 
+  mutate(omics = 'ME-ITS') %>% 
+  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + 
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  scale_fill_manual(values=bsumITS$color) +
+  theme_void() + 
+  guides(fill = guide_legend(nrow = 3)) + 
+  labs(fill = NULL) + 
+  # ggrepel::geom_text_repel(data = bsum, aes(x = xpos,y = ypos, label = lb), color = "black", size=3) +
+  theme(legend.position = 'bottom' ) + 
+  facet_wrap(~omics)
+```
+
+#### Individual distribution 
+
+```{r}
+otutbITS <- b %>% left_join(bsum, by = c('ta3','ta4','ta5')) 
+otutbITS %>% 
+  group_by(Sample.name,lb) %>% 
+  summarise(Abundance = sum(Abundance)) %>% 
+  ungroup %>% 
+  group_by(Sample.name) %>% 
+  mutate(Abundance = Abundance / sum(Abundance)) %>% 
+  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + 
+  geom_bar(stat = 'identity') 
+
+```
+
+
+## Trajectories over time
+
+### ME
+
+```{r, fig.height=30, fig.width=10}
+MEconc_newlong %>% 
+  mutate(cycle_day = (as.numeric(Cycle)-1)*5 + `Cycle day`) %>% 
+  ggplot(data = ., aes(cycle_day,logy, group = Participant, color = category)) + 
+  geom_point() + geom_line() + 
+  theme(legend.position = 'bottom') + 
+  facet_wrap(~met, ncol = 5, scales = 'free')
+```
+
+### 16s
+
+```{r, fig.height=30, fig.width=10}
+otutb16s %>% 
+  ggplot(data = ., aes(cycle_day,Abundance, group = participant, color = lb)) + 
+  geom_point() + 
+  geom_line() + 
+  scale_y_log10() + 
+  theme(legend.position = 'bottom') + 
+  facet_wrap(~OTU + ta5, ncol = 5)
+```
+
+### ITS
+
+```{r, fig.height=30, fig.width=10}
+otutbITS %>% 
+  ggplot(data = ., aes(cycle_day,Abundance, group = participant, color = lb)) + 
+  geom_point() + 
+  geom_line() + 
+  scale_y_log10() + 
+  theme(legend.position = 'bottom') + 
+  facet_wrap(~OTU + ta5, ncol = 5)
+```
+
+
+## Effect of day-in-cycle 
+
+### Vulcano plot
+
+```{r}
+tidyall <- function(m0) {
+  r <- bind_rows(
+    m0 %>% anova() %>% tidy,
+    m0 %>% ranova() %>% tidy,
+    m0 %>% tidy)
+  return(r)
+}
+
+pc <- 1e-5
+tb16s <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  filter_taxa(function(x) sum(x>0)>4, TRUE) %>% 
+  transform_sample_counts(function(x) x / sum(x)) %>% 
+  psmelt() %>% data.frame() %>% 
+  group_by(ta3,ta4,ta5,ta6,ta7,OTU) %>% 
+  do(lmer(data = ., log(Abundance + pc) ~ factor(day) + (1|Participant) + (1|cycle_part))  %>% tidyall())
+
+
+tbITS <- phyITS %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  filter_taxa(function(x) sum(x>0)>4, TRUE) %>% 
+  psmelt() %>% data.frame() %>%
+  group_by(ta3,ta4,ta5,ta6,ta7, OTU) %>% 
+  do(lmer(data = ., log(Abundance + 1) ~ factor(day) + (1|Participant) + (1|cycle_part))  %>% tidyall())
+
+mME <- MEconc_newlong %>% 
+  mutate(cycle_part = paste(Participant, Cycle)) %>% 
+  group_by(met,category) %>% 
+  do(lmer(data = ., logy ~ factor(`Cycle day`) + (1|`Participant`) + (1|cycle_part))  %>% tidyall())
+
+
+dfplot <- bind_rows(mME %>% mutate(omics = 'ME-NMR') %>% 
+                      filter(!str_detect(met,'PC')) %>%
+                      filter(!str_detect(met,'glycerol')) %>% 
+                      filter(!str_detect(met,'TSP')) %>% 
+                      filter(!str_detect(met,'ERECTI')) %>% 
+                      left_join(dflb, by = 'category'),
+                    tbITS %>% mutate(omics = 'ME-ITS', met = OTU) %>% left_join(bsumITS, by = c('ta3','ta4','ta5')),
+                    tb16s %>% mutate(omics = 'ME-16s',met = OTU) %>% left_join(bsum16s, by = c('ta3','ta4','ta5'))) %>%  
+  filter(str_detect(term,'day'))  %>% 
+  filter(!is.na(estimate)) %>% 
+  filter(parse_number(term)==2) 
+
+g_box <- dfplot %>% left_join(data.frame(omics = colorcodesnames)) %>% 
+  ggplot(data =., aes(estimate, fill = omics)) + 
+  geom_boxplot()+
+  facet_wrap(~omics, scales = 'free_x') + 
+  scale_fill_manual(values = colorcodes, breaks = colorcodesnames) + 
+  theme_bw() +
+  theme(legend.position = 'none',
+        strip.text = element_blank(),
+        strip.background = element_blank(), 
+        axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        panel.grid.major.y = element_blank(), 
+        panel.grid.minor.y = element_blank())
+
+
+g_vulc <- dfplot %>%
+  ggplot(data =., aes(estimate,-log10(p.value), label = met, color = lb)) + 
+  geom_point() + 
+  facet_wrap(~omics, scales = 'free_x') + 
+  scale_color_manual(values = bind_rows(dflb, bsum16s,bsumITS)$color, 
+                     breaks = bind_rows(dflb, bsum16s,bsumITS)$lb)   + 
+  ggrepel::geom_text_repel(data = dfplot[dfplot$p.value<0.01,]) + 
+  theme_bw() +
+  theme(legend.position = 'none', axis.title.x = element_blank(), axis.text.x = element_blank())
+
+library(patchwork)
+layout <- "
+A
+A
+A
+A
+B
+"
+
+g_day2 <- g_vulc + g_box+
+  plot_layout(design = layout)
+g_day2
+```
+
+### Tables
+
+Metabolomics by NMR
+
+```{r}
+fmrt <- list(
+  # estimate = colDef(format = colFormat(scientific = TRUE, digits = 2)),
+  estimate = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  std.error = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  p.value = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  )
+)
+
+
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-NMR') %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(met,category,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt)
+```
+
+16s microbiome
+
+```{r}
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-16s') %>% 
+  left_join(phyXsummaries[[8]], by = c('met' = 'OTU')) %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(ta4:OTU,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt)
+```
+
+ITS Fungome
+
+```{r}
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-ITS') %>% 
+  left_join(phyITSsummaries[[8]], by = c('met' = 'OTU')) %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(ta4.x:OTU,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt)
+
+```
 

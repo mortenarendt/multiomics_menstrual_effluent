@@ -1,0 +1,197 @@
+---
+title: "Stability"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( message = F, warning = F)
+options(digits=2)
+```
+
+```{r,include=FALSE}
+source('libs_init.R')
+```
+
+
+## Multivariate Stability measures for each individual
+
+
+```{r}
+df <- MEconc_newlong %>% 
+  ungroup %>% 
+  filter(!is.na(`Sample ID`)) %>% 
+  filter(!str_detect(met,'PC')) %>% 
+  filter(!(str_detect(met,'glycerol') | met == 'ERECTIC' | met=='TSP' | str_detect(met,'PC'))) %>% 
+  filter(!(str_detect(met,'glycerol') | str_detect(met,'EDTA') | met == 'ERECTIC' | met=='TSP' )) %>% 
+  dplyr::select(`Sample ID`, met,logy) %>% 
+  spread(met,logy) 
+DMENMR <- dist(scale(df[,-1]))
+medianNMR <- DMENMR %>% as.vector() %>% median()
+df <- df %>% mutate(Participant = `Sample ID` %>% substr(1,1))
+
+phyXsel16s <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'po')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  transform_sample_counts( function(x) x  / sum(x)) 
+D16s <- phyXsel16s %>% phyloseq::distance("bray")
+median16s <- D16s %>% as.vector() %>% median()
+
+phyXselits <- phyITS %>% 
+  subset_samples(!str_detect(Sample.name,'po')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>%
+  transform_sample_counts( function(x) as.numeric(x>0)) 
+DITS <- phyXselits %>% phyloseq::distance("euclidean")
+medianITS <- DITS %>% as.vector() %>% median()
+
+
+res_withindist <- data.frame()
+for (P in unique(df$Participant)){
+  ic <- df$Participant==P
+  # print(sum(ic))
+  #print(sum(ic))
+  iD<- as.matrix(DMENMR)[ic,ic] / medianNMR # scale distance to equal median.
+  res_withindist <- res_withindist %>% 
+    bind_rows(data.frame(Participant = P,withinparticipantdist = iD[upper.tri(iD)], omics = 'ME-NMR'))
+  
+  ic <- phyXsel16s@sam_data$Participant==P
+  iD<- as.matrix(D16s)[ic,ic] / median16s
+  
+  if (length(iD)==1) {wd <- NA} else {wd <- iD[upper.tri(iD)]}
+  res_withindist <- res_withindist %>% 
+    bind_rows(data.frame(Participant = P,
+                         withinparticipantdist = wd, 
+                         omics = 'ME-16s'))
+  
+  ic <- phyXselits@sam_data$Participant==P
+  iD<- as.matrix(DITS)[ic,ic] / medianITS
+  if (length(iD)==1) {wd <- NA} else {wd <- iD[upper.tri(iD)]}
+  
+  res_withindist <- res_withindist %>% 
+    bind_rows(data.frame(Participant = P,
+                         withinparticipantdist = wd, 
+                         omics = 'ME-ITS'))
+}
+
+res_withindistsum <- res_withindist %>% 
+  group_by(Participant,omics) %>% 
+  summarise(n_comparisons = n(), mnd = mean(withinparticipantdist))
+
+r <- res_withindistsum %>% 
+  dplyr::select(-n_comparisons) %>% 
+  spread(omics,mnd) %>% 
+  ungroup %>% 
+  dplyr::select(-Participant) %>% 
+  rstatix::cor_mat()
+
+pv <- res_withindistsum %>% 
+  dplyr::select(-n_comparisons) %>% 
+  spread(omics,mnd) %>% 
+  ungroup %>% 
+  dplyr::select(-Participant) %>% 
+  rstatix::cor_pmat()
+
+FIG3b <- r %>% gather(omics,val,-rowname) %>% 
+  filter(val<1) %>% 
+  ggplot(data = ., aes(omics,rowname,fill = val, label= paste('r =',val))) + 
+  scale_fill_gradient2(low = 'blue',high = 'red', mid = 'white', midpoint = 0, limits = c(0,1)) +
+  geom_tile() + geom_text() + 
+  ylab(NULL) + theme_bw() + 
+  theme(legend.position = 'none')
+
+FIG3a <- res_withindistsum %>% 
+  ggplot(data = ., aes(omics, mnd, fill = omics)) + 
+  geom_violin() + 
+  geom_hline(yintercept = 1) + 
+  scale_fill_manual(values = colorcodes, breaks = colorcodesnames) + 
+  geom_line(aes(group = Participant)) + 
+  geom_point()+ 
+  theme_bw() +
+  ylab('Mean within participant distance') + 
+  theme(legend.position = 'none')
+
+r %>% reactable() %>% add_title('Correlation between overall stability')
+pv %>% reactable() %>% add_title('Inference (pv) between overall stability')
+
+```
+
+
+
+## Compare within-women stability with demographics
+
+```{r}
+variablemetavars <- c("Alcohol","Coitus", "Medication during sampling"  )
+metavars <- c("Age", "Residence", "Diet", "Contraceptives", "Regular/daily medication" , "Nicotin")
+
+dfmeta <- MEconc_newlong %>% 
+  filter(!duplicated(`Samples #`)) %>% 
+  dplyr::select(`Samples #`,Participant,   metavars) %>% 
+  gather(demo,val,-`Samples #`,-Participant) %>% 
+  filter(!is.na(Participant)) %>%
+  dplyr::select(-`Samples #`) %>% 
+  group_by(demo) %>% 
+  filter(!duplicated(Participant)) %>% 
+  full_join(res_withindistsum, by = 'Participant')
+
+```
+
+### Correlation table
+
+```{r, fig.width=10}
+fmrt <- list(
+  relssq = colDef(format = colFormat(percent = TRUE, digits = 1)),
+  
+  p.value = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  )
+)
+
+
+dfmeta %>% 
+  ggplot(data = ., aes(val,mnd)) + 
+  geom_violin() + 
+  geom_jitter() + 
+  facet_grid(omics~demo, scales = 'free')
+```
+
+Inference as table 
+
+```{r}
+dfmeta %>% 
+  group_by(omics,demo) %>% 
+  do(lm(data = ., mnd~val) %>% anova %>% tidy) %>% 
+  group_by(demo,omics) %>%
+  mutate(relssq = sumsq / sum(sumsq)) %>% 
+  filter(term=='val') %>% 
+  arrange(p.value) %>% 
+  dplyr::select(omics,demo,df,relssq,p.value) %>% 
+  reactable(columns = fmrt)
+
+FIG3c <- dfmeta %>%
+  filter(demo=='Diet') %>% 
+  ggplot(data = ., aes(val,mnd, fill = val)) + 
+  geom_violin() + 
+  geom_hline(yintercept = 1) + 
+  ggbeeswarm::geom_beeswarm() + 
+  theme_bw() + theme(legend.position = 'none') + 
+  ylab('Mean within participant distance') + xlab(NULL) + 
+  ggpubr::stat_compare_means(method = 'anova') + 
+  facet_grid(.~omics)
+```
+
+
+Overall stability per women. Over omics modalities 
+
+```{r}
+FIG3a
+```
+
+
+Stability versus diet across omics modalities
+
+```{r}
+FIG3c
+```
+
+

@@ -2,6 +2,293 @@
 title: "Demographics"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( message = F, warning = F)
+options(digits=2)
+```
+
+```{r,include=FALSE}
+source('libs_init.R')
+```
+
 ## Betadiversity plots
 
-## R2 Barplot and all PCoAs (PC1 vs PC2, PC3 vs PC4) per demo
+Effect of demographics / meta-information
+
+```{r, eval=FALSE}
+metavars <- c("Age", "Residence", "Diet", "Contraceptives", "Regular/daily medication" , "Nicotin", "Coitus", "Alcohol", "Medication during sampling"  )
+
+dfmeta <- MEconc_newlong %>% 
+  filter(!duplicated(`Samples #`)) %>% 
+  dplyr::select(`Samples #`,Participant,     metavars) %>% 
+  gather(demo,val,-`Samples #`,-Participant)
+
+dfmetaPB <- PBconc_newlong %>% 
+  filter(!duplicated(`Samples #`)) %>% 
+  dplyr::select(`Samples #`,Participant,metavars) %>% 
+  gather(demo,val,-`Samples #`,-Participant)
+
+SCORESdemo <- resDEMO <- data.frame()
+nperm <- 999
+for (i in  1:length(metavars)){
+  # for (i in  1:2){
+  # i <- 3
+  mvar <- metavars[i]
+  mvar2 <- mvar %>% gsub(' ','.',x = .) %>% gsub('/','.',x = .)
+  
+  ######## ME-NMR
+  dfsel <- dfmeta %>% 
+    filter(demo==mvar) %>% 
+    filter(!is.na(val)) %>% 
+    arrange()
+  
+  dfselun <- dfsel %>% ungroup %>%  filter(!duplicated(Participant))
+  
+  df <- MEconc_newlong %>% 
+    filter(!is.na(Participant)) %>% 
+    filter(`Samples #` %in% dfsel$`Samples #`) %>% 
+    filter(!str_detect(met,'PC')) %>% 
+    filter(!(str_detect(met,'glycerol') | met == 'ERECTIC' | met=='TSP' | str_detect(met,'PC'))) %>% 
+    filter(!(str_detect(met,'glycerol') | str_detect(met,'EDTA') | met == 'ERECTIC' | met=='TSP' )) %>% 
+    dplyr::select(`Samples #`, met,logy) %>% 
+    spread(met,logy) 
+  
+  rME <- adonis2(scale(df) ~ val, data=dfsel, permutations=0, method = 'euclidean') %>% 
+    tidy %>% 
+    mutate(demo = mvar, omics = 'ME-NMR')
+  
+  rMEperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(val2 = sample(val)), by = 'Participant')
+    rMEperm <- rMEperm %>% 
+      bind_rows(adonis2(scale(df) ~ val2, data=dfselperm, 
+                        permutations=0, method = 'euclidean') %>% 
+                  tidy %>% filter(term=='Model') %>% 
+                  mutate(demo = mvar, omics = 'ME-NMR', type = 'perm') )
+  }
+  
+  pv <- sum(rMEperm$statistic>rME$statistic[1]) / dim(rMEperm)[1]
+  rME$p.value2 <- NA
+  rME$p.value2[1] <- pv
+  
+  ### vectors for PCA
+  mPCA_i <- prcomp(df, scale. = T)
+  scrsME <- mPCA_i$x[,1:4] %>% 
+    data.frame() %>% 
+    mutate(demo = mvar, 
+           val = dfsel$val %>% as.character(),
+           omics = 'ME-NMR')
+  
+  
+  ######## PB-NMR
+  dfsel <- dfmetaPB %>% 
+    filter(demo==mvar) %>% 
+    filter(!is.na(val)) %>% 
+    arrange()
+  
+  dfselun <- dfsel %>% ungroup %>%  filter(!duplicated(Participant))
+  
+  if ((dfsel$val %>% unique() %>% length())==1 | dim(dfsel)[1]==0) {
+    print(i)
+    rPB <- data.frame(term='Model',R2 = NA, p.value = 1) %>% mutate(demo = mvar, omics = 'PB-NMR')
+  } 
+  else {
+    
+    df <- PBconc_newlong %>% 
+      filter(!is.na(Participant)) %>% 
+      filter(`Samples #` %in% dfsel$`Samples #`) %>% 
+      filter(!str_detect(met,'PC')) %>% 
+      filter(!(str_detect(met,'glycerol') | met == 'ERECTIC' | met=='TSP' | str_detect(met,'PC'))) %>% 
+      filter(!(str_detect(met,'glycerol') | str_detect(met,'EDTA') | met == 'ERECTIC' | met=='TSP' )) %>% 
+      dplyr::select(`Samples #`, met,logy) %>% 
+      spread(met,logy) 
+    
+    rPB <- adonis2(scale(df) ~ val, data=dfsel, permutations=0, method = 'euclidean')  %>% tidy %>% 
+      mutate(demo = mvar, omics = 'PB-NMR')
+    
+    rPBperm <- data.frame()
+    for (j in 1:nperm){
+      dfselperm <- dfsel %>% 
+        left_join(dfselun %>% mutate(val2 = sample(val)), by = 'Participant')
+      rPBperm <- rPBperm %>% 
+        bind_rows(adonis2(scale(df) ~ val2, data=dfselperm, 
+                          permutations=0, method = 'euclidean') %>% 
+                    tidy %>% filter(term=='Model') %>% 
+                    mutate(demo = mvar, omics = 'ME-NMR', type = 'perm') )
+    }
+    
+    pv <- sum(rPBperm$statistic>rPB$statistic[1]) / dim(rPBperm)[1]
+    rPB$p.value2 <- NA
+    rPB$p.value2[1] <- pv
+    
+    ### vectors for PCA
+    mPCA_i <- prcomp(df, scale. = T)
+    scrsPB <- mPCA_i$x[,1:4] %>% 
+      data.frame() %>% 
+      mutate(demo = mvar,
+             val = dfsel$val %>% as.character(),
+             omics = 'ME-NMR')
+  }
+  
+  # phyX@sam_data$demo <- phyX@sam_data %>% data.frame() %>% dplyr::select(mvar2)
+  
+  ####### 16s
+  phyXsel <- phyX
+  samdf <- data.frame(phyX@sam_data,demo = phyX@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) x  / sum(x)) 
+  D16s <- phyXsel %>% phyloseq::distance("bray")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  r16s <- adonis2(D16s ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-16s')
+  
+  r16sperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    r16sperm <- r16sperm %>% 
+      bind_rows(adonis2(D16s ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-16s') %>% filter(term=='Model'))
+  }
+  
+  pv <- sum(r16sperm$statistic>r16s$statistic[1]) / dim(r16sperm)[1]
+  r16s$p.value2 <- NA
+  r16s$p.value2[1] <- pv
+  
+  
+  ### vectors for PCoA
+  NMDS <- monoMDS(D16s, k = 4)
+  scrsME16s <- NMDS$points[,1:4] %>% data.frame() 
+  colnames(scrsME16s) <- paste('PC',1:4, sep = '')
+  scrsME16s <- scrsME16s %>% 
+    mutate(demo = mvar, 
+           val = dfsel$demo %>% as.character(),
+           omics = 'ME-16s')
+  
+  ##### ITS
+  phyXsel <- phyITS
+  samdf <- data.frame(phyITS@sam_data,demo = phyITS@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) as.numeric(x>0)) 
+  DITS <- phyXsel %>% phyloseq::distance("euclidean")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  rITS <- adonis2(DITS ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-ITS')
+  
+  rITSperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    rITSperm <- rITSperm %>% 
+      bind_rows(adonis2(DITS ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-ITS') %>% filter(term=='Model'))
+  }
+  
+  pv <- sum(rITSperm$statistic>rITS$statistic[1]) / dim(rITSperm)[1]
+  rITS$p.value2 <- NA
+  rITS$p.value2[1] <- pv
+  
+  ### vectors for PCoA
+  NMDS <- monoMDS(DITS, k = 4)
+  scrsMEITS <- NMDS$points[,1:4] %>% data.frame() 
+  colnames(scrsMEITS) <- paste('PC',1:4, sep = '')
+  
+  scrsMEITS <- scrsMEITS %>%
+    mutate(demo = mvar, 
+           val = dfsel$demo %>% as.character(),
+           omics = 'ME-ITS')
+  
+  phyXsel <- phyITS
+  samdf <- data.frame(phyITS@sam_data,demo = phyITS@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) sqrt(x)) 
+  DITS <- phyXsel %>% phyloseq::distance("euclidean")
+  rITS2 <- adonis2(DITS ~ demo, data = data.frame(sample_data(phyXsel))) %>% 
+    tidy %>% 
+    mutate(demo = mvar, omics = 'ME-ITS-sqrt_counts')
+  
+  
+  resDEMO <- bind_rows(resDEMO,rME,rPB,r16s,rITS,rITS2)
+  
+  scrs <- bind_rows(scrsME,scrsME16s,scrsMEITS,scrsPB)
+  
+  SCORESdemo <- bind_rows(SCORESdemo,scrs)
+  
+}
+
+save(file = 'betademo_res.RData', list = c('SCORESdemo','resDEMO','metavars'))
+```
+
+```{r,include=FALSE}
+load('betademo_res.RData')
+```
+
+
+## Overall explained variance versus demo 
+
+```{r}
+fmrt <- list(
+  R2 = colDef(format = colFormat(percent = TRUE, digits = 2)),
+  p.value2 = colDef(name = 'p-value', format = colFormat(digits = 3))
+)
+
+resDEMO %>% 
+  filter(term=='Model') %>% 
+  filter(!is.na(df)) %>% 
+  filter(!str_detect(omics,'sqrt')) %>% 
+  dplyr::select(demo,omics,df,R2,p.value2) %>% 
+  reactable(columns = fmrt)
+
+resDEMO %>% 
+  mutate(pv = myround2(p.value2), 
+         pv2 = gtools::stars.pval(p.value2)) %>% 
+  filter(term=='Model') %>% 
+  filter(!str_detect(omics,'sqrt')) %>% 
+  ggplot(data = ., aes(demo,R2, fill = omics, label = pv2)) + 
+  geom_bar(stat = 'identity', position = position_dodge()) + 
+  coord_flip() + 
+  ylim(c(0,0.16)) +
+  geom_text(position = position_dodge(width = 1), hjust = -0.8, vjust = 0.9) + 
+  scale_fill_manual(values = colorcodes) +
+  theme_bw() + 
+  labs(fill = NULL) + 
+  theme(legend.position = 'top') + 
+  xlab(NULL)
+
+```
+
+## Multivariate distribution (PC1 vs PC2)
+
+```{r, fig.height=30, fig.width=10}
+SCORESdemo %>% 
+  ggplot(data = ., aes(PC1,PC2, color = val)) + 
+  geom_point() +
+  stat_ellipse(aes(group = val)) + 
+  facet_wrap(~demo + omics, scales = 'free', ncol = 3) + 
+  theme(legend.position = 'bottom')
+```
+
+
+## Multivariate distribution (PC3 vs PC4)
+
+```{r, fig.height=30, fig.width=10}
+SCORESdemo %>% 
+  ggplot(data = ., aes(PC3,PC4, color = val)) + 
+  geom_point() +
+  stat_ellipse(aes(group = val)) + 
+  facet_wrap(~demo + omics, scales = 'free', ncol = 3) + 
+  theme(legend.position = 'bottom')
+```
