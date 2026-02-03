@@ -1,39 +1,790 @@
 ---
 title: "NMR analytics"
+format:
+  html:
+    code-fold: false
+execute:
+  echo: false
+  message: false
+  warning: false
 ---
 
 
+# In both Plasma and Menstrual Effluent
 
+## TSP (Internal NMR-standard)
+
+```{r} 
+knitr::include_graphics("./img/interval_20.png") 
+``` 
+
+## 2-oxoisovaleric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_4.png") 
+``` 
+
+
+## Acetate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_21.png") 
+``` 
+
+## Alanine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_24.png") 
+``` 
+
+## Alpha-glucose
+
+
+```{r} 
+knitr::include_graphics("./img/interval_25.png") 
+``` 
+
+## Beta-glucose
+
+
+```{r} 
+knitr::include_graphics("./img/interval_31.png") 
+``` 
+
+## Creatine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_66.png") 
+``` 
+
+## Creatinine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_68.png") 
+``` 
+
+## Dimethylglycine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_70.png") 
+``` 
+
+## Ethanol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_71.png") 
+``` 
+
+## Formate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_72.png") 
+``` 
+
+## Isoleucine 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_91.png") 
+``` 
+
+## Lactate 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_92.png") 
+``` 
+
+## Lactate 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_93.png") 
+``` 
+
+## Leucine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_94.png") 
+``` 
+
+## Methanol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_96.png") 
+``` 
+
+## Phenylalanine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_98.png") 
+``` 
+
+## Threonine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_105.png") 
+``` 
+
+## Trimethylamine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_106.png") 
+``` 
+
+## Uridine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_169.png") 
+``` 
+
+## Valine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_171.png") 
+``` 
+
+## Valine 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_172.png") 
+``` 
+
+
+# In Menstrual Effluent only 
+
+## 2-hydroxybutyric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_2.png") 
+``` 
+
+## 2-hydroxyisovaleric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_3.png") 
+``` 
+
+
+## Asparagine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_26.png") 
+``` 
+
+## Asparagine 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_27.png") 
+``` 
+
+## Aspartate 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_28.png") 
+``` 
+
+## Aspartate 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_29.png") 
+``` 
+
+## Aspartate 3
+
+
+```{r} 
+knitr::include_graphics("./img/interval_30.png") 
+``` 
+
+## Bin-butyrate-isovaleric acid-2-hydroxybutyric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_36.png") 
+``` 
+
+## Bin-ethanol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_38.png") 
+``` 
+
+## Bin-glutamine-dimethylamine-oxoglutarate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_42.png") 
+``` 
+
+## Bin-isovalerate-glutamate-proline-glycoprotein
+
+
+```{r} 
+knitr::include_graphics("./img/interval_46.png") 
+``` 
+
+## Bin-leucine-lysine-arginine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_49.png") 
+``` 
+
+## Bin-proline-glutamate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_51.png") 
+``` 
+
+## Bin-valine-acetoacetate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_55.png") 
+``` 
+
+## Butyrate 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_57.png") 
+``` 
+
+## Butyrate 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_58.png") 
+``` 
+
+## Butyrate 4_1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_59.png") 
+``` 
+
+## Butyrate 4_2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_60.png") 
+``` 
+
+## Choline
+
+
+```{r} 
+knitr::include_graphics("./img/interval_62.png") 
+``` 
+
+## Creatine 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_67.png") 
+``` 
+
+## Fumarate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_73.png") 
+``` 
+
+## Glutamate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_75.png") 
+``` 
+
+## Glycerol 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_78.png") 
+``` 
+
+## Glycerol 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_79.png") 
+``` 
+
+## Glycerol 3
+
+
+```{r} 
+knitr::include_graphics("./img/interval_80.png") 
+``` 
+
+## Glycine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_81.png") 
+``` 
+
+## Hypoxanthine1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_85.png") 
+``` 
+
+## Hypoxanthine2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_86.png") 
+``` 
+
+## Isobutyrate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_87.png") 
+``` 
+
+## Isoleucine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_90.png") 
+``` 
+
+## Lysine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_95.png") 
+``` 
+
+## Methylamine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_97.png") 
+``` 
+
+## Propionate 1_1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_100.png") 
+``` 
+
+## Propionate 1_2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_101.png") 
+``` 
+
+## Sarcosine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_103.png") 
+``` 
+
+## Succinate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_104.png") 
+``` 
+
+## Tryptophan 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_107.png") 
+``` 
+
+## Tryptophan 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_108.png") 
+``` 
+
+## Tryptophan 3
+
+
+```{r} 
+knitr::include_graphics("./img/interval_109.png") 
+``` 
+
+## Uracil 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_166.png") 
+``` 
+
+## Uracil 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_167.png") 
+``` 
+
+## Uracil 3
+
+
+```{r} 
+knitr::include_graphics("./img/interval_168.png") 
+``` 
 
 ## Valine
 
 
 ```{r} 
-knitr::include_graphics("img/interval_1.png") 
-knitr::include_graphics("img/interval_1scatter.png") 
+knitr::include_graphics("./img/interval_170.png") 
+``` 
+
+## Valine 3
+
+
+```{r} 
+knitr::include_graphics("./img/interval_173.png") 
+``` 
+
+
+# In Plasma only 
+
+## 2-aminobutyric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_1.png") 
+``` 
+
+## 3-hydroxybutyric acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_5.png") 
+``` 
+
+
+## LP (C=CCH2C=C)
+
+```{r} 
+knitr::include_graphics("./img/interval_11.png") 
+``` 
+
+## LP (CH of unsaturated lipids)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_12.png") 
+``` 
+
+## LP (CH2)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_13.png") 
+``` 
+
+## LP (CH2CCO) 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_14.png") 
+``` 
+
+## LP (CH2OCOR)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_15.png") 
+``` 
+
+## LP (CHOCOR)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_16.png") 
+``` 
+
+## LP(CH3)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_17.png") 
+``` 
+
+## Propylene glycol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_19.png") 
+``` 
+
+## Acetoacetic acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_22.png") 
+``` 
+
+## Acetone
+
+
+```{r} 
+knitr::include_graphics("./img/interval_23.png") 
+``` 
+
+## Bin-3-hydroxybutyrate
+
+
+```{r} 
+knitr::include_graphics("./img/interval_32.png") 
+``` 
+
+## Bin-LP (CCH2C=C)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_33.png") 
+``` 
+
+## Bin-LP (CCH2C=C)-isovaleric acid-proline
+
+
+```{r} 
+knitr::include_graphics("./img/interval_34.png") 
+``` 
+
+## Bin-choline-glucose-tryptophan
+
+
+```{r} 
+knitr::include_graphics("./img/interval_37.png") 
+``` 
+
+## Bin-glucose-dimethylglycine-glutamic acid-lysine)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_39.png") 
+``` 
+
+## Bin-glutamic acid-alanine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_40.png") 
+``` 
+
+## Bin-glutamine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_41.png") 
+``` 
+
+## Bin-glycerol-threonine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_43.png") 
+``` 
+
+## Bin-histidine-serine-tyrosine-tryptophan
+
+
+```{r} 
+knitr::include_graphics("./img/interval_44.png") 
+``` 
+
+## Bin-isoleucine-glycerol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_45.png") 
+``` 
+
+## Bin-isovaleric acid-glutamic acid-proline
+
+
+```{r} 
+knitr::include_graphics("./img/interval_47.png") 
+``` 
+
+## Bin-leucine-isoleucine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_48.png") 
+``` 
+
+## Bin-lysine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_50.png") 
+``` 
+
+## Bin-proline-methionine-glutamic acid-glutamine)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_52.png") 
+``` 
+
+## Bin-tyramine-tyrosine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_53.png") 
+``` 
+
+## Bin-α-glucose-serine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_56.png") 
+``` 
+
+## Cholesterol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_61.png") 
+``` 
+
+## Citric acid 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_63.png") 
+``` 
+
+## Citric acid 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_64.png") 
+``` 
+
+## Creatine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_65.png") 
+``` 
+
+## Creatinine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_69.png") 
+``` 
+
+## Glucose 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_74.png") 
+``` 
+
+## Glutamic acid
+
+
+```{r} 
+knitr::include_graphics("./img/interval_76.png") 
+``` 
+
+## Glycerol
+
+
+```{r} 
+knitr::include_graphics("./img/interval_77.png") 
+``` 
+
+## Glycoprotein (acetyls)
+
+
+```{r} 
+knitr::include_graphics("./img/interval_82.png") 
+``` 
+
+## Histidine 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_83.png") 
+``` 
+
+## Histidine 2
+
+
+```{r} 
+knitr::include_graphics("./img/interval_84.png") 
+``` 
+
+## Isobutyric acid 1
+
+
+```{r} 
+knitr::include_graphics("./img/interval_88.png") 
 ``` 
 
 ## Isoleucine
 
 
 ```{r} 
-knitr::include_graphics("img/interval_2.png") 
-knitr::include_graphics("img/interval_2scatter.png") 
+knitr::include_graphics("./img/interval_89.png") 
 ``` 
 
-## Lactate
+## Proline 1
 
 
 ```{r} 
-knitr::include_graphics("img/interval_3.png") 
-knitr::include_graphics("img/interval_3scatter.png") 
+knitr::include_graphics("./img/interval_99.png") 
 ``` 
 
-
-## Alanine
+## Pyruvic acid
 
 
 ```{r} 
-knitr::include_graphics("img/interval_4.png") 
-knitr::include_graphics("img/interval_4scatter.png") 
+knitr::include_graphics("./img/interval_102.png") 
+``` 
+
+## Tyramine
+
+
+```{r} 
+knitr::include_graphics("./img/interval_110.png") 
 ``` 

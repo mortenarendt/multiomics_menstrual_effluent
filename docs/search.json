@@ -11,21 +11,21 @@
     "href": "NMRanalytics.html",
     "title": "NMR analytics",
     "section": "",
-    "text": "Show code\nknitr::include_graphics(\"img/interval_1.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_1scatter.png\")"
+    "text": "Show code\nknitr::include_graphics(\"./img/interval_1.png\")"
   },
   {
     "objectID": "NMRanalytics.html#valine",
     "href": "NMRanalytics.html#valine",
     "title": "NMR analytics",
-    "section": "",
-    "text": "Show code\nknitr::include_graphics(\"img/interval_1.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_1scatter.png\")"
+    "section": "Valine",
+    "text": "Valine"
   },
   {
     "objectID": "NMRanalytics.html#isoleucine",
     "href": "NMRanalytics.html#isoleucine",
     "title": "NMR analytics",
     "section": "Isoleucine",
-    "text": "Isoleucine\n\n\nShow code\nknitr::include_graphics(\"img/interval_2.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_2scatter.png\")"
+    "text": "Isoleucine"
   },
   {
     "objectID": "NMRanalytics.html#lactate",
@@ -39,7 +39,7 @@
     "href": "NMRanalytics.html#alanine",
     "title": "NMR analytics",
     "section": "Alanine",
-    "text": "Alanine\n\n\nShow code\nknitr::include_graphics(\"img/interval_4.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_4scatter.png\")"
+    "text": "Alanine"
   },
   {
     "objectID": "test.html",
@@ -180,5 +180,838 @@
     "title": "Projects",
     "section": "Project 3",
     "text": "Project 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#aminobutyric-acid",
+    "href": "NMRanalytics.html#aminobutyric-acid",
+    "title": "NMR analytics",
+    "section": "2-aminobutyric acid",
+    "text": "2-aminobutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#hydroxybutyric-acid",
+    "href": "NMRanalytics.html#hydroxybutyric-acid",
+    "title": "NMR analytics",
+    "section": "2-hydroxybutyric acid",
+    "text": "2-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#hydroxyisovaleric-acid",
+    "href": "NMRanalytics.html#hydroxyisovaleric-acid",
+    "title": "NMR analytics",
+    "section": "2-hydroxyisovaleric acid",
+    "text": "2-hydroxyisovaleric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#oxoisovaleric-acid",
+    "href": "NMRanalytics.html#oxoisovaleric-acid",
+    "title": "NMR analytics",
+    "section": "2-oxoisovaleric acid",
+    "text": "2-oxoisovaleric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#hydroxybutyric-acid-1",
+    "href": "NMRanalytics.html#hydroxybutyric-acid-1",
+    "title": "NMR analytics",
+    "section": "3-hydroxybutyric acid",
+    "text": "3-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#caedta",
+    "href": "NMRanalytics.html#caedta",
+    "title": "NMR analytics",
+    "section": "CaEDTA",
+    "text": "CaEDTA"
+  },
+  {
+    "objectID": "NMRanalytics.html#edta-1",
+    "href": "NMRanalytics.html#edta-1",
+    "title": "NMR analytics",
+    "section": "EDTA 1",
+    "text": "EDTA 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#edta-2",
+    "href": "NMRanalytics.html#edta-2",
+    "title": "NMR analytics",
+    "section": "EDTA 2",
+    "text": "EDTA 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#erectic",
+    "href": "NMRanalytics.html#erectic",
+    "title": "NMR analytics",
+    "section": "ERECTIC",
+    "text": "ERECTIC"
+  },
+  {
+    "objectID": "NMRanalytics.html#eretic",
+    "href": "NMRanalytics.html#eretic",
+    "title": "NMR analytics",
+    "section": "ERETIC",
+    "text": "ERETIC"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ccch2cc",
+    "href": "NMRanalytics.html#lp-ccch2cc",
+    "title": "NMR analytics",
+    "section": "LP (C=CCH2C=C)",
+    "text": "LP (C=CCH2C=C)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
+    "href": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
+    "title": "NMR analytics",
+    "section": "LP (CH of unsaturated lipids)",
+    "text": "LP (CH of unsaturated lipids)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2",
+    "href": "NMRanalytics.html#lp-ch2",
+    "title": "NMR analytics",
+    "section": "LP (CH2)",
+    "text": "LP (CH2)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2cco-1",
+    "href": "NMRanalytics.html#lp-ch2cco-1",
+    "title": "NMR analytics",
+    "section": "LP (CH2CCO) 1",
+    "text": "LP (CH2CCO) 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2ocor",
+    "href": "NMRanalytics.html#lp-ch2ocor",
+    "title": "NMR analytics",
+    "section": "LP (CH2OCOR)",
+    "text": "LP (CH2OCOR)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-chocor",
+    "href": "NMRanalytics.html#lp-chocor",
+    "title": "NMR analytics",
+    "section": "LP (CHOCOR)",
+    "text": "LP (CHOCOR)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lpch3",
+    "href": "NMRanalytics.html#lpch3",
+    "title": "NMR analytics",
+    "section": "LP(CH3)",
+    "text": "LP(CH3)"
+  },
+  {
+    "objectID": "NMRanalytics.html#mgedta",
+    "href": "NMRanalytics.html#mgedta",
+    "title": "NMR analytics",
+    "section": "MgEDTA",
+    "text": "MgEDTA"
+  },
+  {
+    "objectID": "NMRanalytics.html#propylene-glycol",
+    "href": "NMRanalytics.html#propylene-glycol",
+    "title": "NMR analytics",
+    "section": "Propylene glycol",
+    "text": "Propylene glycol"
+  },
+  {
+    "objectID": "NMRanalytics.html#tsp",
+    "href": "NMRanalytics.html#tsp",
+    "title": "NMR analytics",
+    "section": "TSP",
+    "text": "TSP"
+  },
+  {
+    "objectID": "NMRanalytics.html#acetate",
+    "href": "NMRanalytics.html#acetate",
+    "title": "NMR analytics",
+    "section": "Acetate",
+    "text": "Acetate"
+  },
+  {
+    "objectID": "NMRanalytics.html#acetoacetic-acid",
+    "href": "NMRanalytics.html#acetoacetic-acid",
+    "title": "NMR analytics",
+    "section": "Acetoacetic acid",
+    "text": "Acetoacetic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#acetone",
+    "href": "NMRanalytics.html#acetone",
+    "title": "NMR analytics",
+    "section": "Acetone",
+    "text": "Acetone"
+  },
+  {
+    "objectID": "NMRanalytics.html#alpha-glucose",
+    "href": "NMRanalytics.html#alpha-glucose",
+    "title": "NMR analytics",
+    "section": "Alpha-glucose",
+    "text": "Alpha-glucose"
+  },
+  {
+    "objectID": "NMRanalytics.html#asparagine-1",
+    "href": "NMRanalytics.html#asparagine-1",
+    "title": "NMR analytics",
+    "section": "Asparagine 1",
+    "text": "Asparagine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#asparagine-2",
+    "href": "NMRanalytics.html#asparagine-2",
+    "title": "NMR analytics",
+    "section": "Asparagine 2",
+    "text": "Asparagine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-1",
+    "href": "NMRanalytics.html#aspartate-1",
+    "title": "NMR analytics",
+    "section": "Aspartate 1",
+    "text": "Aspartate 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-2",
+    "href": "NMRanalytics.html#aspartate-2",
+    "title": "NMR analytics",
+    "section": "Aspartate 2",
+    "text": "Aspartate 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-3",
+    "href": "NMRanalytics.html#aspartate-3",
+    "title": "NMR analytics",
+    "section": "Aspartate 3",
+    "text": "Aspartate 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#beta-glucose",
+    "href": "NMRanalytics.html#beta-glucose",
+    "title": "NMR analytics",
+    "section": "Beta-glucose",
+    "text": "Beta-glucose"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-3-hydroxybutyrate",
+    "href": "NMRanalytics.html#bin-3-hydroxybutyrate",
+    "title": "NMR analytics",
+    "section": "Bin-3-hydroxybutyrate",
+    "text": "Bin-3-hydroxybutyrate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lp-cch2cc",
+    "href": "NMRanalytics.html#bin-lp-cch2cc",
+    "title": "NMR analytics",
+    "section": "Bin-LP (CCH2C=C)",
+    "text": "Bin-LP (CCH2C=C)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
+    "href": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
+    "title": "NMR analytics",
+    "section": "Bin-LP (CCH2C=C)-isovaleric acid-proline",
+    "text": "Bin-LP (CCH2C=C)-isovaleric acid-proline"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
+    "href": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
+    "title": "NMR analytics",
+    "section": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid",
+    "text": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-choline-glucose-tryptophan",
+    "href": "NMRanalytics.html#bin-choline-glucose-tryptophan",
+    "title": "NMR analytics",
+    "section": "Bin-choline-glucose-tryptophan",
+    "text": "Bin-choline-glucose-tryptophan"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-ethanol",
+    "href": "NMRanalytics.html#bin-ethanol",
+    "title": "NMR analytics",
+    "section": "Bin-ethanol",
+    "text": "Bin-ethanol"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
+    "href": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
+    "title": "NMR analytics",
+    "section": "Bin-glucose-dimethylglycine-glutamic acid-lysine)",
+    "text": "Bin-glucose-dimethylglycine-glutamic acid-lysine)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamic-acid-alanine",
+    "href": "NMRanalytics.html#bin-glutamic-acid-alanine",
+    "title": "NMR analytics",
+    "section": "Bin-glutamic acid-alanine",
+    "text": "Bin-glutamic acid-alanine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamine",
+    "href": "NMRanalytics.html#bin-glutamine",
+    "title": "NMR analytics",
+    "section": "Bin-glutamine",
+    "text": "Bin-glutamine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
+    "href": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
+    "title": "NMR analytics",
+    "section": "Bin-glutamine-dimethylamine-oxoglutarate",
+    "text": "Bin-glutamine-dimethylamine-oxoglutarate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glycerol-threonine",
+    "href": "NMRanalytics.html#bin-glycerol-threonine",
+    "title": "NMR analytics",
+    "section": "Bin-glycerol-threonine",
+    "text": "Bin-glycerol-threonine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
+    "href": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
+    "title": "NMR analytics",
+    "section": "Bin-histidine-serine-tyrosine-tryptophan",
+    "text": "Bin-histidine-serine-tyrosine-tryptophan"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isoleucine-glycerol",
+    "href": "NMRanalytics.html#bin-isoleucine-glycerol",
+    "title": "NMR analytics",
+    "section": "Bin-isoleucine-glycerol",
+    "text": "Bin-isoleucine-glycerol"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
+    "href": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
+    "title": "NMR analytics",
+    "section": "Bin-isovalerate-glutamate-proline-glycoprotein",
+    "text": "Bin-isovalerate-glutamate-proline-glycoprotein"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
+    "href": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
+    "title": "NMR analytics",
+    "section": "Bin-isovaleric acid-glutamic acid-proline",
+    "text": "Bin-isovaleric acid-glutamic acid-proline"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-leucine-isoleucine",
+    "href": "NMRanalytics.html#bin-leucine-isoleucine",
+    "title": "NMR analytics",
+    "section": "Bin-leucine-isoleucine",
+    "text": "Bin-leucine-isoleucine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-leucine-lysine-arginine",
+    "href": "NMRanalytics.html#bin-leucine-lysine-arginine",
+    "title": "NMR analytics",
+    "section": "Bin-leucine-lysine-arginine",
+    "text": "Bin-leucine-lysine-arginine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lysine",
+    "href": "NMRanalytics.html#bin-lysine",
+    "title": "NMR analytics",
+    "section": "Bin-lysine",
+    "text": "Bin-lysine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-proline-glutamate",
+    "href": "NMRanalytics.html#bin-proline-glutamate",
+    "title": "NMR analytics",
+    "section": "Bin-proline-glutamate",
+    "text": "Bin-proline-glutamate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
+    "href": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
+    "title": "NMR analytics",
+    "section": "Bin-proline-methionine-glutamic acid-glutamine)",
+    "text": "Bin-proline-methionine-glutamic acid-glutamine)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-tyramine-tyrosine",
+    "href": "NMRanalytics.html#bin-tyramine-tyrosine",
+    "title": "NMR analytics",
+    "section": "Bin-tyramine-tyrosine",
+    "text": "Bin-tyramine-tyrosine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-valine-acetoacetate",
+    "href": "NMRanalytics.html#bin-valine-acetoacetate",
+    "title": "NMR analytics",
+    "section": "Bin-valine-acetoacetate",
+    "text": "Bin-valine-acetoacetate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-α-glucose-serine",
+    "href": "NMRanalytics.html#bin-α-glucose-serine",
+    "title": "NMR analytics",
+    "section": "Bin-α-glucose-serine",
+    "text": "Bin-α-glucose-serine"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-1",
+    "href": "NMRanalytics.html#butyrate-1",
+    "title": "NMR analytics",
+    "section": "Butyrate 1",
+    "text": "Butyrate 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-2",
+    "href": "NMRanalytics.html#butyrate-2",
+    "title": "NMR analytics",
+    "section": "Butyrate 2",
+    "text": "Butyrate 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-4_1",
+    "href": "NMRanalytics.html#butyrate-4_1",
+    "title": "NMR analytics",
+    "section": "Butyrate 4_1",
+    "text": "Butyrate 4_1"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-4_2",
+    "href": "NMRanalytics.html#butyrate-4_2",
+    "title": "NMR analytics",
+    "section": "Butyrate 4_2",
+    "text": "Butyrate 4_2"
+  },
+  {
+    "objectID": "NMRanalytics.html#cholesterol",
+    "href": "NMRanalytics.html#cholesterol",
+    "title": "NMR analytics",
+    "section": "Cholesterol",
+    "text": "Cholesterol"
+  },
+  {
+    "objectID": "NMRanalytics.html#choline",
+    "href": "NMRanalytics.html#choline",
+    "title": "NMR analytics",
+    "section": "Choline",
+    "text": "Choline"
+  },
+  {
+    "objectID": "NMRanalytics.html#citric-acid-1",
+    "href": "NMRanalytics.html#citric-acid-1",
+    "title": "NMR analytics",
+    "section": "Citric acid 1",
+    "text": "Citric acid 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#citric-acid-2",
+    "href": "NMRanalytics.html#citric-acid-2",
+    "title": "NMR analytics",
+    "section": "Citric acid 2",
+    "text": "Citric acid 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine",
+    "href": "NMRanalytics.html#creatine",
+    "title": "NMR analytics",
+    "section": "Creatine",
+    "text": "Creatine"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine-1",
+    "href": "NMRanalytics.html#creatine-1",
+    "title": "NMR analytics",
+    "section": "Creatine 1",
+    "text": "Creatine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine-1-1",
+    "href": "NMRanalytics.html#creatine-1-1",
+    "title": "NMR analytics",
+    "section": "Creatine 1",
+    "text": "Creatine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine-2",
+    "href": "NMRanalytics.html#creatine-2",
+    "title": "NMR analytics",
+    "section": "Creatine 2",
+    "text": "Creatine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatinine",
+    "href": "NMRanalytics.html#creatinine",
+    "title": "NMR analytics",
+    "section": "Creatinine",
+    "text": "Creatinine"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatinine-1",
+    "href": "NMRanalytics.html#creatinine-1",
+    "title": "NMR analytics",
+    "section": "Creatinine 1",
+    "text": "Creatinine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatinine-2",
+    "href": "NMRanalytics.html#creatinine-2",
+    "title": "NMR analytics",
+    "section": "Creatinine 2",
+    "text": "Creatinine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#dimethylglycine",
+    "href": "NMRanalytics.html#dimethylglycine",
+    "title": "NMR analytics",
+    "section": "Dimethylglycine",
+    "text": "Dimethylglycine"
+  },
+  {
+    "objectID": "NMRanalytics.html#ethanol",
+    "href": "NMRanalytics.html#ethanol",
+    "title": "NMR analytics",
+    "section": "Ethanol",
+    "text": "Ethanol"
+  },
+  {
+    "objectID": "NMRanalytics.html#formate",
+    "href": "NMRanalytics.html#formate",
+    "title": "NMR analytics",
+    "section": "Formate",
+    "text": "Formate"
+  },
+  {
+    "objectID": "NMRanalytics.html#fumarate",
+    "href": "NMRanalytics.html#fumarate",
+    "title": "NMR analytics",
+    "section": "Fumarate",
+    "text": "Fumarate"
+  },
+  {
+    "objectID": "NMRanalytics.html#glucose-1",
+    "href": "NMRanalytics.html#glucose-1",
+    "title": "NMR analytics",
+    "section": "Glucose 1",
+    "text": "Glucose 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#glutamate",
+    "href": "NMRanalytics.html#glutamate",
+    "title": "NMR analytics",
+    "section": "Glutamate",
+    "text": "Glutamate"
+  },
+  {
+    "objectID": "NMRanalytics.html#glutamic-acid",
+    "href": "NMRanalytics.html#glutamic-acid",
+    "title": "NMR analytics",
+    "section": "Glutamic acid",
+    "text": "Glutamic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol",
+    "href": "NMRanalytics.html#glycerol",
+    "title": "NMR analytics",
+    "section": "Glycerol",
+    "text": "Glycerol"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-1",
+    "href": "NMRanalytics.html#glycerol-1",
+    "title": "NMR analytics",
+    "section": "Glycerol 1",
+    "text": "Glycerol 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-2",
+    "href": "NMRanalytics.html#glycerol-2",
+    "title": "NMR analytics",
+    "section": "Glycerol 2",
+    "text": "Glycerol 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-3",
+    "href": "NMRanalytics.html#glycerol-3",
+    "title": "NMR analytics",
+    "section": "Glycerol 3",
+    "text": "Glycerol 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycine",
+    "href": "NMRanalytics.html#glycine",
+    "title": "NMR analytics",
+    "section": "Glycine",
+    "text": "Glycine"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycoprotein-acetyls",
+    "href": "NMRanalytics.html#glycoprotein-acetyls",
+    "title": "NMR analytics",
+    "section": "Glycoprotein (acetyls)",
+    "text": "Glycoprotein (acetyls)"
+  },
+  {
+    "objectID": "NMRanalytics.html#histidine-1",
+    "href": "NMRanalytics.html#histidine-1",
+    "title": "NMR analytics",
+    "section": "Histidine 1",
+    "text": "Histidine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#histidine-2",
+    "href": "NMRanalytics.html#histidine-2",
+    "title": "NMR analytics",
+    "section": "Histidine 2",
+    "text": "Histidine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#hypoxanthine1",
+    "href": "NMRanalytics.html#hypoxanthine1",
+    "title": "NMR analytics",
+    "section": "Hypoxanthine1",
+    "text": "Hypoxanthine1"
+  },
+  {
+    "objectID": "NMRanalytics.html#hypoxanthine2",
+    "href": "NMRanalytics.html#hypoxanthine2",
+    "title": "NMR analytics",
+    "section": "Hypoxanthine2",
+    "text": "Hypoxanthine2"
+  },
+  {
+    "objectID": "NMRanalytics.html#isobutyrate",
+    "href": "NMRanalytics.html#isobutyrate",
+    "title": "NMR analytics",
+    "section": "Isobutyrate",
+    "text": "Isobutyrate"
+  },
+  {
+    "objectID": "NMRanalytics.html#isobutyric-acid-1",
+    "href": "NMRanalytics.html#isobutyric-acid-1",
+    "title": "NMR analytics",
+    "section": "Isobutyric acid 1",
+    "text": "Isobutyric acid 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#isoleucine-1",
+    "href": "NMRanalytics.html#isoleucine-1",
+    "title": "NMR analytics",
+    "section": "Isoleucine 1",
+    "text": "Isoleucine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#isoleucine-2",
+    "href": "NMRanalytics.html#isoleucine-2",
+    "title": "NMR analytics",
+    "section": "Isoleucine 2",
+    "text": "Isoleucine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#isoleucine-3",
+    "href": "NMRanalytics.html#isoleucine-3",
+    "title": "NMR analytics",
+    "section": "Isoleucine 3",
+    "text": "Isoleucine 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#lactate-1",
+    "href": "NMRanalytics.html#lactate-1",
+    "title": "NMR analytics",
+    "section": "Lactate 1",
+    "text": "Lactate 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#lactate-2",
+    "href": "NMRanalytics.html#lactate-2",
+    "title": "NMR analytics",
+    "section": "Lactate 2",
+    "text": "Lactate 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#leucine",
+    "href": "NMRanalytics.html#leucine",
+    "title": "NMR analytics",
+    "section": "Leucine",
+    "text": "Leucine"
+  },
+  {
+    "objectID": "NMRanalytics.html#lysine-1",
+    "href": "NMRanalytics.html#lysine-1",
+    "title": "NMR analytics",
+    "section": "Lysine 1",
+    "text": "Lysine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#methanol",
+    "href": "NMRanalytics.html#methanol",
+    "title": "NMR analytics",
+    "section": "Methanol",
+    "text": "Methanol"
+  },
+  {
+    "objectID": "NMRanalytics.html#methylamine",
+    "href": "NMRanalytics.html#methylamine",
+    "title": "NMR analytics",
+    "section": "Methylamine",
+    "text": "Methylamine"
+  },
+  {
+    "objectID": "NMRanalytics.html#phenylalanine",
+    "href": "NMRanalytics.html#phenylalanine",
+    "title": "NMR analytics",
+    "section": "Phenylalanine",
+    "text": "Phenylalanine"
+  },
+  {
+    "objectID": "NMRanalytics.html#proline-1",
+    "href": "NMRanalytics.html#proline-1",
+    "title": "NMR analytics",
+    "section": "Proline 1",
+    "text": "Proline 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#propionate-1_1",
+    "href": "NMRanalytics.html#propionate-1_1",
+    "title": "NMR analytics",
+    "section": "Propionate 1_1",
+    "text": "Propionate 1_1"
+  },
+  {
+    "objectID": "NMRanalytics.html#propionate-1_2",
+    "href": "NMRanalytics.html#propionate-1_2",
+    "title": "NMR analytics",
+    "section": "Propionate 1_2",
+    "text": "Propionate 1_2"
+  },
+  {
+    "objectID": "NMRanalytics.html#pyruvic-acid",
+    "href": "NMRanalytics.html#pyruvic-acid",
+    "title": "NMR analytics",
+    "section": "Pyruvic acid",
+    "text": "Pyruvic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#sarcosine",
+    "href": "NMRanalytics.html#sarcosine",
+    "title": "NMR analytics",
+    "section": "Sarcosine",
+    "text": "Sarcosine"
+  },
+  {
+    "objectID": "NMRanalytics.html#succinate",
+    "href": "NMRanalytics.html#succinate",
+    "title": "NMR analytics",
+    "section": "Succinate",
+    "text": "Succinate"
+  },
+  {
+    "objectID": "NMRanalytics.html#threonine",
+    "href": "NMRanalytics.html#threonine",
+    "title": "NMR analytics",
+    "section": "Threonine",
+    "text": "Threonine"
+  },
+  {
+    "objectID": "NMRanalytics.html#threonine-1",
+    "href": "NMRanalytics.html#threonine-1",
+    "title": "NMR analytics",
+    "section": "Threonine 1",
+    "text": "Threonine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#trimethylamine",
+    "href": "NMRanalytics.html#trimethylamine",
+    "title": "NMR analytics",
+    "section": "Trimethylamine",
+    "text": "Trimethylamine"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-1",
+    "href": "NMRanalytics.html#tryptophan-1",
+    "title": "NMR analytics",
+    "section": "Tryptophan 1",
+    "text": "Tryptophan 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-2",
+    "href": "NMRanalytics.html#tryptophan-2",
+    "title": "NMR analytics",
+    "section": "Tryptophan 2",
+    "text": "Tryptophan 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-3",
+    "href": "NMRanalytics.html#tryptophan-3",
+    "title": "NMR analytics",
+    "section": "Tryptophan 3",
+    "text": "Tryptophan 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#tyramine",
+    "href": "NMRanalytics.html#tyramine",
+    "title": "NMR analytics",
+    "section": "Tyramine",
+    "text": "Tyramine"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-1",
+    "href": "NMRanalytics.html#uracil-1",
+    "title": "NMR analytics",
+    "section": "Uracil 1",
+    "text": "Uracil 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-2",
+    "href": "NMRanalytics.html#uracil-2",
+    "title": "NMR analytics",
+    "section": "Uracil 2",
+    "text": "Uracil 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-3",
+    "href": "NMRanalytics.html#uracil-3",
+    "title": "NMR analytics",
+    "section": "Uracil 3",
+    "text": "Uracil 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#uridine",
+    "href": "NMRanalytics.html#uridine",
+    "title": "NMR analytics",
+    "section": "Uridine",
+    "text": "Uridine"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine-1",
+    "href": "NMRanalytics.html#valine-1",
+    "title": "NMR analytics",
+    "section": "Valine 1",
+    "text": "Valine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine-2",
+    "href": "NMRanalytics.html#valine-2",
+    "title": "NMR analytics",
+    "section": "Valine 2",
+    "text": "Valine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine-3",
+    "href": "NMRanalytics.html#valine-3",
+    "title": "NMR analytics",
+    "section": "Valine 3",
+    "text": "Valine 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine1",
+    "href": "NMRanalytics.html#valine1",
+    "title": "NMR analytics",
+    "section": "Valine1",
+    "text": "Valine1"
+  },
+  {
+    "objectID": "NMRanalytics.html#valine2",
+    "href": "NMRanalytics.html#valine2",
+    "title": "NMR analytics",
+    "section": "Valine2",
+    "text": "Valine2"
   }
 ]

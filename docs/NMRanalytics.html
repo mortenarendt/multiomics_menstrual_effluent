@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -164,10 +130,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#valine" id="toc-valine" class="nav-link active" data-scroll-target="#valine">Valine</a></li>
-  <li><a href="#isoleucine" id="toc-isoleucine" class="nav-link" data-scroll-target="#isoleucine">Isoleucine</a></li>
-  <li><a href="#lactate" id="toc-lactate" class="nav-link" data-scroll-target="#lactate">Lactate</a></li>
+  <li><a href="#in-both-plasma-and-menstrual-effluent" id="toc-in-both-plasma-and-menstrual-effluent" class="nav-link active" data-scroll-target="#in-both-plasma-and-menstrual-effluent">In both Plasma and Menstrual Effluent</a>
+  <ul class="collapse">
+  <li><a href="#oxoisovaleric-acid" id="toc-oxoisovaleric-acid" class="nav-link" data-scroll-target="#oxoisovaleric-acid">2-oxoisovaleric acid</a></li>
+  <li><a href="#tsp" id="toc-tsp" class="nav-link" data-scroll-target="#tsp">TSP</a></li>
+  <li><a href="#acetate" id="toc-acetate" class="nav-link" data-scroll-target="#acetate">Acetate</a></li>
   <li><a href="#alanine" id="toc-alanine" class="nav-link" data-scroll-target="#alanine">Alanine</a></li>
+  <li><a href="#alpha-glucose" id="toc-alpha-glucose" class="nav-link" data-scroll-target="#alpha-glucose">Alpha-glucose</a></li>
+  <li><a href="#beta-glucose" id="toc-beta-glucose" class="nav-link" data-scroll-target="#beta-glucose">Beta-glucose</a></li>
+  <li><a href="#creatine-1" id="toc-creatine-1" class="nav-link" data-scroll-target="#creatine-1">Creatine 1</a></li>
+  <li><a href="#creatinine" id="toc-creatinine" class="nav-link" data-scroll-target="#creatinine">Creatinine</a></li>
+  <li><a href="#dimethylglycine" id="toc-dimethylglycine" class="nav-link" data-scroll-target="#dimethylglycine">Dimethylglycine</a></li>
+  <li><a href="#ethanol" id="toc-ethanol" class="nav-link" data-scroll-target="#ethanol">Ethanol</a></li>
+  <li><a href="#formate" id="toc-formate" class="nav-link" data-scroll-target="#formate">Formate</a></li>
+  <li><a href="#isoleucine-2" id="toc-isoleucine-2" class="nav-link" data-scroll-target="#isoleucine-2">Isoleucine 2</a></li>
+  <li><a href="#lactate-1" id="toc-lactate-1" class="nav-link" data-scroll-target="#lactate-1">Lactate 1</a></li>
+  <li><a href="#lactate-2" id="toc-lactate-2" class="nav-link" data-scroll-target="#lactate-2">Lactate 2</a></li>
+  <li><a href="#leucine" id="toc-leucine" class="nav-link" data-scroll-target="#leucine">Leucine</a></li>
+  <li><a href="#methanol" id="toc-methanol" class="nav-link" data-scroll-target="#methanol">Methanol</a></li>
+  <li><a href="#phenylalanine" id="toc-phenylalanine" class="nav-link" data-scroll-target="#phenylalanine">Phenylalanine</a></li>
+  <li><a href="#threonine-1" id="toc-threonine-1" class="nav-link" data-scroll-target="#threonine-1">Threonine 1</a></li>
+  <li><a href="#trimethylamine" id="toc-trimethylamine" class="nav-link" data-scroll-target="#trimethylamine">Trimethylamine</a></li>
+  <li><a href="#uridine" id="toc-uridine" class="nav-link" data-scroll-target="#uridine">Uridine</a></li>
+  <li><a href="#valine-1" id="toc-valine-1" class="nav-link" data-scroll-target="#valine-1">Valine 1</a></li>
+  <li><a href="#valine-2" id="toc-valine-2" class="nav-link" data-scroll-target="#valine-2">Valine 2</a></li>
+  </ul></li>
+  <li><a href="#in-menstrual-effluent-only" id="toc-in-menstrual-effluent-only" class="nav-link" data-scroll-target="#in-menstrual-effluent-only">In Menstrual Effluent only</a>
+  <ul class="collapse">
+  <li><a href="#hydroxybutyric-acid" id="toc-hydroxybutyric-acid" class="nav-link" data-scroll-target="#hydroxybutyric-acid">2-hydroxybutyric acid</a></li>
+  <li><a href="#hydroxyisovaleric-acid" id="toc-hydroxyisovaleric-acid" class="nav-link" data-scroll-target="#hydroxyisovaleric-acid">2-hydroxyisovaleric acid</a></li>
+  <li><a href="#erectic" id="toc-erectic" class="nav-link" data-scroll-target="#erectic">ERECTIC</a></li>
+  <li><a href="#asparagine-1" id="toc-asparagine-1" class="nav-link" data-scroll-target="#asparagine-1">Asparagine 1</a></li>
+  <li><a href="#asparagine-2" id="toc-asparagine-2" class="nav-link" data-scroll-target="#asparagine-2">Asparagine 2</a></li>
+  <li><a href="#aspartate-1" id="toc-aspartate-1" class="nav-link" data-scroll-target="#aspartate-1">Aspartate 1</a></li>
+  <li><a href="#aspartate-2" id="toc-aspartate-2" class="nav-link" data-scroll-target="#aspartate-2">Aspartate 2</a></li>
+  <li><a href="#aspartate-3" id="toc-aspartate-3" class="nav-link" data-scroll-target="#aspartate-3">Aspartate 3</a></li>
+  <li><a href="#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid" id="toc-bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid" class="nav-link" data-scroll-target="#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid">Bin-butyrate-isovaleric acid-2-hydroxybutyric acid</a></li>
+  <li><a href="#bin-ethanol" id="toc-bin-ethanol" class="nav-link" data-scroll-target="#bin-ethanol">Bin-ethanol</a></li>
+  <li><a href="#bin-glutamine-dimethylamine-oxoglutarate" id="toc-bin-glutamine-dimethylamine-oxoglutarate" class="nav-link" data-scroll-target="#bin-glutamine-dimethylamine-oxoglutarate">Bin-glutamine-dimethylamine-oxoglutarate</a></li>
+  <li><a href="#bin-isovalerate-glutamate-proline-glycoprotein" id="toc-bin-isovalerate-glutamate-proline-glycoprotein" class="nav-link" data-scroll-target="#bin-isovalerate-glutamate-proline-glycoprotein">Bin-isovalerate-glutamate-proline-glycoprotein</a></li>
+  <li><a href="#bin-leucine-lysine-arginine" id="toc-bin-leucine-lysine-arginine" class="nav-link" data-scroll-target="#bin-leucine-lysine-arginine">Bin-leucine-lysine-arginine</a></li>
+  <li><a href="#bin-proline-glutamate" id="toc-bin-proline-glutamate" class="nav-link" data-scroll-target="#bin-proline-glutamate">Bin-proline-glutamate</a></li>
+  <li><a href="#bin-valine-acetoacetate" id="toc-bin-valine-acetoacetate" class="nav-link" data-scroll-target="#bin-valine-acetoacetate">Bin-valine-acetoacetate</a></li>
+  <li><a href="#butyrate-1" id="toc-butyrate-1" class="nav-link" data-scroll-target="#butyrate-1">Butyrate 1</a></li>
+  <li><a href="#butyrate-2" id="toc-butyrate-2" class="nav-link" data-scroll-target="#butyrate-2">Butyrate 2</a></li>
+  <li><a href="#butyrate-4_1" id="toc-butyrate-4_1" class="nav-link" data-scroll-target="#butyrate-4_1">Butyrate 4_1</a></li>
+  <li><a href="#butyrate-4_2" id="toc-butyrate-4_2" class="nav-link" data-scroll-target="#butyrate-4_2">Butyrate 4_2</a></li>
+  <li><a href="#choline" id="toc-choline" class="nav-link" data-scroll-target="#choline">Choline</a></li>
+  <li><a href="#creatine-2" id="toc-creatine-2" class="nav-link" data-scroll-target="#creatine-2">Creatine 2</a></li>
+  <li><a href="#fumarate" id="toc-fumarate" class="nav-link" data-scroll-target="#fumarate">Fumarate</a></li>
+  <li><a href="#glutamate" id="toc-glutamate" class="nav-link" data-scroll-target="#glutamate">Glutamate</a></li>
+  <li><a href="#glycerol-1" id="toc-glycerol-1" class="nav-link" data-scroll-target="#glycerol-1">Glycerol 1</a></li>
+  <li><a href="#glycerol-2" id="toc-glycerol-2" class="nav-link" data-scroll-target="#glycerol-2">Glycerol 2</a></li>
+  <li><a href="#glycerol-3" id="toc-glycerol-3" class="nav-link" data-scroll-target="#glycerol-3">Glycerol 3</a></li>
+  <li><a href="#glycine" id="toc-glycine" class="nav-link" data-scroll-target="#glycine">Glycine</a></li>
+  <li><a href="#hypoxanthine1" id="toc-hypoxanthine1" class="nav-link" data-scroll-target="#hypoxanthine1">Hypoxanthine1</a></li>
+  <li><a href="#hypoxanthine2" id="toc-hypoxanthine2" class="nav-link" data-scroll-target="#hypoxanthine2">Hypoxanthine2</a></li>
+  <li><a href="#isobutyrate" id="toc-isobutyrate" class="nav-link" data-scroll-target="#isobutyrate">Isobutyrate</a></li>
+  <li><a href="#isoleucine-1" id="toc-isoleucine-1" class="nav-link" data-scroll-target="#isoleucine-1">Isoleucine 1</a></li>
+  <li><a href="#lysine-1" id="toc-lysine-1" class="nav-link" data-scroll-target="#lysine-1">Lysine 1</a></li>
+  <li><a href="#methylamine" id="toc-methylamine" class="nav-link" data-scroll-target="#methylamine">Methylamine</a></li>
+  <li><a href="#propionate-1_1" id="toc-propionate-1_1" class="nav-link" data-scroll-target="#propionate-1_1">Propionate 1_1</a></li>
+  <li><a href="#propionate-1_2" id="toc-propionate-1_2" class="nav-link" data-scroll-target="#propionate-1_2">Propionate 1_2</a></li>
+  <li><a href="#sarcosine" id="toc-sarcosine" class="nav-link" data-scroll-target="#sarcosine">Sarcosine</a></li>
+  <li><a href="#succinate" id="toc-succinate" class="nav-link" data-scroll-target="#succinate">Succinate</a></li>
+  <li><a href="#tryptophan-1" id="toc-tryptophan-1" class="nav-link" data-scroll-target="#tryptophan-1">Tryptophan 1</a></li>
+  <li><a href="#tryptophan-2" id="toc-tryptophan-2" class="nav-link" data-scroll-target="#tryptophan-2">Tryptophan 2</a></li>
+  <li><a href="#tryptophan-3" id="toc-tryptophan-3" class="nav-link" data-scroll-target="#tryptophan-3">Tryptophan 3</a></li>
+  <li><a href="#uracil-1" id="toc-uracil-1" class="nav-link" data-scroll-target="#uracil-1">Uracil 1</a></li>
+  <li><a href="#uracil-2" id="toc-uracil-2" class="nav-link" data-scroll-target="#uracil-2">Uracil 2</a></li>
+  <li><a href="#uracil-3" id="toc-uracil-3" class="nav-link" data-scroll-target="#uracil-3">Uracil 3</a></li>
+  <li><a href="#valine" id="toc-valine" class="nav-link" data-scroll-target="#valine">Valine</a></li>
+  <li><a href="#valine-3" id="toc-valine-3" class="nav-link" data-scroll-target="#valine-3">Valine 3</a></li>
+  </ul></li>
+  <li><a href="#in-plasma-only" id="toc-in-plasma-only" class="nav-link" data-scroll-target="#in-plasma-only">In Plasma only</a>
+  <ul class="collapse">
+  <li><a href="#aminobutyric-acid" id="toc-aminobutyric-acid" class="nav-link" data-scroll-target="#aminobutyric-acid">2-aminobutyric acid</a></li>
+  <li><a href="#hydroxybutyric-acid-1" id="toc-hydroxybutyric-acid-1" class="nav-link" data-scroll-target="#hydroxybutyric-acid-1">3-hydroxybutyric acid</a></li>
+  <li><a href="#caedta" id="toc-caedta" class="nav-link" data-scroll-target="#caedta">CaEDTA</a></li>
+  <li><a href="#edta-1" id="toc-edta-1" class="nav-link" data-scroll-target="#edta-1">EDTA 1</a></li>
+  <li><a href="#edta-2" id="toc-edta-2" class="nav-link" data-scroll-target="#edta-2">EDTA 2</a></li>
+  <li><a href="#eretic" id="toc-eretic" class="nav-link" data-scroll-target="#eretic">ERETIC</a></li>
+  <li><a href="#lp-ccch2cc" id="toc-lp-ccch2cc" class="nav-link" data-scroll-target="#lp-ccch2cc">LP (C=CCH2C=C)</a></li>
+  <li><a href="#lp-ch-of-unsaturated-lipids" id="toc-lp-ch-of-unsaturated-lipids" class="nav-link" data-scroll-target="#lp-ch-of-unsaturated-lipids">LP (CH of unsaturated lipids)</a></li>
+  <li><a href="#lp-ch2" id="toc-lp-ch2" class="nav-link" data-scroll-target="#lp-ch2">LP (CH2)</a></li>
+  <li><a href="#lp-ch2cco-1" id="toc-lp-ch2cco-1" class="nav-link" data-scroll-target="#lp-ch2cco-1">LP (CH2CCO) 1</a></li>
+  <li><a href="#lp-ch2ocor" id="toc-lp-ch2ocor" class="nav-link" data-scroll-target="#lp-ch2ocor">LP (CH2OCOR)</a></li>
+  <li><a href="#lp-chocor" id="toc-lp-chocor" class="nav-link" data-scroll-target="#lp-chocor">LP (CHOCOR)</a></li>
+  <li><a href="#lpch3" id="toc-lpch3" class="nav-link" data-scroll-target="#lpch3">LP(CH3)</a></li>
+  <li><a href="#mgedta" id="toc-mgedta" class="nav-link" data-scroll-target="#mgedta">MgEDTA</a></li>
+  <li><a href="#propylene-glycol" id="toc-propylene-glycol" class="nav-link" data-scroll-target="#propylene-glycol">Propylene glycol</a></li>
+  <li><a href="#acetoacetic-acid" id="toc-acetoacetic-acid" class="nav-link" data-scroll-target="#acetoacetic-acid">Acetoacetic acid</a></li>
+  <li><a href="#acetone" id="toc-acetone" class="nav-link" data-scroll-target="#acetone">Acetone</a></li>
+  <li><a href="#bin-3-hydroxybutyrate" id="toc-bin-3-hydroxybutyrate" class="nav-link" data-scroll-target="#bin-3-hydroxybutyrate">Bin-3-hydroxybutyrate</a></li>
+  <li><a href="#bin-lp-cch2cc" id="toc-bin-lp-cch2cc" class="nav-link" data-scroll-target="#bin-lp-cch2cc">Bin-LP (CCH2C=C)</a></li>
+  <li><a href="#bin-lp-cch2cc-isovaleric-acid-proline" id="toc-bin-lp-cch2cc-isovaleric-acid-proline" class="nav-link" data-scroll-target="#bin-lp-cch2cc-isovaleric-acid-proline">Bin-LP (CCH2C=C)-isovaleric acid-proline</a></li>
+  <li><a href="#bin-choline-glucose-tryptophan" id="toc-bin-choline-glucose-tryptophan" class="nav-link" data-scroll-target="#bin-choline-glucose-tryptophan">Bin-choline-glucose-tryptophan</a></li>
+  <li><a href="#bin-glucose-dimethylglycine-glutamic-acid-lysine" id="toc-bin-glucose-dimethylglycine-glutamic-acid-lysine" class="nav-link" data-scroll-target="#bin-glucose-dimethylglycine-glutamic-acid-lysine">Bin-glucose-dimethylglycine-glutamic acid-lysine)</a></li>
+  <li><a href="#bin-glutamic-acid-alanine" id="toc-bin-glutamic-acid-alanine" class="nav-link" data-scroll-target="#bin-glutamic-acid-alanine">Bin-glutamic acid-alanine</a></li>
+  <li><a href="#bin-glutamine" id="toc-bin-glutamine" class="nav-link" data-scroll-target="#bin-glutamine">Bin-glutamine</a></li>
+  <li><a href="#bin-glycerol-threonine" id="toc-bin-glycerol-threonine" class="nav-link" data-scroll-target="#bin-glycerol-threonine">Bin-glycerol-threonine</a></li>
+  <li><a href="#bin-histidine-serine-tyrosine-tryptophan" id="toc-bin-histidine-serine-tyrosine-tryptophan" class="nav-link" data-scroll-target="#bin-histidine-serine-tyrosine-tryptophan">Bin-histidine-serine-tyrosine-tryptophan</a></li>
+  <li><a href="#bin-isoleucine-glycerol" id="toc-bin-isoleucine-glycerol" class="nav-link" data-scroll-target="#bin-isoleucine-glycerol">Bin-isoleucine-glycerol</a></li>
+  <li><a href="#bin-isovaleric-acid-glutamic-acid-proline" id="toc-bin-isovaleric-acid-glutamic-acid-proline" class="nav-link" data-scroll-target="#bin-isovaleric-acid-glutamic-acid-proline">Bin-isovaleric acid-glutamic acid-proline</a></li>
+  <li><a href="#bin-leucine-isoleucine" id="toc-bin-leucine-isoleucine" class="nav-link" data-scroll-target="#bin-leucine-isoleucine">Bin-leucine-isoleucine</a></li>
+  <li><a href="#bin-lysine" id="toc-bin-lysine" class="nav-link" data-scroll-target="#bin-lysine">Bin-lysine</a></li>
+  <li><a href="#bin-proline-methionine-glutamic-acid-glutamine" id="toc-bin-proline-methionine-glutamic-acid-glutamine" class="nav-link" data-scroll-target="#bin-proline-methionine-glutamic-acid-glutamine">Bin-proline-methionine-glutamic acid-glutamine)</a></li>
+  <li><a href="#bin-tyramine-tyrosine" id="toc-bin-tyramine-tyrosine" class="nav-link" data-scroll-target="#bin-tyramine-tyrosine">Bin-tyramine-tyrosine</a></li>
+  <li><a href="#bin-α-glucose-serine" id="toc-bin-α-glucose-serine" class="nav-link" data-scroll-target="#bin-α-glucose-serine">Bin-α-glucose-serine</a></li>
+  <li><a href="#cholesterol" id="toc-cholesterol" class="nav-link" data-scroll-target="#cholesterol">Cholesterol</a></li>
+  <li><a href="#citric-acid-1" id="toc-citric-acid-1" class="nav-link" data-scroll-target="#citric-acid-1">Citric acid 1</a></li>
+  <li><a href="#citric-acid-2" id="toc-citric-acid-2" class="nav-link" data-scroll-target="#citric-acid-2">Citric acid 2</a></li>
+  <li><a href="#creatine" id="toc-creatine" class="nav-link" data-scroll-target="#creatine">Creatine</a></li>
+  <li><a href="#creatinine-1" id="toc-creatinine-1" class="nav-link" data-scroll-target="#creatinine-1">Creatinine 1</a></li>
+  <li><a href="#glucose-1" id="toc-glucose-1" class="nav-link" data-scroll-target="#glucose-1">Glucose 1</a></li>
+  <li><a href="#glutamic-acid" id="toc-glutamic-acid" class="nav-link" data-scroll-target="#glutamic-acid">Glutamic acid</a></li>
+  <li><a href="#glycerol" id="toc-glycerol" class="nav-link" data-scroll-target="#glycerol">Glycerol</a></li>
+  <li><a href="#glycoprotein-acetyls" id="toc-glycoprotein-acetyls" class="nav-link" data-scroll-target="#glycoprotein-acetyls">Glycoprotein (acetyls)</a></li>
+  <li><a href="#histidine-1" id="toc-histidine-1" class="nav-link" data-scroll-target="#histidine-1">Histidine 1</a></li>
+  <li><a href="#histidine-2" id="toc-histidine-2" class="nav-link" data-scroll-target="#histidine-2">Histidine 2</a></li>
+  <li><a href="#isobutyric-acid-1" id="toc-isobutyric-acid-1" class="nav-link" data-scroll-target="#isobutyric-acid-1">Isobutyric acid 1</a></li>
+  <li><a href="#isoleucine" id="toc-isoleucine" class="nav-link" data-scroll-target="#isoleucine">Isoleucine</a></li>
+  <li><a href="#proline-1" id="toc-proline-1" class="nav-link" data-scroll-target="#proline-1">Proline 1</a></li>
+  <li><a href="#pyruvic-acid" id="toc-pyruvic-acid" class="nav-link" data-scroll-target="#pyruvic-acid">Pyruvic acid</a></li>
+  <li><a href="#tyramine" id="toc-tyramine" class="nav-link" data-scroll-target="#tyramine">Tyramine</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -193,82 +280,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="valine" class="level2">
-<h2 class="anchored" data-anchor-id="valine">Valine</h2>
+<section id="in-both-plasma-and-menstrual-effluent" class="level1">
+<h1>In both Plasma and Menstrual Effluent</h1>
+<section id="oxoisovaleric-acid" class="level2">
+<h2 class="anchored" data-anchor-id="oxoisovaleric-acid">2-oxoisovaleric acid</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_1.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/interval_1.png" class="img-fluid figure-img" width="584"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_1scatter.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/interval_1scatter.png" class="img-fluid figure-img" width="1500"></p>
+<p><img src="./img/interval_4.png" class="img-fluid figure-img" width="584"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="isoleucine" class="level2">
-<h2 class="anchored" data-anchor-id="isoleucine">Isoleucine</h2>
+<section id="tsp" class="level2">
+<h2 class="anchored" data-anchor-id="tsp">TSP</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_2.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/interval_2.png" class="img-fluid figure-img" width="584"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_2scatter.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/interval_2scatter.png" class="img-fluid figure-img" width="1500"></p>
+<p><img src="./img/interval_20.png" class="img-fluid figure-img" width="584"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="lactate" class="level2">
-<h2 class="anchored" data-anchor-id="lactate">Lactate</h2>
+<section id="acetate" class="level2">
+<h2 class="anchored" data-anchor-id="acetate">Acetate</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_3.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/interval_3.png" class="img-fluid figure-img" width="584"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_3scatter.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/interval_3scatter.png" class="img-fluid figure-img" width="1500"></p>
+<p><img src="./img/interval_21.png" class="img-fluid figure-img" width="584"></p>
 </figure>
 </div>
 </div>
@@ -277,31 +321,1367 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="alanine" class="level2">
 <h2 class="anchored" data-anchor-id="alanine">Alanine</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_4.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/interval_4.png" class="img-fluid figure-img" width="584"></p>
+<p><img src="./img/interval_24.png" class="img-fluid figure-img" width="584"></p>
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/interval_4scatter.png"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</div>
+</section>
+<section id="alpha-glucose" class="level2">
+<h2 class="anchored" data-anchor-id="alpha-glucose">Alpha-glucose</h2>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/interval_4scatter.png" class="img-fluid figure-img" width="1500"></p>
+<p><img src="./img/interval_25.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="beta-glucose" class="level2">
+<h2 class="anchored" data-anchor-id="beta-glucose">Beta-glucose</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_31.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creatine-1" class="level2">
+<h2 class="anchored" data-anchor-id="creatine-1">Creatine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_66.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creatinine" class="level2">
+<h2 class="anchored" data-anchor-id="creatinine">Creatinine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_68.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dimethylglycine" class="level2">
+<h2 class="anchored" data-anchor-id="dimethylglycine">Dimethylglycine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_70.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ethanol" class="level2">
+<h2 class="anchored" data-anchor-id="ethanol">Ethanol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_71.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="formate" class="level2">
+<h2 class="anchored" data-anchor-id="formate">Formate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_72.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="isoleucine-2" class="level2">
+<h2 class="anchored" data-anchor-id="isoleucine-2">Isoleucine 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_91.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lactate-1" class="level2">
+<h2 class="anchored" data-anchor-id="lactate-1">Lactate 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_92.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lactate-2" class="level2">
+<h2 class="anchored" data-anchor-id="lactate-2">Lactate 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_93.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="leucine" class="level2">
+<h2 class="anchored" data-anchor-id="leucine">Leucine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_94.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="methanol" class="level2">
+<h2 class="anchored" data-anchor-id="methanol">Methanol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_96.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="phenylalanine" class="level2">
+<h2 class="anchored" data-anchor-id="phenylalanine">Phenylalanine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_98.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="threonine-1" class="level2">
+<h2 class="anchored" data-anchor-id="threonine-1">Threonine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_105.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="trimethylamine" class="level2">
+<h2 class="anchored" data-anchor-id="trimethylamine">Trimethylamine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_106.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uridine" class="level2">
+<h2 class="anchored" data-anchor-id="uridine">Uridine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_169.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="valine-1" class="level2">
+<h2 class="anchored" data-anchor-id="valine-1">Valine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_171.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="valine-2" class="level2">
+<h2 class="anchored" data-anchor-id="valine-2">Valine 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_172.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="in-menstrual-effluent-only" class="level1">
+<h1>In Menstrual Effluent only</h1>
+<section id="hydroxybutyric-acid" class="level2">
+<h2 class="anchored" data-anchor-id="hydroxybutyric-acid">2-hydroxybutyric acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_2.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hydroxyisovaleric-acid" class="level2">
+<h2 class="anchored" data-anchor-id="hydroxyisovaleric-acid">2-hydroxyisovaleric acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_3.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="erectic" class="level2">
+<h2 class="anchored" data-anchor-id="erectic">ERECTIC</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_9.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="asparagine-1" class="level2">
+<h2 class="anchored" data-anchor-id="asparagine-1">Asparagine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_26.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="asparagine-2" class="level2">
+<h2 class="anchored" data-anchor-id="asparagine-2">Asparagine 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_27.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="aspartate-1" class="level2">
+<h2 class="anchored" data-anchor-id="aspartate-1">Aspartate 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_28.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="aspartate-2" class="level2">
+<h2 class="anchored" data-anchor-id="aspartate-2">Aspartate 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_29.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="aspartate-3" class="level2">
+<h2 class="anchored" data-anchor-id="aspartate-3">Aspartate 3</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_30.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid" class="level2">
+<h2 class="anchored" data-anchor-id="bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid">Bin-butyrate-isovaleric acid-2-hydroxybutyric acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_36.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-ethanol" class="level2">
+<h2 class="anchored" data-anchor-id="bin-ethanol">Bin-ethanol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_38.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-glutamine-dimethylamine-oxoglutarate" class="level2">
+<h2 class="anchored" data-anchor-id="bin-glutamine-dimethylamine-oxoglutarate">Bin-glutamine-dimethylamine-oxoglutarate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_42.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-isovalerate-glutamate-proline-glycoprotein" class="level2">
+<h2 class="anchored" data-anchor-id="bin-isovalerate-glutamate-proline-glycoprotein">Bin-isovalerate-glutamate-proline-glycoprotein</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_46.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-leucine-lysine-arginine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-leucine-lysine-arginine">Bin-leucine-lysine-arginine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_49.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-proline-glutamate" class="level2">
+<h2 class="anchored" data-anchor-id="bin-proline-glutamate">Bin-proline-glutamate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_51.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-valine-acetoacetate" class="level2">
+<h2 class="anchored" data-anchor-id="bin-valine-acetoacetate">Bin-valine-acetoacetate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_55.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="butyrate-1" class="level2">
+<h2 class="anchored" data-anchor-id="butyrate-1">Butyrate 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_57.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="butyrate-2" class="level2">
+<h2 class="anchored" data-anchor-id="butyrate-2">Butyrate 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_58.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="butyrate-4_1" class="level2">
+<h2 class="anchored" data-anchor-id="butyrate-4_1">Butyrate 4_1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_59.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="butyrate-4_2" class="level2">
+<h2 class="anchored" data-anchor-id="butyrate-4_2">Butyrate 4_2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_60.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="choline" class="level2">
+<h2 class="anchored" data-anchor-id="choline">Choline</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_62.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creatine-2" class="level2">
+<h2 class="anchored" data-anchor-id="creatine-2">Creatine 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_67.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="fumarate" class="level2">
+<h2 class="anchored" data-anchor-id="fumarate">Fumarate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_73.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glutamate" class="level2">
+<h2 class="anchored" data-anchor-id="glutamate">Glutamate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_75.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycerol-1" class="level2">
+<h2 class="anchored" data-anchor-id="glycerol-1">Glycerol 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_78.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycerol-2" class="level2">
+<h2 class="anchored" data-anchor-id="glycerol-2">Glycerol 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_79.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycerol-3" class="level2">
+<h2 class="anchored" data-anchor-id="glycerol-3">Glycerol 3</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_80.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycine" class="level2">
+<h2 class="anchored" data-anchor-id="glycine">Glycine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_81.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypoxanthine1" class="level2">
+<h2 class="anchored" data-anchor-id="hypoxanthine1">Hypoxanthine1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_85.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypoxanthine2" class="level2">
+<h2 class="anchored" data-anchor-id="hypoxanthine2">Hypoxanthine2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_86.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="isobutyrate" class="level2">
+<h2 class="anchored" data-anchor-id="isobutyrate">Isobutyrate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_87.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="isoleucine-1" class="level2">
+<h2 class="anchored" data-anchor-id="isoleucine-1">Isoleucine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_90.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lysine-1" class="level2">
+<h2 class="anchored" data-anchor-id="lysine-1">Lysine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_95.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="methylamine" class="level2">
+<h2 class="anchored" data-anchor-id="methylamine">Methylamine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_97.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="propionate-1_1" class="level2">
+<h2 class="anchored" data-anchor-id="propionate-1_1">Propionate 1_1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_100.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="propionate-1_2" class="level2">
+<h2 class="anchored" data-anchor-id="propionate-1_2">Propionate 1_2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_101.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sarcosine" class="level2">
+<h2 class="anchored" data-anchor-id="sarcosine">Sarcosine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_103.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="succinate" class="level2">
+<h2 class="anchored" data-anchor-id="succinate">Succinate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_104.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tryptophan-1" class="level2">
+<h2 class="anchored" data-anchor-id="tryptophan-1">Tryptophan 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_107.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tryptophan-2" class="level2">
+<h2 class="anchored" data-anchor-id="tryptophan-2">Tryptophan 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_108.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tryptophan-3" class="level2">
+<h2 class="anchored" data-anchor-id="tryptophan-3">Tryptophan 3</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_109.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uracil-1" class="level2">
+<h2 class="anchored" data-anchor-id="uracil-1">Uracil 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_166.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uracil-2" class="level2">
+<h2 class="anchored" data-anchor-id="uracil-2">Uracil 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_167.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uracil-3" class="level2">
+<h2 class="anchored" data-anchor-id="uracil-3">Uracil 3</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_168.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="valine" class="level2">
+<h2 class="anchored" data-anchor-id="valine">Valine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_170.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="valine-3" class="level2">
+<h2 class="anchored" data-anchor-id="valine-3">Valine 3</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_173.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="in-plasma-only" class="level1">
+<h1>In Plasma only</h1>
+<section id="aminobutyric-acid" class="level2">
+<h2 class="anchored" data-anchor-id="aminobutyric-acid">2-aminobutyric acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_1.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hydroxybutyric-acid-1" class="level2">
+<h2 class="anchored" data-anchor-id="hydroxybutyric-acid-1">3-hydroxybutyric acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_5.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="caedta" class="level2">
+<h2 class="anchored" data-anchor-id="caedta">CaEDTA</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_6.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="edta-1" class="level2">
+<h2 class="anchored" data-anchor-id="edta-1">EDTA 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_7.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="edta-2" class="level2">
+<h2 class="anchored" data-anchor-id="edta-2">EDTA 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_8.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eretic" class="level2">
+<h2 class="anchored" data-anchor-id="eretic">ERETIC</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_10.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-ccch2cc" class="level2">
+<h2 class="anchored" data-anchor-id="lp-ccch2cc">LP (C=CCH2C=C)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_11.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-ch-of-unsaturated-lipids" class="level2">
+<h2 class="anchored" data-anchor-id="lp-ch-of-unsaturated-lipids">LP (CH of unsaturated lipids)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_12.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-ch2" class="level2">
+<h2 class="anchored" data-anchor-id="lp-ch2">LP (CH2)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_13.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-ch2cco-1" class="level2">
+<h2 class="anchored" data-anchor-id="lp-ch2cco-1">LP (CH2CCO) 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_14.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-ch2ocor" class="level2">
+<h2 class="anchored" data-anchor-id="lp-ch2ocor">LP (CH2OCOR)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_15.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lp-chocor" class="level2">
+<h2 class="anchored" data-anchor-id="lp-chocor">LP (CHOCOR)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_16.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lpch3" class="level2">
+<h2 class="anchored" data-anchor-id="lpch3">LP(CH3)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_17.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="mgedta" class="level2">
+<h2 class="anchored" data-anchor-id="mgedta">MgEDTA</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_18.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="propylene-glycol" class="level2">
+<h2 class="anchored" data-anchor-id="propylene-glycol">Propylene glycol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_19.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="acetoacetic-acid" class="level2">
+<h2 class="anchored" data-anchor-id="acetoacetic-acid">Acetoacetic acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_22.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="acetone" class="level2">
+<h2 class="anchored" data-anchor-id="acetone">Acetone</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_23.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-3-hydroxybutyrate" class="level2">
+<h2 class="anchored" data-anchor-id="bin-3-hydroxybutyrate">Bin-3-hydroxybutyrate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_32.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-lp-cch2cc" class="level2">
+<h2 class="anchored" data-anchor-id="bin-lp-cch2cc">Bin-LP (CCH2C=C)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_33.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-lp-cch2cc-isovaleric-acid-proline" class="level2">
+<h2 class="anchored" data-anchor-id="bin-lp-cch2cc-isovaleric-acid-proline">Bin-LP (CCH2C=C)-isovaleric acid-proline</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_34.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-choline-glucose-tryptophan" class="level2">
+<h2 class="anchored" data-anchor-id="bin-choline-glucose-tryptophan">Bin-choline-glucose-tryptophan</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_37.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-glucose-dimethylglycine-glutamic-acid-lysine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-glucose-dimethylglycine-glutamic-acid-lysine">Bin-glucose-dimethylglycine-glutamic acid-lysine)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_39.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-glutamic-acid-alanine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-glutamic-acid-alanine">Bin-glutamic acid-alanine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_40.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-glutamine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-glutamine">Bin-glutamine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_41.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-glycerol-threonine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-glycerol-threonine">Bin-glycerol-threonine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_43.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-histidine-serine-tyrosine-tryptophan" class="level2">
+<h2 class="anchored" data-anchor-id="bin-histidine-serine-tyrosine-tryptophan">Bin-histidine-serine-tyrosine-tryptophan</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_44.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-isoleucine-glycerol" class="level2">
+<h2 class="anchored" data-anchor-id="bin-isoleucine-glycerol">Bin-isoleucine-glycerol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_45.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-isovaleric-acid-glutamic-acid-proline" class="level2">
+<h2 class="anchored" data-anchor-id="bin-isovaleric-acid-glutamic-acid-proline">Bin-isovaleric acid-glutamic acid-proline</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_47.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-leucine-isoleucine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-leucine-isoleucine">Bin-leucine-isoleucine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_48.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-lysine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-lysine">Bin-lysine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_50.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-proline-methionine-glutamic-acid-glutamine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-proline-methionine-glutamic-acid-glutamine">Bin-proline-methionine-glutamic acid-glutamine)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_52.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-tyramine-tyrosine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-tyramine-tyrosine">Bin-tyramine-tyrosine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_53.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bin-α-glucose-serine" class="level2">
+<h2 class="anchored" data-anchor-id="bin-α-glucose-serine">Bin-α-glucose-serine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_56.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cholesterol" class="level2">
+<h2 class="anchored" data-anchor-id="cholesterol">Cholesterol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_61.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="citric-acid-1" class="level2">
+<h2 class="anchored" data-anchor-id="citric-acid-1">Citric acid 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_63.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="citric-acid-2" class="level2">
+<h2 class="anchored" data-anchor-id="citric-acid-2">Citric acid 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_64.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creatine" class="level2">
+<h2 class="anchored" data-anchor-id="creatine">Creatine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_65.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creatinine-1" class="level2">
+<h2 class="anchored" data-anchor-id="creatinine-1">Creatinine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_69.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glucose-1" class="level2">
+<h2 class="anchored" data-anchor-id="glucose-1">Glucose 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_74.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glutamic-acid" class="level2">
+<h2 class="anchored" data-anchor-id="glutamic-acid">Glutamic acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_76.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycerol" class="level2">
+<h2 class="anchored" data-anchor-id="glycerol">Glycerol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_77.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="glycoprotein-acetyls" class="level2">
+<h2 class="anchored" data-anchor-id="glycoprotein-acetyls">Glycoprotein (acetyls)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_82.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histidine-1" class="level2">
+<h2 class="anchored" data-anchor-id="histidine-1">Histidine 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_83.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histidine-2" class="level2">
+<h2 class="anchored" data-anchor-id="histidine-2">Histidine 2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_84.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="isobutyric-acid-1" class="level2">
+<h2 class="anchored" data-anchor-id="isobutyric-acid-1">Isobutyric acid 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_88.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="isoleucine" class="level2">
+<h2 class="anchored" data-anchor-id="isoleucine">Isoleucine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_89.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="proline-1" class="level2">
+<h2 class="anchored" data-anchor-id="proline-1">Proline 1</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_99.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="pyruvic-acid" class="level2">
+<h2 class="anchored" data-anchor-id="pyruvic-acid">Pyruvic acid</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_102.png" class="img-fluid figure-img" width="584"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tyramine" class="level2">
+<h2 class="anchored" data-anchor-id="tyramine">Tyramine</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/interval_110.png" class="img-fluid figure-img" width="584"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
