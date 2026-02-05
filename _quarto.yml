@@ -12,7 +12,8 @@ website:
       - NMRanalytics.qmd
       - composition.qmd
       - demographics.qmd
-      - test.qmd
+      - stability.qmd
+      - prediction.qmd
     tools:
       - icon: envelope
         icon_pack: fas

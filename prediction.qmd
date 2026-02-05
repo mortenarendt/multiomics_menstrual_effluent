@@ -1,0 +1,421 @@
+---
+title: "Prediction"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( message = F, warning = F)
+options(digits=2)
+```
+
+```{r,include=FALSE}
+source('libs_init.R')
+```
+
+
+## Compare 16s/ITS versus ME-NMR 
+
+```{r, eval=FALSE}
+phyXlong <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  transform_sample_counts(function(x) x / sum(x)) %>% 
+  filter_taxa(function(x) sum(x > 0)>10, TRUE) %>% 
+  psmelt() %>%
+  gather(mtb,val,X2.hydroxybutyric.acid:valine) %>% 
+  filter(!str_detect(mtb,'EREC')) %>% 
+  filter(!str_detect(mtb,'TSP'))
+
+
+tb_cor <- phyXlong %>% 
+  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %>% 
+  do(cor.test(data = ., ~val + Abundance,method = 'spearman') %>% tidy)
+
+tb_lmer <- phyXlong %>% 
+  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %>% 
+  do(lmer(data = ., val ~ log(Abundance+0.0001) + (1|Participant)) %>% tidy)
+
+tb_lmer %>% filter(str_detect(term,'log')) %>% arrange(p.value)
+
+
+save(file = 'microbiome_vs_nmr_models.RData', list = c('tb_lmer'))
+```
+
+
+### All versus all (16s vs NMR)
+
+```{r}
+load(file = '/Users/morten.arendt/Library/CloudStorage/Dropbox/Bekzod&Isabella/NMR data/analysis/microbiome_vs_nmr_models.RData')
+
+fmrt <- list(
+  
+  p.value = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  estimate = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  std.error = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  )
+)
+
+tb_lmer <- tb_lmer %>% 
+  ungroup %>% 
+  mutate(ta5 = ifelse(ta5 %in% c('F__','__'),'Other',ta5),
+         ta5lmp = ta5 %>% fct_lump(n = 14), 
+         pvcut = ifelse(p.value<0.05,'sign','ns'))
+
+tb_lmer %>% 
+  filter(str_detect(term,'log')) %>% 
+  ggplot(data =.,aes(estimate,-log10(p.value))) + 
+  geom_point()
+
+tb_lmer %>% filter(str_detect(term,'log')) %>% 
+  ungroup %>% 
+  dplyr::select(mtb,ta4,ta5,ta6,ta7,estimate,std.error, p.value) %>% 
+  reactable(columns = fmrt)
+
+tb_lmer %>% filter(str_detect(term,'log')) %>% 
+  ggplot(data =.,aes(ta5lmp, estimate,fill = pvcut)) + 
+  geom_boxplot() + 
+  theme(legend.position = 'bottom') + 
+  coord_flip()
+
+# tb_lmer %>% filter(str_detect(term,'log')) %>% 
+  # group_by(ta5lmp) %>% 
+  # dplyr::summarise(nneg = sum(estimate<0), npos = sum(estimate>0), 
+                   # pv = 1 - pbinom(max(npos,nneg)-1,nneg+npos,0.5))
+
+tb_lmer %>% 
+  filter(str_detect(term,'log')) %>% 
+  ggplot(data = ., aes(OTU,substr(mtb,1,20),fill = estimate)) + 
+  geom_tile() + 
+  scale_fill_gradient2(mid = 'white', midpoint = 0)
+
+
+```
+
+
+
+### Multivariate prediction models (from 16s to NMR)
+
+```{r, eval = F}
+library(caret)
+phyXpp <- phyX %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
+  transform_sample_counts(function(x) x / sum(x)) %>% 
+  filter_taxa(function(x) sum(x > 0)>10, TRUE) 
+
+X <- phyXpp@otu_table %>% data.frame()
+Y <- phyXpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
+
+c <- 0
+CVindex <- list()
+for (i in unique(Y$participant)) {
+  c <- c+1
+  CVindex[[c]] <- which(Y$participant!=i)
+}
+
+repCV10 <- trainControl(returnResamp = "all", 
+                        savePredictions = "all", 
+                        allowParallel = T, 
+                        verboseIter = F,
+                        index = CVindex)
+mdl <- list()
+for (i in 34:169){
+  # print(i)
+  X$y <- Y[,i]
+  sdy <- sd(X$y)
+  SPLS_model <- train(y ~ ., data = X, method = 'spls',
+                      preProc = c("center", 'scale'),
+                      tuneGrid = expand.grid(K = 1:10,# K sets number of components
+                                             eta = seq(0,1,0.1), # eta sets sparsity
+                                             kappa = 0.5), 
+                      trControl = repCV10)
+  SPLS_model$sdy <- sdy
+  SPLS_model$metabolite <- colnames(Y)[i]
+  mdl[[i]] <- SPLS_model
+}
+save(file = 'metabolite_16smodels.RData', list = c('mdl'))
+
+# null distribution 
+mdl_perm <- list()
+for (c in 1:100){
+  # print(c)
+  i <- sample(34:169)[1]
+  X$y <- sample(Y[,i])
+  sdy <- sd(X$y)
+  SPLS_model <- train(y ~ ., data = X, method = 'spls',
+                      preProc = c("center", 'scale'),
+                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
+                                             eta = seq(0,1,0.1), # eta sets sparsity
+                                             kappa = 0.5), 
+                      trControl = repCV10)
+  SPLS_model$sdy <- sdy
+  SPLS_model$metabolite <- colnames(Y)[i]
+  mdl_perm[[c]] <- SPLS_model
+}
+save(file = 'metabolite_16s_permsmodels.RData', list = c('mdl_perm'))
+
+
+# loads <- data.frame(breg = SPLS_model$finalModel$betahat,
+#                     SPLS_model_class$finalModel$betahat) %>% 
+#   data.frame() %>% rownames_to_column() %>% 
+#   right_join(DAres, by = 'rowname')
+
+
+```
+
+### Multivariate prediction models (from ITS to NMR)
+
+```{r, eval = F}
+library(caret)
+phyITSpp <- phyITS %>% 
+  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
+  transform_sample_counts(function(x) as.numeric(x>0)) %>% 
+  filter_taxa(function(x) sum(x > 0)>9, TRUE) 
+
+X <- phyITSpp@otu_table %>% data.frame()
+Y <- phyITSpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
+
+c <- 0
+CVindex <- list()
+for (i in unique(Y$participant)) {
+  c <- c+1
+  CVindex[[c]] <- which(Y$participant!=i)
+}
+
+repCV10 <- trainControl(returnResamp = "all", 
+                        savePredictions = "all", 
+                        allowParallel = T, 
+                        verboseIter = F,
+                        index = CVindex)
+mdl_ITS <- list()
+for (i in 34:169){
+  X$y <- Y[,i]
+  sdy <- sd(X$y)
+  SPLS_model <- train(y ~ ., data = X, method = 'spls',
+                      preProc = c("center", 'scale'),
+                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
+                                             eta = seq(0,1,0.1), # eta sets sparsity
+                                             kappa = 0.5), 
+                      trControl = repCV10)
+  SPLS_model$sdy <- sdy
+  SPLS_model$metabolite <- colnames(Y)[i]
+  mdl_ITS[[i]] <- SPLS_model
+}
+save(file = 'metabolite_ITSsmodels.RData', list = c('mdl_ITS'))
+
+# null distribution 
+mdl_ITS_perm <- list()
+for (c in 1:100){
+  i <- sample(34:169)[1]
+  X$y <- sample(Y[,i])
+  sdy <- sd(X$y)
+  SPLS_model <- train(y ~ ., data = X, method = 'spls',
+                      preProc = c("center", 'scale'),
+                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
+                                             eta = seq(0,1,0.1), # eta sets sparsity
+                                             kappa = 0.5), 
+                      trControl = repCV10)
+  SPLS_model$sdy <- sdy
+  SPLS_model$metabolite <- colnames(Y)[i]
+  mdl_ITS_perm[[c]] <- SPLS_model
+}
+save(file = 'metabolite_ITS_permsmodels.RData', list = c('mdl_ITS_perm'))
+
+```
+
+
+```{r}
+load(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITSsmodels.RData')
+load(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16smodels.RData')
+load(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITS_permsmodels.RData')
+load(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16s_permsmodels.RData')
+beta <- res <- data.frame()
+for (i in 34:169){
+  # print(i)
+  res <- res %>% 
+    bind_rows(mdl[[i]]$results %>% arrange(RMSE) %>% head(1) %>% 
+                mutate(sdy = mdl[[i]]$sdy, metabolite = mdl[[i]]$metabolite, method = '16s'),
+              mdl_ITS[[i]]$results %>% arrange(RMSE) %>% head(1) %>% 
+                mutate(sdy = mdl_ITS[[i]]$sdy, metabolite = mdl_ITS[[i]]$metabolite, method = 'ITS'))
+  
+  
+  beta <- beta %>% bind_rows(data.frame(breg = mdl[[i]]$finalModel$betahat,
+                                        metabolite = mdl[[i]]$metabolite, 
+                                        method = '16s')%>% rownames_to_column('OTU'),
+                             data.frame(breg = mdl_ITS[[i]]$finalModel$betahat,
+                                        metabolite = mdl_ITS[[i]]$metabolite, 
+                                        method = 'ITS')%>% rownames_to_column('OTU'))
+  
+}
+# metclass <- MEconc_newlong %>% dplyr::select(met,SigMa_class,category) %>% filter(!duplicated(met)) %>% filter(!str_detect(met,'PC')) %>% filter(!str_detect(met,'TSP')) %>% cbind(res %>% filter(method == 'ITS') %>% dplyr::select(metabolite))
+
+res <- res %>% 
+  filter(!str_detect(metabolite,'TSP')) %>% 
+  left_join(MEclass, by = c('metabolite' = 'Interval_name')) %>% 
+  mutate(R2 = 1 - (RMSE^2 / sdy^2))
+
+resperm <- data.frame()
+for (i in 1:100){
+  resperm <- resperm %>% 
+    bind_rows(mdl_ITS_perm[[i]]$results %>% arrange(-Rsquared) %>% head(1) %>% 
+                mutate(sdy = mdl_ITS_perm[[i]]$sdy, metabolite = mdl_ITS_perm[[i]]$metabolite, method = 'ITS'),
+              mdl_perm[[i]]$results %>% arrange(-Rsquared) %>% head(1) %>% 
+                mutate(sdy = mdl_perm[[i]]$sdy, metabolite = mdl_perm[[i]]$metabolite, method = '16s'))
+}
+
+resperm <- resperm %>% mutate(R2 = 1 - RMSE^2 / sdy^2)
+```
+
+
+### Histogram of CV predictive performance
+
+```{r}
+# resperm %>% 
+  # ggplot(data = ., aes(Rsquared)) + geom_histogram() + facet_wrap(~method)
+
+respermsum <- resperm %>% 
+  group_by(method) %>% 
+  summarise(mn = mean(Rsquared), 
+            s = sd(Rsquared))
+R2sign_16s <- qnorm(0.95,mean = respermsum$mn[1],sd = respermsum$s[1])
+R2sign_ITS <- qnorm(0.95,mean = respermsum$mn[2],sd = respermsum$s[2])
+
+beta <- beta %>%left_join(res, by = c('metabolite','method')) %>% 
+  filter(metabolite!='ERECTIC')
+```
+
+### Per metabolite - CV predictive perormance.
+
+```{r}
+res %>% 
+  ggplot(data = ., aes(metabolite,Rsquared, color = method)) + 
+  # geom_hline(yintercept = R2sign_ITS, color = 'green') + 
+  # geom_hline(yintercept = R2sign_16s, color = 'red') + 
+  geom_point()
+
+g_r2 <- res %>% 
+  left_join(dflb, by = 'category') %>% 
+  filter(!is.na(lb)) %>% 
+  # group_by(lb) %>% 
+  # mutate(category2 = paste(lb, ' (#', n() / 2,')', sep = ''))  %>% 
+  # ungroup %>% 
+  mutate(lb = lb %>% factor(levels = dflb$lb[1:9])) %>% 
+  ggplot(data= ., aes(lb,RMSE / sdy, fill = method)) + 
+  geom_boxplot() +
+  scale_y_reverse() + 
+  geom_point(position = position_dodge(width = 0.75)) + 
+  # geom_hline(data = data.frame(R2cut = c(R2sign_16s,R2sign_ITS), method = c('16s','ITS')), 
+  # aes(yintercept = R2cut, color = method)) + 
+  # geom_point(position = position_dodge(width = 0.8), aes(group = method), size = 1) + 
+  scale_fill_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2]) + 
+  scale_color_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2], guide = 'none') + 
+  # scale_x_discrete(breaks = dflb$lb[1:9], values = dflb$lb[1:9]) + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust =  0), 
+        legend.position = 'bottom') + labs(fill = NULL) + 
+  xlab(NULL)
+
+res %>% 
+  filter(!is.na(R2)) %>% 
+  group_by(method,category) %>% 
+  summarise(R2 = mean(R2)) %>% 
+  friedman.test(R2 ~ method | category ,data = .) 
+
+res %>% 
+  filter(!is.na(R2)) %>% 
+  lm(rank(R2) ~ method  + category ,data = .) %>% anova %>% tidy
+
+res %>% 
+  filter(!is.na(R2)) %>% 
+  group_by(method) %>% 
+  summarise(R2m = median(R2), 
+            q1 = quantile(R2,0.25),
+            q3 = quantile(R2,0.75)) 
+
+```
+
+
+```{r}
+library(gplots)
+
+ggbeta <- beta %>% 
+  left_join(dflb, by = 'category') %>%
+  filter(!(lb %in% 'Other/Bin/Unknown')) %>% 
+  mutate(breg = breg/sdy) %>% 
+  filter(method == '16s') %>% 
+  filter((RMSE / sdy) < 0.75) %>% 
+  group_by(metabolite) %>% 
+  mutate(nn = sum(abs(breg)>0)) %>% 
+  filter(nn>0) %>% 
+  group_by(OTU) %>% 
+  mutate(nn2 = sum(abs(breg)>0)) %>% 
+  filter(nn2>0) %>% 
+  left_join(phyX@tax_table %>% data.frame() %>% rownames_to_column('OTU') %>% 
+              left_join(bsum16s, by = c('ta2','ta3','ta4','ta5')), by = 'OTU') %>% 
+  mutate(OTU = OTU %>% fct_reorder(ta5))
+
+lbs <- ggbeta %>% 
+  group_by(OTU) %>% 
+  dplyr::summarise(lb = ta5[1], 
+            lb4 = ta4[1], 
+            lb3 = ta3[1], 
+            lb2 = ta2[1], 
+            n()) %>% 
+  arrange(lb)
+
+# 1) find lowest level of id, 2) remove F__
+for (i in which(nchar(lbs$lb)<4)){
+  id <- which(nchar(lbs[i,])>4)[1]
+  print(as.character(lbs[i,id]))
+  lbs$lb[i] <- as.character(lbs[i,id])
+}
+
+lbs <- lbs %>% 
+  mutate(lb = lb %>% 
+           gsub('F__','',x = .) %>% 
+           gsub('__','-',x = .))
+
+
+g5 <- ggbeta %>% 
+  # remove bin from mtb label
+  mutate(metabolite = gsub('bin.','',x = metabolite)) %>% 
+  # filter of only bins / unk
+  filter(nchar(metabolite)>6) %>% 
+  mutate(metabolite = gsub('X2.','2-',x = metabolite)) %>% 
+  filter(!str_detect(metabolite,'unk')) %>% 
+  filter(!str_detect(metabolite,'1_2')) %>% 
+  
+  ggplot(data = ., aes(metabolite,OTU,fill = breg)) + 
+  geom_tile() + 
+  scale_y_discrete(labels = lbs$lb,breaks =lbs$OTU ) +
+  scale_fill_gradient2(mid = 'white',midpoint = 0) + 
+  theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  xlab(NULL) + ylab(NULL)
+
+
+g_r2
+```
+
+
+```{r, fig.width=10, fig.height=5}
+g5 + coord_flip()
+```

@@ -92,6 +92,21 @@ sample_data(phyITS) <- sample_data(phyX) <- sample_data(MEdfsm)
 
 ## 16s 
 
+### Primers 
+
+Primers for UMI16S:
+
+Primers       Sequence
+UMI_27Fa    - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNAGAGTTTGATYMTGGCTYAG
+UMI_27Fb    - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNAGGGTTCGATTCTGGCTCAG
+UMI_1540_R  - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNTACGGYTACCTTGTTACGACT
+UMI_338Fa   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNACWCCTACGGGWGGCAGCAG
+UMI_338Fb   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACTCCTACGGGAGGCWGCAG
+UMI_1391R   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACGGGCGGTGTGTRCA
+ 
+ 
+
+
 Sequencing depth
 
 ```{r}
@@ -218,6 +233,14 @@ otutb16s %>%
 
 
 ## ITS
+
+### Primers
+
+Primers for ITS sequencing
+
+ITS1:GTCTCGTGGGCTCGGTCCGTAGGTGAACCTGCGG
+ITS4:GTCTCGTGGGCTCGGTCCTCCGCTTATTGATATGC
+ 
 
 Sequencing depth
 
@@ -370,6 +393,9 @@ MEconc_newlong %>%
 
 ### 16s
 
+ 
+
+
 ```{r, fig.height=30, fig.width=10}
 otutb16s %>% 
   ggplot(data = ., aes(cycle_day,Abundance, group = participant, color = lb)) + 
@@ -381,6 +407,7 @@ otutb16s %>%
 ```
 
 ### ITS
+
 
 ```{r, fig.height=30, fig.width=10}
 otutbITS %>% 

@@ -7,11 +7,298 @@
     "text": "Thanks for checking out my web site!"
   },
   {
-    "objectID": "NMRanalytics.html",
-    "href": "NMRanalytics.html",
+    "objectID": "NMRanalytics.html#hydroxybutyric-acid",
+    "href": "NMRanalytics.html#hydroxybutyric-acid",
     "title": "NMR analytics",
-    "section": "",
-    "text": "Show code\nknitr::include_graphics(\"./img/interval_1.png\")"
+    "section": "2-hydroxybutyric acid",
+    "text": "2-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#hydroxyisovaleric-acid",
+    "href": "NMRanalytics.html#hydroxyisovaleric-acid",
+    "title": "NMR analytics",
+    "section": "2-hydroxyisovaleric acid",
+    "text": "2-hydroxyisovaleric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#asparagine-1",
+    "href": "NMRanalytics.html#asparagine-1",
+    "title": "NMR analytics",
+    "section": "Asparagine 1",
+    "text": "Asparagine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#asparagine-2",
+    "href": "NMRanalytics.html#asparagine-2",
+    "title": "NMR analytics",
+    "section": "Asparagine 2",
+    "text": "Asparagine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-1",
+    "href": "NMRanalytics.html#aspartate-1",
+    "title": "NMR analytics",
+    "section": "Aspartate 1",
+    "text": "Aspartate 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-2",
+    "href": "NMRanalytics.html#aspartate-2",
+    "title": "NMR analytics",
+    "section": "Aspartate 2",
+    "text": "Aspartate 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#aspartate-3",
+    "href": "NMRanalytics.html#aspartate-3",
+    "title": "NMR analytics",
+    "section": "Aspartate 3",
+    "text": "Aspartate 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
+    "href": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
+    "title": "NMR analytics",
+    "section": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid",
+    "text": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-ethanol",
+    "href": "NMRanalytics.html#bin-ethanol",
+    "title": "NMR analytics",
+    "section": "Bin-ethanol",
+    "text": "Bin-ethanol"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
+    "href": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
+    "title": "NMR analytics",
+    "section": "Bin-glutamine-dimethylamine-oxoglutarate",
+    "text": "Bin-glutamine-dimethylamine-oxoglutarate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
+    "href": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
+    "title": "NMR analytics",
+    "section": "Bin-isovalerate-glutamate-proline-glycoprotein",
+    "text": "Bin-isovalerate-glutamate-proline-glycoprotein"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-leucine-lysine-arginine",
+    "href": "NMRanalytics.html#bin-leucine-lysine-arginine",
+    "title": "NMR analytics",
+    "section": "Bin-leucine-lysine-arginine",
+    "text": "Bin-leucine-lysine-arginine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-proline-glutamate",
+    "href": "NMRanalytics.html#bin-proline-glutamate",
+    "title": "NMR analytics",
+    "section": "Bin-proline-glutamate",
+    "text": "Bin-proline-glutamate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-valine-acetoacetate",
+    "href": "NMRanalytics.html#bin-valine-acetoacetate",
+    "title": "NMR analytics",
+    "section": "Bin-valine-acetoacetate",
+    "text": "Bin-valine-acetoacetate"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-1",
+    "href": "NMRanalytics.html#butyrate-1",
+    "title": "NMR analytics",
+    "section": "Butyrate 1",
+    "text": "Butyrate 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-2",
+    "href": "NMRanalytics.html#butyrate-2",
+    "title": "NMR analytics",
+    "section": "Butyrate 2",
+    "text": "Butyrate 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-4_1",
+    "href": "NMRanalytics.html#butyrate-4_1",
+    "title": "NMR analytics",
+    "section": "Butyrate 4_1",
+    "text": "Butyrate 4_1"
+  },
+  {
+    "objectID": "NMRanalytics.html#butyrate-4_2",
+    "href": "NMRanalytics.html#butyrate-4_2",
+    "title": "NMR analytics",
+    "section": "Butyrate 4_2",
+    "text": "Butyrate 4_2"
+  },
+  {
+    "objectID": "NMRanalytics.html#choline",
+    "href": "NMRanalytics.html#choline",
+    "title": "NMR analytics",
+    "section": "Choline",
+    "text": "Choline"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine-2",
+    "href": "NMRanalytics.html#creatine-2",
+    "title": "NMR analytics",
+    "section": "Creatine 2",
+    "text": "Creatine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#fumarate",
+    "href": "NMRanalytics.html#fumarate",
+    "title": "NMR analytics",
+    "section": "Fumarate",
+    "text": "Fumarate"
+  },
+  {
+    "objectID": "NMRanalytics.html#glutamate",
+    "href": "NMRanalytics.html#glutamate",
+    "title": "NMR analytics",
+    "section": "Glutamate",
+    "text": "Glutamate"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-1",
+    "href": "NMRanalytics.html#glycerol-1",
+    "title": "NMR analytics",
+    "section": "Glycerol 1",
+    "text": "Glycerol 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-2",
+    "href": "NMRanalytics.html#glycerol-2",
+    "title": "NMR analytics",
+    "section": "Glycerol 2",
+    "text": "Glycerol 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol-3",
+    "href": "NMRanalytics.html#glycerol-3",
+    "title": "NMR analytics",
+    "section": "Glycerol 3",
+    "text": "Glycerol 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycine",
+    "href": "NMRanalytics.html#glycine",
+    "title": "NMR analytics",
+    "section": "Glycine",
+    "text": "Glycine"
+  },
+  {
+    "objectID": "NMRanalytics.html#hypoxanthine1",
+    "href": "NMRanalytics.html#hypoxanthine1",
+    "title": "NMR analytics",
+    "section": "Hypoxanthine1",
+    "text": "Hypoxanthine1"
+  },
+  {
+    "objectID": "NMRanalytics.html#hypoxanthine2",
+    "href": "NMRanalytics.html#hypoxanthine2",
+    "title": "NMR analytics",
+    "section": "Hypoxanthine2",
+    "text": "Hypoxanthine2"
+  },
+  {
+    "objectID": "NMRanalytics.html#isobutyrate",
+    "href": "NMRanalytics.html#isobutyrate",
+    "title": "NMR analytics",
+    "section": "Isobutyrate",
+    "text": "Isobutyrate"
+  },
+  {
+    "objectID": "NMRanalytics.html#isoleucine-1",
+    "href": "NMRanalytics.html#isoleucine-1",
+    "title": "NMR analytics",
+    "section": "Isoleucine 1",
+    "text": "Isoleucine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#lysine-1",
+    "href": "NMRanalytics.html#lysine-1",
+    "title": "NMR analytics",
+    "section": "Lysine 1",
+    "text": "Lysine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#methylamine",
+    "href": "NMRanalytics.html#methylamine",
+    "title": "NMR analytics",
+    "section": "Methylamine",
+    "text": "Methylamine"
+  },
+  {
+    "objectID": "NMRanalytics.html#propionate-1_1",
+    "href": "NMRanalytics.html#propionate-1_1",
+    "title": "NMR analytics",
+    "section": "Propionate 1_1",
+    "text": "Propionate 1_1"
+  },
+  {
+    "objectID": "NMRanalytics.html#propionate-1_2",
+    "href": "NMRanalytics.html#propionate-1_2",
+    "title": "NMR analytics",
+    "section": "Propionate 1_2",
+    "text": "Propionate 1_2"
+  },
+  {
+    "objectID": "NMRanalytics.html#sarcosine",
+    "href": "NMRanalytics.html#sarcosine",
+    "title": "NMR analytics",
+    "section": "Sarcosine",
+    "text": "Sarcosine"
+  },
+  {
+    "objectID": "NMRanalytics.html#succinate",
+    "href": "NMRanalytics.html#succinate",
+    "title": "NMR analytics",
+    "section": "Succinate",
+    "text": "Succinate"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-1",
+    "href": "NMRanalytics.html#tryptophan-1",
+    "title": "NMR analytics",
+    "section": "Tryptophan 1",
+    "text": "Tryptophan 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-2",
+    "href": "NMRanalytics.html#tryptophan-2",
+    "title": "NMR analytics",
+    "section": "Tryptophan 2",
+    "text": "Tryptophan 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#tryptophan-3",
+    "href": "NMRanalytics.html#tryptophan-3",
+    "title": "NMR analytics",
+    "section": "Tryptophan 3",
+    "text": "Tryptophan 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-1",
+    "href": "NMRanalytics.html#uracil-1",
+    "title": "NMR analytics",
+    "section": "Uracil 1",
+    "text": "Uracil 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-2",
+    "href": "NMRanalytics.html#uracil-2",
+    "title": "NMR analytics",
+    "section": "Uracil 2",
+    "text": "Uracil 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#uracil-3",
+    "href": "NMRanalytics.html#uracil-3",
+    "title": "NMR analytics",
+    "section": "Uracil 3",
+    "text": "Uracil 3"
   },
   {
     "objectID": "NMRanalytics.html#valine",
@@ -21,6 +308,293 @@
     "text": "Valine"
   },
   {
+    "objectID": "NMRanalytics.html#valine-3",
+    "href": "NMRanalytics.html#valine-3",
+    "title": "NMR analytics",
+    "section": "Valine 3",
+    "text": "Valine 3"
+  },
+  {
+    "objectID": "NMRanalytics.html#aminobutyric-acid",
+    "href": "NMRanalytics.html#aminobutyric-acid",
+    "title": "NMR analytics",
+    "section": "2-aminobutyric acid",
+    "text": "2-aminobutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#hydroxybutyric-acid-1",
+    "href": "NMRanalytics.html#hydroxybutyric-acid-1",
+    "title": "NMR analytics",
+    "section": "3-hydroxybutyric acid",
+    "text": "3-hydroxybutyric acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ccch2cc",
+    "href": "NMRanalytics.html#lp-ccch2cc",
+    "title": "NMR analytics",
+    "section": "LP (C=CCH2C=C)",
+    "text": "LP (C=CCH2C=C)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
+    "href": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
+    "title": "NMR analytics",
+    "section": "LP (CH of unsaturated lipids)",
+    "text": "LP (CH of unsaturated lipids)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2",
+    "href": "NMRanalytics.html#lp-ch2",
+    "title": "NMR analytics",
+    "section": "LP (CH2)",
+    "text": "LP (CH2)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2cco-1",
+    "href": "NMRanalytics.html#lp-ch2cco-1",
+    "title": "NMR analytics",
+    "section": "LP (CH2CCO) 1",
+    "text": "LP (CH2CCO) 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-ch2ocor",
+    "href": "NMRanalytics.html#lp-ch2ocor",
+    "title": "NMR analytics",
+    "section": "LP (CH2OCOR)",
+    "text": "LP (CH2OCOR)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lp-chocor",
+    "href": "NMRanalytics.html#lp-chocor",
+    "title": "NMR analytics",
+    "section": "LP (CHOCOR)",
+    "text": "LP (CHOCOR)"
+  },
+  {
+    "objectID": "NMRanalytics.html#lpch3",
+    "href": "NMRanalytics.html#lpch3",
+    "title": "NMR analytics",
+    "section": "LP(CH3)",
+    "text": "LP(CH3)"
+  },
+  {
+    "objectID": "NMRanalytics.html#propylene-glycol",
+    "href": "NMRanalytics.html#propylene-glycol",
+    "title": "NMR analytics",
+    "section": "Propylene glycol",
+    "text": "Propylene glycol"
+  },
+  {
+    "objectID": "NMRanalytics.html#acetoacetic-acid",
+    "href": "NMRanalytics.html#acetoacetic-acid",
+    "title": "NMR analytics",
+    "section": "Acetoacetic acid",
+    "text": "Acetoacetic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#acetone",
+    "href": "NMRanalytics.html#acetone",
+    "title": "NMR analytics",
+    "section": "Acetone",
+    "text": "Acetone"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-3-hydroxybutyrate",
+    "href": "NMRanalytics.html#bin-3-hydroxybutyrate",
+    "title": "NMR analytics",
+    "section": "Bin-3-hydroxybutyrate",
+    "text": "Bin-3-hydroxybutyrate"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lp-cch2cc",
+    "href": "NMRanalytics.html#bin-lp-cch2cc",
+    "title": "NMR analytics",
+    "section": "Bin-LP (CCH2C=C)",
+    "text": "Bin-LP (CCH2C=C)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
+    "href": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
+    "title": "NMR analytics",
+    "section": "Bin-LP (CCH2C=C)-isovaleric acid-proline",
+    "text": "Bin-LP (CCH2C=C)-isovaleric acid-proline"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-choline-glucose-tryptophan",
+    "href": "NMRanalytics.html#bin-choline-glucose-tryptophan",
+    "title": "NMR analytics",
+    "section": "Bin-choline-glucose-tryptophan",
+    "text": "Bin-choline-glucose-tryptophan"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
+    "href": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
+    "title": "NMR analytics",
+    "section": "Bin-glucose-dimethylglycine-glutamic acid-lysine)",
+    "text": "Bin-glucose-dimethylglycine-glutamic acid-lysine)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamic-acid-alanine",
+    "href": "NMRanalytics.html#bin-glutamic-acid-alanine",
+    "title": "NMR analytics",
+    "section": "Bin-glutamic acid-alanine",
+    "text": "Bin-glutamic acid-alanine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glutamine",
+    "href": "NMRanalytics.html#bin-glutamine",
+    "title": "NMR analytics",
+    "section": "Bin-glutamine",
+    "text": "Bin-glutamine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-glycerol-threonine",
+    "href": "NMRanalytics.html#bin-glycerol-threonine",
+    "title": "NMR analytics",
+    "section": "Bin-glycerol-threonine",
+    "text": "Bin-glycerol-threonine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
+    "href": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
+    "title": "NMR analytics",
+    "section": "Bin-histidine-serine-tyrosine-tryptophan",
+    "text": "Bin-histidine-serine-tyrosine-tryptophan"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isoleucine-glycerol",
+    "href": "NMRanalytics.html#bin-isoleucine-glycerol",
+    "title": "NMR analytics",
+    "section": "Bin-isoleucine-glycerol",
+    "text": "Bin-isoleucine-glycerol"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
+    "href": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
+    "title": "NMR analytics",
+    "section": "Bin-isovaleric acid-glutamic acid-proline",
+    "text": "Bin-isovaleric acid-glutamic acid-proline"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-leucine-isoleucine",
+    "href": "NMRanalytics.html#bin-leucine-isoleucine",
+    "title": "NMR analytics",
+    "section": "Bin-leucine-isoleucine",
+    "text": "Bin-leucine-isoleucine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-lysine",
+    "href": "NMRanalytics.html#bin-lysine",
+    "title": "NMR analytics",
+    "section": "Bin-lysine",
+    "text": "Bin-lysine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
+    "href": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
+    "title": "NMR analytics",
+    "section": "Bin-proline-methionine-glutamic acid-glutamine)",
+    "text": "Bin-proline-methionine-glutamic acid-glutamine)"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-tyramine-tyrosine",
+    "href": "NMRanalytics.html#bin-tyramine-tyrosine",
+    "title": "NMR analytics",
+    "section": "Bin-tyramine-tyrosine",
+    "text": "Bin-tyramine-tyrosine"
+  },
+  {
+    "objectID": "NMRanalytics.html#bin-α-glucose-serine",
+    "href": "NMRanalytics.html#bin-α-glucose-serine",
+    "title": "NMR analytics",
+    "section": "Bin-α-glucose-serine",
+    "text": "Bin-α-glucose-serine"
+  },
+  {
+    "objectID": "NMRanalytics.html#cholesterol",
+    "href": "NMRanalytics.html#cholesterol",
+    "title": "NMR analytics",
+    "section": "Cholesterol",
+    "text": "Cholesterol"
+  },
+  {
+    "objectID": "NMRanalytics.html#citric-acid-1",
+    "href": "NMRanalytics.html#citric-acid-1",
+    "title": "NMR analytics",
+    "section": "Citric acid 1",
+    "text": "Citric acid 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#citric-acid-2",
+    "href": "NMRanalytics.html#citric-acid-2",
+    "title": "NMR analytics",
+    "section": "Citric acid 2",
+    "text": "Citric acid 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatine",
+    "href": "NMRanalytics.html#creatine",
+    "title": "NMR analytics",
+    "section": "Creatine",
+    "text": "Creatine"
+  },
+  {
+    "objectID": "NMRanalytics.html#creatinine-1",
+    "href": "NMRanalytics.html#creatinine-1",
+    "title": "NMR analytics",
+    "section": "Creatinine 1",
+    "text": "Creatinine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#glucose-1",
+    "href": "NMRanalytics.html#glucose-1",
+    "title": "NMR analytics",
+    "section": "Glucose 1",
+    "text": "Glucose 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#glutamic-acid",
+    "href": "NMRanalytics.html#glutamic-acid",
+    "title": "NMR analytics",
+    "section": "Glutamic acid",
+    "text": "Glutamic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycerol",
+    "href": "NMRanalytics.html#glycerol",
+    "title": "NMR analytics",
+    "section": "Glycerol",
+    "text": "Glycerol"
+  },
+  {
+    "objectID": "NMRanalytics.html#glycoprotein-acetyls",
+    "href": "NMRanalytics.html#glycoprotein-acetyls",
+    "title": "NMR analytics",
+    "section": "Glycoprotein (acetyls)",
+    "text": "Glycoprotein (acetyls)"
+  },
+  {
+    "objectID": "NMRanalytics.html#histidine-1",
+    "href": "NMRanalytics.html#histidine-1",
+    "title": "NMR analytics",
+    "section": "Histidine 1",
+    "text": "Histidine 1"
+  },
+  {
+    "objectID": "NMRanalytics.html#histidine-2",
+    "href": "NMRanalytics.html#histidine-2",
+    "title": "NMR analytics",
+    "section": "Histidine 2",
+    "text": "Histidine 2"
+  },
+  {
+    "objectID": "NMRanalytics.html#isobutyric-acid-1",
+    "href": "NMRanalytics.html#isobutyric-acid-1",
+    "title": "NMR analytics",
+    "section": "Isobutyric acid 1",
+    "text": "Isobutyric acid 1"
+  },
+  {
     "objectID": "NMRanalytics.html#isoleucine",
     "href": "NMRanalytics.html#isoleucine",
     "title": "NMR analytics",
@@ -28,18 +602,25 @@
     "text": "Isoleucine"
   },
   {
-    "objectID": "NMRanalytics.html#lactate",
-    "href": "NMRanalytics.html#lactate",
+    "objectID": "NMRanalytics.html#proline-1",
+    "href": "NMRanalytics.html#proline-1",
     "title": "NMR analytics",
-    "section": "Lactate",
-    "text": "Lactate\n\n\nShow code\nknitr::include_graphics(\"img/interval_3.png\") \n\n\n\n\n\n\n\n\n\nShow code\nknitr::include_graphics(\"img/interval_3scatter.png\")"
+    "section": "Proline 1",
+    "text": "Proline 1"
   },
   {
-    "objectID": "NMRanalytics.html#alanine",
-    "href": "NMRanalytics.html#alanine",
+    "objectID": "NMRanalytics.html#pyruvic-acid",
+    "href": "NMRanalytics.html#pyruvic-acid",
     "title": "NMR analytics",
-    "section": "Alanine",
-    "text": "Alanine"
+    "section": "Pyruvic acid",
+    "text": "Pyruvic acid"
+  },
+  {
+    "objectID": "NMRanalytics.html#tyramine",
+    "href": "NMRanalytics.html#tyramine",
+    "title": "NMR analytics",
+    "section": "Tyramine",
+    "text": "Tyramine"
   },
   {
     "objectID": "test.html",
@@ -89,6 +670,20 @@
     "title": "Demographics",
     "section": "Multivariate distribution (PC3 vs PC4)",
     "text": "Multivariate distribution (PC3 vs PC4)\n\n\nShow code\nSCORESdemo %&gt;% \n  ggplot(data = ., aes(PC3,PC4, color = val)) + \n  geom_point() +\n  stat_ellipse(aes(group = val)) + \n  facet_wrap(~demo + omics, scales = 'free', ncol = 3) + \n  theme(legend.position = 'bottom')"
+  },
+  {
+    "objectID": "prediction.html",
+    "href": "prediction.html",
+    "title": "Prediction",
+    "section": "",
+    "text": "Show code\nphyXlong &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;10, TRUE) %&gt;% \n  psmelt() %&gt;%\n  gather(mtb,val,X2.hydroxybutyric.acid:valine) %&gt;% \n  filter(!str_detect(mtb,'EREC')) %&gt;% \n  filter(!str_detect(mtb,'TSP'))\n\n\ntb_cor &lt;- phyXlong %&gt;% \n  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %&gt;% \n  do(cor.test(data = ., ~val + Abundance,method = 'spearman') %&gt;% tidy)\n\ntb_lmer &lt;- phyXlong %&gt;% \n  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %&gt;% \n  do(lmer(data = ., val ~ log(Abundance+0.0001) + (1|Participant)) %&gt;% tidy)\n\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% arrange(p.value)\n\n\nsave(file = 'microbiome_vs_nmr_models.RData', list = c('tb_lmer'))\n\n\n\n\n\n\nShow code\nload(file = '/Users/morten.arendt/Library/CloudStorage/Dropbox/Bekzod&Isabella/NMR data/analysis/microbiome_vs_nmr_models.RData')\n\nfmrt &lt;- list(\n  \n  p.value = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  ),\n  \n  estimate = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  ),\n  \n  std.error = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  )\n)\n\ntb_lmer &lt;- tb_lmer %&gt;% \n  ungroup %&gt;% \n  mutate(ta5 = ifelse(ta5 %in% c('F__','__'),'Other',ta5),\n         ta5lmp = ta5 %&gt;% fct_lump(n = 14), \n         pvcut = ifelse(p.value&lt;0.05,'sign','ns'))\n\ntb_lmer %&gt;% \n  filter(str_detect(term,'log')) %&gt;% \n  ggplot(data =.,aes(estimate,-log10(p.value))) + \n  geom_point()\n\n\n\n\n\n\n\n\n\nShow code\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  ungroup %&gt;% \n  dplyr::select(mtb,ta4,ta5,ta6,ta7,estimate,std.error, p.value) %&gt;% \n  reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  ggplot(data =.,aes(ta5lmp, estimate,fill = pvcut)) + \n  geom_boxplot() + \n  theme(legend.position = 'bottom') + \n  coord_flip()\n\n\n\n\n\n\n\n\n\nShow code\n# tb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  # group_by(ta5lmp) %&gt;% \n  # dplyr::summarise(nneg = sum(estimate&lt;0), npos = sum(estimate&gt;0), \n                   # pv = 1 - pbinom(max(npos,nneg)-1,nneg+npos,0.5))\n\ntb_lmer %&gt;% \n  filter(str_detect(term,'log')) %&gt;% \n  ggplot(data = ., aes(OTU,substr(mtb,1,20),fill = estimate)) + \n  geom_tile() + \n  scale_fill_gradient2(mid = 'white', midpoint = 0)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow code\nlibrary(caret)\nphyXpp &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;10, TRUE) \n\nX &lt;- phyXpp@otu_table %&gt;% data.frame()\nY &lt;- phyXpp@sam_data %&gt;% data.frame() %&gt;% dplyr::select(-TSP,-ERECTIC)\n\nc &lt;- 0\nCVindex &lt;- list()\nfor (i in unique(Y$participant)) {\n  c &lt;- c+1\n  CVindex[[c]] &lt;- which(Y$participant!=i)\n}\n\nrepCV10 &lt;- trainControl(returnResamp = \"all\", \n                        savePredictions = \"all\", \n                        allowParallel = T, \n                        verboseIter = F,\n                        index = CVindex)\nmdl &lt;- list()\nfor (i in 34:169){\n  # print(i)\n  X$y &lt;- Y[,i]\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:10,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl[[i]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_16smodels.RData', list = c('mdl'))\n\n# null distribution \nmdl_perm &lt;- list()\nfor (c in 1:100){\n  # print(c)\n  i &lt;- sample(34:169)[1]\n  X$y &lt;- sample(Y[,i])\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_perm[[c]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_16s_permsmodels.RData', list = c('mdl_perm'))\n\n\n# loads &lt;- data.frame(breg = SPLS_model$finalModel$betahat,\n#                     SPLS_model_class$finalModel$betahat) %&gt;% \n#   data.frame() %&gt;% rownames_to_column() %&gt;% \n#   right_join(DAres, by = 'rowname')\n\n\n\n\n\n\n\nShow code\nlibrary(caret)\nphyITSpp &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %&gt;% \n  transform_sample_counts(function(x) as.numeric(x&gt;0)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;9, TRUE) \n\nX &lt;- phyITSpp@otu_table %&gt;% data.frame()\nY &lt;- phyITSpp@sam_data %&gt;% data.frame() %&gt;% dplyr::select(-TSP,-ERECTIC)\n\nc &lt;- 0\nCVindex &lt;- list()\nfor (i in unique(Y$participant)) {\n  c &lt;- c+1\n  CVindex[[c]] &lt;- which(Y$participant!=i)\n}\n\nrepCV10 &lt;- trainControl(returnResamp = \"all\", \n                        savePredictions = \"all\", \n                        allowParallel = T, \n                        verboseIter = F,\n                        index = CVindex)\nmdl_ITS &lt;- list()\nfor (i in 34:169){\n  X$y &lt;- Y[,i]\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_ITS[[i]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_ITSsmodels.RData', list = c('mdl_ITS'))\n\n# null distribution \nmdl_ITS_perm &lt;- list()\nfor (c in 1:100){\n  i &lt;- sample(34:169)[1]\n  X$y &lt;- sample(Y[,i])\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_ITS_perm[[c]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_ITS_permsmodels.RData', list = c('mdl_ITS_perm'))\n\n\n\n\nShow code\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITSsmodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16smodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITS_permsmodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16s_permsmodels.RData')\nbeta &lt;- res &lt;- data.frame()\nfor (i in 34:169){\n  # print(i)\n  res &lt;- res %&gt;% \n    bind_rows(mdl[[i]]$results %&gt;% arrange(RMSE) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl[[i]]$sdy, metabolite = mdl[[i]]$metabolite, method = '16s'),\n              mdl_ITS[[i]]$results %&gt;% arrange(RMSE) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_ITS[[i]]$sdy, metabolite = mdl_ITS[[i]]$metabolite, method = 'ITS'))\n  \n  \n  beta &lt;- beta %&gt;% bind_rows(data.frame(breg = mdl[[i]]$finalModel$betahat,\n                                        metabolite = mdl[[i]]$metabolite, \n                                        method = '16s')%&gt;% rownames_to_column('OTU'),\n                             data.frame(breg = mdl_ITS[[i]]$finalModel$betahat,\n                                        metabolite = mdl_ITS[[i]]$metabolite, \n                                        method = 'ITS')%&gt;% rownames_to_column('OTU'))\n  \n}\n# metclass &lt;- MEconc_newlong %&gt;% dplyr::select(met,SigMa_class,category) %&gt;% filter(!duplicated(met)) %&gt;% filter(!str_detect(met,'PC')) %&gt;% filter(!str_detect(met,'TSP')) %&gt;% cbind(res %&gt;% filter(method == 'ITS') %&gt;% dplyr::select(metabolite))\n\nres &lt;- res %&gt;% \n  filter(!str_detect(metabolite,'TSP')) %&gt;% \n  left_join(MEclass, by = c('metabolite' = 'Interval_name')) %&gt;% \n  mutate(R2 = 1 - (RMSE^2 / sdy^2))\n\nresperm &lt;- data.frame()\nfor (i in 1:100){\n  resperm &lt;- resperm %&gt;% \n    bind_rows(mdl_ITS_perm[[i]]$results %&gt;% arrange(-Rsquared) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_ITS_perm[[i]]$sdy, metabolite = mdl_ITS_perm[[i]]$metabolite, method = 'ITS'),\n              mdl_perm[[i]]$results %&gt;% arrange(-Rsquared) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_perm[[i]]$sdy, metabolite = mdl_perm[[i]]$metabolite, method = '16s'))\n}\n\nresperm &lt;- resperm %&gt;% mutate(R2 = 1 - RMSE^2 / sdy^2)\n\n\n\n\n\n\n\nShow code\n# resperm %&gt;% \n  # ggplot(data = ., aes(Rsquared)) + geom_histogram() + facet_wrap(~method)\n\nrespermsum &lt;- resperm %&gt;% \n  group_by(method) %&gt;% \n  summarise(mn = mean(Rsquared), \n            s = sd(Rsquared))\nR2sign_16s &lt;- qnorm(0.95,mean = respermsum$mn[1],sd = respermsum$s[1])\nR2sign_ITS &lt;- qnorm(0.95,mean = respermsum$mn[2],sd = respermsum$s[2])\n\nbeta &lt;- beta %&gt;%left_join(res, by = c('metabolite','method')) %&gt;% \n  filter(metabolite!='ERECTIC')\n\n\n\n\n\n\n\nShow code\nres %&gt;% \n  ggplot(data = ., aes(metabolite,Rsquared, color = method)) + \n  # geom_hline(yintercept = R2sign_ITS, color = 'green') + \n  # geom_hline(yintercept = R2sign_16s, color = 'red') + \n  geom_point()\n\n\n\n\n\n\n\n\n\nShow code\ng_r2 &lt;- res %&gt;% \n  left_join(dflb, by = 'category') %&gt;% \n  filter(!is.na(lb)) %&gt;% \n  # group_by(lb) %&gt;% \n  # mutate(category2 = paste(lb, ' (#', n() / 2,')', sep = ''))  %&gt;% \n  # ungroup %&gt;% \n  mutate(lb = lb %&gt;% factor(levels = dflb$lb[1:9])) %&gt;% \n  ggplot(data= ., aes(lb,RMSE / sdy, fill = method)) + \n  geom_boxplot() +\n  scale_y_reverse() + \n  geom_point(position = position_dodge(width = 0.75)) + \n  # geom_hline(data = data.frame(R2cut = c(R2sign_16s,R2sign_ITS), method = c('16s','ITS')), \n  # aes(yintercept = R2cut, color = method)) + \n  # geom_point(position = position_dodge(width = 0.8), aes(group = method), size = 1) + \n  scale_fill_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2]) + \n  scale_color_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2], guide = 'none') + \n  # scale_x_discrete(breaks = dflb$lb[1:9], values = dflb$lb[1:9]) + \n  theme_bw() + \n  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust =  0), \n        legend.position = 'bottom') + labs(fill = NULL) + \n  xlab(NULL)\n\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  group_by(method,category) %&gt;% \n  summarise(R2 = mean(R2)) %&gt;% \n  friedman.test(R2 ~ method | category ,data = .) \n\n\n\n    Friedman rank sum test\n\ndata:  R2 and method and category\nFriedman chi-squared = 9, df = 1, p-value = 0.003\n\n\nShow code\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  lm(rank(R2) ~ method  + category ,data = .) %&gt;% anova %&gt;% tidy\n\n\n# A tibble: 3 × 6\n  term         df   sumsq meansq statistic   p.value\n  &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 method        1  66960. 66960.    11.6    0.000832\n2 category      8  41581.  5198.     0.904  0.515   \n3 Residuals   146 839351.  5749.    NA     NA       \n\n\nShow code\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  group_by(method) %&gt;% \n  summarise(R2m = median(R2), \n            q1 = quantile(R2,0.25),\n            q3 = quantile(R2,0.75)) \n\n\n# A tibble: 2 × 4\n  method   R2m     q1    q3\n  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1 16s    0.232 0.117  0.469\n2 ITS    0.105 0.0544 0.195\n\n\n\n\nShow code\nlibrary(gplots)\n\nggbeta &lt;- beta %&gt;% \n  left_join(dflb, by = 'category') %&gt;%\n  filter(!(lb %in% 'Other/Bin/Unknown')) %&gt;% \n  mutate(breg = breg/sdy) %&gt;% \n  filter(method == '16s') %&gt;% \n  filter((RMSE / sdy) &lt; 0.75) %&gt;% \n  group_by(metabolite) %&gt;% \n  mutate(nn = sum(abs(breg)&gt;0)) %&gt;% \n  filter(nn&gt;0) %&gt;% \n  group_by(OTU) %&gt;% \n  mutate(nn2 = sum(abs(breg)&gt;0)) %&gt;% \n  filter(nn2&gt;0) %&gt;% \n  left_join(phyX@tax_table %&gt;% data.frame() %&gt;% rownames_to_column('OTU') %&gt;% \n              left_join(bsum16s, by = c('ta2','ta3','ta4','ta5')), by = 'OTU') %&gt;% \n  mutate(OTU = OTU %&gt;% fct_reorder(ta5))\n\nlbs &lt;- ggbeta %&gt;% \n  group_by(OTU) %&gt;% \n  dplyr::summarise(lb = ta5[1], \n            lb4 = ta4[1], \n            lb3 = ta3[1], \n            lb2 = ta2[1], \n            n()) %&gt;% \n  arrange(lb)\n\n# 1) find lowest level of id, 2) remove F__\nfor (i in which(nchar(lbs$lb)&lt;4)){\n  id &lt;- which(nchar(lbs[i,])&gt;4)[1]\n  print(as.character(lbs[i,id]))\n  lbs$lb[i] &lt;- as.character(lbs[i,id])\n}\n\n\n[1] \"O__Eubacteriales\"\n[1] \"P__Actinomycetota\"\n[1] \"O__Bacteroidales\"\n[1] \"C__Coriobacteriia\"\n[1] \"P__Bacillota\"\n\n\nShow code\nlbs &lt;- lbs %&gt;% \n  mutate(lb = lb %&gt;% \n           gsub('F__','',x = .) %&gt;% \n           gsub('__','-',x = .))\n\n\ng5 &lt;- ggbeta %&gt;% \n  # remove bin from mtb label\n  mutate(metabolite = gsub('bin.','',x = metabolite)) %&gt;% \n  # filter of only bins / unk\n  filter(nchar(metabolite)&gt;6) %&gt;% \n  mutate(metabolite = gsub('X2.','2-',x = metabolite)) %&gt;% \n  filter(!str_detect(metabolite,'unk')) %&gt;% \n  filter(!str_detect(metabolite,'1_2')) %&gt;% \n  \n  ggplot(data = ., aes(metabolite,OTU,fill = breg)) + \n  geom_tile() + \n  scale_y_discrete(labels = lbs$lb,breaks =lbs$OTU ) +\n  scale_fill_gradient2(mid = 'white',midpoint = 0) + \n  theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + \n  xlab(NULL) + ylab(NULL)\n\n\ng_r2\n\n\n\n\n\n\n\n\n\n\n\nShow code\ng5 + coord_flip()"
+  },
+  {
+    "objectID": "prediction.html#compare-16sits-versus-me-nmr",
+    "href": "prediction.html#compare-16sits-versus-me-nmr",
+    "title": "Prediction",
+    "section": "",
+    "text": "Show code\nphyXlong &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;10, TRUE) %&gt;% \n  psmelt() %&gt;%\n  gather(mtb,val,X2.hydroxybutyric.acid:valine) %&gt;% \n  filter(!str_detect(mtb,'EREC')) %&gt;% \n  filter(!str_detect(mtb,'TSP'))\n\n\ntb_cor &lt;- phyXlong %&gt;% \n  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %&gt;% \n  do(cor.test(data = ., ~val + Abundance,method = 'spearman') %&gt;% tidy)\n\ntb_lmer &lt;- phyXlong %&gt;% \n  group_by(OTU,mtb,ta1,ta2,ta3,ta4,ta5,ta6,ta7) %&gt;% \n  do(lmer(data = ., val ~ log(Abundance+0.0001) + (1|Participant)) %&gt;% tidy)\n\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% arrange(p.value)\n\n\nsave(file = 'microbiome_vs_nmr_models.RData', list = c('tb_lmer'))\n\n\n\n\n\n\nShow code\nload(file = '/Users/morten.arendt/Library/CloudStorage/Dropbox/Bekzod&Isabella/NMR data/analysis/microbiome_vs_nmr_models.RData')\n\nfmrt &lt;- list(\n  \n  p.value = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  ),\n  \n  estimate = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  ),\n  \n  std.error = colDef(\n    cell = function(value) {\n      if (is.na(value)) return(\"\")\n      formatC(value, format = \"e\", digits = 2)\n    }\n  )\n)\n\ntb_lmer &lt;- tb_lmer %&gt;% \n  ungroup %&gt;% \n  mutate(ta5 = ifelse(ta5 %in% c('F__','__'),'Other',ta5),\n         ta5lmp = ta5 %&gt;% fct_lump(n = 14), \n         pvcut = ifelse(p.value&lt;0.05,'sign','ns'))\n\ntb_lmer %&gt;% \n  filter(str_detect(term,'log')) %&gt;% \n  ggplot(data =.,aes(estimate,-log10(p.value))) + \n  geom_point()\n\n\n\n\n\n\n\n\n\nShow code\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  ungroup %&gt;% \n  dplyr::select(mtb,ta4,ta5,ta6,ta7,estimate,std.error, p.value) %&gt;% \n  reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\ntb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  ggplot(data =.,aes(ta5lmp, estimate,fill = pvcut)) + \n  geom_boxplot() + \n  theme(legend.position = 'bottom') + \n  coord_flip()\n\n\n\n\n\n\n\n\n\nShow code\n# tb_lmer %&gt;% filter(str_detect(term,'log')) %&gt;% \n  # group_by(ta5lmp) %&gt;% \n  # dplyr::summarise(nneg = sum(estimate&lt;0), npos = sum(estimate&gt;0), \n                   # pv = 1 - pbinom(max(npos,nneg)-1,nneg+npos,0.5))\n\ntb_lmer %&gt;% \n  filter(str_detect(term,'log')) %&gt;% \n  ggplot(data = ., aes(OTU,substr(mtb,1,20),fill = estimate)) + \n  geom_tile() + \n  scale_fill_gradient2(mid = 'white', midpoint = 0)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow code\nlibrary(caret)\nphyXpp &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;10, TRUE) \n\nX &lt;- phyXpp@otu_table %&gt;% data.frame()\nY &lt;- phyXpp@sam_data %&gt;% data.frame() %&gt;% dplyr::select(-TSP,-ERECTIC)\n\nc &lt;- 0\nCVindex &lt;- list()\nfor (i in unique(Y$participant)) {\n  c &lt;- c+1\n  CVindex[[c]] &lt;- which(Y$participant!=i)\n}\n\nrepCV10 &lt;- trainControl(returnResamp = \"all\", \n                        savePredictions = \"all\", \n                        allowParallel = T, \n                        verboseIter = F,\n                        index = CVindex)\nmdl &lt;- list()\nfor (i in 34:169){\n  # print(i)\n  X$y &lt;- Y[,i]\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:10,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl[[i]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_16smodels.RData', list = c('mdl'))\n\n# null distribution \nmdl_perm &lt;- list()\nfor (c in 1:100){\n  # print(c)\n  i &lt;- sample(34:169)[1]\n  X$y &lt;- sample(Y[,i])\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_perm[[c]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_16s_permsmodels.RData', list = c('mdl_perm'))\n\n\n# loads &lt;- data.frame(breg = SPLS_model$finalModel$betahat,\n#                     SPLS_model_class$finalModel$betahat) %&gt;% \n#   data.frame() %&gt;% rownames_to_column() %&gt;% \n#   right_join(DAres, by = 'rowname')\n\n\n\n\n\n\n\nShow code\nlibrary(caret)\nphyITSpp &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %&gt;% \n  transform_sample_counts(function(x) as.numeric(x&gt;0)) %&gt;% \n  filter_taxa(function(x) sum(x &gt; 0)&gt;9, TRUE) \n\nX &lt;- phyITSpp@otu_table %&gt;% data.frame()\nY &lt;- phyITSpp@sam_data %&gt;% data.frame() %&gt;% dplyr::select(-TSP,-ERECTIC)\n\nc &lt;- 0\nCVindex &lt;- list()\nfor (i in unique(Y$participant)) {\n  c &lt;- c+1\n  CVindex[[c]] &lt;- which(Y$participant!=i)\n}\n\nrepCV10 &lt;- trainControl(returnResamp = \"all\", \n                        savePredictions = \"all\", \n                        allowParallel = T, \n                        verboseIter = F,\n                        index = CVindex)\nmdl_ITS &lt;- list()\nfor (i in 34:169){\n  X$y &lt;- Y[,i]\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_ITS[[i]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_ITSsmodels.RData', list = c('mdl_ITS'))\n\n# null distribution \nmdl_ITS_perm &lt;- list()\nfor (c in 1:100){\n  i &lt;- sample(34:169)[1]\n  X$y &lt;- sample(Y[,i])\n  sdy &lt;- sd(X$y)\n  SPLS_model &lt;- train(y ~ ., data = X, method = 'spls',\n                      preProc = c(\"center\", 'scale'),\n                      tuneGrid = expand.grid(K = 1:5,# K sets number of components\n                                             eta = seq(0,1,0.1), # eta sets sparsity\n                                             kappa = 0.5), \n                      trControl = repCV10)\n  SPLS_model$sdy &lt;- sdy\n  SPLS_model$metabolite &lt;- colnames(Y)[i]\n  mdl_ITS_perm[[c]] &lt;- SPLS_model\n}\nsave(file = 'metabolite_ITS_permsmodels.RData', list = c('mdl_ITS_perm'))\n\n\n\n\nShow code\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITSsmodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16smodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_ITS_permsmodels.RData')\nload(file = '~/Dropbox/Bekzod&Isabella/NMR data/analysis/metabolite_16s_permsmodels.RData')\nbeta &lt;- res &lt;- data.frame()\nfor (i in 34:169){\n  # print(i)\n  res &lt;- res %&gt;% \n    bind_rows(mdl[[i]]$results %&gt;% arrange(RMSE) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl[[i]]$sdy, metabolite = mdl[[i]]$metabolite, method = '16s'),\n              mdl_ITS[[i]]$results %&gt;% arrange(RMSE) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_ITS[[i]]$sdy, metabolite = mdl_ITS[[i]]$metabolite, method = 'ITS'))\n  \n  \n  beta &lt;- beta %&gt;% bind_rows(data.frame(breg = mdl[[i]]$finalModel$betahat,\n                                        metabolite = mdl[[i]]$metabolite, \n                                        method = '16s')%&gt;% rownames_to_column('OTU'),\n                             data.frame(breg = mdl_ITS[[i]]$finalModel$betahat,\n                                        metabolite = mdl_ITS[[i]]$metabolite, \n                                        method = 'ITS')%&gt;% rownames_to_column('OTU'))\n  \n}\n# metclass &lt;- MEconc_newlong %&gt;% dplyr::select(met,SigMa_class,category) %&gt;% filter(!duplicated(met)) %&gt;% filter(!str_detect(met,'PC')) %&gt;% filter(!str_detect(met,'TSP')) %&gt;% cbind(res %&gt;% filter(method == 'ITS') %&gt;% dplyr::select(metabolite))\n\nres &lt;- res %&gt;% \n  filter(!str_detect(metabolite,'TSP')) %&gt;% \n  left_join(MEclass, by = c('metabolite' = 'Interval_name')) %&gt;% \n  mutate(R2 = 1 - (RMSE^2 / sdy^2))\n\nresperm &lt;- data.frame()\nfor (i in 1:100){\n  resperm &lt;- resperm %&gt;% \n    bind_rows(mdl_ITS_perm[[i]]$results %&gt;% arrange(-Rsquared) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_ITS_perm[[i]]$sdy, metabolite = mdl_ITS_perm[[i]]$metabolite, method = 'ITS'),\n              mdl_perm[[i]]$results %&gt;% arrange(-Rsquared) %&gt;% head(1) %&gt;% \n                mutate(sdy = mdl_perm[[i]]$sdy, metabolite = mdl_perm[[i]]$metabolite, method = '16s'))\n}\n\nresperm &lt;- resperm %&gt;% mutate(R2 = 1 - RMSE^2 / sdy^2)\n\n\n\n\n\n\n\nShow code\n# resperm %&gt;% \n  # ggplot(data = ., aes(Rsquared)) + geom_histogram() + facet_wrap(~method)\n\nrespermsum &lt;- resperm %&gt;% \n  group_by(method) %&gt;% \n  summarise(mn = mean(Rsquared), \n            s = sd(Rsquared))\nR2sign_16s &lt;- qnorm(0.95,mean = respermsum$mn[1],sd = respermsum$s[1])\nR2sign_ITS &lt;- qnorm(0.95,mean = respermsum$mn[2],sd = respermsum$s[2])\n\nbeta &lt;- beta %&gt;%left_join(res, by = c('metabolite','method')) %&gt;% \n  filter(metabolite!='ERECTIC')\n\n\n\n\n\n\n\nShow code\nres %&gt;% \n  ggplot(data = ., aes(metabolite,Rsquared, color = method)) + \n  # geom_hline(yintercept = R2sign_ITS, color = 'green') + \n  # geom_hline(yintercept = R2sign_16s, color = 'red') + \n  geom_point()\n\n\n\n\n\n\n\n\n\nShow code\ng_r2 &lt;- res %&gt;% \n  left_join(dflb, by = 'category') %&gt;% \n  filter(!is.na(lb)) %&gt;% \n  # group_by(lb) %&gt;% \n  # mutate(category2 = paste(lb, ' (#', n() / 2,')', sep = ''))  %&gt;% \n  # ungroup %&gt;% \n  mutate(lb = lb %&gt;% factor(levels = dflb$lb[1:9])) %&gt;% \n  ggplot(data= ., aes(lb,RMSE / sdy, fill = method)) + \n  geom_boxplot() +\n  scale_y_reverse() + \n  geom_point(position = position_dodge(width = 0.75)) + \n  # geom_hline(data = data.frame(R2cut = c(R2sign_16s,R2sign_ITS), method = c('16s','ITS')), \n  # aes(yintercept = R2cut, color = method)) + \n  # geom_point(position = position_dodge(width = 0.8), aes(group = method), size = 1) + \n  scale_fill_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2]) + \n  scale_color_manual(values = colorcodes[1:2], labels = colorcodesnames[1:2], guide = 'none') + \n  # scale_x_discrete(breaks = dflb$lb[1:9], values = dflb$lb[1:9]) + \n  theme_bw() + \n  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust =  0), \n        legend.position = 'bottom') + labs(fill = NULL) + \n  xlab(NULL)\n\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  group_by(method,category) %&gt;% \n  summarise(R2 = mean(R2)) %&gt;% \n  friedman.test(R2 ~ method | category ,data = .) \n\n\n\n    Friedman rank sum test\n\ndata:  R2 and method and category\nFriedman chi-squared = 9, df = 1, p-value = 0.003\n\n\nShow code\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  lm(rank(R2) ~ method  + category ,data = .) %&gt;% anova %&gt;% tidy\n\n\n# A tibble: 3 × 6\n  term         df   sumsq meansq statistic   p.value\n  &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 method        1  66960. 66960.    11.6    0.000832\n2 category      8  41581.  5198.     0.904  0.515   \n3 Residuals   146 839351.  5749.    NA     NA       \n\n\nShow code\nres %&gt;% \n  filter(!is.na(R2)) %&gt;% \n  group_by(method) %&gt;% \n  summarise(R2m = median(R2), \n            q1 = quantile(R2,0.25),\n            q3 = quantile(R2,0.75)) \n\n\n# A tibble: 2 × 4\n  method   R2m     q1    q3\n  &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1 16s    0.232 0.117  0.469\n2 ITS    0.105 0.0544 0.195\n\n\n\n\nShow code\nlibrary(gplots)\n\nggbeta &lt;- beta %&gt;% \n  left_join(dflb, by = 'category') %&gt;%\n  filter(!(lb %in% 'Other/Bin/Unknown')) %&gt;% \n  mutate(breg = breg/sdy) %&gt;% \n  filter(method == '16s') %&gt;% \n  filter((RMSE / sdy) &lt; 0.75) %&gt;% \n  group_by(metabolite) %&gt;% \n  mutate(nn = sum(abs(breg)&gt;0)) %&gt;% \n  filter(nn&gt;0) %&gt;% \n  group_by(OTU) %&gt;% \n  mutate(nn2 = sum(abs(breg)&gt;0)) %&gt;% \n  filter(nn2&gt;0) %&gt;% \n  left_join(phyX@tax_table %&gt;% data.frame() %&gt;% rownames_to_column('OTU') %&gt;% \n              left_join(bsum16s, by = c('ta2','ta3','ta4','ta5')), by = 'OTU') %&gt;% \n  mutate(OTU = OTU %&gt;% fct_reorder(ta5))\n\nlbs &lt;- ggbeta %&gt;% \n  group_by(OTU) %&gt;% \n  dplyr::summarise(lb = ta5[1], \n            lb4 = ta4[1], \n            lb3 = ta3[1], \n            lb2 = ta2[1], \n            n()) %&gt;% \n  arrange(lb)\n\n# 1) find lowest level of id, 2) remove F__\nfor (i in which(nchar(lbs$lb)&lt;4)){\n  id &lt;- which(nchar(lbs[i,])&gt;4)[1]\n  print(as.character(lbs[i,id]))\n  lbs$lb[i] &lt;- as.character(lbs[i,id])\n}\n\n\n[1] \"O__Eubacteriales\"\n[1] \"P__Actinomycetota\"\n[1] \"O__Bacteroidales\"\n[1] \"C__Coriobacteriia\"\n[1] \"P__Bacillota\"\n\n\nShow code\nlbs &lt;- lbs %&gt;% \n  mutate(lb = lb %&gt;% \n           gsub('F__','',x = .) %&gt;% \n           gsub('__','-',x = .))\n\n\ng5 &lt;- ggbeta %&gt;% \n  # remove bin from mtb label\n  mutate(metabolite = gsub('bin.','',x = metabolite)) %&gt;% \n  # filter of only bins / unk\n  filter(nchar(metabolite)&gt;6) %&gt;% \n  mutate(metabolite = gsub('X2.','2-',x = metabolite)) %&gt;% \n  filter(!str_detect(metabolite,'unk')) %&gt;% \n  filter(!str_detect(metabolite,'1_2')) %&gt;% \n  \n  ggplot(data = ., aes(metabolite,OTU,fill = breg)) + \n  geom_tile() + \n  scale_y_discrete(labels = lbs$lb,breaks =lbs$OTU ) +\n  scale_fill_gradient2(mid = 'white',midpoint = 0) + \n  theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + \n  xlab(NULL) + ylab(NULL)\n\n\ng_r2\n\n\n\n\n\n\n\n\n\n\n\nShow code\ng5 + coord_flip()"
   },
   {
     "objectID": "index.html",
@@ -144,14 +739,14 @@
     "href": "composition.html#s",
     "title": "Composition",
     "section": "16s",
-    "text": "16s\nSequencing depth\n\n\nShow code\ndf_ME &lt;- MEconc_newlong %&gt;% filter(!duplicated(`Samples #`))\n\ndf_descrip &lt;- phyX@sam_data %&gt;% data.frame()\n\nphyX %&gt;% subset_samples(!is.na(cycle)) %&gt;% sample_sums() %&gt;% summary\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    158   12172   18628   16551   21661   26526 \n\n\n\nTable\n\n\nShow code\nTAXlv &lt;- c()\ngroup_vars_list &lt;- list()\nfor (i in 1:7){\n  txlv &lt;- paste('ta',i,sep = '')  \n  TAXlv &lt;- c(TAXlv,txlv)\n  group_vars_list[[i]] &lt;- TAXlv\n}\ni &lt;- 0\nphyXsummaries &lt;- list()\nfor (group_vars in group_vars_list) {\n  i &lt;- i+1\n  txlv &lt;- paste('ta',i,sep = '')  \n  phyXtaX &lt;- phyX %&gt;% \n    subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n    subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n    transform_sample_counts(function(x) x / sum(x)) %&gt;% \n    taxglom(txlv) %&gt;% \n    psmelt() %&gt;% \n    group_by_at(vars(one_of(group_vars))) %&gt;%\n    dplyr::summarise(abu = sum(Abundance), \n                     prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n    ungroup() %&gt;% \n    mutate(abu = abu/ sum(abu), \n           taxlevel = txlv) %&gt;% \n    arrange(-abu)\n  phyXsummaries[[i]] &lt;- phyXtaX\n}\n\nphyXtaX &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  psmelt() %&gt;% \n  group_by(ta5,ta6,ta7,OTU) %&gt;%\n  dplyr::summarise(abu = sum(Abundance), \n                   prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n  ungroup() %&gt;% \n  mutate(abu = abu/ sum(abu), \n         taxlevel = 'ASV') %&gt;% \n  arrange(-abu)\n\nphyXsummaries[[8]] &lt;- phyXtaX\n\nfmrt &lt;- list(\n  abu = colDef(format = colFormat(percent = TRUE, digits = 1)),\n  prevalence = colDef(format = colFormat(percent = TRUE, digits = 1))\n)\n\n\nphyXsummaries[[1]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[2]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[3]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[4]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[5]] %&gt;% dplyr::select(-ta1,-ta2) %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[6]] %&gt;% dplyr::select(-ta1,-ta2,-ta3) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[7]] %&gt;% dplyr::select(-ta1,-ta2,-ta3,-ta4) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[8]] %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\n\n\nFigure\n\nOverall distribution\n\n\nShow code\nb &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  tax_glom('ta5') %&gt;% \n  transform_sample_counts(function(x) x/ sum(x)) %&gt;% \n  psmelt()\n\nbsum &lt;- b %&gt;% \n  group_by(ta2,ta3,ta4,ta5) %&gt;% \n  summarise(mn = mean(Abundance)) %&gt;% \n  ungroup %&gt;% \n  arrange(-mn) %&gt;% \n  mutate(rnk = 1:n(), \n         lb = ifelse(rnk&lt;9,substr(ta5,4,30),'Other'),\n         lb = factor(lb)) %&gt;% \n  mutate(mny = mn / sum(mn)) %&gt;% \n  mutate(ypos = cumsum(mn) - 0.5*mn, \n         xpos = runif(n(),0.5,1.5))\n\nbsum$lb &lt;- factor(bsum$lb, levels = bsum$lb[1:9])\n\nbsum %&gt;% \n  mutate(omics = 'ME-16s') %&gt;% \n  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + \n  geom_bar(stat=\"identity\", width=1, color=\"white\") +\n  coord_polar(\"y\", start=0) +\n  scale_fill_manual(values=bsum16s$color)   + \n  theme_void() + \n  guides(fill = guide_legend(nrow = 3)) + \n  labs(fill = NULL) + \n  # geom_text(data = bsum[1:8,], aes(x = xpos,y = ypos, label = lb), color = \"black\", size=3) +\n  theme(legend.position = 'bottom' ) + \n  facet_wrap(~omics)\n\n\n\n\n\n\n\n\n\n\n\nIndividual distribution\n\n\nShow code\notutb16s &lt;- b %&gt;% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) \notutb16s %&gt;% \n  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + \n  geom_bar(stat = 'identity')"
+    "text": "16s\n\nPrimers\nPrimers for UMI16S:\nPrimers Sequence UMI_27Fa - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNAGAGTTTGATYMTGGCTYAG UMI_27Fb - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNAGGGTTCGATTCTGGCTCAG UMI_1540_R - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNTACGGYTACCTTGTTACGACT UMI_338Fa - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNACWCCTACGGGWGGCAGCAG UMI_338Fb - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACTCCTACGGGAGGCWGCAG UMI_1391R - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACGGGCGGTGTGTRCA\nSequencing depth\n\n\nShow code\ndf_ME &lt;- MEconc_newlong %&gt;% filter(!duplicated(`Samples #`))\n\ndf_descrip &lt;- phyX@sam_data %&gt;% data.frame()\n\nphyX %&gt;% subset_samples(!is.na(cycle)) %&gt;% sample_sums() %&gt;% summary\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    158   12172   18628   16551   21661   26526 \n\n\n\n\nTable\n\n\nShow code\nTAXlv &lt;- c()\ngroup_vars_list &lt;- list()\nfor (i in 1:7){\n  txlv &lt;- paste('ta',i,sep = '')  \n  TAXlv &lt;- c(TAXlv,txlv)\n  group_vars_list[[i]] &lt;- TAXlv\n}\ni &lt;- 0\nphyXsummaries &lt;- list()\nfor (group_vars in group_vars_list) {\n  i &lt;- i+1\n  txlv &lt;- paste('ta',i,sep = '')  \n  phyXtaX &lt;- phyX %&gt;% \n    subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n    subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n    transform_sample_counts(function(x) x / sum(x)) %&gt;% \n    taxglom(txlv) %&gt;% \n    psmelt() %&gt;% \n    group_by_at(vars(one_of(group_vars))) %&gt;%\n    dplyr::summarise(abu = sum(Abundance), \n                     prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n    ungroup() %&gt;% \n    mutate(abu = abu/ sum(abu), \n           taxlevel = txlv) %&gt;% \n    arrange(-abu)\n  phyXsummaries[[i]] &lt;- phyXtaX\n}\n\nphyXtaX &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x)) %&gt;% \n  psmelt() %&gt;% \n  group_by(ta5,ta6,ta7,OTU) %&gt;%\n  dplyr::summarise(abu = sum(Abundance), \n                   prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n  ungroup() %&gt;% \n  mutate(abu = abu/ sum(abu), \n         taxlevel = 'ASV') %&gt;% \n  arrange(-abu)\n\nphyXsummaries[[8]] &lt;- phyXtaX\n\nfmrt &lt;- list(\n  abu = colDef(format = colFormat(percent = TRUE, digits = 1)),\n  prevalence = colDef(format = colFormat(percent = TRUE, digits = 1))\n)\n\n\nphyXsummaries[[1]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[2]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[3]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[4]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[5]] %&gt;% dplyr::select(-ta1,-ta2) %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[6]] %&gt;% dplyr::select(-ta1,-ta2,-ta3) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[7]] %&gt;% dplyr::select(-ta1,-ta2,-ta3,-ta4) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyXsummaries[[8]] %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\n\n\nFigure\n\nOverall distribution\n\n\nShow code\nb &lt;- phyX %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  tax_glom('ta5') %&gt;% \n  transform_sample_counts(function(x) x/ sum(x)) %&gt;% \n  psmelt()\n\nbsum &lt;- b %&gt;% \n  group_by(ta2,ta3,ta4,ta5) %&gt;% \n  summarise(mn = mean(Abundance)) %&gt;% \n  ungroup %&gt;% \n  arrange(-mn) %&gt;% \n  mutate(rnk = 1:n(), \n         lb = ifelse(rnk&lt;9,substr(ta5,4,30),'Other'),\n         lb = factor(lb)) %&gt;% \n  mutate(mny = mn / sum(mn)) %&gt;% \n  mutate(ypos = cumsum(mn) - 0.5*mn, \n         xpos = runif(n(),0.5,1.5))\n\nbsum$lb &lt;- factor(bsum$lb, levels = bsum$lb[1:9])\n\nbsum %&gt;% \n  mutate(omics = 'ME-16s') %&gt;% \n  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + \n  geom_bar(stat=\"identity\", width=1, color=\"white\") +\n  coord_polar(\"y\", start=0) +\n  scale_fill_manual(values=bsum16s$color)   + \n  theme_void() + \n  guides(fill = guide_legend(nrow = 3)) + \n  labs(fill = NULL) + \n  # geom_text(data = bsum[1:8,], aes(x = xpos,y = ypos, label = lb), color = \"black\", size=3) +\n  theme(legend.position = 'bottom' ) + \n  facet_wrap(~omics)\n\n\n\n\n\n\n\n\n\n\n\nIndividual distribution\n\n\nShow code\notutb16s &lt;- b %&gt;% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) \notutb16s %&gt;% \n  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + \n  geom_bar(stat = 'identity')"
   },
   {
     "objectID": "composition.html#its",
     "href": "composition.html#its",
     "title": "Composition",
     "section": "ITS",
-    "text": "ITS\nSequencing depth\n\n\nShow code\nv &lt;- phyITS %&gt;% subset_samples(!is.na(cycle)) %&gt;% sample_sums()\n\n\nFor all samples\n\n\nShow code\nsummary(v)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n      0       0       0     119      54    2116 \n\n\nFor sample with at least one read\n\n\nShow code\ntable(v&gt;0)\n\n\n\nFALSE  TRUE \n  100    49 \n\n\nShow code\nsummary(v[v&gt;0])\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     12      64     178     361     504    2116 \n\n\n\nTable\n\n\nShow code\nTAXlv &lt;- c()\ngroup_vars_list &lt;- list()\nfor (i in 1:7){\n  txlv &lt;- paste('ta',i,sep = '')  \n  TAXlv &lt;- c(TAXlv,txlv)\n  group_vars_list[[i]] &lt;- TAXlv\n}\ni &lt;- 0\nphyITSsummaries &lt;- list()\nphyITSsummaries_df &lt;- data.frame()\nfor (group_vars in group_vars_list) {\n  i &lt;- i+1\n  txlv &lt;- paste('ta',i,sep = '')  \n  phyITStaX &lt;- phyITS %&gt;% \n    subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n    subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n    transform_sample_counts(function(x) x / sum(x + 1)) %&gt;% \n    taxglom(txlv) %&gt;% \n    psmelt() %&gt;% \n    group_by_at(vars(one_of(group_vars))) %&gt;%\n    summarise(abu = sum(Abundance), \n              prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n    ungroup() %&gt;% \n    mutate(abu = abu/ sum(abu), \n           taxlevel = txlv) %&gt;% \n    arrange(-abu)\n  phyITSsummaries[[i]] &lt;- phyITStaX\n  phyITSsummaries_df %&gt;% bind_rows(phyITSsummaries_df, phyITStaX)\n}\n\nphyITStaX &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x + 1)) %&gt;% \n  psmelt() %&gt;% \n  group_by(ta4,ta5,ta6,ta7,OTU) %&gt;%\n  summarise(abu = sum(Abundance), \n            prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n  ungroup() %&gt;% \n  mutate(abu = abu/ sum(abu), \n         taxlevel = txlv) %&gt;% \n  arrange(-abu)\nphyITSsummaries[[8]] &lt;- phyITStaX\n\nphyITSsummaries[[1]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[2]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[3]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[4]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[5]] %&gt;% dplyr::select(-ta1,-ta2) %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[6]] %&gt;% dplyr::select(-ta1,-ta2,-ta3) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[7]] %&gt;% dplyr::select(-ta1,-ta2,-ta3,-ta4) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[8]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\n\n\nFigure\n\nOverall distribution\n\n\nShow code\nb &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  tax_glom('ta5') %&gt;% \n  transform_sample_counts(function(x) x/ (sum(x) + 1)) %&gt;% \n  psmelt()\n\nbsum &lt;- b %&gt;% \n  # group_by(ta6) %&gt;% \n  group_by(ta3,ta4,ta5) %&gt;% \n  summarise(mn = sum(Abundance)) %&gt;% \n  ungroup %&gt;% \n  arrange(-mn) %&gt;% \n  mutate(rnk = 1:n(), \n         lb = ifelse(rnk&lt;9,substr(ta5,4,30),'Other'),\n         lb = ifelse(is.na(lb),'Other',lb),\n         lb = ifelse(ta5 %in% c('F__','__'),paste('Class', substr(ta3,4,30),sep = ': '),lb)) %&gt;% \n  ungroup() %&gt;% \n  mutate(mn = mn / sum(mn))\nbsum$lb &lt;- factor(bsum$lb, levels = bsum$lb[1:9])\n\nbsum %&gt;% \n  filter(!is.na(lb)) %&gt;% \n  mutate(omics = 'ME-ITS') %&gt;% \n  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + \n  geom_bar(stat=\"identity\", width=1, color=\"white\") +\n  coord_polar(\"y\", start=0) +\n  scale_fill_manual(values=bsumITS$color) +\n  theme_void() + \n  guides(fill = guide_legend(nrow = 3)) + \n  labs(fill = NULL) + \n  # ggrepel::geom_text_repel(data = bsum, aes(x = xpos,y = ypos, label = lb), color = \"black\", size=3) +\n  theme(legend.position = 'bottom' ) + \n  facet_wrap(~omics)\n\n\n\n\n\n\n\n\n\n\n\nIndividual distribution\n\n\nShow code\notutbITS &lt;- b %&gt;% left_join(bsum, by = c('ta3','ta4','ta5')) \notutbITS %&gt;% \n  group_by(Sample.name,lb) %&gt;% \n  summarise(Abundance = sum(Abundance)) %&gt;% \n  ungroup %&gt;% \n  group_by(Sample.name) %&gt;% \n  mutate(Abundance = Abundance / sum(Abundance)) %&gt;% \n  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + \n  geom_bar(stat = 'identity')"
+    "text": "ITS\n\nPrimers\nPrimers for ITS sequencing\nITS1:GTCTCGTGGGCTCGGTCCGTAGGTGAACCTGCGG ITS4:GTCTCGTGGGCTCGGTCCTCCGCTTATTGATATGC\nSequencing depth\n\n\nShow code\nv &lt;- phyITS %&gt;% subset_samples(!is.na(cycle)) %&gt;% sample_sums()\n\n\nFor all samples\n\n\nShow code\nsummary(v)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n      0       0       0     119      54    2116 \n\n\nFor sample with at least one read\n\n\nShow code\ntable(v&gt;0)\n\n\n\nFALSE  TRUE \n  100    49 \n\n\nShow code\nsummary(v[v&gt;0])\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     12      64     178     361     504    2116 \n\n\n\n\nTable\n\n\nShow code\nTAXlv &lt;- c()\ngroup_vars_list &lt;- list()\nfor (i in 1:7){\n  txlv &lt;- paste('ta',i,sep = '')  \n  TAXlv &lt;- c(TAXlv,txlv)\n  group_vars_list[[i]] &lt;- TAXlv\n}\ni &lt;- 0\nphyITSsummaries &lt;- list()\nphyITSsummaries_df &lt;- data.frame()\nfor (group_vars in group_vars_list) {\n  i &lt;- i+1\n  txlv &lt;- paste('ta',i,sep = '')  \n  phyITStaX &lt;- phyITS %&gt;% \n    subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n    subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n    transform_sample_counts(function(x) x / sum(x + 1)) %&gt;% \n    taxglom(txlv) %&gt;% \n    psmelt() %&gt;% \n    group_by_at(vars(one_of(group_vars))) %&gt;%\n    summarise(abu = sum(Abundance), \n              prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n    ungroup() %&gt;% \n    mutate(abu = abu/ sum(abu), \n           taxlevel = txlv) %&gt;% \n    arrange(-abu)\n  phyITSsummaries[[i]] &lt;- phyITStaX\n  phyITSsummaries_df %&gt;% bind_rows(phyITSsummaries_df, phyITStaX)\n}\n\nphyITStaX &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  transform_sample_counts(function(x) x / sum(x + 1)) %&gt;% \n  psmelt() %&gt;% \n  group_by(ta4,ta5,ta6,ta7,OTU) %&gt;%\n  summarise(abu = sum(Abundance), \n            prevalence = sum(Abundance&gt;0) / n()) %&gt;% \n  ungroup() %&gt;% \n  mutate(abu = abu/ sum(abu), \n         taxlevel = txlv) %&gt;% \n  arrange(-abu)\nphyITSsummaries[[8]] &lt;- phyITStaX\n\nphyITSsummaries[[1]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[2]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[3]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[4]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[5]] %&gt;% dplyr::select(-ta1,-ta2) %&gt;%  head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[6]] %&gt;% dplyr::select(-ta1,-ta2,-ta3) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[7]] %&gt;% dplyr::select(-ta1,-ta2,-ta3,-ta4) %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\nShow code\nphyITSsummaries[[8]] %&gt;% head %&gt;% reactable(columns = fmrt)\n\n\n\n\n\n\n\n\nFigure\n\nOverall distribution\n\n\nShow code\nb &lt;- phyITS %&gt;% \n  subset_samples(!str_detect(Sample.name,'neg')) %&gt;% \n  subset_samples(!str_detect(Sample.name,'poz')) %&gt;% \n  tax_glom('ta5') %&gt;% \n  transform_sample_counts(function(x) x/ (sum(x) + 1)) %&gt;% \n  psmelt()\n\nbsum &lt;- b %&gt;% \n  # group_by(ta6) %&gt;% \n  group_by(ta3,ta4,ta5) %&gt;% \n  summarise(mn = sum(Abundance)) %&gt;% \n  ungroup %&gt;% \n  arrange(-mn) %&gt;% \n  mutate(rnk = 1:n(), \n         lb = ifelse(rnk&lt;9,substr(ta5,4,30),'Other'),\n         lb = ifelse(is.na(lb),'Other',lb),\n         lb = ifelse(ta5 %in% c('F__','__'),paste('Class', substr(ta3,4,30),sep = ': '),lb)) %&gt;% \n  ungroup() %&gt;% \n  mutate(mn = mn / sum(mn))\nbsum$lb &lt;- factor(bsum$lb, levels = bsum$lb[1:9])\n\nbsum %&gt;% \n  filter(!is.na(lb)) %&gt;% \n  mutate(omics = 'ME-ITS') %&gt;% \n  ggplot(data = ., aes(x = '',y = mn, fill = lb)) + \n  geom_bar(stat=\"identity\", width=1, color=\"white\") +\n  coord_polar(\"y\", start=0) +\n  scale_fill_manual(values=bsumITS$color) +\n  theme_void() + \n  guides(fill = guide_legend(nrow = 3)) + \n  labs(fill = NULL) + \n  # ggrepel::geom_text_repel(data = bsum, aes(x = xpos,y = ypos, label = lb), color = \"black\", size=3) +\n  theme(legend.position = 'bottom' ) + \n  facet_wrap(~omics)\n\n\n\n\n\n\n\n\n\n\n\nIndividual distribution\n\n\nShow code\notutbITS &lt;- b %&gt;% left_join(bsum, by = c('ta3','ta4','ta5')) \notutbITS %&gt;% \n  group_by(Sample.name,lb) %&gt;% \n  summarise(Abundance = sum(Abundance)) %&gt;% \n  ungroup %&gt;% \n  group_by(Sample.name) %&gt;% \n  mutate(Abundance = Abundance / sum(Abundance)) %&gt;% \n  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + \n  geom_bar(stat = 'identity')"
   },
   {
     "objectID": "composition.html#trajectories-over-time",
@@ -180,838 +775,5 @@
     "title": "Projects",
     "section": "Project 3",
     "text": "Project 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#aminobutyric-acid",
-    "href": "NMRanalytics.html#aminobutyric-acid",
-    "title": "NMR analytics",
-    "section": "2-aminobutyric acid",
-    "text": "2-aminobutyric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#hydroxybutyric-acid",
-    "href": "NMRanalytics.html#hydroxybutyric-acid",
-    "title": "NMR analytics",
-    "section": "2-hydroxybutyric acid",
-    "text": "2-hydroxybutyric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#hydroxyisovaleric-acid",
-    "href": "NMRanalytics.html#hydroxyisovaleric-acid",
-    "title": "NMR analytics",
-    "section": "2-hydroxyisovaleric acid",
-    "text": "2-hydroxyisovaleric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#oxoisovaleric-acid",
-    "href": "NMRanalytics.html#oxoisovaleric-acid",
-    "title": "NMR analytics",
-    "section": "2-oxoisovaleric acid",
-    "text": "2-oxoisovaleric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#hydroxybutyric-acid-1",
-    "href": "NMRanalytics.html#hydroxybutyric-acid-1",
-    "title": "NMR analytics",
-    "section": "3-hydroxybutyric acid",
-    "text": "3-hydroxybutyric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#caedta",
-    "href": "NMRanalytics.html#caedta",
-    "title": "NMR analytics",
-    "section": "CaEDTA",
-    "text": "CaEDTA"
-  },
-  {
-    "objectID": "NMRanalytics.html#edta-1",
-    "href": "NMRanalytics.html#edta-1",
-    "title": "NMR analytics",
-    "section": "EDTA 1",
-    "text": "EDTA 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#edta-2",
-    "href": "NMRanalytics.html#edta-2",
-    "title": "NMR analytics",
-    "section": "EDTA 2",
-    "text": "EDTA 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#erectic",
-    "href": "NMRanalytics.html#erectic",
-    "title": "NMR analytics",
-    "section": "ERECTIC",
-    "text": "ERECTIC"
-  },
-  {
-    "objectID": "NMRanalytics.html#eretic",
-    "href": "NMRanalytics.html#eretic",
-    "title": "NMR analytics",
-    "section": "ERETIC",
-    "text": "ERETIC"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-ccch2cc",
-    "href": "NMRanalytics.html#lp-ccch2cc",
-    "title": "NMR analytics",
-    "section": "LP (C=CCH2C=C)",
-    "text": "LP (C=CCH2C=C)"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
-    "href": "NMRanalytics.html#lp-ch-of-unsaturated-lipids",
-    "title": "NMR analytics",
-    "section": "LP (CH of unsaturated lipids)",
-    "text": "LP (CH of unsaturated lipids)"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-ch2",
-    "href": "NMRanalytics.html#lp-ch2",
-    "title": "NMR analytics",
-    "section": "LP (CH2)",
-    "text": "LP (CH2)"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-ch2cco-1",
-    "href": "NMRanalytics.html#lp-ch2cco-1",
-    "title": "NMR analytics",
-    "section": "LP (CH2CCO) 1",
-    "text": "LP (CH2CCO) 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-ch2ocor",
-    "href": "NMRanalytics.html#lp-ch2ocor",
-    "title": "NMR analytics",
-    "section": "LP (CH2OCOR)",
-    "text": "LP (CH2OCOR)"
-  },
-  {
-    "objectID": "NMRanalytics.html#lp-chocor",
-    "href": "NMRanalytics.html#lp-chocor",
-    "title": "NMR analytics",
-    "section": "LP (CHOCOR)",
-    "text": "LP (CHOCOR)"
-  },
-  {
-    "objectID": "NMRanalytics.html#lpch3",
-    "href": "NMRanalytics.html#lpch3",
-    "title": "NMR analytics",
-    "section": "LP(CH3)",
-    "text": "LP(CH3)"
-  },
-  {
-    "objectID": "NMRanalytics.html#mgedta",
-    "href": "NMRanalytics.html#mgedta",
-    "title": "NMR analytics",
-    "section": "MgEDTA",
-    "text": "MgEDTA"
-  },
-  {
-    "objectID": "NMRanalytics.html#propylene-glycol",
-    "href": "NMRanalytics.html#propylene-glycol",
-    "title": "NMR analytics",
-    "section": "Propylene glycol",
-    "text": "Propylene glycol"
-  },
-  {
-    "objectID": "NMRanalytics.html#tsp",
-    "href": "NMRanalytics.html#tsp",
-    "title": "NMR analytics",
-    "section": "TSP",
-    "text": "TSP"
-  },
-  {
-    "objectID": "NMRanalytics.html#acetate",
-    "href": "NMRanalytics.html#acetate",
-    "title": "NMR analytics",
-    "section": "Acetate",
-    "text": "Acetate"
-  },
-  {
-    "objectID": "NMRanalytics.html#acetoacetic-acid",
-    "href": "NMRanalytics.html#acetoacetic-acid",
-    "title": "NMR analytics",
-    "section": "Acetoacetic acid",
-    "text": "Acetoacetic acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#acetone",
-    "href": "NMRanalytics.html#acetone",
-    "title": "NMR analytics",
-    "section": "Acetone",
-    "text": "Acetone"
-  },
-  {
-    "objectID": "NMRanalytics.html#alpha-glucose",
-    "href": "NMRanalytics.html#alpha-glucose",
-    "title": "NMR analytics",
-    "section": "Alpha-glucose",
-    "text": "Alpha-glucose"
-  },
-  {
-    "objectID": "NMRanalytics.html#asparagine-1",
-    "href": "NMRanalytics.html#asparagine-1",
-    "title": "NMR analytics",
-    "section": "Asparagine 1",
-    "text": "Asparagine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#asparagine-2",
-    "href": "NMRanalytics.html#asparagine-2",
-    "title": "NMR analytics",
-    "section": "Asparagine 2",
-    "text": "Asparagine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#aspartate-1",
-    "href": "NMRanalytics.html#aspartate-1",
-    "title": "NMR analytics",
-    "section": "Aspartate 1",
-    "text": "Aspartate 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#aspartate-2",
-    "href": "NMRanalytics.html#aspartate-2",
-    "title": "NMR analytics",
-    "section": "Aspartate 2",
-    "text": "Aspartate 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#aspartate-3",
-    "href": "NMRanalytics.html#aspartate-3",
-    "title": "NMR analytics",
-    "section": "Aspartate 3",
-    "text": "Aspartate 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#beta-glucose",
-    "href": "NMRanalytics.html#beta-glucose",
-    "title": "NMR analytics",
-    "section": "Beta-glucose",
-    "text": "Beta-glucose"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-3-hydroxybutyrate",
-    "href": "NMRanalytics.html#bin-3-hydroxybutyrate",
-    "title": "NMR analytics",
-    "section": "Bin-3-hydroxybutyrate",
-    "text": "Bin-3-hydroxybutyrate"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-lp-cch2cc",
-    "href": "NMRanalytics.html#bin-lp-cch2cc",
-    "title": "NMR analytics",
-    "section": "Bin-LP (CCH2C=C)",
-    "text": "Bin-LP (CCH2C=C)"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
-    "href": "NMRanalytics.html#bin-lp-cch2cc-isovaleric-acid-proline",
-    "title": "NMR analytics",
-    "section": "Bin-LP (CCH2C=C)-isovaleric acid-proline",
-    "text": "Bin-LP (CCH2C=C)-isovaleric acid-proline"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
-    "href": "NMRanalytics.html#bin-butyrate-isovaleric-acid-2-hydroxybutyric-acid",
-    "title": "NMR analytics",
-    "section": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid",
-    "text": "Bin-butyrate-isovaleric acid-2-hydroxybutyric acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-choline-glucose-tryptophan",
-    "href": "NMRanalytics.html#bin-choline-glucose-tryptophan",
-    "title": "NMR analytics",
-    "section": "Bin-choline-glucose-tryptophan",
-    "text": "Bin-choline-glucose-tryptophan"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-ethanol",
-    "href": "NMRanalytics.html#bin-ethanol",
-    "title": "NMR analytics",
-    "section": "Bin-ethanol",
-    "text": "Bin-ethanol"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
-    "href": "NMRanalytics.html#bin-glucose-dimethylglycine-glutamic-acid-lysine",
-    "title": "NMR analytics",
-    "section": "Bin-glucose-dimethylglycine-glutamic acid-lysine)",
-    "text": "Bin-glucose-dimethylglycine-glutamic acid-lysine)"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-glutamic-acid-alanine",
-    "href": "NMRanalytics.html#bin-glutamic-acid-alanine",
-    "title": "NMR analytics",
-    "section": "Bin-glutamic acid-alanine",
-    "text": "Bin-glutamic acid-alanine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-glutamine",
-    "href": "NMRanalytics.html#bin-glutamine",
-    "title": "NMR analytics",
-    "section": "Bin-glutamine",
-    "text": "Bin-glutamine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
-    "href": "NMRanalytics.html#bin-glutamine-dimethylamine-oxoglutarate",
-    "title": "NMR analytics",
-    "section": "Bin-glutamine-dimethylamine-oxoglutarate",
-    "text": "Bin-glutamine-dimethylamine-oxoglutarate"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-glycerol-threonine",
-    "href": "NMRanalytics.html#bin-glycerol-threonine",
-    "title": "NMR analytics",
-    "section": "Bin-glycerol-threonine",
-    "text": "Bin-glycerol-threonine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
-    "href": "NMRanalytics.html#bin-histidine-serine-tyrosine-tryptophan",
-    "title": "NMR analytics",
-    "section": "Bin-histidine-serine-tyrosine-tryptophan",
-    "text": "Bin-histidine-serine-tyrosine-tryptophan"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-isoleucine-glycerol",
-    "href": "NMRanalytics.html#bin-isoleucine-glycerol",
-    "title": "NMR analytics",
-    "section": "Bin-isoleucine-glycerol",
-    "text": "Bin-isoleucine-glycerol"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
-    "href": "NMRanalytics.html#bin-isovalerate-glutamate-proline-glycoprotein",
-    "title": "NMR analytics",
-    "section": "Bin-isovalerate-glutamate-proline-glycoprotein",
-    "text": "Bin-isovalerate-glutamate-proline-glycoprotein"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
-    "href": "NMRanalytics.html#bin-isovaleric-acid-glutamic-acid-proline",
-    "title": "NMR analytics",
-    "section": "Bin-isovaleric acid-glutamic acid-proline",
-    "text": "Bin-isovaleric acid-glutamic acid-proline"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-leucine-isoleucine",
-    "href": "NMRanalytics.html#bin-leucine-isoleucine",
-    "title": "NMR analytics",
-    "section": "Bin-leucine-isoleucine",
-    "text": "Bin-leucine-isoleucine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-leucine-lysine-arginine",
-    "href": "NMRanalytics.html#bin-leucine-lysine-arginine",
-    "title": "NMR analytics",
-    "section": "Bin-leucine-lysine-arginine",
-    "text": "Bin-leucine-lysine-arginine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-lysine",
-    "href": "NMRanalytics.html#bin-lysine",
-    "title": "NMR analytics",
-    "section": "Bin-lysine",
-    "text": "Bin-lysine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-proline-glutamate",
-    "href": "NMRanalytics.html#bin-proline-glutamate",
-    "title": "NMR analytics",
-    "section": "Bin-proline-glutamate",
-    "text": "Bin-proline-glutamate"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
-    "href": "NMRanalytics.html#bin-proline-methionine-glutamic-acid-glutamine",
-    "title": "NMR analytics",
-    "section": "Bin-proline-methionine-glutamic acid-glutamine)",
-    "text": "Bin-proline-methionine-glutamic acid-glutamine)"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-tyramine-tyrosine",
-    "href": "NMRanalytics.html#bin-tyramine-tyrosine",
-    "title": "NMR analytics",
-    "section": "Bin-tyramine-tyrosine",
-    "text": "Bin-tyramine-tyrosine"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-valine-acetoacetate",
-    "href": "NMRanalytics.html#bin-valine-acetoacetate",
-    "title": "NMR analytics",
-    "section": "Bin-valine-acetoacetate",
-    "text": "Bin-valine-acetoacetate"
-  },
-  {
-    "objectID": "NMRanalytics.html#bin-α-glucose-serine",
-    "href": "NMRanalytics.html#bin-α-glucose-serine",
-    "title": "NMR analytics",
-    "section": "Bin-α-glucose-serine",
-    "text": "Bin-α-glucose-serine"
-  },
-  {
-    "objectID": "NMRanalytics.html#butyrate-1",
-    "href": "NMRanalytics.html#butyrate-1",
-    "title": "NMR analytics",
-    "section": "Butyrate 1",
-    "text": "Butyrate 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#butyrate-2",
-    "href": "NMRanalytics.html#butyrate-2",
-    "title": "NMR analytics",
-    "section": "Butyrate 2",
-    "text": "Butyrate 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#butyrate-4_1",
-    "href": "NMRanalytics.html#butyrate-4_1",
-    "title": "NMR analytics",
-    "section": "Butyrate 4_1",
-    "text": "Butyrate 4_1"
-  },
-  {
-    "objectID": "NMRanalytics.html#butyrate-4_2",
-    "href": "NMRanalytics.html#butyrate-4_2",
-    "title": "NMR analytics",
-    "section": "Butyrate 4_2",
-    "text": "Butyrate 4_2"
-  },
-  {
-    "objectID": "NMRanalytics.html#cholesterol",
-    "href": "NMRanalytics.html#cholesterol",
-    "title": "NMR analytics",
-    "section": "Cholesterol",
-    "text": "Cholesterol"
-  },
-  {
-    "objectID": "NMRanalytics.html#choline",
-    "href": "NMRanalytics.html#choline",
-    "title": "NMR analytics",
-    "section": "Choline",
-    "text": "Choline"
-  },
-  {
-    "objectID": "NMRanalytics.html#citric-acid-1",
-    "href": "NMRanalytics.html#citric-acid-1",
-    "title": "NMR analytics",
-    "section": "Citric acid 1",
-    "text": "Citric acid 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#citric-acid-2",
-    "href": "NMRanalytics.html#citric-acid-2",
-    "title": "NMR analytics",
-    "section": "Citric acid 2",
-    "text": "Citric acid 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatine",
-    "href": "NMRanalytics.html#creatine",
-    "title": "NMR analytics",
-    "section": "Creatine",
-    "text": "Creatine"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatine-1",
-    "href": "NMRanalytics.html#creatine-1",
-    "title": "NMR analytics",
-    "section": "Creatine 1",
-    "text": "Creatine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatine-1-1",
-    "href": "NMRanalytics.html#creatine-1-1",
-    "title": "NMR analytics",
-    "section": "Creatine 1",
-    "text": "Creatine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatine-2",
-    "href": "NMRanalytics.html#creatine-2",
-    "title": "NMR analytics",
-    "section": "Creatine 2",
-    "text": "Creatine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatinine",
-    "href": "NMRanalytics.html#creatinine",
-    "title": "NMR analytics",
-    "section": "Creatinine",
-    "text": "Creatinine"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatinine-1",
-    "href": "NMRanalytics.html#creatinine-1",
-    "title": "NMR analytics",
-    "section": "Creatinine 1",
-    "text": "Creatinine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#creatinine-2",
-    "href": "NMRanalytics.html#creatinine-2",
-    "title": "NMR analytics",
-    "section": "Creatinine 2",
-    "text": "Creatinine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#dimethylglycine",
-    "href": "NMRanalytics.html#dimethylglycine",
-    "title": "NMR analytics",
-    "section": "Dimethylglycine",
-    "text": "Dimethylglycine"
-  },
-  {
-    "objectID": "NMRanalytics.html#ethanol",
-    "href": "NMRanalytics.html#ethanol",
-    "title": "NMR analytics",
-    "section": "Ethanol",
-    "text": "Ethanol"
-  },
-  {
-    "objectID": "NMRanalytics.html#formate",
-    "href": "NMRanalytics.html#formate",
-    "title": "NMR analytics",
-    "section": "Formate",
-    "text": "Formate"
-  },
-  {
-    "objectID": "NMRanalytics.html#fumarate",
-    "href": "NMRanalytics.html#fumarate",
-    "title": "NMR analytics",
-    "section": "Fumarate",
-    "text": "Fumarate"
-  },
-  {
-    "objectID": "NMRanalytics.html#glucose-1",
-    "href": "NMRanalytics.html#glucose-1",
-    "title": "NMR analytics",
-    "section": "Glucose 1",
-    "text": "Glucose 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#glutamate",
-    "href": "NMRanalytics.html#glutamate",
-    "title": "NMR analytics",
-    "section": "Glutamate",
-    "text": "Glutamate"
-  },
-  {
-    "objectID": "NMRanalytics.html#glutamic-acid",
-    "href": "NMRanalytics.html#glutamic-acid",
-    "title": "NMR analytics",
-    "section": "Glutamic acid",
-    "text": "Glutamic acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycerol",
-    "href": "NMRanalytics.html#glycerol",
-    "title": "NMR analytics",
-    "section": "Glycerol",
-    "text": "Glycerol"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycerol-1",
-    "href": "NMRanalytics.html#glycerol-1",
-    "title": "NMR analytics",
-    "section": "Glycerol 1",
-    "text": "Glycerol 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycerol-2",
-    "href": "NMRanalytics.html#glycerol-2",
-    "title": "NMR analytics",
-    "section": "Glycerol 2",
-    "text": "Glycerol 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycerol-3",
-    "href": "NMRanalytics.html#glycerol-3",
-    "title": "NMR analytics",
-    "section": "Glycerol 3",
-    "text": "Glycerol 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycine",
-    "href": "NMRanalytics.html#glycine",
-    "title": "NMR analytics",
-    "section": "Glycine",
-    "text": "Glycine"
-  },
-  {
-    "objectID": "NMRanalytics.html#glycoprotein-acetyls",
-    "href": "NMRanalytics.html#glycoprotein-acetyls",
-    "title": "NMR analytics",
-    "section": "Glycoprotein (acetyls)",
-    "text": "Glycoprotein (acetyls)"
-  },
-  {
-    "objectID": "NMRanalytics.html#histidine-1",
-    "href": "NMRanalytics.html#histidine-1",
-    "title": "NMR analytics",
-    "section": "Histidine 1",
-    "text": "Histidine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#histidine-2",
-    "href": "NMRanalytics.html#histidine-2",
-    "title": "NMR analytics",
-    "section": "Histidine 2",
-    "text": "Histidine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#hypoxanthine1",
-    "href": "NMRanalytics.html#hypoxanthine1",
-    "title": "NMR analytics",
-    "section": "Hypoxanthine1",
-    "text": "Hypoxanthine1"
-  },
-  {
-    "objectID": "NMRanalytics.html#hypoxanthine2",
-    "href": "NMRanalytics.html#hypoxanthine2",
-    "title": "NMR analytics",
-    "section": "Hypoxanthine2",
-    "text": "Hypoxanthine2"
-  },
-  {
-    "objectID": "NMRanalytics.html#isobutyrate",
-    "href": "NMRanalytics.html#isobutyrate",
-    "title": "NMR analytics",
-    "section": "Isobutyrate",
-    "text": "Isobutyrate"
-  },
-  {
-    "objectID": "NMRanalytics.html#isobutyric-acid-1",
-    "href": "NMRanalytics.html#isobutyric-acid-1",
-    "title": "NMR analytics",
-    "section": "Isobutyric acid 1",
-    "text": "Isobutyric acid 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#isoleucine-1",
-    "href": "NMRanalytics.html#isoleucine-1",
-    "title": "NMR analytics",
-    "section": "Isoleucine 1",
-    "text": "Isoleucine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#isoleucine-2",
-    "href": "NMRanalytics.html#isoleucine-2",
-    "title": "NMR analytics",
-    "section": "Isoleucine 2",
-    "text": "Isoleucine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#isoleucine-3",
-    "href": "NMRanalytics.html#isoleucine-3",
-    "title": "NMR analytics",
-    "section": "Isoleucine 3",
-    "text": "Isoleucine 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#lactate-1",
-    "href": "NMRanalytics.html#lactate-1",
-    "title": "NMR analytics",
-    "section": "Lactate 1",
-    "text": "Lactate 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#lactate-2",
-    "href": "NMRanalytics.html#lactate-2",
-    "title": "NMR analytics",
-    "section": "Lactate 2",
-    "text": "Lactate 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#leucine",
-    "href": "NMRanalytics.html#leucine",
-    "title": "NMR analytics",
-    "section": "Leucine",
-    "text": "Leucine"
-  },
-  {
-    "objectID": "NMRanalytics.html#lysine-1",
-    "href": "NMRanalytics.html#lysine-1",
-    "title": "NMR analytics",
-    "section": "Lysine 1",
-    "text": "Lysine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#methanol",
-    "href": "NMRanalytics.html#methanol",
-    "title": "NMR analytics",
-    "section": "Methanol",
-    "text": "Methanol"
-  },
-  {
-    "objectID": "NMRanalytics.html#methylamine",
-    "href": "NMRanalytics.html#methylamine",
-    "title": "NMR analytics",
-    "section": "Methylamine",
-    "text": "Methylamine"
-  },
-  {
-    "objectID": "NMRanalytics.html#phenylalanine",
-    "href": "NMRanalytics.html#phenylalanine",
-    "title": "NMR analytics",
-    "section": "Phenylalanine",
-    "text": "Phenylalanine"
-  },
-  {
-    "objectID": "NMRanalytics.html#proline-1",
-    "href": "NMRanalytics.html#proline-1",
-    "title": "NMR analytics",
-    "section": "Proline 1",
-    "text": "Proline 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#propionate-1_1",
-    "href": "NMRanalytics.html#propionate-1_1",
-    "title": "NMR analytics",
-    "section": "Propionate 1_1",
-    "text": "Propionate 1_1"
-  },
-  {
-    "objectID": "NMRanalytics.html#propionate-1_2",
-    "href": "NMRanalytics.html#propionate-1_2",
-    "title": "NMR analytics",
-    "section": "Propionate 1_2",
-    "text": "Propionate 1_2"
-  },
-  {
-    "objectID": "NMRanalytics.html#pyruvic-acid",
-    "href": "NMRanalytics.html#pyruvic-acid",
-    "title": "NMR analytics",
-    "section": "Pyruvic acid",
-    "text": "Pyruvic acid"
-  },
-  {
-    "objectID": "NMRanalytics.html#sarcosine",
-    "href": "NMRanalytics.html#sarcosine",
-    "title": "NMR analytics",
-    "section": "Sarcosine",
-    "text": "Sarcosine"
-  },
-  {
-    "objectID": "NMRanalytics.html#succinate",
-    "href": "NMRanalytics.html#succinate",
-    "title": "NMR analytics",
-    "section": "Succinate",
-    "text": "Succinate"
-  },
-  {
-    "objectID": "NMRanalytics.html#threonine",
-    "href": "NMRanalytics.html#threonine",
-    "title": "NMR analytics",
-    "section": "Threonine",
-    "text": "Threonine"
-  },
-  {
-    "objectID": "NMRanalytics.html#threonine-1",
-    "href": "NMRanalytics.html#threonine-1",
-    "title": "NMR analytics",
-    "section": "Threonine 1",
-    "text": "Threonine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#trimethylamine",
-    "href": "NMRanalytics.html#trimethylamine",
-    "title": "NMR analytics",
-    "section": "Trimethylamine",
-    "text": "Trimethylamine"
-  },
-  {
-    "objectID": "NMRanalytics.html#tryptophan-1",
-    "href": "NMRanalytics.html#tryptophan-1",
-    "title": "NMR analytics",
-    "section": "Tryptophan 1",
-    "text": "Tryptophan 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#tryptophan-2",
-    "href": "NMRanalytics.html#tryptophan-2",
-    "title": "NMR analytics",
-    "section": "Tryptophan 2",
-    "text": "Tryptophan 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#tryptophan-3",
-    "href": "NMRanalytics.html#tryptophan-3",
-    "title": "NMR analytics",
-    "section": "Tryptophan 3",
-    "text": "Tryptophan 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#tyramine",
-    "href": "NMRanalytics.html#tyramine",
-    "title": "NMR analytics",
-    "section": "Tyramine",
-    "text": "Tyramine"
-  },
-  {
-    "objectID": "NMRanalytics.html#uracil-1",
-    "href": "NMRanalytics.html#uracil-1",
-    "title": "NMR analytics",
-    "section": "Uracil 1",
-    "text": "Uracil 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#uracil-2",
-    "href": "NMRanalytics.html#uracil-2",
-    "title": "NMR analytics",
-    "section": "Uracil 2",
-    "text": "Uracil 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#uracil-3",
-    "href": "NMRanalytics.html#uracil-3",
-    "title": "NMR analytics",
-    "section": "Uracil 3",
-    "text": "Uracil 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#uridine",
-    "href": "NMRanalytics.html#uridine",
-    "title": "NMR analytics",
-    "section": "Uridine",
-    "text": "Uridine"
-  },
-  {
-    "objectID": "NMRanalytics.html#valine-1",
-    "href": "NMRanalytics.html#valine-1",
-    "title": "NMR analytics",
-    "section": "Valine 1",
-    "text": "Valine 1"
-  },
-  {
-    "objectID": "NMRanalytics.html#valine-2",
-    "href": "NMRanalytics.html#valine-2",
-    "title": "NMR analytics",
-    "section": "Valine 2",
-    "text": "Valine 2"
-  },
-  {
-    "objectID": "NMRanalytics.html#valine-3",
-    "href": "NMRanalytics.html#valine-3",
-    "title": "NMR analytics",
-    "section": "Valine 3",
-    "text": "Valine 3"
-  },
-  {
-    "objectID": "NMRanalytics.html#valine1",
-    "href": "NMRanalytics.html#valine1",
-    "title": "NMR analytics",
-    "section": "Valine1",
-    "text": "Valine1"
-  },
-  {
-    "objectID": "NMRanalytics.html#valine2",
-    "href": "NMRanalytics.html#valine2",
-    "title": "NMR analytics",
-    "section": "Valine2",
-    "text": "Valine2"
   }
 ]
