@@ -20,13 +20,14 @@ website:
         link: "mailto:mortenr@food.ku.dk"
       - icon: github
         href: https://github.com/mortenarendt/multiomics_menstrual_effluent
+    pinned: true
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
     left: "&copy; Copyright 2026, Morten Arendt Rasmussen"
 
 format:
   html:
-    theme: pulse
+    theme: theme.scss #pulse (purple)
     toc: true
     code-fold: true
     code-summary: "Show code"
