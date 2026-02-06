@@ -18,8 +18,6 @@ website:
       - icon: envelope
         icon_pack: fas
         link: "mailto:mortenr@food.ku.dk"
-      - icon: twitter
-        href: https://twitter.com/
       - icon: github
         href: https://github.com/mortenarendt/multiomics_menstrual_effluent
   page-footer:
@@ -28,7 +26,7 @@ website:
 
 format:
   html:
-    theme: cerulean
+    theme: pulse
     toc: true
     code-fold: true
     code-summary: "Show code"
