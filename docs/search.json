@@ -319,7 +319,7 @@
     "href": "NMRanalytics.html#aminobutyric-acid",
     "title": "NMR analytics",
     "section": "2-aminobutyric acid",
-    "text": "2-aminobutyric acid"
+    "text": "2-aminobutyric acid\nknitr::include_graphics(\"./img/interval_1.png\")"
   },
   {
     "objectID": "NMRanalytics.html#hydroxybutyric-acid-1",
