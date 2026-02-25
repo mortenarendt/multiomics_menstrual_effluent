@@ -11,6 +11,66 @@ options(digits=2)
 source('libs_init.R')
 ```
 
+## Demographic characterization
+
+```{r}
+metavars <- c("Residence","Age",  "Diet", "Contraceptives", "Regular/daily medication" , "Nicotin") 
+metavars2 <- c("Coitus","Alcohol", "Medication during sampling")
+
+metadata <- rio::import('~/Dropbox/Bekzod&Isabella/ME_translation_key/Metadata.xlsx', sheet = 'Samples') %>% 
+  filter(!is.na(Residence))
+
+dfmeta <- phyX@sam_data %>% 
+  data.frame() %>% 
+  filter(!is.na(Participant)) 
+
+hasdata <- full_join(
+  data.frame(Sample.name = paste(dfmeta$Participant,dfmeta$cycle,'.',dfmeta$day, sep = ''), 
+             has_seq = 1),
+  data.frame(Sample.name = paste(MEconc_newlong$Participant,MEconc_newlong$Cycle,'.',MEconc_newlong$`Cycle day`, sep = ''),  has_nmr = 1) %>% filter(!duplicated(Sample.name)),
+  by = 'Sample.name') %>% 
+  mutate(hasdata = ifelse(has_seq==1 | has_nmr==1,1,0))
+
+tb1 <- metadata %>% 
+  filter(`Blood origen`=='ME') %>% 
+  left_join(hasdata, by = c('Sample ID' = 'Sample.name')) %>% 
+  group_by(Participant) %>% 
+  mutate(n_seq = sum(has_seq, na.rm = T),
+         n_NMR = sum(has_nmr, na.rm = T), 
+         Coitus_any = (sum(Coitus,na.rm = T)>0) %>% as.numeric(), 
+         Alcohol_any = (sum(Alcohol,na.rm = T)>0) %>% as.numeric(), 
+         Meds_any = (sum(`Medication during sampling`,na.rm = T)>0) %>% as.numeric()) %>% 
+  filter(!duplicated(Participant)) %>% 
+  tableone::CreateTableOne(data = ., vars = c(metavars,'n_seq','n_NMR','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
+tab1AMat <- print(tb1, nonnormal = c('n_seq','n_NMR')) 
+
+tb12 <- metadata %>% 
+  filter(`Blood origen`=='ME') %>% 
+  left_join(hasdata, by = c('Sample ID' = 'Sample.name')) %>% 
+  filter(hasdata == 1) %>%
+  tableone::CreateTableOne(data = ., vars = metavars2, factorVars = metavars2)
+tab1BMat <- print(tb12, nonnormal = c('n_seq','n_NMR')) 
+
+tab1AMat %>% knitr::kable(caption = 'Participant level demographic characterization') 
+tab1BMat %>% knitr::kable(caption = 'Sample level demographic characterization')
+```
+
+
+```{r, eval=FALSE}
+library(openxlsx)
+wb <- createWorkbook()
+
+addWorksheet(wb, "Participant")
+tab1AMat %>% as.data.frame() %>% rownames_to_column() %>% 
+writeData(wb, "Participant", x = .)
+addWorksheet(wb, "Sample")
+tab1BMat %>% as.data.frame() %>% rownames_to_column() %>% 
+writeData(wb, "Sample", x = .)
+# Save file
+# saveWorkbook(wb, "TableOne.xlsx", overwrite = TRUE)
+```
+
+
 ## Betadiversity plots
 
 Effect of demographics / meta-information
