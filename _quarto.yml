@@ -9,6 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - libs.qmd
+      - data.qmd
       - NMRanalytics.qmd
       - composition.qmd
       - demographics.qmd

@@ -1,0 +1,35 @@
+---
+title: "Data"
+format:
+  html:
+    code-fold: false
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set( message = F, warning = F)
+options(digits=2)
+```
+
+The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS sequencing data, and metadata is available from  https://github.com/mortenarendt/multiomics_menstrual_effluent in the file MEdata.RData. 
+
+* MEconc_new and MEconc_newlong is menstrual effluent metabolomics in wide- and long format
+* PBconc_new and PBconc_newlong is plasma metabolomics in wide- and long format
+* phyX contains 16s sequencing data 
+* phyXITS contains ITS sequencing data
+* metadata contrains the sampling time and demographics for the participants
+* MEclass contains NMR characterization of the individual intervals
+
+```{r, eval = FALSE, include=TRUE}
+url <- paste0(
+  "https://raw.githubusercontent.com/",
+  "mortenarendt/multiomics_menstrual_effluent/",
+  "main/MEdata.RData"
+)
+
+tmp <- tempfile(fileext = ".RData")
+download.file(url, tmp, mode = "wb")
+
+loaded_objects <- load(tmp)
+unlink(tmp)
+```
+
