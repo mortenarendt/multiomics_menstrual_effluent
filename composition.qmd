@@ -13,6 +13,8 @@ source('libs_init.R')
 
 ## NMR Metabolomics
 
+Figure 1A in publication
+
 ```{r}
 df <- bind_rows(
   MEconc_newlong %>% 
@@ -185,6 +187,8 @@ phyXsummaries[[8]] %>%  head %>% reactable(columns = fmrt)
 
 #### Overall distribution
 
+Figure 1A in publication 
+
 ```{r}
 b <- phyX %>% 
   subset_samples(!is.na(Sample.ID)) %>% 
@@ -321,6 +325,8 @@ phyITSsummaries[[8]] %>% head %>% reactable(columns = fmrt)
 
 #### Overall distribution 
 
+Figure 1A in publication 
+
 ```{r}
 b <- phyITS %>% 
   subset_samples(!is.na(Sample.ID)) %>% 
@@ -418,6 +424,8 @@ otutbITS %>%
 ## Effect of day-in-cycle 
 
 ### Vulcano plot
+
+Figure 1C in publication 
 
 ```{r}
 tidyall <- function(m0) {

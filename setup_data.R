@@ -34,3 +34,11 @@ phyITS@sam_data <- phyX@sam_data <- smd
 
 rm(list = c('smd'))
 save.image(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MEdata.RData')
+
+rm(list = ls())
+load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/NMRcategories_lbs.RData')
+load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/16scategories.RData')
+load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/ITScategories.RData')
+save.image(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/summarystats.RData')
+
+

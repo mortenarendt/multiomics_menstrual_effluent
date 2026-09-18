@@ -50,14 +50,8 @@ myround2 <- function(x, digits = 3){
 
 load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MEdata.RData')
 
-# set long format
-
-
-
 ## Color codes for all
-load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/NMRcategories_lbs.RData')
-load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/16scategories.RData')
-load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/ITScategories.RData')
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/summarystats.RData')
 
 colorvals <- unname(glasbey())
 bsumITS$color <- bsum16s$color <- dflb$color <- '#D3D3D3'
