@@ -29,15 +29,13 @@ medianNMR <- DMENMR %>% as.vector() %>% median()
 df <- df %>% mutate(Participant = `Sample ID` %>% substr(1,1))
 
 phyXsel16s <- phyX %>% 
-  subset_samples(!str_detect(Sample.name,'po')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   transform_sample_counts( function(x) x  / sum(x)) 
 D16s <- phyXsel16s %>% phyloseq::distance("bray")
 median16s <- D16s %>% as.vector() %>% median()
 
 phyXselits <- phyITS %>% 
-  subset_samples(!str_detect(Sample.name,'po')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>%
+  subset_samples(!is.na(Sample.ID)) %>% 
   transform_sample_counts( function(x) as.numeric(x>0)) 
 DITS <- phyXselits %>% phyloseq::distance("euclidean")
 medianITS <- DITS %>% as.vector() %>% median()

@@ -3,6 +3,7 @@
 library(tidyr)
 library(ggplot2)
 library(dplyr)
+library(stringr)
 library(broom)
 library(tidyverse)
 library(broom.mixed)
@@ -47,18 +48,18 @@ myround2 <- function(x, digits = 3){
   return(y)
 }
 
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MEdata.RData')
 
-load(file = '~/Dropbox/Bekzod&Isabella/Yongxin/data/tmp_import_dec2025.Rdata') # merged
-load(file = '~/Dropbox/Bekzod&Isabella/16S_data/ME16s.RData')
-load(file = '~/Dropbox/Bekzod&Isabella/ITS/ME_ITS.RData')
+# set long format
+
+
 
 ## Color codes for all
-
 load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/NMRcategories_lbs.RData')
 load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/16scategories.RData')
 load('~/Dropbox/Bekzod&Isabella/NMR data/analysis/ITScategories.RData')
-colorvals <- unname(glasbey())
 
+colorvals <- unname(glasbey())
 bsumITS$color <- bsum16s$color <- dflb$color <- '#D3D3D3'
 dflb$color[1:8] <- colorvals[1:8]
 bsumITS$color[1:8] <- colorvals[11:18]

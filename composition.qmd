@@ -73,12 +73,12 @@ phyITSold <- phyITS
 phyXold <- phyX
 
 MEdf <- MEconc_newlong %>% 
-  dplyr::select(`Sample ID`,`Samples #`,`Samples Names`, met, logy) %>% 
+  dplyr::select(`Sample ID`,`Samples #`, met, logy) %>% 
   spread(met,logy) %>% filter(!is.na(`Sample ID`))
 
 MEdfsm <- phyX@sam_data %>% 
   data.frame() %>% 
-  dplyr::select(Barcode:Batch,cycle:cycle_part) %>% 
+  dplyr::select(BRK:Medication.during.sampling) %>% 
   left_join(MEdf, by = c('Sample.ID' = 'Sample ID'))  
 
 rownames(MEdfsm) <- sample_names(phyXold)
@@ -136,8 +136,7 @@ for (group_vars in group_vars_list) {
   i <- i+1
   txlv <- paste('ta',i,sep = '')  
   phyXtaX <- phyX %>% 
-    subset_samples(!str_detect(Sample.name,'poz')) %>% 
-    subset_samples(!str_detect(Sample.name,'neg')) %>% 
+    subset_samples(!is.na(Sample.ID)) %>% 
     transform_sample_counts(function(x) x / sum(x)) %>% 
     taxglom(txlv) %>% 
     psmelt() %>% 
@@ -152,8 +151,7 @@ for (group_vars in group_vars_list) {
 }
 
 phyXtaX <- phyX %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   transform_sample_counts(function(x) x / sum(x)) %>% 
   psmelt() %>% 
   group_by(ta5,ta6,ta7,OTU) %>%
@@ -189,8 +187,7 @@ phyXsummaries[[8]] %>%  head %>% reactable(columns = fmrt)
 
 ```{r}
 b <- phyX %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   tax_glom('ta5') %>% 
   transform_sample_counts(function(x) x/ sum(x)) %>% 
   psmelt()
@@ -228,7 +225,7 @@ bsum %>%
 ```{r}
 otutb16s <- b %>% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) 
 otutb16s %>% 
-  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + 
+  ggplot(data = ., aes(Sample.ID,Abundance, fill = lb)) + 
   geom_bar(stat = 'identity') 
 ```
 
@@ -280,8 +277,7 @@ for (group_vars in group_vars_list) {
   i <- i+1
   txlv <- paste('ta',i,sep = '')  
   phyITStaX <- phyITS %>% 
-    subset_samples(!str_detect(Sample.name,'poz')) %>% 
-    subset_samples(!str_detect(Sample.name,'neg')) %>% 
+    subset_samples(!is.na(Sample.ID)) %>% 
     transform_sample_counts(function(x) x / sum(x + 1)) %>% 
     taxglom(txlv) %>% 
     psmelt() %>% 
@@ -297,8 +293,7 @@ for (group_vars in group_vars_list) {
 }
 
 phyITStaX <- phyITS %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   transform_sample_counts(function(x) x / sum(x + 1)) %>% 
   psmelt() %>% 
   group_by(ta4,ta5,ta6,ta7,OTU) %>%
@@ -328,8 +323,7 @@ phyITSsummaries[[8]] %>% head %>% reactable(columns = fmrt)
 
 ```{r}
 b <- phyITS %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   tax_glom('ta5') %>% 
   transform_sample_counts(function(x) x/ (sum(x) + 1)) %>% 
   psmelt()
@@ -368,12 +362,12 @@ bsum %>%
 ```{r}
 otutbITS <- b %>% left_join(bsum, by = c('ta3','ta4','ta5')) 
 otutbITS %>% 
-  group_by(Sample.name,lb) %>% 
+  group_by(Sample.ID,lb) %>% 
   summarise(Abundance = sum(Abundance)) %>% 
   ungroup %>% 
-  group_by(Sample.name) %>% 
+  group_by(Sample.ID) %>% 
   mutate(Abundance = Abundance / sum(Abundance)) %>% 
-  ggplot(data = ., aes(Sample.name,Abundance, fill = lb)) + 
+  ggplot(data = ., aes(Sample.ID,Abundance, fill = lb)) + 
   geom_bar(stat = 'identity') 
 
 ```
@@ -399,7 +393,7 @@ MEconc_newlong %>%
 
 ```{r, fig.height=30, fig.width=10}
 otutb16s %>% 
-  ggplot(data = ., aes(cycle_day,Abundance, group = participant, color = lb)) + 
+  ggplot(data = ., aes(cycle_day,Abundance, group = Participant, color = lb)) + 
   geom_point() + 
   geom_line() + 
   scale_y_log10() + 
@@ -412,7 +406,7 @@ otutb16s %>%
 
 ```{r, fig.height=30, fig.width=10}
 otutbITS %>% 
-  ggplot(data = ., aes(cycle_day,Abundance, group = participant, color = lb)) + 
+  ggplot(data = ., aes(cycle_day,Abundance, group = Participant, color = lb)) + 
   geom_point() + 
   geom_line() + 
   scale_y_log10() + 
@@ -434,29 +428,88 @@ tidyall <- function(m0) {
   return(r)
 }
 
-pc <- 1e-5
-tb16s <- phyX %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
-  filter_taxa(function(x) sum(x>0)>4, TRUE) %>% 
-  transform_sample_counts(function(x) x / sum(x)) %>% 
-  psmelt() %>% data.frame() %>% 
-  group_by(ta3,ta4,ta5,ta6,ta7,OTU) %>% 
-  do(lmer(data = ., log(Abundance + pc) ~ factor(day) + (1|Participant) + (1|cycle_part))  %>% tidyall())
+tidyall <- function(fit, data) {
+  fit@call$data <- as.data.frame(data)
 
+  bind_rows(
+    broom::tidy(anova(fit)) %>%
+      mutate(test = "fixed"),
+
+    broom::tidy(lmerTest::ranova(fit)) %>%
+      mutate(test = "random"),
+
+    broom.mixed::tidy(fit) %>%
+      mutate(test = "coefficient")
+  )
+}
+
+pc <- 1e-5
+
+tb16s <- phyX %>%
+  subset_samples(!is.na(Sample.ID)) %>%
+  filter_taxa(function(x) sum(x > 0) > 4, TRUE) %>%
+  transform_sample_counts(function(x) x / sum(x)) %>%
+  psmelt() %>%
+  as.data.frame() %>%
+  mutate(lograbu = log(Abundance + pc)) %>% 
+  group_by(ta3, ta4, ta5, ta6, ta7, OTU) %>%
+  group_modify(~ {
+    dat <- as.data.frame(.x)
+
+    fit <- lmerTest::lmer(
+       lograbu~ factor(day) +
+        (1 | Participant) +
+        (1 | cycle_part),
+      data = dat
+    )
+    fit@call$data <- dat
+
+    # broom::tidy(lmerTest::ranova(fit))
+    tidyall(fit, dat)
+  }) %>%
+  ungroup()
+
+  
 
 tbITS <- phyITS %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   filter_taxa(function(x) sum(x>0)>4, TRUE) %>% 
   psmelt() %>% data.frame() %>%
+  mutate(lograbu = log(Abundance + pc)) %>% 
   group_by(ta3,ta4,ta5,ta6,ta7, OTU) %>% 
-  do(lmer(data = ., log(Abundance + 1) ~ factor(day) + (1|Participant) + (1|cycle_part))  %>% tidyall())
+  group_modify(~ {
+    dat <- as.data.frame(.x)
 
+    fit <- lmerTest::lmer(
+       lograbu~ factor(day) +
+        (1 | Participant) +
+        (1 | cycle_part),
+      data = dat
+    )
+    fit@call$data <- dat
+
+    # broom::tidy(lmerTest::ranova(fit))
+    tidyall(fit, dat)
+  }) %>%
+  ungroup()
+
+  
+
+  
 mME <- MEconc_newlong %>% 
   mutate(cycle_part = paste(Participant, Cycle)) %>% 
   group_by(met,category) %>% 
-  do(lmer(data = ., logy ~ factor(`Cycle day`) + (1|`Participant`) + (1|cycle_part))  %>% tidyall())
+  group_modify(~ {
+    dat <- as.data.frame(.x)
+
+    fit <- lmerTest::lmer(
+       logy~ factor(`Cycle day`) + (1|`Participant`) + (1|cycle_part),
+      data = dat
+    )
+    fit@call$data <- dat
+    tidyall(fit, dat)
+  }) %>%
+  ungroup()
 
 
 dfplot <- bind_rows(mME %>% mutate(omics = 'ME-NMR') %>% 
