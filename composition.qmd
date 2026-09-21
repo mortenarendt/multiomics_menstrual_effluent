@@ -420,7 +420,6 @@ otutbITS %>%
   facet_wrap(~OTU + ta5, ncol = 5)
 ```
 
-
 ## Effect of day-in-cycle 
 
 ### Vulcano plot
@@ -570,6 +569,63 @@ g_day2 <- g_vulc + g_box+
   plot_layout(design = layout)
 g_day2
 ```
+
+
+# Simplex of variance partitioning
+
+Figure 1B in publication
+
+```{r}
+tbseq <- bind_rows(tbITS %>% mutate(omics = 'ME-ITS'),
+                   tb16s %>% mutate(omics = 'ME-16s')) %>% 
+  filter(effect=='ran_pars') %>%
+  dplyr::select(-p.value) %>%
+  dplyr::mutate(vr = estimate^2) %>% 
+  group_by(omics,ta3,ta4,ta5,ta6,ta7,OTU) %>% 
+  mutate(relvr = vr / sum(vr)) 
+
+tbME <- mME %>% mutate(omics = 'ME-NMR') %>% 
+  filter(effect=='ran_pars') %>%
+  dplyr::select(-p.value) %>%
+  group_by(met,category) %>% 
+  dplyr::mutate(vr = estimate^2,
+                relvr = vr / sum(vr)) 
+
+brks <- c(0,0.33,0.67,1.00)
+gSIMPLX_ME <- tbseq %>% 
+  dplyr::select(omics,group,relvr) %>% 
+  spread(group,relvr) %>% 
+  left_join(bind_rows(bsum16s,bsumITS), by = 'ta5') %>% 
+  bind_rows(
+    tbME %>% filter(!str_detect(met,'PC')) %>% 
+      dplyr::select(omics,group,relvr) %>% 
+      spread(group,relvr) %>% left_join(dflb, by = 'category') ) %>% 
+  mutate(cycle_part = ifelse(cycle_part==0,0.02,cycle_part), 
+         Participant = Participant /(Participant + cycle_part + Residual), 
+         Residual = Residual /(Participant + cycle_part + Residual)) %>% 
+  ggtern(data =., aes(cycle_part, Participant, Residual, color = lb)) + 
+  geom_point() +
+  scale_T_continuous(breaks = brks) +
+  scale_L_continuous(breaks = brks) +
+  scale_R_continuous(breaks = brks) + 
+  scale_color_manual(values = bind_rows(dflb,bsum16s,bsumITS)$color, 
+                     breaks = bind_rows(dflb,bsum16s,bsumITS)$lb ) +
+  xlab('Between Cycles') + 
+  ylab('Between Women') + 
+  zlab('Within Cycle') + 
+  theme(tern.panel.background = element_rect(fill = "white"), 
+        tern.panel.grid.major =  element_line(color = "black"),
+        tern.axis.arrow.show = TRUE, 
+        tern.axis.title.T = element_blank(),
+        tern.axis.title.L = element_blank(),
+        tern.axis.title.R = element_blank(), 
+        legend.position = 'bottom') + 
+  facet_wrap(~omics)  
+
+gSIMPLX_ME
+```
+
+
 
 ### Tables
 

@@ -14,6 +14,7 @@ source('libs_init.R')
 
 ## Multivariate Stability measures for each individual
 
+Figure 3C in publication
 
 ```{r}
 df <- MEconc_newlong %>% 
@@ -179,14 +180,18 @@ FIG3c <- dfmeta %>%
 ```
 
 
-Overall stability per women. Over omics modalities 
+### Overall stability per women. Over omics modalities 
+
+Figure 3A in publication 
 
 ```{r}
 FIG3a
 ```
 
 
-Stability versus diet across omics modalities
+### Stability versus diet across omics modalities
+
+Figure 3B in publication 
 
 ```{r}
 FIG3c

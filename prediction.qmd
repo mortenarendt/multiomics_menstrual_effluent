@@ -353,6 +353,7 @@ res %>%
 
 ```
 
+Figure 4A in publication
 
 ```{r}
 library(gplots)
@@ -415,6 +416,7 @@ g5 <- ggbeta %>%
 g_r2
 ```
 
+Figure 4B in publication
 
 ```{r, fig.width=10, fig.height=5}
 g5 + coord_flip()
