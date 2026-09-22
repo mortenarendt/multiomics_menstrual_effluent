@@ -13,7 +13,7 @@ source('libs_init.R')
 
 ## NMR Metabolomics
 
-Figure 1A in publication
+Figure 2A in publication
 
 ```{r}
 df <- bind_rows(
@@ -37,6 +37,7 @@ df$lb <- factor(df$lb, levels = dflb$lb[1:9])
 
 ```
 
+### Composition 
 
 ```{r}
 g_composition <- df %>% 
@@ -106,8 +107,8 @@ UMI_1540_R  - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNTACGGYTACCTTGTTACGACT
 UMI_338Fa   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNACWCCTACGGGWGGCAGCAG
 UMI_338Fb   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACTCCTACGGGAGGCWGCAG
 UMI_1391R   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACGGGCGGTGTGTRCA
- 
- 
+
+
 
 
 Sequencing depth
@@ -183,11 +184,11 @@ phyXsummaries[[8]] %>%  head %>% reactable(columns = fmrt)
 
 ```
 
-### Figure
+### Composition 
 
 #### Overall distribution
 
-Figure 1A in publication 
+Figure 2A in publication 
 
 ```{r}
 b <- phyX %>% 
@@ -210,7 +211,7 @@ bsum <- b %>%
 
 bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
 
-bsum %>% 
+g_composition16s <- bsum %>% 
   mutate(omics = 'ME-16s') %>% 
   ggplot(data = ., aes(x = '',y = mn, fill = lb)) + 
   geom_bar(stat="identity", width=1, color="white") +
@@ -222,15 +223,29 @@ bsum %>%
   # geom_text(data = bsum[1:8,], aes(x = xpos,y = ypos, label = lb), color = "black", size=3) +
   theme(legend.position = 'bottom' ) + 
   facet_wrap(~omics)
+g_composition16s
 ```
 
 #### Individual distribution
 
-```{r}
+```{r, fig.width=14}
 otutb16s <- b %>% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) 
+participantsort <- otutb16s %>%
+  filter(lb=='Lactobacillaceae') %>% 
+  group_by(Participant) %>% 
+  dplyr::summarise(ra = mean(Abundance)) %>% 
+  arrange(-ra) %>% 
+  mutate(rnk = 1:n())
+
 otutb16s %>% 
-  ggplot(data = ., aes(Sample.ID,Abundance, fill = lb)) + 
-  geom_bar(stat = 'identity') 
+  mutate(Participant = factor(Participant, levels = participantsort$Participant)) %>% 
+  ggplot(data = ., aes(day,Abundance, fill = lb)) + 
+  scale_fill_manual(values=bsum16s$color)  + 
+  geom_bar(stat = 'identity')  + guides(fill = guide_legend(nrow = 1)) + 
+  labs(fill = NULL, x = 'Day in Period') + 
+  facet_grid(cycle~Participant , space = 'free', scales = 'free') +
+  theme_bw() + 
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 90))
 ```
 
 
@@ -242,9 +257,18 @@ Primers for ITS sequencing
 
 ITS1 - GTCTCGTGGGCTCGGTCCGTAGGTGAACCTGCGG
 ITS4 - GTCTCGTGGGCTCGGTCCTCCGCTTATTGATATGC
- 
 
-Sequencing depth
+### Distribution of zero-reads
+
+```{r}
+phyyITS_w <- phyITS %>% subset_samples(!is.na(cycle))
+table(phyyITS_w@sam_data$Participant,sample_sums(phyyITS_w)>0)
+```
+
+Of the 19 women, 13 have at least a single sample with ITS sequences. 
+
+
+### Sequencing depth
 
 ```{r}
 v <- phyITS %>% subset_samples(!is.na(cycle)) %>% sample_sums()
@@ -321,11 +345,11 @@ phyITSsummaries[[8]] %>% head %>% reactable(columns = fmrt)
 ```
 
 
-### Figure 
+### Composition
 
 #### Overall distribution 
 
-Figure 1A in publication 
+Figure 2A in publication 
 
 ```{r}
 b <- phyITS %>% 
@@ -348,7 +372,7 @@ bsum <- b %>%
   mutate(mn = mn / sum(mn))
 bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
 
-bsum %>% 
+g_compositionITS <- bsum %>% 
   filter(!is.na(lb)) %>% 
   mutate(omics = 'ME-ITS') %>% 
   ggplot(data = ., aes(x = '',y = mn, fill = lb)) + 
@@ -361,22 +385,59 @@ bsum %>%
   # ggrepel::geom_text_repel(data = bsum, aes(x = xpos,y = ypos, label = lb), color = "black", size=3) +
   theme(legend.position = 'bottom' ) + 
   facet_wrap(~omics)
+
+g_compositionITS
+
 ```
+
 
 #### Individual distribution 
 
-```{r}
-otutbITS <- b %>% left_join(bsum, by = c('ta3','ta4','ta5')) 
+```{r, fig.width=14}
+otutbITS <- b %>% left_join(bsumITS, by = c('ta3','ta4','ta5')) 
+participantsort <- otutbITS %>%
+  filter(lb == 'Saccharomycetaceae') %>% 
+  group_by(Participant) %>% 
+  dplyr::summarise(ra = mean(Abundance)) %>% 
+  arrange(-ra) %>% 
+  mutate(rnk = 1:n())
+
 otutbITS %>% 
-  group_by(Sample.ID,lb) %>% 
+  group_by(Participant,cycle,day,Sample.ID,lb) %>% 
   summarise(Abundance = sum(Abundance)) %>% 
   ungroup %>% 
   group_by(Sample.ID) %>% 
   mutate(Abundance = Abundance / sum(Abundance)) %>% 
-  ggplot(data = ., aes(Sample.ID,Abundance, fill = lb)) + 
-  geom_bar(stat = 'identity') 
+  mutate(Participant = factor(Participant, levels = participantsort$Participant)) %>% 
+  ggplot(data = ., aes(day,Abundance, fill = lb)) + 
+  geom_bar(stat = 'identity') + 
+  scale_fill_manual(values=bsumITS$color)  + 
+  labs(fill = NULL, x = 'Day in Period') + 
+  theme_bw() + 
+  facet_grid(cycle~Participant) +
+  guides(fill = guide_legend(nrow = 1)) + 
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 90))
 
 ```
+
+
+
+
+## Figure 2 in publication
+
+```{r, fig.width=14}
+layout2 <- "
+AABC
+"
+
+all_comp <- g_composition + g_composition16s + g_compositionITS + 
+  plot_layout(design = layout2,guides = "collect") & theme(legend.position = 'bottom',
+                                                           legend.direction = 'horizontal')
+
+all_comp
+# ggsave('FIG2A_composition.pdf',plot = all_comp, width = 14)
+```
+
 
 
 ## Trajectories over time
@@ -394,7 +455,7 @@ MEconc_newlong %>%
 
 ### 16s
 
- 
+
 
 
 ```{r, fig.height=30, fig.width=10}
@@ -437,14 +498,14 @@ tidyall <- function(m0) {
 
 tidyall <- function(fit, data) {
   fit@call$data <- as.data.frame(data)
-
+  
   bind_rows(
     broom::tidy(anova(fit)) %>%
       mutate(test = "fixed"),
-
+    
     broom::tidy(lmerTest::ranova(fit)) %>%
       mutate(test = "random"),
-
+    
     broom.mixed::tidy(fit) %>%
       mutate(test = "coefficient")
   )
@@ -462,21 +523,21 @@ tb16s <- phyX %>%
   group_by(ta3, ta4, ta5, ta6, ta7, OTU) %>%
   group_modify(~ {
     dat <- as.data.frame(.x)
-
+    
     fit <- lmerTest::lmer(
-       lograbu~ factor(day) +
+      lograbu~ factor(day) +
         (1 | Participant) +
         (1 | cycle_part),
       data = dat
     )
     fit@call$data <- dat
-
+    
     # broom::tidy(lmerTest::ranova(fit))
     tidyall(fit, dat)
   }) %>%
   ungroup()
 
-  
+
 
 tbITS <- phyITS %>% 
   subset_samples(!is.na(Sample.ID)) %>% 
@@ -486,39 +547,41 @@ tbITS <- phyITS %>%
   group_by(ta3,ta4,ta5,ta6,ta7, OTU) %>% 
   group_modify(~ {
     dat <- as.data.frame(.x)
-
+    
     fit <- lmerTest::lmer(
-       lograbu~ factor(day) +
+      lograbu~ factor(day) +
         (1 | Participant) +
         (1 | cycle_part),
       data = dat
     )
     fit@call$data <- dat
-
+    
     # broom::tidy(lmerTest::ranova(fit))
     tidyall(fit, dat)
   }) %>%
   ungroup()
 
-  
 
-  
+
+
 mME <- MEconc_newlong %>% 
   mutate(cycle_part = paste(Participant, Cycle)) %>% 
   group_by(met,category) %>% 
   group_modify(~ {
     dat <- as.data.frame(.x)
-
+    
     fit <- lmerTest::lmer(
-       logy~ factor(`Cycle day`) + (1|`Participant`) + (1|cycle_part),
+      logy~ factor(`Cycle day`) + (1|`Participant`) + (1|cycle_part),
       data = dat
     )
     fit@call$data <- dat
     tidyall(fit, dat)
   }) %>%
   ungroup()
+```
 
 
+```{r}
 dfplot <- bind_rows(mME %>% mutate(omics = 'ME-NMR') %>% 
                       filter(!str_detect(met,'PC')) %>%
                       filter(!str_detect(met,'glycerol')) %>% 
@@ -529,9 +592,10 @@ dfplot <- bind_rows(mME %>% mutate(omics = 'ME-NMR') %>%
                     tb16s %>% mutate(omics = 'ME-16s',met = OTU) %>% left_join(bsum16s, by = c('ta3','ta4','ta5'))) %>%  
   filter(str_detect(term,'day'))  %>% 
   filter(!is.na(estimate)) %>% 
-  filter(parse_number(term)==2) 
+  filter(parse_number(term)==2) %>% 
+  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) 
 
-g_box <- dfplot %>% left_join(data.frame(omics = colorcodesnames)) %>% 
+g_box <- dfplot %>% 
   ggplot(data =., aes(estimate, fill = omics)) + 
   geom_boxplot()+
   facet_wrap(~omics, scales = 'free_x') + 
@@ -568,6 +632,7 @@ B
 g_day2 <- g_vulc + g_box+
   plot_layout(design = layout)
 g_day2
+
 ```
 
 
@@ -582,7 +647,7 @@ tbseq <- bind_rows(tbITS %>% mutate(omics = 'ME-ITS'),
   dplyr::select(-p.value) %>%
   dplyr::mutate(vr = estimate^2) %>% 
   group_by(omics,ta3,ta4,ta5,ta6,ta7,OTU) %>% 
-  mutate(relvr = vr / sum(vr)) 
+  dplyr::mutate(relvr = vr / sum(vr)) 
 
 tbME <- mME %>% mutate(omics = 'ME-NMR') %>% 
   filter(effect=='ran_pars') %>%
@@ -603,12 +668,14 @@ gSIMPLX_ME <- tbseq %>%
   mutate(cycle_part = ifelse(cycle_part==0,0.02,cycle_part), 
          Participant = Participant /(Participant + cycle_part + Residual), 
          Residual = Residual /(Participant + cycle_part + Residual)) %>% 
+  ungroup %>% 
+  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) %>%
   ggtern(data =., aes(cycle_part, Participant, Residual, color = lb)) + 
   geom_point() +
   scale_T_continuous(breaks = brks) +
   scale_L_continuous(breaks = brks) +
   scale_R_continuous(breaks = brks) + 
-  scale_color_manual(values = bind_rows(dflb,bsum16s,bsumITS)$color, 
+  scale_color_manual(values = bind_rows(dflb,bsum16s,bsumITS)$color,
                      breaks = bind_rows(dflb,bsum16s,bsumITS)$lb ) +
   xlab('Between Cycles') + 
   ylab('Between Women') + 

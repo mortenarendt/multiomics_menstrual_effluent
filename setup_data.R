@@ -16,13 +16,15 @@ MEconc_new <- MEconc_new %>%
   dplyr::select(`Samples #`,`Sample ID`,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`,TSP:`bin-4`)
 
 MEconc_newlong <- MEconc_newlong %>% 
-  dplyr::select(`Samples #`,`Sample ID`,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`,met,end_ppm:type,y,logy)
+  dplyr::select(`Samples #`,`Sample ID`,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`,met,end_ppm:type,y,logy) %>% 
+  mutate(type = 'ME-NMR')
 
 PBconc_new <- PBconc_new %>% 
   dplyr::select(`Samples #`,Sample,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`, TSP:`bin-tyramine-tyrosine`)
 
 PBconc_newlong <- PBconc_newlong %>% 
-  dplyr::select(`Samples #`,Sample,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`,met,end_ppm:type,y,logy)
+  dplyr::select(`Samples #`,Sample,`Blood origen`,Batch,Participant:Period,Cycle,`Cycle day`:`Medication during sampling`,met,end_ppm:type,y,logy) %>% 
+  mutate(type = 'PB-NMR')
 
 load(file = '~/Dropbox/Bekzod&Isabella/16S_data/ME16s.RData')
 load(file = '~/Dropbox/Bekzod&Isabella/ITS/ME_ITS.RData')

@@ -53,10 +53,10 @@ load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/mu
 ## Color codes for all
 load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/summarystats.RData')
 
+bsumITS$lb[is.na(bsumITS$lb)] <- 'Other'
 colorvals <- unname(glasbey())
 bsumITS$color <- bsum16s$color <- dflb$color <- '#D3D3D3'
 dflb$color[1:8] <- colorvals[1:8]
 bsumITS$color[1:8] <- colorvals[11:18]
 bsum16s$color[1:8] <- colorvals[21:28]
-
 
