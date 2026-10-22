@@ -16,6 +16,14 @@ source('libs_init.R')
 Figure 2A in publication
 
 ```{r}
+print('ME dimensions')
+MEconc_newlong %>% filter(!is.na(`Sample ID`)) %>% filter(!duplicated(`Sample ID`)) %>% dim
+MEconc_newlong %>%ungroup %>%  filter(!is.na(`Sample ID`)) %>% filter(!duplicated(Participant)) %>% dim
+
+print('PB dimensions')
+PBconc_new %>% filter(!is.na(Sample)) %>% filter(!duplicated(Sample)) %>% dim
+PBconc_new %>% filter(!is.na(Sample)) %>% filter(!duplicated(Sample)) %>% filter(!duplicated(Participant)) %>% dim
+
 df <- bind_rows(
   MEconc_newlong %>% 
     filter(! (str_detect(met,'glycerol') | met == 'ERECTIC' | met=='TSP' | str_detect(met,'PC'))),
@@ -114,11 +122,15 @@ UMI_1391R   - GTCTCGTGGGCTCGGNNNNNNNNNNNNNNNGACGGGCGGTGTGTRCA
 Sequencing depth
 
 ```{r}
-df_ME <- MEconc_newlong %>% filter(!duplicated(`Samples #`))
+df_ME <- MEconc_newlong %>% 
+  filter(!duplicated(`Samples #`))
 
 df_descrip <- phyX@sam_data %>% data.frame()
 
 phyX %>% subset_samples(!is.na(cycle)) %>% sample_sums() %>% summary
+
+phyX@sam_data %>% data.frame %>% filter(!is.na(Sample.ID)) %>% filter(!duplicated(Sample.ID)) %>% dim
+phyX@sam_data %>% data.frame %>%  filter(!is.na(Sample.ID)) %>% filter(!duplicated(Participant)) %>% dim
 ```
 
 
@@ -237,11 +249,12 @@ participantsort <- otutb16s %>%
   arrange(-ra) %>% 
   mutate(rnk = 1:n())
 
-otutb16s %>% 
+g2B <- otutb16s %>% 
   mutate(Participant = factor(Participant, levels = participantsort$Participant)) %>% 
   ggplot(data = ., aes(day,Abundance, fill = lb)) + 
   scale_fill_manual(values=bsum16s$color)  + 
-  geom_bar(stat = 'identity')  + guides(fill = guide_legend(nrow = 1)) + 
+  geom_bar(stat = 'identity',color = 'grey50')  + 
+  guides(fill = guide_legend(nrow = 1)) + 
   labs(fill = NULL, x = 'Day in Period') + 
   facet_grid(cycle~Participant , space = 'free', scales = 'free') +
   theme_bw() + 
@@ -394,6 +407,8 @@ g_compositionITS
 #### Individual distribution 
 
 ```{r, fig.width=14}
+library(ggpattern)
+
 otutbITS <- b %>% left_join(bsumITS, by = c('ta3','ta4','ta5')) 
 participantsort <- otutbITS %>%
   filter(lb == 'Saccharomycetaceae') %>% 
@@ -402,21 +417,31 @@ participantsort <- otutbITS %>%
   arrange(-ra) %>% 
   mutate(rnk = 1:n())
 
-otutbITS %>% 
+dfotutbITS <- otutbITS %>% 
   group_by(Participant,cycle,day,Sample.ID,lb) %>% 
   summarise(Abundance = sum(Abundance)) %>% 
   ungroup %>% 
   group_by(Sample.ID) %>% 
   mutate(Abundance = Abundance / sum(Abundance)) %>% 
-  mutate(Participant = factor(Participant, levels = participantsort$Participant)) %>% 
+  mutate(Participant = factor(Participant, levels = participantsort$Participant)) 
+
+dfmiss <- dfotutbITS %>% 
+  filter(is.na(Abundance)) %>% 
+  filter(lb=='Other') %>% 
+  mutate(Abundance = 1)
+
+g2C <- dfotutbITS %>% 
   ggplot(data = ., aes(day,Abundance, fill = lb)) + 
-  geom_bar(stat = 'identity') + 
+  geom_bar(stat = 'identity',color = 'grey50') + 
+  geom_bar(data = dfmiss, stat = 'identity', fill = 'yellow', alpha = 0.4, color = 'grey50') +
   scale_fill_manual(values=bsumITS$color)  + 
   labs(fill = NULL, x = 'Day in Period') + 
   theme_bw() + 
   facet_grid(cycle~Participant) +
   guides(fill = guide_legend(nrow = 1)) + 
   theme(legend.position = 'bottom', axis.text.x = element_text(angle = 90))
+g2C
+
 
 ```
 
@@ -435,7 +460,9 @@ all_comp <- g_composition + g_composition16s + g_compositionITS +
                                                            legend.direction = 'horizontal')
 
 all_comp
-# ggsave('FIG2A_composition.pdf',plot = all_comp, width = 14)
+ggsave('FIG2A_composition.pdf',plot = all_comp, width = 14)
+ggsave('FIG2B_16s_composition.pdf',plot = g2B, width = 14, height = 4)
+ggsave('FIG2C_ITS_composition.pdf',plot = g2C, width = 14, height = 4)
 ```
 
 
@@ -485,7 +512,7 @@ otutbITS %>%
 
 ### Vulcano plot
 
-Figure 1C in publication 
+Figure 3B in publication 
 
 ```{r}
 tidyall <- function(m0) {
@@ -525,7 +552,7 @@ tb16s <- phyX %>%
     dat <- as.data.frame(.x)
     
     fit <- lmerTest::lmer(
-      lograbu~ factor(day) +
+      lograbu ~ factor(day) +
         (1 | Participant) +
         (1 | cycle_part),
       data = dat
@@ -578,6 +605,17 @@ mME <- MEconc_newlong %>%
     tidyall(fit, dat)
   }) %>%
   ungroup()
+
+
+
+mME_pool <- MEconc_newlong %>% 
+  filter(is.na(`Sample ID`)) %>% 
+  filter(Cycle=='O') %>% 
+  group_by(met,category) %>% 
+  summarise(sd(logy))
+
+
+
 ```
 
 
@@ -633,14 +671,33 @@ g_day2 <- g_vulc + g_box+
   plot_layout(design = layout)
 g_day2
 
+ggsave('FIG3B_vulcano.pdf',plot = g_day2, width = 8)
 ```
 
 
+```{r}
+mME %>% filter(effect=='ran_pars') 
+```
+
 # Simplex of variance partitioning
 
-Figure 1B in publication
+```{r}
+mME_pool %>% 
+  left_join(mME %>% 
+              mutate(omics = 'ME-NMR') %>% 
+              filter(effect=='ran_pars') %>% 
+              filter(str_detect(group,'Resi')), 
+            by = c('met','category')) %>% 
+  ggplot(data = ., aes(`sd(logy)`,estimate)) + 
+  geom_point() + coord_equal() + geom_abline()
+```
+
+Figure 3A in publication
 
 ```{r}
+
+
+
 tbseq <- bind_rows(tbITS %>% mutate(omics = 'ME-ITS'),
                    tb16s %>% mutate(omics = 'ME-16s')) %>% 
   filter(effect=='ran_pars') %>%
@@ -649,7 +706,8 @@ tbseq <- bind_rows(tbITS %>% mutate(omics = 'ME-ITS'),
   group_by(omics,ta3,ta4,ta5,ta6,ta7,OTU) %>% 
   dplyr::mutate(relvr = vr / sum(vr)) 
 
-tbME <- mME %>% mutate(omics = 'ME-NMR') %>% 
+tbME <- mME %>% 
+  mutate(omics = 'ME-NMR') %>% 
   filter(effect=='ran_pars') %>%
   dplyr::select(-p.value) %>%
   group_by(met,category) %>% 
@@ -690,6 +748,7 @@ gSIMPLX_ME <- tbseq %>%
   facet_wrap(~omics)  
 
 gSIMPLX_ME
+ggsave('FIG3A_simplex.pdf',plot = gSIMPLX_ME, width = 7)
 ```
 
 

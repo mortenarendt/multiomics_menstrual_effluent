@@ -94,9 +94,9 @@ tb_lmer %>% filter(str_detect(term,'log')) %>%
   coord_flip()
 
 # tb_lmer %>% filter(str_detect(term,'log')) %>% 
-  # group_by(ta5lmp) %>% 
-  # dplyr::summarise(nneg = sum(estimate<0), npos = sum(estimate>0), 
-                   # pv = 1 - pbinom(max(npos,nneg)-1,nneg+npos,0.5))
+# group_by(ta5lmp) %>% 
+# dplyr::summarise(nneg = sum(estimate<0), npos = sum(estimate>0), 
+# pv = 1 - pbinom(max(npos,nneg)-1,nneg+npos,0.5))
 
 tb_lmer %>% 
   filter(str_detect(term,'log')) %>% 
@@ -107,15 +107,55 @@ tb_lmer %>%
 
 ```
 
+### Multivariate prediciton models using nested-cv
 
-
-### Multivariate prediction models (from 16s to NMR)
-
-```{r, eval = F}
+```{r, eval=FALSE}
 library(caret)
+library(nestedcv)
+
+make_loio_folds <- function(ids) {
+  if (anyNA(ids)) {
+    stop("ids must not contain missing values")
+  }
+  
+  ids <- as.character(ids)
+  n_ids <- length(unique(ids))
+  
+  if (n_ids < 3L) {
+    stop("At least three unique IDs are required for nested leave-one-ID-out CV")
+  }
+  
+  # Outer test folds: indices refer to rows in the complete dataset
+  outer_folds <- split(
+    seq_along(ids),
+    factor(ids, levels = unique(ids))
+  )
+  
+  # Inner test folds: indices refer to rows in each outer-training dataset
+  inner_folds <- lapply(outer_folds, function(outer_test) {
+    outer_train <- setdiff(seq_along(ids), outer_test)
+    train_ids   <- ids[outer_train]
+    
+    split(
+      seq_along(train_ids),
+      factor(train_ids, levels = unique(train_ids))
+    )
+  })
+  
+  list(
+    outer_folds = unname(outer_folds),
+    inner_folds = lapply(inner_folds, unname)
+  )
+}
+
+
+```
+
+#### From 16s to NMR
+
+```{r, eval=FALSE}
 phyXpp <- phyX %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
   transform_sample_counts(function(x) x / sum(x)) %>% 
   filter_taxa(function(x) sum(x > 0)>10, TRUE) 
@@ -123,70 +163,61 @@ phyXpp <- phyX %>%
 X <- phyXpp@otu_table %>% data.frame()
 Y <- phyXpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
 
-c <- 0
-CVindex <- list()
-for (i in unique(Y$participant)) {
-  c <- c+1
-  CVindex[[c]] <- which(Y$participant!=i)
+folds <- make_loio_folds(Y$Participant)
+
+unmet <- unique(MEconc_newlong$met) 
+unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
+# unmet <- unmet[10:length(unmet)]
+# unmet <- unmet[30:length(unmet)]
+# unmet <- unmet[52:length(unmet)]
+unmet <- unmet[89:length(unmet)]
+for (i in unmet){
+  # i <- unmet[9]
+  print(i)
+  
+  yy <- MEconc_newlong %>% filter(met==i) %>% filter(!is.na(Participant)) %>% filter(`Blood origen`=='ME') 
+  
+  YY <- Y %>% 
+    left_join(yy, by = c('Participant','Period','Cycle.day' = 'Cycle day'))
+  
+  y <- YY$logy
+  sdy <- sd(y)
+  
+  fit <- nestedcv::nestcv.train(
+    x = X,
+    y = y,
+    method = "spls",                  # any caret model
+    preProc = c("center", 'scale'),
+    tuneGrid = expand.grid(K = 1:5,# K sets number of components
+                           eta = seq(0,1,0.1), # eta sets sparsity
+                           kappa = 0.5),
+    outer_folds = folds$outer_folds,
+    inner_folds = folds$inner_folds,
+    finalCV = FALSE,
+    cv.cores = 1
+  )
+  
+  fit$sdy <- sdy
+  fit$metabolite <- i
+  
+  flnm <- paste('./MLresults/metabolite_16smodels_nestedcv',
+                i %>% 
+                  gsub('-','',x = .) %>% 
+                  gsub(' ','',x = .) %>% 
+                  gsub(',','',x = .),
+                '_v2.RData', sep = '')
+  save(file = flnm, list = c('fit','i'))
 }
-
-repCV10 <- trainControl(returnResamp = "all", 
-                        savePredictions = "all", 
-                        allowParallel = T, 
-                        verboseIter = F,
-                        index = CVindex)
-mdl <- list()
-for (i in 34:169){
-  # print(i)
-  X$y <- Y[,i]
-  sdy <- sd(X$y)
-  SPLS_model <- train(y ~ ., data = X, method = 'spls',
-                      preProc = c("center", 'scale'),
-                      tuneGrid = expand.grid(K = 1:10,# K sets number of components
-                                             eta = seq(0,1,0.1), # eta sets sparsity
-                                             kappa = 0.5), 
-                      trControl = repCV10)
-  SPLS_model$sdy <- sdy
-  SPLS_model$metabolite <- colnames(Y)[i]
-  mdl[[i]] <- SPLS_model
-}
-save(file = 'metabolite_16smodels.RData', list = c('mdl'))
-
-# null distribution 
-mdl_perm <- list()
-for (c in 1:100){
-  # print(c)
-  i <- sample(34:169)[1]
-  X$y <- sample(Y[,i])
-  sdy <- sd(X$y)
-  SPLS_model <- train(y ~ ., data = X, method = 'spls',
-                      preProc = c("center", 'scale'),
-                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
-                                             eta = seq(0,1,0.1), # eta sets sparsity
-                                             kappa = 0.5), 
-                      trControl = repCV10)
-  SPLS_model$sdy <- sdy
-  SPLS_model$metabolite <- colnames(Y)[i]
-  mdl_perm[[c]] <- SPLS_model
-}
-save(file = 'metabolite_16s_permsmodels.RData', list = c('mdl_perm'))
-
-
-# loads <- data.frame(breg = SPLS_model$finalModel$betahat,
-#                     SPLS_model_class$finalModel$betahat) %>% 
-#   data.frame() %>% rownames_to_column() %>% 
-#   right_join(DAres, by = 'rowname')
-
 
 ```
 
-### Multivariate prediction models (from ITS to NMR)
+
+#### From ITS to NMR
 
 ```{r, eval = F}
 library(caret)
 phyITSpp <- phyITS %>% 
-  subset_samples(!str_detect(Sample.name,'poz')) %>% 
-  subset_samples(!str_detect(Sample.name,'neg')) %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
   subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
   transform_sample_counts(function(x) as.numeric(x>0)) %>% 
   filter_taxa(function(x) sum(x > 0)>9, TRUE) 
@@ -194,52 +225,98 @@ phyITSpp <- phyITS %>%
 X <- phyITSpp@otu_table %>% data.frame()
 Y <- phyITSpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
 
-c <- 0
-CVindex <- list()
-for (i in unique(Y$participant)) {
-  c <- c+1
-  CVindex[[c]] <- which(Y$participant!=i)
+folds <- make_loio_folds(Y$Participant)
+
+unmet <- unique(MEconc_newlong$met) 
+unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
+unmet <- unmet[131:length(unmet)]
+for (i in unmet){
+  # i <- unmet[9]
+  print(i)
+  
+  yy <- MEconc_newlong %>% filter(met==i) %>% filter(!is.na(Participant)) %>% filter(`Blood origen`=='ME') 
+  
+  YY <- Y %>% 
+    left_join(yy, by = c('Participant','Period','Cycle.day' = 'Cycle day'))
+  
+  y <- YY$logy
+  sdy <- sd(y)
+  
+  fit <- nestedcv::nestcv.train(
+    x = X,
+    y = y,
+    method = "spls",                  # any caret model
+    preProc = c("center", 'scale'),
+    tuneGrid = expand.grid(K = 1:2,# K sets number of components
+                           eta = seq(0,1,0.1), # eta sets sparsity
+                           kappa = 0.5),
+    outer_folds = folds$outer_folds,
+    inner_folds = folds$inner_folds,
+    finalCV = FALSE,
+    cv.cores = 1
+  )
+  
+  fit$sdy <- sdy
+  fit$metabolite <- i
+  
+  flnm <- paste('./MLresultsITS/metabolite_ITSmodels_nestedcv',
+                i %>% 
+                  gsub('-','',x = .) %>% 
+                  gsub(' ','',x = .) %>% 
+                  gsub(',','',x = .),
+                '_v2.RData', sep = '')
+  save(file = flnm, list = c('fit','i'))
 }
 
-repCV10 <- trainControl(returnResamp = "all", 
-                        savePredictions = "all", 
-                        allowParallel = T, 
-                        verboseIter = F,
-                        index = CVindex)
-mdl_ITS <- list()
-for (i in 34:169){
-  X$y <- Y[,i]
-  sdy <- sd(X$y)
-  SPLS_model <- train(y ~ ., data = X, method = 'spls',
-                      preProc = c("center", 'scale'),
-                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
-                                             eta = seq(0,1,0.1), # eta sets sparsity
-                                             kappa = 0.5), 
-                      trControl = repCV10)
-  SPLS_model$sdy <- sdy
-  SPLS_model$metabolite <- colnames(Y)[i]
-  mdl_ITS[[i]] <- SPLS_model
-}
-save(file = 'metabolite_ITSsmodels.RData', list = c('mdl_ITS'))
+```
 
-# null distribution 
-mdl_ITS_perm <- list()
-for (c in 1:100){
-  i <- sample(34:169)[1]
-  X$y <- sample(Y[,i])
-  sdy <- sd(X$y)
-  SPLS_model <- train(y ~ ., data = X, method = 'spls',
-                      preProc = c("center", 'scale'),
-                      tuneGrid = expand.grid(K = 1:5,# K sets number of components
-                                             eta = seq(0,1,0.1), # eta sets sparsity
-                                             kappa = 0.5), 
-                      trControl = repCV10)
-  SPLS_model$sdy <- sdy
-  SPLS_model$metabolite <- colnames(Y)[i]
-  mdl_ITS_perm[[c]] <- SPLS_model
-}
-save(file = 'metabolite_ITS_permsmodels.RData', list = c('mdl_ITS_perm'))
 
+```{r, eval=FALSE}
+
+flnm <- list.files('./MLresults16s/')
+res16s <- data.frame()
+for (fl in flnm){
+  load(file = paste('./MLresults16s/',fl,sep = ''))
+  k <- summary(fit)$final_param$K
+  s <- summary(fit)$result %>% as.data.frame() %>% 
+    rownames_to_column('stat') %>% 
+    mutate(metabolite = i,method = '16s',sdy = fit$sdy, ncomp = k)
+  s$x <- as.numeric(s$x)
+  res16s <- bind_rows(res16s,s)
+}
+
+flnm <- list.files('./MLresultsITS/')
+resITS <- data.frame()
+for (fl in flnm){
+  load(file = paste('./MLresultsITS/',fl,sep = ''))
+  k <- summary(fit)$final_param$K
+  s <- summary(fit)$result %>% as.data.frame() %>% 
+    rownames_to_column('stat') %>% 
+    mutate(metabolite = i,method = 'ITS',sdy = fit$sdy, ncomp = k)
+  s$x <- as.numeric(s$x)
+  resITS <- bind_rows(resITS,s)
+}
+
+
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/RMSE0_loio.RData')
+
+MLstat16s <- RMSE0 %>% left_join(res16s %>% filter(stat=='RMSE')) %>% mutate(method = '16s') 
+MLstatITS <- RMSE0 %>% left_join(resITS %>% filter(stat=='RMSE'))  %>% mutate(method = 'ITS') 
+
+MLstat <- bind_rows(MLstat16s,MLstatITS) %>% 
+  mutate(stat = 'RMSE', 
+         ncomp = ifelse(is.na(x),0,ncomp),
+         x = ifelse(is.na(x),rmse0,x)) %>% 
+  left_join(MEclass, by = c('metabolite' = 'Interval_name')) 
+
+save(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MLstats.RData', 
+     list = c('MLstat','res16s','resITS'))
+# %>% 
+#   mutate(R2 =  (x^2 / rmse0^2)) %>% 
+#   ggplot(data = ., aes(1,log(R2)))  + 
+#   # scale_y_log10() + 
+#   scale_y_reverse() + 
+#   geom_boxplot()
 ```
 
 
@@ -290,7 +367,7 @@ resperm <- resperm %>% mutate(R2 = 1 - RMSE^2 / sdy^2)
 
 ```{r}
 # resperm %>% 
-  # ggplot(data = ., aes(Rsquared)) + geom_histogram() + facet_wrap(~method)
+# ggplot(data = ., aes(Rsquared)) + geom_histogram() + facet_wrap(~method)
 
 respermsum <- resperm %>% 
   group_by(method) %>% 
@@ -306,22 +383,30 @@ beta <- beta %>%left_join(res, by = c('metabolite','method')) %>%
 ### Per metabolite - CV predictive perormance.
 
 ```{r}
-res %>% 
-  ggplot(data = ., aes(metabolite,Rsquared, color = method)) + 
-  # geom_hline(yintercept = R2sign_ITS, color = 'green') + 
-  # geom_hline(yintercept = R2sign_16s, color = 'red') + 
-  geom_point()
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MLstats.RData')
 
-g_r2 <- res %>% 
-  left_join(dflb, by = 'category') %>% 
+MLstat <- MLstat %>% 
+  mutate(
+    Rsquared = 1 - (x^2 / rmse0^2),
+    quality = ifelse(Rsquared < (-0.2),'overfitted','ok'),
+    Rsquared = ifelse(Rsquared < (-0.2),-0.2,Rsquared)) 
+MLstat %>%
+  ggplot(data = ., aes(metabolite,Rsquared, color = method, shape = quality)) + 
+  geom_point()
+```
+
+
+```{r}
+g_r2 <- MLstat %>% 
+  left_join(dflb, by = 'category') %>%
   filter(!is.na(lb)) %>% 
   # group_by(lb) %>% 
   # mutate(category2 = paste(lb, ' (#', n() / 2,')', sep = ''))  %>% 
   # ungroup %>% 
   mutate(lb = lb %>% factor(levels = dflb$lb[1:9])) %>% 
-  ggplot(data= ., aes(lb,RMSE / sdy, fill = method)) + 
+  ggplot(data= ., aes(lb,Rsquared, fill = method)) + 
   geom_boxplot() +
-  scale_y_reverse() + 
+  # scale_y_reverse() + 
   geom_point(position = position_dodge(width = 0.75)) + 
   # geom_hline(data = data.frame(R2cut = c(R2sign_16s,R2sign_ITS), method = c('16s','ITS')), 
   # aes(yintercept = R2cut, color = method)) + 
@@ -333,7 +418,10 @@ g_r2 <- res %>%
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust =  0), 
         legend.position = 'bottom') + labs(fill = NULL) + 
   xlab(NULL)
+```
 
+
+```{r, eval= FALSE}
 res %>% 
   filter(!is.na(R2)) %>% 
   group_by(method,category) %>% 
@@ -353,7 +441,7 @@ res %>%
 
 ```
 
-Figure 4A in publication
+Figure 5A in publication
 
 ```{r}
 library(gplots)
@@ -377,10 +465,10 @@ ggbeta <- beta %>%
 lbs <- ggbeta %>% 
   group_by(OTU) %>% 
   dplyr::summarise(lb = ta5[1], 
-            lb4 = ta4[1], 
-            lb3 = ta3[1], 
-            lb2 = ta2[1], 
-            n()) %>% 
+                   lb4 = ta4[1], 
+                   lb3 = ta3[1], 
+                   lb2 = ta2[1], 
+                   n()) %>% 
   arrange(lb)
 
 # 1) find lowest level of id, 2) remove F__
@@ -416,7 +504,7 @@ g5 <- ggbeta %>%
 g_r2
 ```
 
-Figure 4B in publication
+Figure 5B in publication
 
 ```{r, fig.width=10, fig.height=5}
 g5 + coord_flip()

@@ -31,7 +31,7 @@ hasdata <- full_join(
   by = 'Sample.name') %>% 
   mutate(hasdata = ifelse(has_seq==1 | has_nmr==1,1,0))
 
-tb1 <- metadata %>% 
+dftb1 <- metadata %>% 
   filter(`Blood origen`=='ME') %>% 
   left_join(hasdata, by = c('Sample ID' = 'Sample.name')) %>% 
   group_by(Participant) %>% 
@@ -41,8 +41,25 @@ tb1 <- metadata %>%
          Alcohol_any = (sum(Alcohol,na.rm = T)>0) %>% as.numeric(), 
          Meds_any = (sum(`Medication during sampling`,na.rm = T)>0) %>% as.numeric()) %>% 
   filter(!duplicated(Participant)) %>% 
-  tableone::CreateTableOne(data = ., vars = c(metavars,'n_seq','n_NMR','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
+  mutate(missNMR = ifelse(n_NMR > 6,'>median_nobs','<median_nobs'), 
+         missSeq = ifelse(n_seq ==9,'>median_nobs','<median_nobs'))
+
+tb1 <- dftb1 %>% tableone::CreateTableOne(data = ., vars = c(metavars,'n_seq','n_NMR','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
+
+tb1missNMR <- dftb1 %>% tableone::CreateTableOne(data = ., 
+                                              strata = 'missNMR',
+                                              vars = c(metavars,'n_seq','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
+
+tb1missSeq <- dftb1 %>% tableone::CreateTableOne(data = ., 
+                                              strata = 'missSeq',
+                                              vars = c(metavars,'n_NMR','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
+
+
 tab1AMat <- print(tb1, nonnormal = c('n_seq','n_NMR')) 
+
+tab1AMat_NMR <- print(tb1missNMR, nonnormal = c('n_seq','n_NMR')) 
+tab1AMat_SEQ <- print(tb1missSeq, nonnormal = c('n_seq','n_NMR')) 
+
 
 tb12 <- metadata %>% 
   filter(`Blood origen`=='ME') %>% 
@@ -52,6 +69,8 @@ tb12 <- metadata %>%
 tab1BMat <- print(tb12, nonnormal = c('n_seq','n_NMR')) 
 
 tab1AMat %>% knitr::kable(caption = 'Participant level demographic characterization') 
+tab1AMat_NMR %>% knitr::kable(caption = 'Participant level demographic characterization - stratified by number of observed samples with NMR data') 
+tab1AMat_SEQ %>% knitr::kable(caption = 'Participant level demographic characterization - stratified by number of observed samples with Sequencing data') 
 tab1BMat %>% knitr::kable(caption = 'Sample level demographic characterization')
 ```
 
@@ -299,7 +318,7 @@ load('betademo_res.RData')
 
 ## Overall explained variance versus demo 
 
-Figure 2A in publication
+Figure 4A in publication
 
 ```{r}
 fmrt <- list(
@@ -314,7 +333,7 @@ resDEMO %>%
   dplyr::select(demo,omics,df,R2,p.value2) %>% 
   reactable(columns = fmrt)
 
-resDEMO %>% 
+Fig4A <- resDEMO %>% 
   mutate(pv = myround2(p.value2), 
          pv2 = gtools::stars.pval(p.value2)) %>% 
   filter(term=='Model') %>% 
@@ -329,12 +348,13 @@ resDEMO %>%
   labs(fill = NULL) + 
   theme(legend.position = 'top') + 
   xlab(NULL)
-
+Fig4A
+ggsave(filename = 'FIG4_betadiv.pdf',  plot = Fig4A,width = 6,height = 5.2)
 ```
 
 ### Examples 
 
-Figure 2B in publication
+Figure 4B in publication
 
 
 ```{r}
@@ -342,12 +362,15 @@ g1 <- MEconc_newlong %>%
   filter(str_detect(met,'unk29-asparagine') | 
            str_detect(met,'arabinose')) %>% # |
   # str_detect(met,'bin-ornithine-creatinine-tyrosine')) %>% 
+  mutate(met = met %>% gsub('unk29-','',x = .) %>% gsub('bin-','',x = .)) %>%
   filter(!is.na(Diet)) %>% 
   ggplot(data = ., aes(Diet,logy, fill = Diet)) + 
   geom_boxplot() + 
+  scale_fill_manual(values = c('red','blue','chartreuse3')) + 
   ggbeeswarm::geom_beeswarm() + 
   theme_bw() + 
-  facet_wrap(~met, scales = 'free', ncol = 1) + 
+  # facet_wrap(~met, scales = 'free', ncol = 1) + 
+  facet_grid(met~., scales = 'free') + 
   theme(legend.position = 'none')
 
 g1b <- MEconc_newlong %>% 
@@ -358,22 +381,30 @@ g1b <- MEconc_newlong %>%
   geom_boxplot() + 
   ggbeeswarm::geom_beeswarm() + 
   theme_bw() + 
-  facet_wrap(~met, scales = 'free', ncol = 1) + 
+  # facet_wrap(~met, scales = 'free', ncol = 1) + 
+  facet_grid(met~., scales = 'free') + 
   theme(legend.position = 'none')
 
 g2 <- MEconc_newlong %>% 
   filter(str_detect(met,'unk29-asparagine') | 
            str_detect(met,'arabinose')) %>% # |
-  # str_detect(met,'bin-ornithine-creatinine-tyrosine')) %>% 
+  mutate(met = met %>% gsub('unk29-','',x = .) %>% gsub('bin-','',x = .)) %>%
+  mutate(met = met %>% gsub('unk','',x = .)) %>% 
   filter(!is.na(Diet)) %>%
   mutate(cycle_day = parse_number(Cycle)*4 + `Cycle day`) %>% 
   ggplot(data = ., aes(cycle_day,logy, group = Participant, color =Diet)) + 
   geom_line() + geom_point() + 
   scale_x_continuous(breaks = c(5,6,7,9,10,11,13,14,15),
                      labels =  c('1-1','1-2','1-3','2-1','2-2','2-3','3-1','3-2','3-3')) + 
-  facet_wrap(~met, scales = 'free', ncol = 1) + 
-  theme_bw() + xlab('Cycle-Day') + 
-  theme(legend.position = 'none')
+  scale_color_manual(values = c('red','blue','chartreuse3')) + 
+  # facet_wrap(~met, scales = 'free', ncol = 1) + 
+  facet_grid(met~., scales = 'free') + 
+  theme_bw() + 
+  xlab('Cycle-Day') + 
+  theme(legend.position = 'none',
+    strip.text.y       = element_blank(),
+    strip.background.y = element_blank()
+  )
 
 g2b <- MEconc_newlong %>%
   filter(str_detect(met,'trimethylamine')) %>% 
@@ -384,9 +415,14 @@ g2b <- MEconc_newlong %>%
   geom_line() + geom_point() + 
   scale_x_continuous(breaks = c(5,6,7,9,10,11,13,14,15),
                      labels =  c('1-1','1-2','1-3','2-1','2-2','2-3','3-1','3-2','3-3')) + 
-  facet_wrap(~met, scales = 'free', ncol = 1) + 
-  theme_bw() + xlab('Cycle-Day') + 
-  theme(legend.position = 'none')
+  # facet_wrap(~met, scales = 'free', ncol = 1) + 
+  facet_grid(met~., scales = 'free') +
+  theme_bw() +
+  xlab('Cycle-Day') + 
+  theme(legend.position = 'none',
+    strip.text.y       = element_blank(),
+    strip.background.y = element_blank()
+  )
 
 layout <- "
 AAAB
@@ -395,7 +431,7 @@ CCCD
 "
 FIG2b <- g2 + g1 + g2b + g1b + plot_layout(design = layout , axes = 'collect')
 FIG2b
-# ggsave(filename = 'FIG2_dietexamples.pdf',  plot = FIG2b,width = 6,height = 7.5)
+ggsave(filename = 'FIG4_dietexamples.pdf',  plot = FIG2b,width = 5,height = 5)
 ```
 
 

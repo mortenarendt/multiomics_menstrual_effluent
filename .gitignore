@@ -6,3 +6,7 @@
 /.quarto/
 
 **/*.quarto_ipynb
+
+/metabolite_16smodels_nestedcv.RData
+
+/metabolite_16smodels_nestedcv.RData

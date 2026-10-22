@@ -27,6 +27,10 @@ PBconc_newlong <- PBconc_newlong %>%
   mutate(type = 'PB-NMR')
 
 load(file = '~/Dropbox/Bekzod&Isabella/16S_data/ME16s.RData')
+# sd <- phyX@sam_data %>% data.frame %>% filter((str_detect(Sample.name,'neg') | str_detect(Sample.name,'poz')))
+# sd %>% dplyr::select(Sample.name,BRK,Position.on.plate)
+# sd %>% tail
+
 load(file = '~/Dropbox/Bekzod&Isabella/ITS/ME_ITS.RData')
 
 smd <- phyITS@sam_data %>% data.frame() %>% 

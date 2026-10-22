@@ -14,7 +14,7 @@ source('libs_init.R')
 
 ## Multivariate Stability measures for each individual
 
-Figure 3C in publication
+Figure 4C in publication
 
 ```{r}
 df <- MEconc_newlong %>% 
@@ -47,9 +47,12 @@ for (P in unique(df$Participant)){
   ic <- df$Participant==P
   # print(sum(ic))
   #print(sum(ic))
-  iD<- as.matrix(DMENMR)[ic,ic] / medianNMR # scale distance to equal median.
+  iD <- as.matrix(DMENMR)[ic,ic] / medianNMR # scale distance to equal median.
   res_withindist <- res_withindist %>% 
-    bind_rows(data.frame(Participant = P,withinparticipantdist = iD[upper.tri(iD)], omics = 'ME-NMR'))
+    bind_rows(data.frame(Participant = P,
+                         nsamples = sum(ic),
+                         withinparticipantdist = iD[upper.tri(iD)], 
+                         omics = 'ME-NMR'))
   
   ic <- phyXsel16s@sam_data$Participant==P
   iD<- as.matrix(D16s)[ic,ic] / median16s
@@ -57,6 +60,7 @@ for (P in unique(df$Participant)){
   if (length(iD)==1) {wd <- NA} else {wd <- iD[upper.tri(iD)]}
   res_withindist <- res_withindist %>% 
     bind_rows(data.frame(Participant = P,
+                         nsamples = sum(ic),
                          withinparticipantdist = wd, 
                          omics = 'ME-16s'))
   
@@ -66,13 +70,22 @@ for (P in unique(df$Participant)){
   
   res_withindist <- res_withindist %>% 
     bind_rows(data.frame(Participant = P,
+                         nsamples = sum(ic),
                          withinparticipantdist = wd, 
                          omics = 'ME-ITS'))
 }
 
 res_withindistsum <- res_withindist %>% 
   group_by(Participant,omics) %>% 
-  summarise(n_comparisons = n(), mnd = mean(withinparticipantdist))
+  summarise(n_comparisons = n(), mnd = mean(withinparticipantdist), 
+            nsamples = mean(nsamples))
+
+res_withindistsum %>% group_by(omics) %>% 
+  summarise(sum(nsamples),
+            length(unique(Participant)), 
+            quantile(nsamples,0.75),
+            median(nsamples),
+            quantile(nsamples,0.25))
 
 r <- res_withindistsum %>% 
   dplyr::select(-n_comparisons) %>% 
@@ -97,6 +110,7 @@ FIG3b <- r %>% gather(omics,val,-rowname) %>%
   theme(legend.position = 'none')
 
 FIG3a <- res_withindistsum %>% 
+  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) %>% 
   ggplot(data = ., aes(omics, mnd, fill = omics)) + 
   geom_violin() + 
   geom_hline(yintercept = 1) + 
@@ -169,12 +183,15 @@ dfmeta %>%
 
 FIG3c <- dfmeta %>%
   filter(demo=='Diet') %>% 
+  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) %>% 
+  mutate(val = factor(val,levels = c('O','F','V'))) %>% 
   ggplot(data = ., aes(val,mnd, fill = val)) + 
   geom_violin() + 
   geom_hline(yintercept = 1) + 
+  scale_fill_manual(values = c('red','blue','chartreuse3')) +
   ggbeeswarm::geom_beeswarm() + 
   theme_bw() + theme(legend.position = 'none') + 
-  ylab('Mean within participant distance') + xlab(NULL) + 
+  ylab('Mean within participant distance') + xlab('Diet') + 
   ggpubr::stat_compare_means(method = 'anova') + 
   facet_grid(.~omics)
 ```
@@ -182,19 +199,28 @@ FIG3c <- dfmeta %>%
 
 ### Overall stability per women. Over omics modalities 
 
-Figure 3A in publication 
+Figure 5A in publication 
 
 ```{r}
 FIG3a
+ggsave(filename = 'FIG5_betastab.pdf', plot = FIG3a, height = 5,width = 3)
 ```
 
 
 ### Stability versus diet across omics modalities
 
-Figure 3B in publication 
+Figure 5B in publication 
 
 ```{r}
-FIG3c
+
+
+layout <- "
+ABB
+"
+FIG5 <- FIG3a + FIG3c + plot_layout(design = layout , axes = 'collect')
+FIG5
+
+ggsave(filename = 'FIG5_betastab.pdf', plot = FIG5, height = 5,width = 8)
 ```
 
 
