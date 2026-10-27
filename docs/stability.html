@@ -190,8 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#compare-within-women-stability-with-demographics" id="toc-compare-within-women-stability-with-demographics" class="nav-link" data-scroll-target="#compare-within-women-stability-with-demographics">Compare within-women stability with demographics</a>
   <ul class="collapse">
   <li><a href="#correlation-table" id="toc-correlation-table" class="nav-link" data-scroll-target="#correlation-table">Correlation table</a></li>
-  <li><a href="#overall-stability-per-women.-over-omics-modalities" id="toc-overall-stability-per-women.-over-omics-modalities" class="nav-link" data-scroll-target="#overall-stability-per-women.-over-omics-modalities">Overall stability per women. Over omics modalities</a></li>
-  <li><a href="#stability-versus-diet-across-omics-modalities" id="toc-stability-versus-diet-across-omics-modalities" class="nav-link" data-scroll-target="#stability-versus-diet-across-omics-modalities">Stability versus diet across omics modalities</a></li>
+  <li><a href="#overall-stability-per-women---across-omics-modalities" id="toc-overall-stability-per-women---across-omics-modalities" class="nav-link" data-scroll-target="#overall-stability-per-women---across-omics-modalities">Overall stability per women - across omics modalities</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -292,70 +291,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            <span class="fu">length</span>(<span class="fu">unique</span>(Participant)), </span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>            <span class="fu">quantile</span>(nsamples,<span class="fl">0.75</span>),</span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>            <span class="fu">median</span>(nsamples),</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>            <span class="fu">quantile</span>(nsamples,<span class="fl">0.25</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  omics  `sum(nsamples)` `length(unique(Participant))` quantile(nsamples, 0.75…¹
-  &lt;chr&gt;            &lt;dbl&gt;                         &lt;int&gt;                     &lt;dbl&gt;
-1 ME-16s             141                            18                         9
-2 ME-ITS             141                            18                         9
-3 ME-NMR             110                            18                         8
-# ℹ abbreviated name: ¹​`quantile(nsamples, 0.75)`
-# ℹ 2 more variables: `median(nsamples)` &lt;dbl&gt;,
-#   `quantile(nsamples, 0.25)` &lt;dbl&gt;</code></pre>
-</div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n_comparisons) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(omics,mnd) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cor_mat</span>()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>pv <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n_comparisons) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(omics,mnd) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cor_pmat</span>()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>FIG3b <span class="ot">&lt;-</span> r <span class="sc">%&gt;%</span> <span class="fu">gather</span>(omics,val,<span class="sc">-</span>rowname) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(val<span class="sc">&lt;</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(omics,rowname,<span class="at">fill =</span> val, <span class="at">label=</span> <span class="fu">paste</span>(<span class="st">'r ='</span>,val))) <span class="sc">+</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">'blue'</span>,<span class="at">high =</span> <span class="st">'red'</span>, <span class="at">mid =</span> <span class="st">'white'</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">geom_text</span>() <span class="sc">+</span> </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>FIG3a <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="fu">factor</span>(omics, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'ME-NMR'</span>,<span class="st">'ME-16s'</span>,<span class="st">'ME-ITS'</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(omics, mnd, <span class="at">fill =</span> omics)) <span class="sc">+</span> </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> colorcodes, <span class="at">breaks =</span> colorcodesnames) <span class="sc">+</span> </span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Participant)) <span class="sc">+</span> </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span> </span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Mean within participant distance'</span>) <span class="sc">+</span> </span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>r <span class="sc">%&gt;%</span> <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> <span class="fu">add_title</span>(<span class="st">'Correlation between overall stability'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>            <span class="fu">quantile</span>(nsamples,<span class="fl">0.25</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_subtitle</span>(<span class="st">'Descriptives of samples going into stability calculations'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<h1 style="color:#000;background:#FFFFFF;text-align:left;font-size:32px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px">Correlation between overall stability</h1>
+<h2 style="color:#000;background:#FFFFFF;text-align:left;font-size:24px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px" class="anchored">Descriptives of samples going into stability calculations</h2>
 <div class="reactable html-widget html-fill-item" id="htmlwidget-4fb6a5301924dddf190c" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4fb6a5301924dddf190c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rowname":["nsamples","ME-16s","ME-ITS","ME-NMR"],"nsamples":[1,0.13,0.064,-0.13],"ME-16s":[0.13,1,0.18,0.087],"ME-ITS":[0.064,0.18,1,-0.65],"ME-NMR":[-0.13,0.087,-0.65,1]},"columns":[{"id":"rowname","name":"rowname","type":"character"},{"id":"nsamples","name":"nsamples","type":"numeric"},{"id":"ME-16s","name":"ME-16s","type":"numeric"},{"id":"ME-ITS","name":"ME-ITS","type":"numeric"},{"id":"ME-NMR","name":"ME-NMR","type":"numeric"}],"dataKey":"be29b43a4d1464178e4ed836c16d524f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-4fb6a5301924dddf190c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"omics":["ME-16s","ME-ITS","ME-NMR"],"sum(nsamples)":[141,141,110],"length(unique(Participant))":[18,18,18],"quantile(nsamples, 0.75)":[9,9,8],"median(nsamples)":[9,9,6],"quantile(nsamples, 0.25)":[8,8,5]},"columns":[{"id":"omics","name":"omics","type":"character"},{"id":"sum(nsamples)","name":"sum(nsamples)","type":"numeric"},{"id":"length(unique(Participant))","name":"length(unique(Participant))","type":"numeric"},{"id":"quantile(nsamples, 0.75)","name":"quantile(nsamples, 0.75)","type":"numeric"},{"id":"median(nsamples)","name":"median(nsamples)","type":"numeric"},{"id":"quantile(nsamples, 0.25)","name":"quantile(nsamples, 0.25)","type":"numeric"}],"dataKey":"71424ed7ed4d722ac718672847adce41"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pv <span class="sc">%&gt;%</span> <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> <span class="fu">add_title</span>(<span class="st">'Inference (pv) between overall stability'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n_comparisons) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(omics,mnd) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cor_mat</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pv <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n_comparisons) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(omics,mnd) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">cor_pmat</span>()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>FIG3b <span class="ot">&lt;-</span> r <span class="sc">%&gt;%</span> <span class="fu">gather</span>(omics,val,<span class="sc">-</span>rowname) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(val<span class="sc">&lt;</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(omics,rowname,<span class="at">fill =</span> val, <span class="at">label=</span> <span class="fu">paste</span>(<span class="st">'r ='</span>,val))) <span class="sc">+</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">'blue'</span>,<span class="at">high =</span> <span class="st">'red'</span>, <span class="at">mid =</span> <span class="st">'white'</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> <span class="fu">geom_text</span>() <span class="sc">+</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>FIG3a <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="fu">factor</span>(omics, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'ME-NMR'</span>,<span class="st">'ME-16s'</span>,<span class="st">'ME-ITS'</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(omics, mnd, <span class="at">fill =</span> omics)) <span class="sc">+</span> </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> colorcodes, <span class="at">breaks =</span> colorcodesnames) <span class="sc">+</span> </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Participant)) <span class="sc">+</span> </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span> </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Mean within participant distance'</span>) <span class="sc">+</span> </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>r <span class="sc">%&gt;%</span> <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> <span class="fu">add_subtitle</span>(<span class="st">'Correlation between overall stability'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<h1 style="color:#000;background:#FFFFFF;text-align:left;font-size:32px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px">Inference (pv) between overall stability</h1>
+<h2 style="color:#000;background:#FFFFFF;text-align:left;font-size:24px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px" class="anchored">Correlation between overall stability</h2>
 <div class="reactable html-widget html-fill-item" id="htmlwidget-fc9aeaae8c3acad72025" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-fc9aeaae8c3acad72025">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rowname":["nsamples","ME-16s","ME-ITS","ME-NMR"],"nsamples":[0,0.607476357374591,0.800302412802145,0.616068643283801],"ME-16s":[0.607476357374591,1.16043393370025e-126,0.475433329431351,0.913380770173798],"ME-ITS":[0.800302412802145,0.475433329431351,2.97071087027252e-124,0.345881560926407],"ME-NMR":[0.616068643283801,0.913380770173798,0.345881560926407,0]},"columns":[{"id":"rowname","name":"rowname","type":"character"},{"id":"nsamples","name":"nsamples","type":"numeric"},{"id":"ME-16s","name":"ME-16s","type":"numeric"},{"id":"ME-ITS","name":"ME-ITS","type":"numeric"},{"id":"ME-NMR","name":"ME-NMR","type":"numeric"}],"dataKey":"6496f3ab20afe3064e65c9a5e8b415ac"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-fc9aeaae8c3acad72025">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rowname":["nsamples","ME-16s","ME-ITS","ME-NMR"],"nsamples":[1,0.13,0.064,-0.13],"ME-16s":[0.13,1,0.18,0.087],"ME-ITS":[0.064,0.18,1,-0.65],"ME-NMR":[-0.13,0.087,-0.65,1]},"columns":[{"id":"rowname","name":"rowname","type":"character"},{"id":"nsamples","name":"nsamples","type":"numeric"},{"id":"ME-16s","name":"ME-16s","type":"numeric"},{"id":"ME-ITS","name":"ME-ITS","type":"numeric"},{"id":"ME-NMR","name":"ME-NMR","type":"numeric"}],"dataKey":"be29b43a4d1464178e4ed836c16d524f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pv <span class="sc">%&gt;%</span> <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> <span class="fu">add_subtitle</span>(<span class="st">'Inference (pv) between overall stability'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<h2 style="color:#000;background:#FFFFFF;text-align:left;font-size:24px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px" class="anchored">Inference (pv) between overall stability</h2>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-45474219bc82a1e375ca" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-45474219bc82a1e375ca">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rowname":["nsamples","ME-16s","ME-ITS","ME-NMR"],"nsamples":[0,0.607476357374591,0.800302412802145,0.616068643283801],"ME-16s":[0.607476357374591,1.16043393370025e-126,0.475433329431351,0.913380770173798],"ME-ITS":[0.800302412802145,0.475433329431351,2.97071087027252e-124,0.345881560926407],"ME-NMR":[0.616068643283801,0.913380770173798,0.345881560926407,0]},"columns":[{"id":"rowname","name":"rowname","type":"character"},{"id":"nsamples","name":"nsamples","type":"numeric"},{"id":"ME-16s","name":"ME-16s","type":"numeric"},{"id":"ME-ITS","name":"ME-ITS","type":"numeric"},{"id":"ME-NMR","name":"ME-NMR","type":"numeric"}],"dataKey":"6496f3ab20afe3064e65c9a5e8b415ac"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -364,42 +359,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>variablemetavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alcohol"</span>,<span class="st">"Coitus"</span>, <span class="st">"Medication during sampling"</span>  )</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>metavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Residence"</span>, <span class="st">"Diet"</span>, <span class="st">"Contraceptives"</span>, <span class="st">"Regular/daily medication"</span> , <span class="st">"Nicotin"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(<span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>,Participant,   metavars) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(demo,val,<span class="sc">-</span><span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>,<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Participant)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(demo) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Participant)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(res_withindistsum, <span class="at">by =</span> <span class="st">'Participant'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>variablemetavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alcohol"</span>,<span class="st">"Coitus"</span>, <span class="st">"Medication during sampling"</span>  )</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>metavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Residence"</span>, <span class="st">"Diet"</span>, <span class="st">"Contraceptives"</span>, <span class="st">"Regular/daily medication"</span> , <span class="st">"Nicotin"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(<span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>,Participant,   metavars) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(demo,val,<span class="sc">-</span><span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>,<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Participant)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(demo) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Participant)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(res_withindistsum, <span class="at">by =</span> <span class="st">'Participant'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="correlation-table" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-table">Correlation table</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fmrt <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">relssq =</span> <span class="fu">colDef</span>(<span class="at">format =</span> <span class="fu">colFormat</span>(<span class="at">percent =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.value =</span> <span class="fu">colDef</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cell =</span> <span class="cf">function</span>(value) {</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">is.na</span>(value)) <span class="fu">return</span>(<span class="st">""</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">formatC</span>(value, <span class="at">format =</span> <span class="st">"e"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="sc">%&gt;%</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(val,mnd)) <span class="sc">+</span> </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(omics<span class="sc">~</span>demo, <span class="at">scales =</span> <span class="st">'free'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fmrt <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">relssq =</span> <span class="fu">colDef</span>(<span class="at">format =</span> <span class="fu">colFormat</span>(<span class="at">percent =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.value =</span> <span class="fu">colDef</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cell =</span> <span class="cf">function</span>(value) {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">is.na</span>(value)) <span class="fu">return</span>(<span class="st">""</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">formatC</span>(value, <span class="at">format =</span> <span class="st">"e"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="sc">%&gt;%</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(val,mnd)) <span class="sc">+</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(omics<span class="sc">~</span>demo, <span class="at">scales =</span> <span class="st">'free'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -409,49 +402,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="correlation-table" class="level3">
+<h3 class="anchored">Correlation table</h3>
 <p>Inference as table</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(omics,demo) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">lm</span>(<span class="at">data =</span> ., mnd<span class="sc">~</span>val) <span class="sc">%&gt;%</span> anova <span class="sc">%&gt;%</span> tidy) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(demo,omics) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relssq =</span> sumsq <span class="sc">/</span> <span class="fu">sum</span>(sumsq)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term<span class="sc">==</span><span class="st">'val'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(p.value) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(omics,demo,df,relssq,p.value) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(omics,demo) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">lm</span>(<span class="at">data =</span> ., mnd<span class="sc">~</span>val) <span class="sc">%&gt;%</span> anova <span class="sc">%&gt;%</span> tidy) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(demo,omics) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relssq =</span> sumsq <span class="sc">/</span> <span class="fu">sum</span>(sumsq)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term<span class="sc">==</span><span class="st">'val'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(p.value) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(omics,demo,df,relssq,p.value) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt) <span class="sc">%&gt;%</span> <span class="fu">add_subtitle</span>(<span class="st">'Variation in stability explained by demographics'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-45474219bc82a1e375ca" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-45474219bc82a1e375ca">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"omics":["ME-16s","ME-ITS","ME-ITS","ME-ITS","ME-ITS","ME-NMR","ME-ITS","ME-NMR","ME-ITS","ME-NMR","ME-NMR","ME-16s","ME-16s","ME-16s","ME-16s","ME-16s","ME-NMR","ME-NMR"],"demo":["Diet","Residence","Contraceptives","Nicotin","Age","Diet","Regular/daily medication","Contraceptives","Diet","Residence","Age","Nicotin","Contraceptives","Residence","Regular/daily medication","Age","Regular/daily medication","Nicotin"],"df":[2,1,1,1,2,2,1,1,2,1,2,1,1,1,1,2,1,1],"relssq":[0.521305481889568,0.399534884825542,0.130564934584434,0.0703316427234243,0.148982900130466,0.130861930760911,0.0484022516284928,0.0411564348633126,0.100027807587718,0.0284160750932027,0.0821122941089966,0.023004124893482,0.0151113578117403,0.0139761110797024,0.0122404395353939,0.0242834466848115,0.000203763323344304,8.18617646517654e-05],"p.value":[0.00398509249186789,0.00488732618867939,0.140674125095175,0.287523358057132,0.29822026366913,0.349273629327838,0.38037147768943,0.41945725070957,0.453647143127779,0.503717864603771,0.52592237437941,0.547985238424633,0.627003662050331,0.640354161825691,0.662083181843919,0.831625020931692,0.955169338321112,0.971576588707207]},"columns":[{"id":"omics","name":"omics","type":"character"},{"id":"demo","name":"demo","type":"character"},{"id":"df","name":"df","type":"numeric"},{"id":"relssq","name":"relssq","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"p.value","name":"p.value","type":"numeric","cell":["3.99e-03","4.89e-03","1.41e-01","2.88e-01","2.98e-01","3.49e-01","3.80e-01","4.19e-01","4.54e-01","5.04e-01","5.26e-01","5.48e-01","6.27e-01","6.40e-01","6.62e-01","8.32e-01","9.55e-01","9.72e-01"]}],"dataKey":"8198d5df177c64af8213ac2fa3761118"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<h2 style="color:#000;background:#FFFFFF;text-align:left;font-size:24px;font-style:normal;font-weight:bold;text-decoration:;letter-spacing:px;word-spacing:px;text-transform:;text-shadow:;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px" class="anchored" data-anchor-id="correlation-table">Variation in stability explained by demographics</h2>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-cda80dfc99c602ba74dd" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cda80dfc99c602ba74dd">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"omics":["ME-16s","ME-ITS","ME-ITS","ME-ITS","ME-ITS","ME-NMR","ME-ITS","ME-NMR","ME-ITS","ME-NMR","ME-NMR","ME-16s","ME-16s","ME-16s","ME-16s","ME-16s","ME-NMR","ME-NMR"],"demo":["Diet","Residence","Contraceptives","Nicotin","Age","Diet","Regular/daily medication","Contraceptives","Diet","Residence","Age","Nicotin","Contraceptives","Residence","Regular/daily medication","Age","Regular/daily medication","Nicotin"],"df":[2,1,1,1,2,2,1,1,2,1,2,1,1,1,1,2,1,1],"relssq":[0.521305481889568,0.399534884825542,0.130564934584434,0.0703316427234243,0.148982900130466,0.130861930760911,0.0484022516284928,0.0411564348633126,0.100027807587718,0.0284160750932027,0.0821122941089966,0.023004124893482,0.0151113578117403,0.0139761110797024,0.0122404395353939,0.0242834466848115,0.000203763323344304,8.18617646517654e-05],"p.value":[0.00398509249186789,0.00488732618867939,0.140674125095175,0.287523358057132,0.29822026366913,0.349273629327838,0.38037147768943,0.41945725070957,0.453647143127779,0.503717864603771,0.52592237437941,0.547985238424633,0.627003662050331,0.640354161825691,0.662083181843919,0.831625020931692,0.955169338321112,0.971576588707207]},"columns":[{"id":"omics","name":"omics","type":"character"},{"id":"demo","name":"demo","type":"character"},{"id":"df","name":"df","type":"numeric"},{"id":"relssq","name":"relssq","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"p.value","name":"p.value","type":"numeric","cell":["3.99e-03","4.89e-03","1.41e-01","2.88e-01","2.98e-01","3.49e-01","3.80e-01","4.19e-01","4.54e-01","5.04e-01","5.26e-01","5.48e-01","6.27e-01","6.40e-01","6.62e-01","8.32e-01","9.55e-01","9.72e-01"]}],"dataKey":"8198d5df177c64af8213ac2fa3761118"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>FIG3c <span class="ot">&lt;-</span> dfmeta <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(demo<span class="sc">==</span><span class="st">'Diet'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="fu">factor</span>(omics, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'ME-NMR'</span>,<span class="st">'ME-16s'</span>,<span class="st">'ME-ITS'</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">val =</span> <span class="fu">factor</span>(val,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'O'</span>,<span class="st">'F'</span>,<span class="st">'V'</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(val,mnd, <span class="at">fill =</span> val)) <span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'red'</span>,<span class="st">'blue'</span>,<span class="st">'chartreuse3'</span>)) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  ggbeeswarm<span class="sc">::</span><span class="fu">geom_beeswarm</span>() <span class="sc">+</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span> </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Mean within participant distance'</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">'Diet'</span>) <span class="sc">+</span> </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">'anova'</span>) <span class="sc">+</span> </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span>omics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>FIG3c <span class="ot">&lt;-</span> dfmeta <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(demo<span class="sc">==</span><span class="st">'Diet'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="fu">factor</span>(omics, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'ME-NMR'</span>,<span class="st">'ME-16s'</span>,<span class="st">'ME-ITS'</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">val =</span> <span class="fu">factor</span>(val,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'O'</span>,<span class="st">'F'</span>,<span class="st">'V'</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(val,mnd, <span class="at">fill =</span> val)) <span class="sc">+</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'red'</span>,<span class="st">'blue'</span>,<span class="st">'chartreuse3'</span>)) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ggbeeswarm<span class="sc">::</span><span class="fu">geom_beeswarm</span>() <span class="sc">+</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Mean within participant distance'</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">'Diet'</span>) <span class="sc">+</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">'anova'</span>) <span class="sc">+</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span>omics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="overall-stability-per-women.-over-omics-modalities" class="level3">
-<h3 class="anchored" data-anchor-id="overall-stability-per-women.-over-omics-modalities">Overall stability per women. Over omics modalities</h3>
-<p>Figure 5A in publication</p>
+<section id="overall-stability-per-women---across-omics-modalities" class="level3">
+<h3 class="anchored" data-anchor-id="overall-stability-per-women---across-omics-modalities">Overall stability per women - across omics modalities</h3>
+<p>Figure 5 in publication Example on diet.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>FIG3a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG3a, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">3</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>layout <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">ABB</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>FIG5 <span class="ot">&lt;-</span> FIG3a <span class="sc">+</span> FIG3c <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">design =</span> layout , <span class="at">axes =</span> <span class="st">'collect'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>FIG5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -462,32 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG3a, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="stability-versus-diet-across-omics-modalities" class="level3">
-<h3 class="anchored" data-anchor-id="stability-versus-diet-across-omics-modalities">Stability versus diet across omics modalities</h3>
-<p>Figure 5B in publication</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>layout <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">ABB</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>FIG5 <span class="ot">&lt;-</span> FIG3a <span class="sc">+</span> FIG3c <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">design =</span> layout , <span class="at">axes =</span> <span class="st">'collect'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>FIG5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stability_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Show code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG5, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG5, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 

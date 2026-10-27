@@ -59,8 +59,11 @@ g_composition <- df %>%
   labs(fill = NULL) + 
   theme(legend.position = 'bottom' )
 g_composition
+```
 
+### Table 
 
+```{r}
 df %>% 
   dplyr::select(type:mny,lb) %>% 
   spread(type,mny) %>% 
@@ -358,7 +361,7 @@ phyITSsummaries[[8]] %>% head %>% reactable(columns = fmrt)
 ```
 
 
-### Composition
+### Composition 
 
 #### Overall distribution 
 
@@ -675,11 +678,77 @@ ggsave('FIG3B_vulcano.pdf',plot = g_day2, width = 8)
 ```
 
 
+### Tables
+
+#### NMR
+
 ```{r}
-mME %>% filter(effect=='ran_pars') 
+fmrt <- list(
+  # estimate = colDef(format = colFormat(scientific = TRUE, digits = 2)),
+  estimate = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  std.error = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  ),
+  
+  p.value = colDef(
+    cell = function(value) {
+      if (is.na(value)) return("")
+      formatC(value, format = "e", digits = 2)
+    }
+  )
+)
+
+
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-NMR') %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(met,category,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt) %>% 
+  add_subtitle("NMR metabolomics - Effect of day 1 vs 2. Effect-sizes and inference used in the vulcano-plots, sorted by inference")
 ```
 
-# Simplex of variance partitioning
+#### 16s microbiome
+
+```{r}
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-16s') %>% 
+  left_join(phyXsummaries[[8]], by = c('met' = 'OTU')) %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(ta4:OTU,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt) %>% 
+  add_subtitle("16s sequencing - Effect of day 1 vs 2. Effect-sizes and inference used in the vulcano-plots, sorted by inference")
+
+```
+
+#### ITS Fungome
+
+```{r}
+dfplot %>% 
+  ungroup %>% 
+  filter(omics=='ME-ITS') %>% 
+  left_join(phyITSsummaries[[8]], by = c('met' = 'OTU')) %>% 
+  filter(!duplicated(met)) %>% 
+  arrange(p.value) %>% 
+  dplyr::select(ta4.x:OTU,estimate,std.error,p.value) %>% 
+  reactable(columns = fmrt) %>% 
+  add_subtitle("ITS sequencing - Effect of day 1 vs 2. Effect-sizes and inference used in the vulcano-plots, sorted by inference")
+
+```
+
+## Simplex of variance partitioning
 
 ```{r}
 mME_pool %>% 
@@ -692,11 +761,9 @@ mME_pool %>%
   geom_point() + coord_equal() + geom_abline()
 ```
 
-Figure 3A in publication
+### Figure 3A in publication
 
 ```{r}
-
-
 
 tbseq <- bind_rows(tbITS %>% mutate(omics = 'ME-ITS'),
                    tb16s %>% mutate(omics = 'ME-16s')) %>% 
@@ -749,73 +816,5 @@ gSIMPLX_ME <- tbseq %>%
 
 gSIMPLX_ME
 ggsave('FIG3A_simplex.pdf',plot = gSIMPLX_ME, width = 7)
-```
-
-
-
-### Tables
-
-Metabolomics by NMR
-
-```{r}
-fmrt <- list(
-  # estimate = colDef(format = colFormat(scientific = TRUE, digits = 2)),
-  estimate = colDef(
-    cell = function(value) {
-      if (is.na(value)) return("")
-      formatC(value, format = "e", digits = 2)
-    }
-  ),
-  
-  std.error = colDef(
-    cell = function(value) {
-      if (is.na(value)) return("")
-      formatC(value, format = "e", digits = 2)
-    }
-  ),
-  
-  p.value = colDef(
-    cell = function(value) {
-      if (is.na(value)) return("")
-      formatC(value, format = "e", digits = 2)
-    }
-  )
-)
-
-
-dfplot %>% 
-  ungroup %>% 
-  filter(omics=='ME-NMR') %>% 
-  filter(!duplicated(met)) %>% 
-  arrange(p.value) %>% 
-  dplyr::select(met,category,estimate,std.error,p.value) %>% 
-  reactable(columns = fmrt)
-```
-
-16s microbiome
-
-```{r}
-dfplot %>% 
-  ungroup %>% 
-  filter(omics=='ME-16s') %>% 
-  left_join(phyXsummaries[[8]], by = c('met' = 'OTU')) %>% 
-  filter(!duplicated(met)) %>% 
-  arrange(p.value) %>% 
-  dplyr::select(ta4:OTU,estimate,std.error,p.value) %>% 
-  reactable(columns = fmrt)
-```
-
-ITS Fungome
-
-```{r}
-dfplot %>% 
-  ungroup %>% 
-  filter(omics=='ME-ITS') %>% 
-  left_join(phyITSsummaries[[8]], by = c('met' = 'OTU')) %>% 
-  filter(!duplicated(met)) %>% 
-  arrange(p.value) %>% 
-  dplyr::select(ta4.x:OTU,estimate,std.error,p.value) %>% 
-  reactable(columns = fmrt)
-
 ```
 

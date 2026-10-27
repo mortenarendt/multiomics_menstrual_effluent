@@ -85,7 +85,9 @@ res_withindistsum %>% group_by(omics) %>%
             length(unique(Participant)), 
             quantile(nsamples,0.75),
             median(nsamples),
-            quantile(nsamples,0.25))
+            quantile(nsamples,0.25)) %>% 
+  reactable() %>% 
+  add_subtitle('Descriptives of samples going into stability calculations')
 
 r <- res_withindistsum %>% 
   dplyr::select(-n_comparisons) %>% 
@@ -121,8 +123,8 @@ FIG3a <- res_withindistsum %>%
   ylab('Mean within participant distance') + 
   theme(legend.position = 'none')
 
-r %>% reactable() %>% add_title('Correlation between overall stability')
-pv %>% reactable() %>% add_title('Inference (pv) between overall stability')
+r %>% reactable() %>% add_subtitle('Correlation between overall stability')
+pv %>% reactable() %>% add_subtitle('Inference (pv) between overall stability')
 
 ```
 
@@ -146,7 +148,6 @@ dfmeta <- MEconc_newlong %>%
 
 ```
 
-### Correlation table
 
 ```{r, fig.width=10}
 fmrt <- list(
@@ -168,6 +169,8 @@ dfmeta %>%
   facet_grid(omics~demo, scales = 'free')
 ```
 
+### Correlation table
+
 Inference as table 
 
 ```{r}
@@ -179,7 +182,7 @@ dfmeta %>%
   filter(term=='val') %>% 
   arrange(p.value) %>% 
   dplyr::select(omics,demo,df,relssq,p.value) %>% 
-  reactable(columns = fmrt)
+  reactable(columns = fmrt) %>% add_subtitle('Variation in stability explained by demographics')
 
 FIG3c <- dfmeta %>%
   filter(demo=='Diet') %>% 
@@ -197,22 +200,13 @@ FIG3c <- dfmeta %>%
 ```
 
 
-### Overall stability per women. Over omics modalities 
+### Overall stability per women - across omics modalities 
 
-Figure 5A in publication 
+Figure 5 in publication 
+Example on diet. 
 
 ```{r}
-FIG3a
 ggsave(filename = 'FIG5_betastab.pdf', plot = FIG3a, height = 5,width = 3)
-```
-
-
-### Stability versus diet across omics modalities
-
-Figure 5B in publication 
-
-```{r}
-
 
 layout <- "
 ABB

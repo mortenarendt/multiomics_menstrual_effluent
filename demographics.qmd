@@ -55,10 +55,10 @@ tb1missSeq <- dftb1 %>% tableone::CreateTableOne(data = .,
                                               vars = c(metavars,'n_NMR','Coitus_any','Alcohol_any','Meds_any'), factorVars = c(metavars, 'Coitus_any','Alcohol_any','Meds_any'))
 
 
-tab1AMat <- print(tb1, nonnormal = c('n_seq','n_NMR')) 
+tab1AMat <- print(tb1, nonnormal = c('n_seq','n_NMR'), printToggle = F) 
 
-tab1AMat_NMR <- print(tb1missNMR, nonnormal = c('n_seq','n_NMR')) 
-tab1AMat_SEQ <- print(tb1missSeq, nonnormal = c('n_seq','n_NMR')) 
+tab1AMat_NMR <- print(tb1missNMR, nonnormal = c('n_seq','n_NMR'), printToggle = F) 
+tab1AMat_SEQ <- print(tb1missSeq, nonnormal = c('n_seq','n_NMR'), printToggle = F) 
 
 
 tb12 <- metadata %>% 
@@ -66,7 +66,7 @@ tb12 <- metadata %>%
   left_join(hasdata, by = c('Sample ID' = 'Sample.name')) %>% 
   filter(hasdata == 1) %>%
   tableone::CreateTableOne(data = ., vars = metavars2, factorVars = metavars2)
-tab1BMat <- print(tb12, nonnormal = c('n_seq','n_NMR')) 
+tab1BMat <- print(tb12, nonnormal = c('n_seq','n_NMR'), printToggle = F) 
 
 tab1AMat %>% knitr::kable(caption = 'Participant level demographic characterization') 
 tab1AMat_NMR %>% knitr::kable(caption = 'Participant level demographic characterization - stratified by number of observed samples with NMR data') 
@@ -90,7 +90,7 @@ writeData(wb, "Sample", x = .)
 ```
 
 
-## Betadiversity plots
+## Betadiversity 
 
 Effect of demographics / meta-information
 
@@ -316,7 +316,7 @@ load('betademo_res.RData')
 ```
 
 
-## Overall explained variance versus demo 
+### Overall explained variance versus demo 
 
 Figure 4A in publication
 
@@ -331,7 +331,7 @@ resDEMO %>%
   filter(!is.na(df)) %>% 
   filter(!str_detect(omics,'sqrt')) %>% 
   dplyr::select(demo,omics,df,R2,p.value2) %>% 
-  reactable(columns = fmrt)
+  reactable(columns = fmrt) %>% add_subtitle('Overall variance explained (on beta-diversity) by individual demographic information')
 
 Fig4A <- resDEMO %>% 
   mutate(pv = myround2(p.value2), 
