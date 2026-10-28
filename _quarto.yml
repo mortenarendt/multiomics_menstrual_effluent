@@ -32,6 +32,8 @@ format:
     toc: true
     code-fold: true
     code-summary: "Show code"
-
+  pdf: default
+  docx: default 
+  
 editor: source
 
