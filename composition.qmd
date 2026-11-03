@@ -32,15 +32,13 @@ df <- bind_rows(
   filter(!is.na(Participant)) %>% 
   group_by(Participant,Cycle,`Cycle day`,`Samples #`) %>% 
   # mutate(y = y / sum(y)) %>% 
-  group_by(type,met, SigMa_class,category) %>% 
+  group_by(type,met, SigMa_class,category, end_ppm, start_ppm,shape,`represent-H`, `total visiable H`,`total-H of the metabolite`) %>% 
   dplyr::summarise(mny = sum(y)) %>% 
   group_by(type) %>% 
   dplyr::mutate(mny = mny / sum(mny)) %>% 
   dplyr::mutate(ypos = cumsum(mny) - 0.5*mny, 
                 xpos = runif(n(),0.5,1.5)) %>% 
-  ungroup() 
-
-df <- df %>% left_join(dflb, by = 'category')
+  ungroup() %>% left_join(dflb, by = 'category')
 df$lb <- factor(df$lb, levels = dflb$lb[1:9])
 
 ```
@@ -48,6 +46,8 @@ df$lb <- factor(df$lb, levels = dflb$lb[1:9])
 ### Composition 
 
 ```{r}
+
+df %>% rio::export(file = 'Figure2A1_data.xlsx')
 g_composition <- df %>% 
   ggplot(data= ., aes(x = '', y = mny,fill = lb)) + 
   geom_bar(stat="identity", width=1, color="white") +
@@ -63,7 +63,14 @@ g_composition
 
 ### Table 
 
+The software SigMa and a metabolite concentration table is created following the instructions, uploading a custom-made peak library specific for menstrual effluent, performing interval recognition and quantification. 
+
+The Menstrual effluent library for SigMa consists of _known peaks (Sigma class = 1)_, _unknown peaks (Sigma class = 2)_ and _bins of peaks that are not deconvoluted (Sigma class = 3)_. 
+
+
 ```{r}
+df %>% rio::export(file = 'Supplementary table 1.xlsx')
+
 df %>% 
   dplyr::select(type:mny,lb) %>% 
   spread(type,mny) %>% 
@@ -74,7 +81,34 @@ df %>%
 Sampling time, storage time and batch effect correction of ME-NMR data
 
 ```{r}
+tbQC <- MEconc_newlong %>% 
+  mutate(Batch = ifelse(is.na(Batch),3,Batch), 
+         `Sampling time` = ifelse(is.na(`Sampling time`),'XX',`Sampling time`), 
+         `Storage time` = ifelse(is.na(`Storage time`),'XX',`Storage time`)) %>% 
+  group_by(met) %>% 
+  do(lm(data =., logy~factor(Batch) + factor(`Sampling time`) + factor(`Storage time`)) %>% anova %>%  tidy) %>% 
+  group_by(met) %>% 
+  mutate(relSSQ = sumsq / sum(sumsq))
+
+tbQC %>%
+  filter(!is.na(statistic)) %>% 
+  ggplot(data = ., aes(p.value)) + geom_histogram() + facet_wrap(~term)
+
+
+tbQC %>%
+  group_by(met) %>% 
+  mutate(r2res = relSSQ[term=='Residuals']) %>% 
+  ungroup() %>% 
+  mutate(met = met %>% substr(1,30) %>% factor() %>% fct_reorder(r2res)) %>% 
+  ggplot(data = ., aes(met,relSSQ, fill = term)) + geom_bar(stat = 'identity') + 
+  theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+
+```{r}
 MEconc_newlong <- MEconc_newlong %>% 
+  mutate(oldlogy = logy) %>% 
   mutate(Batch = ifelse(is.na(Batch),3,Batch), 
          `Sampling time` = ifelse(is.na(`Sampling time`),'XX',`Sampling time`), 
          `Storage time` = ifelse(is.na(`Storage time`),'XX',`Storage time`)) %>% 
@@ -82,6 +116,7 @@ MEconc_newlong <- MEconc_newlong %>%
   mutate(logy = residuals(lm(logy~factor(Batch) + factor(`Sampling time`) + factor(`Storage time`)))) %>% 
   ungroup
 
+save(file = 'ME_QC.RData',list = c('MEconc_newlong'))
 
 phyITSold <- phyITS
 phyXold <- phyX
@@ -134,6 +169,32 @@ phyX %>% subset_samples(!is.na(cycle)) %>% sample_sums() %>% summary
 
 phyX@sam_data %>% data.frame %>% filter(!is.na(Sample.ID)) %>% filter(!duplicated(Sample.ID)) %>% dim
 phyX@sam_data %>% data.frame %>%  filter(!is.na(Sample.ID)) %>% filter(!duplicated(Participant)) %>% dim
+```
+
+Rarefaction curve 16s
+
+```{r}
+library(vegan)
+
+counts <- as(otu_table(phyX), "matrix")
+
+curves <- vegan::rarecurve(
+  counts,
+  step = ceiling(max(rowSums(counts)) / 200),
+  tidy = TRUE
+)
+
+grare_16s <- ggplot(curves, aes(x = Sample, y = Species, group = Site)) +
+  geom_line(alpha = 0.5, linewidth = 0.45, colour = "#237A91") +
+  labs(
+    x = "Reads sampled",
+    y = "Expected observed richness (ASVs)",
+    title = "Sample-level rarefaction curves",
+    subtitle = "Each curve represents one sample"
+  ) +
+  theme_classic(base_size = 12)
+
+grare_16s
 ```
 
 
@@ -226,6 +287,7 @@ bsum <- b %>%
 
 bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
 
+bsum %>% rio::export(file = 'Figure2A2_data.xlsx')
 g_composition16s <- bsum %>% 
   mutate(omics = 'ME-16s') %>% 
   ggplot(data = ., aes(x = '',y = mn, fill = lb)) + 
@@ -245,6 +307,7 @@ g_composition16s
 
 ```{r, fig.width=14}
 otutb16s <- b %>% left_join(bsum, by = c('ta2','ta3','ta4','ta5')) 
+otutb16s %>% rio::export(file = 'Figure2B1_data.xlsx')
 participantsort <- otutb16s %>%
   filter(lb=='Lactobacillaceae') %>% 
   group_by(Participant) %>% 
@@ -302,6 +365,33 @@ For sample with at least one read
 table(v>0)
 summary(v[v>0])
 ```
+
+
+Rarefaction curve ITS
+
+```{r}
+
+counts <- as(otu_table(phyITS), "matrix")
+
+curves <- vegan::rarecurve(
+  counts,
+  step = ceiling(max(rowSums(counts)) / 200),
+  tidy = TRUE
+)
+
+grare_ITS <- ggplot(curves, aes(x = Sample, y = Species, group = Site)) +
+  geom_line(alpha = 0.5, linewidth = 0.45, colour = "#237A91") +
+  labs(
+    x = "Reads sampled",
+    y = "Expected observed richness (ASVs)",
+    title = "Sample-level rarefaction curves",
+    subtitle = "Each curve represents one sample"
+  ) +
+  theme_classic(base_size = 12)
+
+grare_ITS
+```
+
 
 ### Table 
 
@@ -388,6 +478,8 @@ bsum <- b %>%
   mutate(mn = mn / sum(mn))
 bsum$lb <- factor(bsum$lb, levels = bsum$lb[1:9])
 
+bsum %>% rio::export(file = 'Figure2A3_data.xlsx')
+
 g_compositionITS <- bsum %>% 
   filter(!is.na(lb)) %>% 
   mutate(omics = 'ME-ITS') %>% 
@@ -432,6 +524,8 @@ dfmiss <- dfotutbITS %>%
   filter(is.na(Abundance)) %>% 
   filter(lb=='Other') %>% 
   mutate(Abundance = 1)
+
+dfotutbITS %>% rio::export(file = 'Figure2B2_data.xlsx')
 
 g2C <- dfotutbITS %>% 
   ggplot(data = ., aes(day,Abundance, fill = lb)) + 
@@ -636,6 +730,8 @@ dfplot <- bind_rows(mME %>% mutate(omics = 'ME-NMR') %>%
   filter(parse_number(term)==2) %>% 
   mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) 
 
+dfplot %>% rio::export(file = 'Figure3BC_data.xlsx')
+
 g_box <- dfplot %>% 
   ggplot(data =., aes(estimate, fill = omics)) + 
   geom_boxplot()+
@@ -782,7 +878,7 @@ tbME <- mME %>%
                 relvr = vr / sum(vr)) 
 
 brks <- c(0,0.33,0.67,1.00)
-gSIMPLX_ME <- tbseq %>% 
+dfSIMPLEX <- tbseq %>% 
   dplyr::select(omics,group,relvr) %>% 
   spread(group,relvr) %>% 
   left_join(bind_rows(bsum16s,bsumITS), by = 'ta5') %>% 
@@ -794,7 +890,11 @@ gSIMPLX_ME <- tbseq %>%
          Participant = Participant /(Participant + cycle_part + Residual), 
          Residual = Residual /(Participant + cycle_part + Residual)) %>% 
   ungroup %>% 
-  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) %>%
+  mutate(omics = factor(omics, levels = c('ME-NMR','ME-16s','ME-ITS'))) 
+
+dfSIMPLEX %>% rio::export(file = 'Figure3A_data.xlsx')
+
+gSIMPLX_ME <- dfSIMPLEX %>% 
   ggtern(data =., aes(cycle_part, Participant, Residual, color = lb)) + 
   geom_point() +
   scale_T_continuous(breaks = brks) +

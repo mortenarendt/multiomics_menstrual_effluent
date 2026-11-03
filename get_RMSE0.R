@@ -2,6 +2,7 @@
 rm(list = ls())
 library(phyloseq)
 load('~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MEdata.RData')
+load('ME_QC.RData')
 phyXpp <- phyX %>% 
   subset_samples(!is.na(Sample.ID)) %>% 
   subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 

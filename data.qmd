@@ -33,3 +33,7 @@ loaded_objects <- load(tmp)
 unlink(tmp)
 ```
 
+Raw NMR data can be downloaded from Zenodo following:  
+
+Jarsmer, I. F. K., Khakimov, B., & Ye, Y. (2026). Menstrual Effluent NMR Metabolomics. Zenodo. https://doi.org/10.5281/zenodo.23919175
+

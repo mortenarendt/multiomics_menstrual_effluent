@@ -1,6 +1,15 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - index.qmd
+    - libs.qmd
+    - data.qmd
+    - NMRanalytics.qmd
+    - composition.qmd
+    - demographics.qmd
+    - stability.qmd
+    - prediction.qmd
   
 website:
   title: "Multiomics analysis of Menstrual Effluent"
@@ -32,8 +41,6 @@ format:
     toc: true
     code-fold: true
     code-summary: "Show code"
-  pdf: default
-  docx: default 
   
 editor: source
 

@@ -9,8 +9,8 @@ options(digits=2)
 
 ```{r,include=FALSE}
 source('libs_init.R')
+load('ME_QC.RData')
 ```
-
 
 ## Multivariate Stability measures for each individual
 
@@ -80,6 +80,24 @@ res_withindistsum <- res_withindist %>%
   summarise(n_comparisons = n(), mnd = mean(withinparticipantdist), 
             nsamples = mean(nsamples))
 
+res_withindistsum_sens_8 <- res_withindist %>% 
+  group_by(Participant,omics) %>% 
+  mutate(n_comparisons = n(),
+            nsamples = mean(nsamples)) %>% 
+  filter(nsamples>7) %>% 
+  group_by(Participant,omics) %>% 
+  summarise(mnd = mean(sample(withinparticipantdist)[1:8])) %>% 
+  mutate(type = '8 samples per indiv')
+
+res_withindistsum_sens_4 <- res_withindist %>% 
+  group_by(Participant,omics) %>% 
+  mutate(n_comparisons = n(),
+            nsamples = mean(nsamples)) %>% 
+  filter(nsamples>3) %>% 
+  group_by(Participant,omics) %>% 
+  summarise(mnd = mean(sample(withinparticipantdist)[1:4])) %>% 
+  mutate(type = '4 samples per indiv')
+
 res_withindistsum %>% group_by(omics) %>% 
   summarise(sum(nsamples),
             length(unique(Participant)), 
@@ -128,8 +146,6 @@ pv %>% reactable() %>% add_subtitle('Inference (pv) between overall stability')
 
 ```
 
-
-
 ## Compare within-women stability with demographics
 
 ```{r}
@@ -146,8 +162,19 @@ dfmeta <- MEconc_newlong %>%
   filter(!duplicated(Participant)) %>% 
   full_join(res_withindistsum, by = 'Participant')
 
-```
 
+dfmeta_sens <- MEconc_newlong %>% 
+  filter(!duplicated(`Samples #`)) %>% 
+  dplyr::select(`Samples #`,Participant,   metavars) %>% 
+  gather(demo,val,-`Samples #`,-Participant) %>% 
+  filter(!is.na(Participant)) %>%
+  dplyr::select(-`Samples #`) %>% 
+  group_by(demo) %>% 
+  filter(!duplicated(Participant)) %>% 
+  full_join(bind_rows(res_withindistsum_sens_8,res_withindistsum_sens_4), by = 'Participant') %>% 
+  filter(!is.na(mnd))
+
+```
 
 ```{r, fig.width=10}
 fmrt <- list(
@@ -171,10 +198,21 @@ dfmeta %>%
 
 ### Correlation table
 
-Inference as table 
+Inference as table
 
 ```{r}
+tb_sens <- dfmeta_sens %>% 
+  group_by(omics,demo,type) %>% 
+  do(lm(data = ., mnd~val) %>% anova %>% tidy) %>% 
+  group_by(demo,omics,type) %>%
+  mutate(relssq = sumsq / sum(sumsq), nindiv = sum(df)+1) %>% 
+  filter(term=='val') %>% 
+  mutate(R2_pv = paste('(n = ',nindiv,' R2 = ',round(100*relssq,1),'%, p = ',round(p.value,3),')', sep = '')) %>% 
+  dplyr::select(omics,demo,type,R2_pv) %>% 
+  spread(type,R2_pv)
+  
 dfmeta %>% 
+  ungroup %>% 
   group_by(omics,demo) %>% 
   do(lm(data = ., mnd~val) %>% anova %>% tidy) %>% 
   group_by(demo,omics) %>%
@@ -182,7 +220,14 @@ dfmeta %>%
   filter(term=='val') %>% 
   arrange(p.value) %>% 
   dplyr::select(omics,demo,df,relssq,p.value) %>% 
-  reactable(columns = fmrt) %>% add_subtitle('Variation in stability explained by demographics')
+  left_join(tb_sens, by = c('omics','demo')) %>% 
+  reactable(columns = fmrt) %>% 
+    add_subtitle('Variation in stability explained by demographics')
+
+dfmeta %>% filter(demo=='Diet') %>% 
+  mutate(Diet = val) %>% 
+  dplyr::select(omics,Participant,Diet,mnd) %>% 
+  rio::export('Figure5_data.xlsx')
 
 FIG3c <- dfmeta %>%
   filter(demo=='Diet') %>% 
@@ -199,11 +244,9 @@ FIG3c <- dfmeta %>%
   facet_grid(.~omics)
 ```
 
+### Overall stability per women - across omics modalities
 
-### Overall stability per women - across omics modalities 
-
-Figure 5 in publication 
-Example on diet. 
+Figure 5 in publication Example on diet.
 
 ```{r}
 ggsave(filename = 'FIG5_betastab.pdf', plot = FIG3a, height = 5,width = 3)
@@ -216,5 +259,3 @@ FIG5
 
 ggsave(filename = 'FIG5_betastab.pdf', plot = FIG5, height = 5,width = 8)
 ```
-
-

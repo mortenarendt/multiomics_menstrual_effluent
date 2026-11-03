@@ -9,16 +9,25 @@ options(digits=2)
 
 ```{r,include=FALSE}
 source('libs_init.R')
+load('ME_QC.RData')
 ```
 
 ## Demographic characterization
 
 ```{r}
-metavars <- c("Residence","Age",  "Diet", "Contraceptives", "Regular/daily medication" , "Nicotin") 
+metavars <- c("Residence","Age",  "Diet", "Contraceptives", "Regular/daily medication" , "Nicotine") 
 metavars2 <- c("Coitus","Alcohol", "Medication during sampling")
 
 metadata <- rio::import('~/Dropbox/Bekzod&Isabella/ME_translation_key/Metadata.xlsx', sheet = 'Samples') %>% 
   filter(!is.na(Residence))
+colnames(metadata)[colnames(metadata)=='Nicotin'] <- 'Nicotine'
+
+colnames(MEconc_newlong)[colnames(MEconc_newlong)=='Nicotin'] <- 'Nicotine'
+colnames(PBconc_newlong)[colnames(PBconc_newlong)=='Nicotin'] <- 'Nicotine'
+
+
+colnames(phyX@sam_data)[colnames(phyX@sam_data)=='Nicotin'] <- 'Nicotine'
+colnames(phyITS@sam_data)[colnames(phyITS@sam_data)=='Nicotin'] <- 'Nicotine'
 
 dfmeta <- phyX@sam_data %>% 
   data.frame() %>% 
@@ -95,12 +104,11 @@ writeData(wb, "Sample", x = .)
 Effect of demographics / meta-information
 
 ```{r, eval=FALSE}
-metavars <- c("Age", "Residence", "Diet", "Contraceptives", "Regular/daily medication" , "Nicotin", "Coitus", "Alcohol", "Medication during sampling"  )
-
+metavars <- c("Age", "Residence", "Diet", "Contraceptives", "Regular/daily medication" , "Nicotine", "Coitus", "Alcohol", "Medication during sampling"  )
 dfmeta <- MEconc_newlong %>% 
   filter(!duplicated(`Samples #`)) %>% 
-  dplyr::select(`Samples #`,Participant,     metavars) %>% 
-  gather(demo,val,-`Samples #`,-Participant)
+  dplyr::select(`Samples #`,Participant,`Cycle day`,metavars) %>% 
+  gather(demo,val,-`Samples #`,-Participant,-`Cycle day`)
 
 dfmetaPB <- PBconc_newlong %>% 
   filter(!duplicated(`Samples #`)) %>% 
@@ -114,7 +122,7 @@ for (i in  1:length(metavars)){
   # i <- 3
   mvar <- metavars[i]
   mvar2 <- mvar %>% gsub(' ','.',x = .) %>% gsub('/','.',x = .)
-  
+  print(mvar2)
   ######## ME-NMR
   dfsel <- dfmeta %>% 
     filter(demo==mvar) %>% 
@@ -132,24 +140,24 @@ for (i in  1:length(metavars)){
     dplyr::select(`Samples #`, met,logy) %>% 
     spread(met,logy) 
   
-  rME <- adonis2(scale(df) ~ val, data=dfsel, permutations=0, method = 'euclidean') %>% 
+  rME <- adonis2(scale(df) ~ factor(`Cycle day`) + val, data=dfsel, permutations=0, method = 'euclidean', by = 'terms') %>% 
     tidy %>% 
     mutate(demo = mvar, omics = 'ME-NMR')
   
   rMEperm <- data.frame()
   for (j in 1:nperm){
     dfselperm <- dfsel %>% 
-      left_join(dfselun %>% mutate(val2 = sample(val)), by = 'Participant')
+      left_join(dfselun %>% dplyr::select(-`Cycle day`) %>%  mutate(val2 = sample(val)), by = 'Participant')
     rMEperm <- rMEperm %>% 
-      bind_rows(adonis2(scale(df) ~ val2, data=dfselperm, 
-                        permutations=0, method = 'euclidean') %>% 
-                  tidy %>% filter(term=='Model') %>% 
+      bind_rows(adonis2(scale(df) ~ factor(`Cycle day`) + val2, data=dfselperm, 
+                        permutations=0, method = 'euclidean', by = 'terms') %>% 
+                  tidy %>% filter(term=='val2') %>% 
                   mutate(demo = mvar, omics = 'ME-NMR', type = 'perm') )
   }
   
-  pv <- sum(rMEperm$statistic>rME$statistic[1]) / dim(rMEperm)[1]
+  pv <- sum(rMEperm$statistic>rME$statistic[2]) / dim(rMEperm)[1]
   rME$p.value2 <- NA
-  rME$p.value2[1] <- pv
+  rME$p.value2[2] <- pv
   
   ### vectors for PCA
   mPCA_i <- prcomp(df, scale. = T)
@@ -311,8 +319,169 @@ for (i in  1:length(metavars)){
 save(file = 'betademo_res.RData', list = c('SCORESdemo','resDEMO','metavars'))
 ```
 
+### Robustness of betadiversity associations
+
+We test whether rarefaction and sample-removal causes 16s and ITS results to cause differential results.
+
+```{r, eval=FALSE}
+phyXrare2k <- rarefy_even_depth(phyX,2000)
+phyXrare10k <- rarefy_even_depth(phyX,10000)
+phyITS_100 <- prune_samples(sample_sums(phyITS) >= 100,phyITS)
+phyITS_00 <- prune_samples(sample_sums(phyITS) > 0,phyITS)
+metavars <- c("Age", "Residence", "Diet", "Contraceptives", "Regular/daily medication" , "Nicotine", "Coitus", "Alcohol", "Medication during sampling"  )
+
+resDEMO_stab <- data.frame()
+nperm <- 999
+for (i in  1:length(metavars)){
+  # for (i in  1:2){
+  # i <- 3
+  mvar <- metavars[i]
+  mvar2 <- mvar %>% gsub(' ','.',x = .) %>% gsub('/','.',x = .)
+  print(mvar2)
+  
+  ####### 16s
+  ######Rare 2k
+  phyXsel <- phyXrare2k
+  samdf <- data.frame(phyXsel@sam_data,demo = phyXsel@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) x  / sum(x)) 
+  D16s <- phyXsel %>% phyloseq::distance("bray")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  r16s <- adonis2(D16s ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-16s')
+  
+  r16sperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    r16sperm <- r16sperm %>% 
+      bind_rows(adonis2(D16s ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-16s') %>% filter(term=='Model'))
+  }
+  
+  
+  pv <- sum(r16sperm$statistic>r16s$statistic[1]) / dim(r16sperm)[1]
+  r16s$p.value2 <- NA
+  r16s$p.value2[1] <- pv
+  r16srare2k <- r16s
+  
+  ######Rare 10k
+  phyXsel <- phyXrare10k
+  samdf <- data.frame(phyXsel@sam_data,demo = phyXsel@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) x  / sum(x)) 
+  D16s <- phyXsel %>% phyloseq::distance("bray")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  r16s <- adonis2(D16s ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-16s')
+  
+  r16sperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    r16sperm <- r16sperm %>% 
+      bind_rows(adonis2(D16s ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-16s') %>% filter(term=='Model'))
+  }
+  
+  pv <- sum(r16sperm$statistic>r16s$statistic[1]) / dim(r16sperm)[1]
+  r16s$p.value2 <- NA
+  r16s$p.value2[1] <- pv
+  r16srare10k <- r16s
+  
+  
+  
+  ##### ITS - 00reads
+  phyXsel <- phyITS_00
+  samdf <- data.frame(phyXsel@sam_data,demo = phyXsel@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) as.numeric(x>0)) 
+  DITS <- phyXsel %>% phyloseq::distance("euclidean")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  rITS <- adonis2(DITS ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-ITS')
+  
+  rITSperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    rITSperm <- rITSperm %>% 
+      bind_rows(adonis2(DITS ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-ITS') %>% filter(term=='Model'))
+  }
+  
+  pv <- sum(rITSperm$statistic>rITS$statistic[1]) / dim(rITSperm)[1]
+  rITS$p.value2 <- NA
+  rITS$p.value2[1] <- pv
+  rITS_00 <- rITS
+  
+  
+  ##### ITS - 100 reads
+  phyXsel <- phyITS_100
+  samdf <- data.frame(phyXsel@sam_data,demo = phyXsel@sam_data %>% data.frame() %>% dplyr::select(mvar2) %>% unlist %>% as.vector())
+  phyXsel@sam_data <- sample_data(samdf)
+  phyXsel <- phyXsel %>% 
+    subset_samples(!is.na(demo)) %>% 
+    transform_sample_counts( function(x) as.numeric(x>0)) 
+  DITS <- phyXsel %>% phyloseq::distance("euclidean")
+  
+  dfsel <- data.frame(sample_data(phyXsel))
+  dfselun <- dfsel%>% filter(!duplicated(Participant))
+  
+  rITS <- adonis2(DITS ~ demo, data = dfsel, permutations = 0) %>% tidy %>% 
+    mutate(demo = mvar, omics = 'ME-ITS')
+  
+  rITSperm <- data.frame()
+  for (j in 1:nperm){
+    dfselperm <- dfsel %>% 
+      left_join(dfselun %>% mutate(demo2 = sample(demo)), by = 'Participant')
+    rITSperm <- rITSperm %>% 
+      bind_rows(adonis2(DITS ~ demo2, data = dfselperm, permutations = 0) %>% tidy %>% 
+                  mutate(demo = mvar, omics = 'ME-ITS') %>% filter(term=='Model'))
+  }
+  
+  pv <- sum(rITSperm$statistic>rITS$statistic[1]) / dim(rITSperm)[1]
+  rITS$p.value2 <- NA
+  rITS$p.value2[1] <- pv
+  rITS_100 <- rITS
+  
+  
+  
+  resDEMO_stab <- bind_rows(resDEMO_stab,
+                            r16srare2k %>% mutate(analysis = 'rare2k'),
+                            r16srare10k %>% mutate(analysis = 'rare10k'),
+                            rITS_00 %>% mutate(analysis = '>0'),
+                            rITS_100 %>% mutate(analysis = '>100'))
+  
+}
+
+save(file = 'betademo_res_stab.RData', list = c('resDEMO_stab','metavars'))
+```
+
+
+
+
+
+
+
 ```{r,include=FALSE}
 load('betademo_res.RData')
+load('betademo_res_stab.RData')
 ```
 
 
@@ -327,16 +496,21 @@ fmrt <- list(
 )
 
 resDEMO %>% 
-  filter(term=='Model') %>% 
+  filter(term=='Model' | term=='val') %>% 
   filter(!is.na(df)) %>% 
   filter(!str_detect(omics,'sqrt')) %>% 
   dplyr::select(demo,omics,df,R2,p.value2) %>% 
   reactable(columns = fmrt) %>% add_subtitle('Overall variance explained (on beta-diversity) by individual demographic information')
 
+resDEMO %>% 
+  filter(term=='Model' | term=='val') %>% 
+  filter(!str_detect(omics,'sqrt')) %>% 
+  rio::export(file = 'Figure4A_data.xlsx')
+
 Fig4A <- resDEMO %>% 
   mutate(pv = myround2(p.value2), 
          pv2 = gtools::stars.pval(p.value2)) %>% 
-  filter(term=='Model') %>% 
+  filter(term=='Model' | term=='val') %>% 
   filter(!str_detect(omics,'sqrt')) %>% 
   ggplot(data = ., aes(demo,R2, fill = omics, label = pv2)) + 
   geom_bar(stat = 'identity', position = position_dodge()) + 
@@ -352,12 +526,52 @@ Fig4A
 ggsave(filename = 'FIG4_betadiv.pdf',  plot = Fig4A,width = 6,height = 5.2)
 ```
 
+####  Statbility of results 
+
+```{r}
+resDEMO %>% mutate(analysis = 'original') %>% bind_rows(resDEMO_stab) %>% 
+  mutate(pv = myround2(p.value2), 
+         pv2 = gtools::stars.pval(p.value2)) %>% 
+  filter(term=='Model') %>% 
+  filter(!str_detect(omics,'sqrt')) %>%
+  filter(omics=='ME-16s' |omics=='ME-ITS') %>%
+  ungroup %>% 
+  mutate(analysis = analysis %>% factor(labels = c('Original','rare10k','rare2k','samples with > 0 reads','samples with > 100 reads'))) %>% 
+  ggplot(data = ., aes(demo,R2, fill = analysis, label = pv2)) + 
+  geom_bar(stat = 'identity', position = position_dodge()) + 
+  coord_flip() + 
+  ylim(c(0,0.16)) +
+  geom_text(position = position_dodge(width = 1), hjust = -0.8, vjust = 0.9) + 
+  # scale_fill_manual(values = colorcodes) +
+  theme_bw() + 
+  labs(fill = NULL) + 
+  theme(legend.position = 'top') + 
+  facet_grid(.~omics)
+  xlab(NULL)
+```
+
 ### Examples 
 
 Figure 4B in publication
 
 
 ```{r}
+dfsel1 <- MEconc_newlong %>% 
+  ungroup %>% 
+  filter(str_detect(met,'unk29-asparagine') | 
+           str_detect(met,'arabinose')) %>% # |
+  filter(!is.na(Diet))  %>% 
+  dplyr::select(met,Participant,Diet,Cycle,`Cycle day`,logy)
+
+dfsel2 <- MEconc_newlong %>% 
+  ungroup %>% 
+  filter(!is.na(Nicotine)) %>%
+  filter(str_detect(met,'trimethylamine')) %>% 
+  dplyr::select(met,Participant,Nicotine,Cycle,`Cycle day`,logy)
+  
+dfsel1 %>% rio::export(file = 'Figure4B1_data.xlsx')
+dfsel2 %>% rio::export(file = 'Figure4B2_data.xlsx')
+
 g1 <- MEconc_newlong %>% 
   filter(str_detect(met,'unk29-asparagine') | 
            str_detect(met,'arabinose')) %>% # |
@@ -374,10 +588,10 @@ g1 <- MEconc_newlong %>%
   theme(legend.position = 'none')
 
 g1b <- MEconc_newlong %>% 
-  mutate(Nicotin = Nicotin %>% factor()) %>% 
+  mutate(Nicotine = Nicotine %>% factor()) %>% 
   filter(str_detect(met,'trimethylamine')) %>% 
-  filter(!is.na(Nicotin)) %>% 
-  ggplot(data = ., aes(Nicotin,logy, fill = Nicotin)) + 
+  filter(!is.na(Nicotine)) %>% 
+  ggplot(data = ., aes(Nicotine,logy, fill = Nicotine)) + 
   geom_boxplot() + 
   ggbeeswarm::geom_beeswarm() + 
   theme_bw() + 
@@ -408,10 +622,10 @@ g2 <- MEconc_newlong %>%
 
 g2b <- MEconc_newlong %>%
   filter(str_detect(met,'trimethylamine')) %>% 
-  filter(!is.na(Nicotin)) %>%
+  filter(!is.na(Nicotine)) %>%
   mutate(cycle_day = parse_number(Cycle)*4 + `Cycle day`, 
-         Nicotin = Nicotin %>% factor()) %>% 
-  ggplot(data = ., aes(cycle_day,logy, group = Participant, color =Nicotin)) + 
+         Nicotine = Nicotine %>% factor()) %>% 
+  ggplot(data = ., aes(cycle_day,logy, group = Participant, color =Nicotine)) + 
   geom_line() + geom_point() + 
   scale_x_continuous(breaks = c(5,6,7,9,10,11,13,14,15),
                      labels =  c('1-1','1-2','1-3','2-1','2-2','2-3','3-1','3-2','3-3')) + 

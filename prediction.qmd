@@ -9,6 +9,7 @@ options(digits=2)
 
 ```{r,include=FALSE}
 source('libs_init.R')
+load('ME_QC.RData')
 ```
 
 
@@ -29,7 +30,7 @@ phyXlong <- phyX %>%
   filter(!is.na(logy)) %>% 
   filter(!str_detect(met,'EREC')) %>% 
   filter(!str_detect(met,'TSP')) %>% 
-  dplyr::select(OTU:ta7,met,category, type:logy)
+  dplyr::select(OTU:ta7,met,category, type:logy,oldlogy)
 
 
 tb_cor <- phyXlong %>% 
@@ -93,7 +94,7 @@ tb_lmer2 %>%
 
 tb_lmer2 %>% 
   ungroup %>% 
-  dplyr::select(met,ta4,ta5,ta6,ta7,estimate,std.error, p.value) %>% 
+  dplyr::select(met,OTU,ta4,ta5,ta6,ta7,estimate,std.error, p.value) %>% 
   reactable(columns = fmrt)
 
 tb_lmer2 %>% filter(str_detect(term,'log')) %>% 
@@ -122,7 +123,7 @@ ggsave(filename = 'Met_16s.pdf', plot = gHM, height = 20, width = 20)
 
 phyXlong %>% 
   # filter(met=='lactate') %>% filter(OTU=='sp145') %>% 
-  filter(met=='butyrate') %>% filter(OTU=='sp189') %>% 
+  filter(met=='butyrate') %>% filter(OTU=='sp24') %>% 
   mutate(logabu = log(Abundance+0.0001)) %>% 
   ggplot(data = ., aes(logabu,logy, color = Participant, group = Participant)) + 
   geom_point() + geom_line() + stat_smooth(method = lm, se = F) + facet_wrap(~ta6 + ta7)
@@ -173,6 +174,8 @@ make_loio_folds <- function(ids) {
 }
 
 
+
+
 ```
 
 #### From 16s to NMR
@@ -189,12 +192,30 @@ X <- log(X + +0.0001)
 Y <- phyXpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
 
 folds <- make_loio_folds(Y$Participant)
+nmiss <- 1
 
-unmet <- unique(MEconc_newlong$met) 
-unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
-
-for (i in unmet){
+while (nmiss>0) {
+  unmet <- unique(MEconc_newlong$met) 
+  unmet2 <- unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
+  unmet <- unmet %>% 
+    gsub('-','',x = .) %>% 
+    gsub(' ','',x = .) %>% 
+    gsub(',','',x = .)
+  
+  fls <- list.files('MLresults16s/') %>% substr(30,100) %>% gsub('_v2.RData','',x = .)
+  unmet2 <- unmet2[!(unmet %in% fls)]
+  nmiss <- length(unmet2)
+  
+  # select a random metabolite from the remaining list 
+  i <- sample(unmet2)[1]
   print(i)
+  flnm <- paste('./MLresults16s/metabolite_16smodels_nestedcv',
+                i %>% 
+                  gsub('-','',x = .) %>% 
+                  gsub(' ','',x = .) %>% 
+                  gsub(',','',x = .),
+                '_v2.RData', sep = '')
+  save(file = flnm, list = c('i'))
   yy <- MEconc_newlong %>% filter(met==i) %>% filter(!is.na(Participant)) %>% filter(`Blood origen`=='ME')
   
   YY <- Y %>% 
@@ -220,14 +241,110 @@ for (i in unmet){
   fit$sdy <- sdy
   fit$metabolite <- i
   
-  flnm <- paste('./MLresults16s/metabolite_16smodels_nestedcv',
-                i %>% 
-                  gsub('-','',x = .) %>% 
-                  gsub(' ','',x = .) %>% 
-                  gsub(',','',x = .),
-                '_v2.RData', sep = '')
+  
   save(file = flnm, list = c('fit','i'))
 }
+
+```
+
+#### Permutation null
+
+```{r, eval=FALSE}
+phyXpp <- phyX %>% 
+  subset_samples(!is.na(Sample.ID)) %>% 
+  subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
+  transform_sample_counts(function(x) x / sum(x)) %>% 
+  filter_taxa(function(x) sum(x > 0)>10, TRUE) 
+
+X <- phyXpp@otu_table %>% data.frame()
+X <- log(X + +0.0001)
+Y <- phyXpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
+
+c <- 0
+CVindex <- list()
+for (i in unique(Y$Participant)) {
+  c <- c+1
+  CVindex[[c]] <- which(Y$Participant!=i)
+}
+
+
+folds <- make_loio_folds(Y$Participant)
+nfls <- 1
+
+unmet <- unique(MEconc_newlong$met)
+unmet2 <- unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
+
+while (nfls<100) {
+  # select a random metabolite from the remaining list 
+  i <- sample(unmet2)[1]
+  print(i)
+  
+  yy <- MEconc_newlong %>% filter(met==i) %>% filter(!is.na(Participant)) %>% filter(`Blood origen`=='ME')
+  
+  YY <- Y %>% 
+    left_join(yy, by = c('Participant','Period','Cycle.day' = 'Cycle day'))
+  
+  y <- sample(YY$logy) # permute 
+  sdy <- sd(y)
+  
+  fit <- nestedcv::nestcv.train(
+    x = X,
+    y = y,
+    method = "spls",                  # any caret model
+    preProc = c("center", 'scale'),
+    tuneGrid = expand.grid(K = 1:3,# K sets number of components
+                           eta = seq(0,1,0.1), # eta sets sparsity
+                           kappa = 0.5),
+    outer_folds = folds$outer_folds,
+    inner_folds = folds$inner_folds,
+    finalCV = FALSE,
+    cv.cores = 1
+  )
+  
+  fit$sdy <- sdy
+  fit$metabolite <- i
+  
+  yhat <- y
+  for (ii in 1:18){
+    notin <- logical(length(y))
+    notin[CVindex[[ii]]] <- TRUE
+    # print(mean(y[notin]))
+    yhat[!notin] <- mean(y[notin])
+  }
+  e <- y - yhat
+  fit$rmse0 <- caret::RMSE(yhat,y)
+  
+  summary(fit)
+  fit$rmse0
+  
+  nfls <- list.files('MLresults16sperm/') %>% length
+  flnm <- paste('./MLresults16sperm/metabolite_16smodels_nestedcv_iter',nfls+1,
+                '_v2.RData', sep = '')
+  save(file = flnm, list = c('fit'))
+}
+
+```
+
+
+```{r, eval = FALSE}
+
+fls <- list.files('MLresults16sperm/')
+res16sperm <- data.frame()
+for (fl in fls){
+  # fl <- fls[1]
+  load(file = paste('./MLresults16sperm/',fl,sep = ''))
+  s <- summary(fit)$result %>% as.data.frame() %>% 
+    rownames_to_column('stat') %>% 
+    mutate(metabolite = fit$metabolite,method = '16s',sdy = fit$sdy, 
+           rmse0 = fit$rmse0, 
+           filename = fl)
+  
+  s$x <- as.numeric(s$x)
+  res16sperm <- bind_rows(res16sperm,s)
+}
+
+save(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/permutation_stats.RData', 
+     list = c('res16sperm'))
 
 ```
 
@@ -239,18 +356,37 @@ phyITSpp <- phyITS %>%
   subset_samples(!is.na(Sample.ID)) %>% 
   subset_samples(!is.na(X2.hydroxyisovaleric.acid)) %>% 
   transform_sample_counts(function(x) as.numeric(x>0)) %>% 
-  filter_taxa(function(x) sum(x > 0)>9, TRUE) 
+  filter_taxa(function(x) sum(x > 0)>10, TRUE) 
 
 X <- phyITSpp@otu_table %>% data.frame()
 X <- log(X + +0.0001)
 Y <- phyITSpp@sam_data %>% data.frame() %>% dplyr::select(-TSP,-ERECTIC)
 
 folds <- make_loio_folds(Y$Participant)
+nmiss <- 1
 
-unmet <- unique(MEconc_newlong$met) 
-unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))] 
-for (i in unmet){
-  print(i)
+
+while (nmiss>0) {
+  unmet <- unique(MEconc_newlong$met) 
+  unmet2 <- unmet <- unmet[!(unmet %in% c("ERECTIC","TSP"))]
+  unmet <- unmet %>% 
+    gsub('-','',x = .) %>% 
+    gsub(' ','',x = .) %>% 
+    gsub(',','',x = .)
+  
+  fls <- list.files('MLresultsITS/') %>% substr(30,100) %>% gsub('_v2.RData','',x = .)
+  unmet2 <- unmet2[!(unmet %in% fls)]
+  nmiss <- length(unmet2)
+  
+  # select a random metabolite from the remaining list 
+  i <- sample(unmet2)[1]
+  flnm <- paste('./MLresultsITS/metabolite_ITSmodels_nestedcv',
+                i %>% 
+                  gsub('-','',x = .) %>% 
+                  gsub(' ','',x = .) %>% 
+                  gsub(',','',x = .),
+                '_v2.RData', sep = '')
+  save(file = flnm, list = c('i'))
   
   yy <- MEconc_newlong %>% filter(met==i) %>% filter(!is.na(Participant)) %>% filter(`Blood origen`=='ME') 
   YY <- Y %>% 
@@ -276,12 +412,6 @@ for (i in unmet){
   fit$sdy <- sdy
   fit$metabolite <- i
   
-  flnm <- paste('./MLresultsITS/metabolite_ITSmodels_nestedcv',
-                i %>% 
-                  gsub('-','',x = .) %>% 
-                  gsub(' ','',x = .) %>% 
-                  gsub(',','',x = .),
-                '_v2.RData', sep = '')
   save(file = flnm, list = c('fit','i'))
 }
 
@@ -310,8 +440,8 @@ for (fl in flnm){
                                         method = '16s',
                                         sdy = fit$sdy, 
                                         ncomp = k
-                                        ) %>% 
-                               rownames_to_column('OTU'))
+  ) %>% 
+    rownames_to_column('OTU'))
 }
 
 flnm <- list.files('./MLresultsITS/')
@@ -330,8 +460,8 @@ for (fl in flnm){
                                         method = 'ITS',
                                         sdy = fit$sdy, 
                                         ncomp = k
-                                        ) %>% 
-                               rownames_to_column('OTU'))
+  ) %>% 
+    rownames_to_column('OTU'))
 }
 
 load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/RMSE0_loio.RData')
@@ -343,7 +473,11 @@ MLstat <- bind_rows(MLstat16s,MLstatITS) %>%
   mutate(stat = 'RMSE', 
          ncomp = ifelse(is.na(x),0,ncomp),
          x = ifelse(is.na(x),rmse0,x)) %>% 
-  left_join(MEclass, by = c('metabolite' = 'Interval_name2')) 
+  left_join(MEclass, by = c('metabolite' = 'Interval_name2')) %>% 
+  mutate(
+    Rsquared = 1 - (x^2 / rmse0^2),
+    quality = ifelse(Rsquared < (-0.2),'overfitted','ok'),
+    Rsquared = ifelse(Rsquared < (-0.2),-0.2,Rsquared)) 
 
 beta <- beta %>% left_join(MEclass, by = c('metabolite' = 'Interval_name2')) 
 save(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MLstats.RData', 
@@ -351,16 +485,92 @@ save(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/mu
 ```
 
 
-### Per metabolite - CV predictive perormance.
+### Estimate FDR based on permutation-null
+
+We have constructed a null distribution using identical ML approach including leave-one-person-out CV on scrambled response variables (metabolite concentration).
+
+We have recorded both the mean-only model (RMSE0) as well as the RMSE from the ML procedure and calculated the observed R2 as listed above. 
+
+This R2 null distribution is used to estimate the probability under under no-information of observing a value of R2* or larger. 
+Due to limited observations in the tails under permutation, this part of the distribution is estimated using a generalized pareto distribution with a tail from the 0.7 fractile and up. 
+
+This smooth functional form of the distribution is used to calculate the mass under null and contrasting this with the actual fraction of discoveries as a empirical false discovery rate. 
 
 ```{r}
 load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MLstats.RData')
 
-MLstat <- MLstat %>% 
-  mutate(
-    Rsquared = 1 - (x^2 / rmse0^2),
-    quality = ifelse(Rsquared < (-0.2),'overfitted','ok'),
-    Rsquared = ifelse(Rsquared < (-0.2),-0.2,Rsquared)) 
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/permutation_stats.RData')
+
+library(mev)
+
+res <- res16sperm %>% 
+  filter(stat=='RMSE') %>% 
+  mutate(R2 = 1 - x^2 / rmse0^2) %>% 
+  filter(!duplicated(paste(x,metabolite))) %>% 
+  arrange(R2) %>% 
+  mutate(nn = 1, 
+         cdf = cumsum(nn) / sum(nn))
+
+data_points <- res$R2
+
+threshold_val <- quantile(data_points, 0.70)
+
+gpd_fit <- fit.gpd(xdat = data_points, 
+                   threshold = threshold_val, 
+                   method = "Grimshaw")
+
+# --- 2. Extract the Parameter Estimates ---
+sigma <- gpd_fit$estimate[1] %>% as.numeric() # Scale parameter
+xi    <- gpd_fit$estimate[2] %>% as.numeric()  # Shape parameter
+u     <- gpd_fit$threshold %>% as.numeric()     # Threshold value
+
+# Calculate empirical probability of exceeding the threshold (zeta)
+n_total     <- length(data_points)
+n_exceed    <- sum(data_points > u)
+zeta_u      <- n_exceed / n_total
+
+# Using mev's built-in GPD distribution function (pgp)
+dfprob <- data.frame(x = seq(u,0.5,0.001))
+dfprob2 <- data.frame(x = seq(min(res$R2),u,0.001))
+dfprob$condp <- pgp(dfprob$x, loc = u, scale = sigma, shape = xi)
+dfprob$uncondp <- (1 - zeta_u) + zeta_u * dfprob$condp
+dfprob <- bind_rows(dfprob,dfprob2)
+
+dfprob$cdf <- NA
+
+nmet <- dim(MLstat)[1]
+for (i in 1:dim(dfprob)[1]){
+  dfprob$cdf[i] <- res$cdf[max(which(res$R2<dfprob$x[i]))]
+  dfprob$frac_disc[i] <- sum(MLstat$Rsquared>dfprob$x[i]) / nmet
+}
+
+dfprob <- dfprob %>% 
+# for each value of R2 (in increasing order calculate the FDR value as the propotion of discoveries under null divided by the total proportion)
+  mutate(fdr = (1-uncondp) / frac_disc) 
+dfprob %>% 
+  gather(m,p,cdf,uncondp) %>% 
+  mutate(m = m %>% factor(labels = c('Empirical','GPDestimate'))) %>% 
+  ggplot(data = ., aes(x,p,color = m)) + 
+  geom_line(size = 2) + 
+  geom_vline(xintercept = min(dfprob$x[dfprob$fdr<0.05 & !is.na(dfprob$fdr)])) + 
+  xlab('R2') + theme(legend.position = 'bottom')
+
+
+```
+
+### Per metabolite - CV predictive perormance.
+
+Number of components selected 
+
+```{r}
+load(file = '~/OneDrive - University of Copenhagen/KU_work/menstrual_effluent/multiomics_menstrual_effluent/MLstats.RData')
+
+table(MLstat$method,MLstat$ncomp)
+```
+
+
+```{r}
+
 MLstat %>%
   ggplot(data = ., aes(substr(metabolite,1,50),Rsquared, color = method, shape = quality)) + 
   geom_point() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
@@ -402,7 +612,7 @@ MLstat %>%
 MLstat %>% 
   filter(!is.na(Rsquared)) %>% 
   group_by(method) %>% 
-  summarise(R2m = median(Rsquared), 
+  summarise(R2med = median(Rsquared), 
             q1 = quantile(Rsquared,0.25),
             q3 = quantile(Rsquared,0.75)) 
 
@@ -418,7 +628,7 @@ ggbeta <- beta %>%
   left_join(dflb, by = 'category') %>%
   mutate(breg = breg/sdy) %>% 
   filter(method == '16s') %>% 
-  filter(Rsquared>0.5) %>% 
+  filter(Rsquared>0.45) %>% 
   left_join(tb_lmer2 %>% dplyr::select(OTU,met,estimate:pvcut), by = c('OTU','metabolite' = 'met')) %>% 
   group_by(metabolite) %>% 
   mutate(nn = sum(abs(breg)>0)) %>% 
@@ -430,7 +640,7 @@ ggbeta <- beta %>%
               left_join(bsum16s, by = c('ta2','ta3','ta4','ta5')), by = 'OTU') %>% 
   ungroup %>% 
   mutate(taxall = paste(ta2,ta3,ta4,ta5, sep = '') %>% factor() %>% as.numeric(),
-    OTU = OTU %>% fct_reorder(taxall)) %>% 
+         OTU = OTU %>% fct_reorder(taxall)) %>% 
   mutate(stars = gtools::stars.pval(qval)) 
 
 lbs <- ggbeta %>% 
@@ -449,8 +659,8 @@ for (i in which(nchar(lbs$lb)<4)){
     lbs$lb[i] <- 'unassigned'
   }
   else {
-  # print(as.character(lbs[i,id]))
-  lbs$lb[i] <- as.character(lbs[i,id])
+    # print(as.character(lbs[i,id]))
+    lbs$lb[i] <- as.character(lbs[i,id])
   }
 }
 
@@ -468,11 +678,12 @@ g5_all <- ggbeta %>%
   mutate(metabolite = gsub('X2.','2-',x = metabolite)) %>% 
   # filter(!str_detect(metabolite,'unk')) %>% 
   # filter(!str_detect(metabolite,'1_2')) %>% 
-  ggplot(data = ., aes(metabolite,OTU,fill = breg,label = stars)) + 
+  ggplot(data = ., aes(metabolite,OTU,fill = breg,color = factor(sign(breg)), label = stars)) + 
   geom_tile() + 
-  geom_text() + 
+  geom_text(color = 'black') + 
   scale_y_discrete(labels = lbs$lb,breaks =lbs$OTU ) +
   scale_fill_gradient2(mid = 'white',midpoint = 0) + 
+  scale_color_manual(values = c('red4',"#FFFFFF00",'blue2'), guide = "none") +
   theme_minimal() + 
   theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   xlab(NULL) + ylab(NULL)
@@ -485,16 +696,23 @@ g5_sel <- ggbeta %>%
   # filter of only bins / unk
   filter(nchar(metabolite)>6) %>%
   filter(!str_detect(metabolite,'unk')) %>%
-  
+  group_by(OTU) %>% 
+  mutate(nactive = sum(abs(breg))) %>% 
+  ungroup %>% 
+  filter(nactive>0.0001) %>% 
+  # group_by(metabolite) %>%
+  # mutate(breg = breg / max(abs(breg))) %>% 
   # filter(!str_detect(metabolite,'1_2')) %>%
-  ggplot(data = ., aes(metabolite,OTU,fill = breg, label = stars)) + 
+  ggplot(data = ., aes(metabolite,OTU,fill = breg,color = factor(sign(breg)), label = stars)) + 
   geom_tile() + 
   scale_y_discrete(labels = lbs$lb,breaks =lbs$OTU ) +
+  scale_color_manual(values = c('red4',"#FFFFFF00",'blue2'), guide = "none") +
   scale_fill_gradient2(mid = 'white',midpoint = 0) + 
-  geom_text() + 
+  geom_text(color = 'black') + 
   # scale_color_manual(values = alpha(c('white','black'))) + #,c(0,1))) + 
   theme_minimal() + 
   theme(legend.position = 'top', axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  # guides(color = guide_legend(NULL))+
   xlab(NULL) + ylab(NULL)
 
 ```
