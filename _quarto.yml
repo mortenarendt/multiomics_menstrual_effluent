@@ -40,7 +40,12 @@ format:
     theme: theme.scss #pulse (purple)
     toc: true
     code-fold: true
-    code-summary: "Show code"
+    code-summary: "show code"
+    format-links: true
+  docx:
+    toc: true
+  pdf:
+    toc: true
   
 editor: source
 

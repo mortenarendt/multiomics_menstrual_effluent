@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overall-stability-per-women---across-omics-modalities" id="toc-overall-stability-per-women---across-omics-modalities" class="nav-link" data-scroll-target="#overall-stability-per-women---across-omics-modalities">Overall stability per women - across omics modalities</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="stability.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="stability.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Figure 4C in publication</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Sample ID</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-6f9da312e8d41a1433b9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"omics":["ME-16s","ME-ITS","ME-NMR"],"sum(nsamples)":[141,141,110],"length(unique(Participant))":[18,18,18],"quantile(nsamples, 0.75)":[9,9,8],"median(nsamples)":[9,9,6],"quantile(nsamples, 0.25)":[8,8,5]},"columns":[{"id":"omics","name":"omics","type":"character"},{"id":"sum(nsamples)","name":"sum(nsamples)","type":"numeric"},{"id":"length(unique(Participant))","name":"length(unique(Participant))","type":"numeric"},{"id":"quantile(nsamples, 0.75)","name":"quantile(nsamples, 0.75)","type":"numeric"},{"id":"median(nsamples)","name":"median(nsamples)","type":"numeric"},{"id":"quantile(nsamples, 0.25)","name":"quantile(nsamples, 0.25)","type":"numeric"}],"dataKey":"71424ed7ed4d722ac718672847adce41"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> res_withindistsum <span class="sc">%&gt;%</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>n_comparisons) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(omics,mnd) <span class="sc">%&gt;%</span> </span>
@@ -362,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-a2f1d02d9f482f404d14">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rowname":["nsamples","ME-16s","ME-ITS","ME-NMR"],"nsamples":[1,0.13,0.064,-0.19],"ME-16s":[0.13,1,0.18,0.57],"ME-ITS":[0.064,0.18,1,0.075],"ME-NMR":[-0.19,0.57,0.075,1]},"columns":[{"id":"rowname","name":"rowname","type":"character"},{"id":"nsamples","name":"nsamples","type":"numeric"},{"id":"ME-16s","name":"ME-16s","type":"numeric"},{"id":"ME-ITS","name":"ME-ITS","type":"numeric"},{"id":"ME-NMR","name":"ME-NMR","type":"numeric"}],"dataKey":"40e39af45c7cf607730168b8efdd9669"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pv <span class="sc">%&gt;%</span> <span class="fu">reactable</span>() <span class="sc">%&gt;%</span> <span class="fu">add_subtitle</span>(<span class="st">'Inference (pv) between overall stability'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -376,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="compare-within-women-stability-with-demographics">Compare within-women stability with demographics</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>variablemetavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alcohol"</span>,<span class="st">"Coitus"</span>, <span class="st">"Medication during sampling"</span>  )</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>metavars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age"</span>, <span class="st">"Residence"</span>, <span class="st">"Diet"</span>, <span class="st">"Contraceptives"</span>, <span class="st">"Regular/daily medication"</span> , <span class="st">"Nicotin"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -405,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fmrt <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">relssq =</span> <span class="fu">colDef</span>(<span class="at">format =</span> <span class="fu">colFormat</span>(<span class="at">percent =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -437,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Inference as table</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tb_sens <span class="ot">&lt;-</span> dfmeta_sens <span class="sc">%&gt;%</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(omics,demo,type) <span class="sc">%&gt;%</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(<span class="fu">lm</span>(<span class="at">data =</span> ., mnd<span class="sc">~</span>val) <span class="sc">%&gt;%</span> anova <span class="sc">%&gt;%</span> tidy) <span class="sc">%&gt;%</span> </span>
@@ -467,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-5206fe5db86ea555d7c6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"omics":["ME-16s","ME-ITS","ME-ITS","ME-ITS","ME-ITS","ME-ITS","ME-ITS","ME-NMR","ME-16s","ME-NMR","ME-16s","ME-16s","ME-16s","ME-NMR","ME-NMR","ME-16s","ME-NMR","ME-NMR"],"demo":["Diet","Residence","Contraceptives","Nicotin","Age","Regular/daily medication","Diet","Contraceptives","Nicotin","Diet","Contraceptives","Residence","Regular/daily medication","Regular/daily medication","Age","Age","Nicotin","Residence"],"df":[2,1,1,1,2,1,2,1,1,2,1,1,1,1,2,2,1,1],"relssq":[0.521305481889568,0.399534884825542,0.130564934584434,0.0703316427234243,0.148982900130466,0.0484022516284928,0.100027807587718,0.023636277072495,0.023004124893482,0.0689685343786422,0.0151113578117403,0.0139761110797024,0.0122404395353939,0.00713627292129527,0.0261192280487808,0.0242834466848115,0.00235242291632615,0.00227025150012999],"p.value":[0.00398509249186789,0.00488732618867939,0.140674125095175,0.287523358057132,0.29822026366913,0.38037147768943,0.453647143127779,0.542471806095711,0.547985238424633,0.585103493973487,0.627003662050331,0.640354161825691,0.662083181843919,0.738930866800314,0.819961450265062,0.831625020931692,0.848436014190092,0.851078182695237],"4 samples per indiv":["(n = 17 R2 = 28.5%, p = 0.095)","(n = 17 R2 = 31.7%, p = 0.019)","(n = 17 R2 = 6.5%, p = 0.322)","(n = 17 R2 = 3.7%, p = 0.46)","(n = 17 R2 = 7.6%, p = 0.574)","(n = 17 R2 = 3.3%, p = 0.487)","(n = 17 R2 = 21.2%, p = 0.189)","(n = 15 R2 = 10.8%, p = 0.232)","(n = 17 R2 = 4.7%, p = 0.401)","(n = 15 R2 = 4.1%, p = 0.778)","(n = 17 R2 = 0%, p = 0.953)","(n = 17 R2 = 4.2%, p = 0.428)","(n = 17 R2 = 0.3%, p = 0.845)","(n = 15 R2 = 4.9%, p = 0.427)","(n = 15 R2 = 16.4%, p = 0.342)","(n = 17 R2 = 6.1%, p = 0.644)","(n = 15 R2 = 0%, p = 0.976)","(n = 15 R2 = 0.1%, p = 0.912)"],"8 samples per indiv":["(n = 14 R2 = 54%, p = 0.014)","(n = 14 R2 = 28.9%, p = 0.047)","(n = 14 R2 = 7.3%, p = 0.352)","(n = 14 R2 = 10.4%, p = 0.26)","(n = 14 R2 = 9.2%, p = 0.589)","(n = 14 R2 = 6.5%, p = 0.377)","(n = 14 R2 = 31.4%, p = 0.126)","(n = 6 R2 = 93.9%, p = 0.001)","(n = 14 R2 = 6.5%, p = 0.38)","(n = 6 R2 = 10.2%, p = 0.851)","(n = 14 R2 = 0%, p = 0.993)","(n = 14 R2 = 0%, p = 0.948)","(n = 14 R2 = 0%, p = 0.98)","(n = 6 R2 = 41.7%, p = 0.166)","(n = 6 R2 = 57.1%, p = 0.281)","(n = 14 R2 = 6.2%, p = 0.702)","(n = 6 R2 = 2.4%, p = 0.77)","(n = 6 R2 = 19.8%, p = 0.377)"]},"columns":[{"id":"omics","name":"omics","type":"character"},{"id":"demo","name":"demo","type":"character"},{"id":"df","name":"df","type":"numeric"},{"id":"relssq","name":"relssq","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"p.value","name":"p.value","type":"numeric","cell":["3.99e-03","4.89e-03","1.41e-01","2.88e-01","2.98e-01","3.80e-01","4.54e-01","5.42e-01","5.48e-01","5.85e-01","6.27e-01","6.40e-01","6.62e-01","7.39e-01","8.20e-01","8.32e-01","8.48e-01","8.51e-01"]},{"id":"4 samples per indiv","name":"4 samples per indiv","type":"character"},{"id":"8 samples per indiv","name":"8 samples per indiv","type":"character"}],"dataKey":"d645277534d36aad83346490ecd5902e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dfmeta <span class="sc">%&gt;%</span> <span class="fu">filter</span>(demo<span class="sc">==</span><span class="st">'Diet'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Diet =</span> val) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(omics,Participant,Diet,mnd) <span class="sc">%&gt;%</span> </span>
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Figure 5 in publication Example on diet.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG3a, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">3</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>layout <span class="ot">&lt;-</span> <span class="st">"</span></span>
@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">'FIG5_betastab.pdf'</span>, <span class="at">plot =</span> FIG5, <span class="at">height =</span> <span class="dv">5</span>,<span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>

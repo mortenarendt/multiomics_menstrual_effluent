@@ -173,8 +173,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#nmr-metabolomics" id="toc-nmr-metabolomics" class="nav-link active" data-scroll-target="#nmr-metabolomics">NMR Metabolomics</a></li>
+  <li><a href="#sequencing-data" id="toc-sequencing-data" class="nav-link" data-scroll-target="#sequencing-data">Sequencing data</a></li>
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -198,7 +206,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS sequencing data, and metadata is available from https://github.com/mortenarendt/multiomics_menstrual_effluent in the file MEdata.RData.</p>
+<section id="nmr-metabolomics" class="level2">
+<h2 class="anchored" data-anchor-id="nmr-metabolomics">NMR Metabolomics</h2>
+<p>Raw data can be downloaded from Zenodo following:</p>
+<p><a href="https://doi.org/10.5281/zenodo.23919175">Jarsmer, I. F. K., Khakimov, B., &amp; Ye, Y. (2026). Menstrual Effluent NMR Metabolomics</a></p>
+</section>
+<section id="sequencing-data" class="level2">
+<h2 class="anchored" data-anchor-id="sequencing-data">Sequencing data</h2>
+<p>Fastq files is available from <a href=""></a></p>
+</section>
+<section id="tabular-data" class="level2">
+<h2 class="anchored" data-anchor-id="tabular-data">Tabular data</h2>
+<p>The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS sequencing data, and metadata is available from this <a href="https://github.com/mortenarendt/multiomics_menstrual_effluent">github repo</a> in the file MEdata.RData.</p>
 <ul>
 <li>MEconc_new and MEconc_newlong is menstrual effluent metabolomics in wide- and long format</li>
 <li>PBconc_new and PBconc_newlong is plasma metabolomics in wide- and long format</li>
@@ -207,6 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>metadata contrains the sampling time and demographics for the participants</li>
 <li>MEclass contains NMR characterization of the individual intervals</li>
 </ul>
+<p>This code chunck does the download and load</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://raw.githubusercontent.com/"</span>,</span>
@@ -220,10 +240,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>loaded_objects <span class="ot">&lt;-</span> <span class="fu">load</span>(tmp)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(tmp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Raw NMR data can be downloaded from Zenodo following:</p>
-<p>Jarsmer, I. F. K., Khakimov, B., &amp; Ye, Y. (2026). Menstrual Effluent NMR Metabolomics. Zenodo. https://doi.org/10.5281/zenodo.23919175</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

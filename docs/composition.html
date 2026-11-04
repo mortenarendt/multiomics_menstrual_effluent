@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#figure-3a-in-publication" id="toc-figure-3a-in-publication" class="nav-link" data-scroll-target="#figure-3a-in-publication">Figure 3A in publication</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="composition.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="composition.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -251,49 +251,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Figure 2A in publication</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'ME dimensions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ME dimensions"</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MEconc_newlong <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Sample ID</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(<span class="st">`</span><span class="at">Sample ID</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 110  34</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>MEconc_newlong <span class="sc">%&gt;%</span>ungroup <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Sample ID</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Participant)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 34</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'PB dimensions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "PB dimensions"</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>PBconc_new <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Sample)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 43 90</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>PBconc_new <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Sample)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Participant)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 90</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span> (<span class="fu">str_detect</span>(met,<span class="st">'glycerol'</span>) <span class="sc">|</span> met <span class="sc">==</span> <span class="st">'ERECTIC'</span> <span class="sc">|</span> met<span class="sc">==</span><span class="st">'TSP'</span> <span class="sc">|</span> <span class="fu">str_detect</span>(met,<span class="st">'PC'</span>))),</span>
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="composition">Composition</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> rio<span class="sc">::</span><span class="fu">export</span>(<span class="at">file =</span> <span class="st">'Figure2A1_data.xlsx'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>g_composition <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span> ., <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">''</span>, <span class="at">y =</span> mny,<span class="at">fill =</span> lb)) <span class="sc">+</span> </span>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The Menstrual effluent library for SigMa consists of <em>known peaks (Sigma class = 1)</em>, <em>unknown peaks (Sigma class = 2)</em> and <em>bins of peaks that are not deconvoluted (Sigma class = 3)</em>.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> rio<span class="sc">::</span><span class="fu">export</span>(<span class="at">file =</span> <span class="st">'Supplementary table 1.xlsx'</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sampling time, storage time and batch effect correction of ME-NMR data</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tbQC <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Batch =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Batch),<span class="dv">3</span>,Batch), </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Sampling time</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(<span class="st">`</span><span class="at">Sampling time</span><span class="st">`</span>),<span class="st">'XX'</span>,<span class="st">`</span><span class="at">Sampling time</span><span class="st">`</span>), </span>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tbQC <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(met) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">r2res =</span> relSSQ[term<span class="sc">==</span><span class="st">'Residuals'</span>]) <span class="sc">%&gt;%</span> </span>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>MEconc_newlong <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">oldlogy =</span> logy) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Batch =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Batch),<span class="dv">3</span>,Batch), </span>
@@ -445,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sequencing depth</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_ME <span class="ot">&lt;-</span> MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(<span class="st">`</span><span class="at">Samples #</span><span class="st">`</span>))</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -458,14 +458,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     158   12172   18628   16551   21661   26526 </code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>phyX<span class="sc">@</span>sam_data <span class="sc">%&gt;%</span> data.frame <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample.ID)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Sample.ID)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 149 162</code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>phyX<span class="sc">@</span>sam_data <span class="sc">%&gt;%</span> data.frame <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample.ID)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Participant)) <span class="sc">%&gt;%</span> dim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -475,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Rarefaction curve 16s</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">as</span>(<span class="fu">otu_table</span>(phyX), <span class="st">"matrix"</span>)</span>
@@ -511,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="table-1">Table</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>TAXlv <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>group_vars_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>){</span>
@@ -566,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-e4c59ac38ce293247034">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Bacteria","Unassigned","K__lambda_standard"],"abu":[0.999881179520915,0.000118136335618731,6.84143466154426e-07],"prevalence":[1,0.288590604026846,0.0134228187919463],"taxlevel":["ta1","ta1","ta1"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"7f74e1e1731e91bcbc9f6891d56f8b16"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-d7536ae86ab38904dedb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria"],"ta2":["P__Bacillota","P__Actinomycetota","P__Bacteroidota","P__Pseudomonadota","P__Fusobacteriota","P__Mycoplasmatota"],"abu":[0.538588310827635,0.265053676889379,0.0991794703582415,0.044090551509124,0.0388891860123175,0.00890168916620207],"prevalence":[1,1,0.993288590604027,0.946308724832215,0.885906040268456,0.771812080536913],"taxlevel":["ta2","ta2","ta2","ta2","ta2","ta2"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"65d464d24b30a8cff5513188751b6be9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">3</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-68efa046647948a5030c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria"],"ta2":["P__Bacillota","P__Actinomycetota","P__Bacteroidota","P__Pseudomonadota","P__Fusobacteriota","P__Bacillota"],"ta3":["C__Bacilli","C__Actinomycetes","C__Bacteroidia","C__Gammaproteobacteria","C__Fusobacteriia","C__Clostridia"],"abu":[0.449703504408748,0.240992790581953,0.09915979865918,0.0427287758281868,0.0388891860123175,0.0360964553056305],"prevalence":[1,1,0.993288590604027,0.939597315436242,0.885906040268456,0.993288590604027],"taxlevel":["ta3","ta3","ta3","ta3","ta3","ta3"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"ta3","name":"ta3","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"294755c7d3215d81109dc96d97f66726"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">4</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -590,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-0c414d5937edb692d1e7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria","K__Bacteria"],"ta2":["P__Bacillota","P__Actinomycetota","P__Bacteroidota","P__Bacillota","P__Fusobacteriota","P__Pseudomonadota"],"ta3":["C__Bacilli","C__Actinomycetes","C__Bacteroidia","C__Bacilli","C__Fusobacteriia","C__Gammaproteobacteria"],"ta4":["O__Lactobacillales","O__Bifidobacteriales","O__Bacteroidales","O__Bacillales","O__Fusobacteriales","O__Enterobacterales"],"abu":[0.399333831684835,0.22633620265225,0.09915979865918,0.0499929760619439,0.0388891860123175,0.0360243995117207],"prevalence":[1,1,0.993288590604027,0.979865771812081,0.885906040268456,0.885906040268456],"taxlevel":["ta4","ta4","ta4","ta4","ta4","ta4"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"ta3","name":"ta3","type":"character"},{"id":"ta4","name":"ta4","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"d9b3aa1d8f6038fa5a3c1c131d23170b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">5</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2) <span class="sc">%&gt;%</span>  head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -598,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-461f80e47208b6d285a3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta3":["C__Bacilli","C__Actinomycetes","C__Bacilli","C__Bacteroidia","C__Fusobacteriia","C__Gammaproteobacteria"],"ta4":["O__Lactobacillales","O__Bifidobacteriales","O__Lactobacillales","O__Bacteroidales","O__Fusobacteriales","O__Enterobacterales"],"ta5":["F__Lactobacillaceae","F__Bifidobacteriaceae","F__Streptococcaceae","F__Prevotellaceae","F__Leptotrichiaceae","F__Enterobacteriaceae"],"abu":[0.302586477233277,0.22633620265225,0.0834086676887039,0.0829521343618267,0.0380907536192594,0.0359229115612344],"prevalence":[1,1,0.959731543624161,0.979865771812081,0.879194630872483,0.879194630872483],"taxlevel":["ta5","ta5","ta5","ta5","ta5","ta5"]},"columns":[{"id":"ta3","name":"ta3","type":"character"},{"id":"ta4","name":"ta4","type":"character"},{"id":"ta5","name":"ta5","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"ef2901fbf8016eb3d19bc79a06f399d4"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">6</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2,<span class="sc">-</span>ta3) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -606,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-a0851f51b059153d3649">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta4":["O__Lactobacillales","O__Bifidobacteriales","O__Lactobacillales","O__Bacteroidales","O__Fusobacteriales","O__Enterobacterales"],"ta5":["F__Lactobacillaceae","F__Bifidobacteriaceae","F__Streptococcaceae","F__Prevotellaceae","F__Leptotrichiaceae","F__Enterobacteriaceae"],"ta6":["G__Lactobacillus","G__Gardnerella","G__Streptococcus","G__Prevotella","G__Sneathia","__"],"abu":[0.292572021309322,0.220202471870399,0.0833268399284407,0.0557271868696025,0.0380203689827074,0.0355146787561641],"prevalence":[1,1,0.959731543624161,0.966442953020134,0.87248322147651,0.865771812080537],"taxlevel":["ta6","ta6","ta6","ta6","ta6","ta6"]},"columns":[{"id":"ta4","name":"ta4","type":"character"},{"id":"ta5","name":"ta5","type":"character"},{"id":"ta6","name":"ta6","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"625f5a00f678b824ecf50f984f316044"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">7</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2,<span class="sc">-</span>ta3,<span class="sc">-</span>ta4) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -614,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/json" data-for="htmlwidget-cb7d4c1fdf161d0c9822">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta5":["F__Lactobacillaceae","F__Bifidobacteriaceae","F__Lactobacillaceae","F__Streptococcaceae","F__Bifidobacteriaceae","F__Enterobacteriaceae"],"ta6":["G__Lactobacillus","G__Gardnerella","G__Lactobacillus","G__Streptococcus","G__Gardnerella","__"],"ta7":["__","__","S__Lactobacillus iners strain DSM 13335","__","S__Gardnerella vaginalis ATCC 14018 = JCM 11026","__"],"abu":[0.172789485883014,0.167804052459278,0.119767417872848,0.0832694836579615,0.0499375560904313,0.0355146787561641],"prevalence":[0.993288590604027,1,0.993288590604027,0.959731543624161,0.845637583892617,0.865771812080537],"taxlevel":["ta7","ta7","ta7","ta7","ta7","ta7"]},"columns":[{"id":"ta5","name":"ta5","type":"character"},{"id":"ta6","name":"ta6","type":"character"},{"id":"ta7","name":"ta7","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"e3600a21e721627394a3cc5ac3b4f4f8"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>phyXsummaries[[<span class="dv">8</span>]] <span class="sc">%&gt;%</span>  head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -630,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Figure 2A in publication</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> phyX <span class="sc">%&gt;%</span> </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset_samples</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample.ID)) <span class="sc">%&gt;%</span> </span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tax_glom</span>(<span class="st">'ta5'</span>) <span class="sc">%&gt;%</span> </span>
@@ -679,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="individual-distribution">Individual distribution</h4>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>otutb16s <span class="ot">&lt;-</span> b <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(bsum, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'ta2'</span>,<span class="st">'ta3'</span>,<span class="st">'ta4'</span>,<span class="st">'ta5'</span>)) </span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>otutb16s <span class="sc">%&gt;%</span> rio<span class="sc">::</span><span class="fu">export</span>(<span class="at">file =</span> <span class="st">'Figure2B1_data.xlsx'</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>participantsort <span class="ot">&lt;-</span> otutb16s <span class="sc">%&gt;%</span></span>
@@ -715,7 +715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="distribution-of-zero-reads">Distribution of zero-reads</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>phyyITS_w <span class="ot">&lt;-</span> phyITS <span class="sc">%&gt;%</span> <span class="fu">subset_samples</span>(<span class="sc">!</span><span class="fu">is.na</span>(cycle))</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(phyyITS_w<span class="sc">@</span>sam_data<span class="sc">$</span>Participant,<span class="fu">sample_sums</span>(phyyITS_w)<span class="sc">&gt;</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
@@ -749,14 +749,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="sequencing-depth">Sequencing depth</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> phyITS <span class="sc">%&gt;%</span> <span class="fu">subset_samples</span>(<span class="sc">!</span><span class="fu">is.na</span>(cycle)) <span class="sc">%&gt;%</span> <span class="fu">sample_sums</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>For all samples</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(v)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -767,7 +767,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For sample with at least one read</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(v<span class="sc">&gt;</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -776,7 +776,7 @@ FALSE  TRUE
   100    49 </code></pre>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(v[v<span class="sc">&gt;</span><span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -787,7 +787,7 @@ FALSE  TRUE
 <p>Rarefaction curve ITS</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">as</span>(<span class="fu">otu_table</span>(phyITS), <span class="st">"matrix"</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>curves <span class="ot">&lt;-</span> vegan<span class="sc">::</span><span class="fu">rarecurve</span>(</span>
@@ -821,7 +821,7 @@ FALSE  TRUE
 <h3 class="anchored" data-anchor-id="table-2">Table</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>TAXlv <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>group_vars_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>){</span>
@@ -871,7 +871,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-175022826e6a75239f4b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Eukaryota"],"abu":[1],"prevalence":[0.328859060402685],"taxlevel":["ta1"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"a752803af5fdda544abfd400460ea502"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -879,7 +879,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-4ec6d9053f33845eafeb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Eukaryota","K__Eukaryota","K__Eukaryota"],"ta2":["P__Ascomycota","P__Basidiomycota","__"],"abu":[0.53630948026622,0.445376023322101,0.0183144964116782],"prevalence":[0.328859060402685,0.268456375838926,0.10738255033557],"taxlevel":["ta2","ta2","ta2"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"9838a2eabaabc1e58cc217cabfab699f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">3</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -887,7 +887,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-bec1d4da318caa2f4bc6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota"],"ta2":["P__Ascomycota","P__Basidiomycota","P__Ascomycota","P__Ascomycota","__","P__Basidiomycota"],"ta3":["C__Saccharomycetes","C__Agaricomycetes","C__Eurotiomycetes","C__Pichiomycetes","__","C__Malasseziomycetes"],"abu":[0.422426594710695,0.420301379805034,0.0638880434332236,0.0365013612114246,0.0183144964116782,0.0099413820568144],"prevalence":[0.328859060402685,0.261744966442953,0.221476510067114,0.23489932885906,0.10738255033557,0.0469798657718121],"taxlevel":["ta3","ta3","ta3","ta3","ta3","ta3"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"ta3","name":"ta3","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"a3453c0714b200f7866ffb7ed06f7df5"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">4</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -895,7 +895,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-c2d67f7fa7d85afb5fc1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta1":["K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota","K__Eukaryota"],"ta2":["P__Ascomycota","P__Basidiomycota","P__Basidiomycota","P__Basidiomycota","P__Ascomycota","P__Basidiomycota"],"ta3":["C__Saccharomycetes","C__Agaricomycetes","C__Agaricomycetes","C__Agaricomycetes","C__Eurotiomycetes","C__Agaricomycetes"],"ta4":["O__Saccharomycetales","O__Agaricales","O__Polyporales","__","O__Eurotiales","O__Hymenochaetales"],"abu":[0.422178705608413,0.159524177913126,0.154893651563733,0.0624847062320023,0.0538068168686771,0.0294298703215396],"prevalence":[0.328859060402685,0.208053691275168,0.214765100671141,0.134228187919463,0.221476510067114,0.100671140939597],"taxlevel":["ta4","ta4","ta4","ta4","ta4","ta4"]},"columns":[{"id":"ta1","name":"ta1","type":"character"},{"id":"ta2","name":"ta2","type":"character"},{"id":"ta3","name":"ta3","type":"character"},{"id":"ta4","name":"ta4","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"34d76dfd028334244987fb3b574ec2ed"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">5</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2) <span class="sc">%&gt;%</span>  head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -903,7 +903,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-5a49c149b7667f045e48">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta3":["C__Saccharomycetes","C__Agaricomycetes","C__Agaricomycetes","C__Eurotiomycetes","C__Agaricomycetes","C__Agaricomycetes"],"ta4":["O__Saccharomycetales","__","O__Agaricales","O__Eurotiales","O__Agaricales","O__Polyporales"],"ta5":["F__Saccharomycetaceae","__","F__Psathyrellaceae","F__Aspergillaceae","F__Physalacriaceae","F__Polyporaceae"],"abu":[0.422178705608413,0.0624847062320023,0.0596416590051159,0.0538068168686771,0.0446490256309093,0.0436695085335385],"prevalence":[0.328859060402685,0.134228187919463,0.140939597315436,0.221476510067114,0.0738255033557047,0.120805369127517],"taxlevel":["ta5","ta5","ta5","ta5","ta5","ta5"]},"columns":[{"id":"ta3","name":"ta3","type":"character"},{"id":"ta4","name":"ta4","type":"character"},{"id":"ta5","name":"ta5","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"dc1fe0f3b580d3e7294024b02709596e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">6</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2,<span class="sc">-</span>ta3) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -911,7 +911,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-3a8d60082b4ff1aba34e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta4":["O__Saccharomycetales","O__Saccharomycetales","__","O__Agaricales","O__Eurotiales","O__Polyporales"],"ta5":["F__Saccharomycetaceae","F__Saccharomycetaceae","__","F__Psathyrellaceae","F__Aspergillaceae","F__Polyporaceae"],"ta6":["G__Saccharomyces","G__Kluyveromyces","__","G__Coprinellus","G__Aspergillus","G__Trametes"],"abu":[0.296601344451291,0.124468237512734,0.0624847062320023,0.0572077130448621,0.0524687229085202,0.0354637338902576],"prevalence":[0.328859060402685,0.322147651006711,0.134228187919463,0.134228187919463,0.214765100671141,0.100671140939597],"taxlevel":["ta6","ta6","ta6","ta6","ta6","ta6"]},"columns":[{"id":"ta4","name":"ta4","type":"character"},{"id":"ta5","name":"ta5","type":"character"},{"id":"ta6","name":"ta6","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"954f7f00a3d69bb8e1cc714142a02aae"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">7</span>]] <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>ta1,<span class="sc">-</span>ta2,<span class="sc">-</span>ta3,<span class="sc">-</span>ta4) <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -919,7 +919,7 @@ FALSE  TRUE
 <script type="application/json" data-for="htmlwidget-18dfe2654378a0680b52">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ta5":["F__Saccharomycetaceae","F__Saccharomycetaceae","F__Saccharomycetaceae","__","F__Psathyrellaceae","F__Aspergillaceae"],"ta6":["G__Saccharomyces","G__Saccharomyces","G__Kluyveromyces","__","G__Coprinellus","G__Aspergillus"],"ta7":["S__Saccharomyces_cerevisiae_CBS_1171","__","S__Kluyveromyces_lactis_CBS_683","__","__","S__Aspergillus_glabripes_CCF_5474"],"abu":[0.169121577831639,0.127479766619651,0.124450749072771,0.0624847062320023,0.0497565532445865,0.0374011807019958],"prevalence":[0.322147651006711,0.328859060402685,0.322147651006711,0.134228187919463,0.12751677852349,0.187919463087248],"taxlevel":["ta7","ta7","ta7","ta7","ta7","ta7"]},"columns":[{"id":"ta5","name":"ta5","type":"character"},{"id":"ta6","name":"ta6","type":"character"},{"id":"ta7","name":"ta7","type":"character"},{"id":"abu","name":"abu","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"prevalence","name":"prevalence","type":"numeric","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"taxlevel","name":"taxlevel","type":"character"}],"dataKey":"69f0ea60bd3499bb3f39a9cdf42bf9da"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>phyITSsummaries[[<span class="dv">8</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> <span class="fu">reactable</span>(<span class="at">columns =</span> fmrt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
@@ -935,7 +935,7 @@ FALSE  TRUE
 <p>Figure 2A in publication</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> phyITS <span class="sc">%&gt;%</span> </span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset_samples</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sample.ID)) <span class="sc">%&gt;%</span> </span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tax_glom</span>(<span class="st">'ta5'</span>) <span class="sc">%&gt;%</span> </span>
@@ -987,7 +987,7 @@ FALSE  TRUE
 <h4 class="anchored" data-anchor-id="individual-distribution-1">Individual distribution</h4>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpattern)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>otutbITS <span class="ot">&lt;-</span> b <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(bsumITS, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">'ta3'</span>,<span class="st">'ta4'</span>,<span class="st">'ta5'</span>)) </span>
@@ -1040,7 +1040,7 @@ FALSE  TRUE
 <h2 class="anchored" data-anchor-id="figure-2-in-publication">Figure 2 in publication</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>layout2 <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="st">AABC</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
@@ -1059,7 +1059,7 @@ FALSE  TRUE
 </div>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'FIG2A_composition.pdf'</span>,<span class="at">plot =</span> all_comp, <span class="at">width =</span> <span class="dv">14</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'FIG2B_16s_composition.pdf'</span>,<span class="at">plot =</span> g2B, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">4</span>)</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'FIG2C_ITS_composition.pdf'</span>,<span class="at">plot =</span> g2C, <span class="at">width =</span> <span class="dv">14</span>, <span class="at">height =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1072,7 +1072,7 @@ FALSE  TRUE
 <h3 class="anchored" data-anchor-id="me">ME</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>MEconc_newlong <span class="sc">%&gt;%</span> </span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cycle_day =</span> (<span class="fu">as.numeric</span>(Cycle)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">5</span> <span class="sc">+</span> <span class="st">`</span><span class="at">Cycle day</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(cycle_day,logy, <span class="at">group =</span> Participant, <span class="at">color =</span> category)) <span class="sc">+</span> </span>
@@ -1093,7 +1093,7 @@ FALSE  TRUE
 <h3 class="anchored" data-anchor-id="s-1">16s</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>otutb16s <span class="sc">%&gt;%</span> </span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(cycle_day,Abundance, <span class="at">group =</span> Participant, <span class="at">color =</span> lb)) <span class="sc">+</span> </span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
@@ -1115,7 +1115,7 @@ FALSE  TRUE
 <h3 class="anchored" data-anchor-id="its-1">ITS</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>otutbITS <span class="sc">%&gt;%</span> </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="fu">aes</span>(cycle_day,Abundance, <span class="at">group =</span> Participant, <span class="at">color =</span> lb)) <span class="sc">+</span> </span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
@@ -1141,7 +1141,7 @@ FALSE  TRUE
 <p>Figure 3B in publication</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>tidyall <span class="ot">&lt;-</span> <span class="cf">function</span>(m0) {</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    m0 <span class="sc">%&gt;%</span> <span class="fu">anova</span>() <span class="sc">%&gt;%</span> tidy,</span>
@@ -1244,7 +1244,7 @@ FALSE  TRUE
 </div>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>dfplot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mME <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="st">'ME-NMR'</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(met,<span class="st">'PC'</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(met,<span class="st">'glycerol'</span>)) <span class="sc">%&gt;%</span> </span>
@@ -1306,7 +1306,7 @@ FALSE  TRUE
 </div>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'FIG3B_vulcano.pdf'</span>,<span class="at">plot =</span> g_day2, <span class="at">width =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
@@ -1317,7 +1317,7 @@ FALSE  TRUE
 <h4 class="anchored">NMR</h4>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>fmrt <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># estimate = colDef(format = colFormat(scientific = TRUE, digits = 2)),</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">estimate =</span> <span class="fu">colDef</span>(</span>
@@ -1363,7 +1363,7 @@ FALSE  TRUE
 <h4 class="anchored">16s microbiome</h4>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>dfplot <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(omics<span class="sc">==</span><span class="st">'ME-16s'</span>) <span class="sc">%&gt;%</span> </span>
@@ -1385,7 +1385,7 @@ FALSE  TRUE
 <h4 class="anchored">ITS Fungome</h4>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>dfplot <span class="sc">%&gt;%</span> </span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span> </span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(omics<span class="sc">==</span><span class="st">'ME-ITS'</span>) <span class="sc">%&gt;%</span> </span>
@@ -1409,7 +1409,7 @@ FALSE  TRUE
 <h2 class="anchored" data-anchor-id="simplex-of-variance-partitioning">Simplex of variance partitioning</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>mME_pool <span class="sc">%&gt;%</span> </span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mME <span class="sc">%&gt;%</span> </span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="st">'ME-NMR'</span>) <span class="sc">%&gt;%</span> </span>
@@ -1431,7 +1431,7 @@ FALSE  TRUE
 <h3 class="anchored" data-anchor-id="figure-3a-in-publication">Figure 3A in publication</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>tbseq <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tbITS <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="st">'ME-ITS'</span>),</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                   tb16s <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">omics =</span> <span class="st">'ME-16s'</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(effect<span class="sc">==</span><span class="st">'ran_pars'</span>) <span class="sc">%&gt;%</span></span>
@@ -1495,7 +1495,7 @@ FALSE  TRUE
 </div>
 </div>
 <details class="code-fold">
-<summary>Show code</summary>
+<summary>show code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">'FIG3A_simplex.pdf'</span>,<span class="at">plot =</span> gSIMPLX_ME, <span class="at">width =</span> <span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>

@@ -116,7 +116,7 @@ dfmetaPB <- PBconc_newlong %>%
   gather(demo,val,-`Samples #`,-Participant)
 
 SCORESdemo <- resDEMO <- data.frame()
-nperm <- 999
+nperm <- 9999
 for (i in  1:length(metavars)){
   # for (i in  1:2){
   # i <- 3

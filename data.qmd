@@ -10,7 +10,20 @@ knitr::opts_chunk$set( message = F, warning = F)
 options(digits=2)
 ```
 
-The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS sequencing data, and metadata is available from  https://github.com/mortenarendt/multiomics_menstrual_effluent in the file MEdata.RData. 
+## NMR Metabolomics 
+
+Raw data can be downloaded from Zenodo following:  
+
+[Jarsmer, I. F. K., Khakimov, B., & Ye, Y. (2026). Menstrual Effluent NMR Metabolomics](https://doi.org/10.5281/zenodo.23919175)
+
+## Sequencing data
+
+Fastq files is available from []()
+
+## Tabular data
+
+
+The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS sequencing data, and metadata is available from this [github repo](https://github.com/mortenarendt/multiomics_menstrual_effluent) in the file MEdata.RData. 
 
 * MEconc_new and MEconc_newlong is menstrual effluent metabolomics in wide- and long format
 * PBconc_new and PBconc_newlong is plasma metabolomics in wide- and long format
@@ -19,6 +32,7 @@ The metabolomics (of menstrual effluent and plasma) as well as 16s and ITS seque
 * metadata contrains the sampling time and demographics for the participants
 * MEclass contains NMR characterization of the individual intervals
 
+This code chunck does the download and load
 ```{r, eval = FALSE, include=TRUE}
 url <- paste0(
   "https://raw.githubusercontent.com/",
@@ -32,8 +46,4 @@ download.file(url, tmp, mode = "wb")
 loaded_objects <- load(tmp)
 unlink(tmp)
 ```
-
-Raw NMR data can be downloaded from Zenodo following:  
-
-Jarsmer, I. F. K., Khakimov, B., & Ye, Y. (2026). Menstrual Effluent NMR Metabolomics. Zenodo. https://doi.org/10.5281/zenodo.23919175
 
